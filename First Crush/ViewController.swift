@@ -8,11 +8,29 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController,UIWebViewDelegate {
+    @IBOutlet weak var webView: UIWebView!
+    @IBOutlet weak var loadSpinner: UIActivityIndicatorView!
+    var boxView = UIView()
+    
+    func webViewDidStartLoad(_ : UIWebView) {
+        loadSpinner.startAnimating()
+    }
+    
+    func webViewDidFinishLoad(_ : UIWebView) {
+        loadSpinner.stopAnimating()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        // Removes it:
+        boxView.removeFromSuperview()
+        webView.delegate = self
+        view.addSubview(webView)
+        let url = URL(string: "http://www.firstcrush.co")
+        let request = URLRequest(url: url!)
+            webView.loadRequest(request)
     }
 
     override func didReceiveMemoryWarning() {
