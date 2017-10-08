@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController,UIWebViewDelegate {
     @IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var loadSpinner: UIActivityIndicatorView!
-    var boxView = UIView()
+    @IBOutlet weak var navigationTitle: UINavigationItem!
     
     func webViewDidStartLoad(_ : UIWebView) {
         loadSpinner.startAnimating()
@@ -25,7 +25,6 @@ class ViewController: UIViewController,UIWebViewDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         // Removes it:
-        boxView.removeFromSuperview()
         webView.delegate = self
         view.addSubview(webView)
         let url = URL(string: "http://www.firstcrush.co")
@@ -37,7 +36,15 @@ class ViewController: UIViewController,UIWebViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    @IBAction func backAction(_ sender: Any) {
+        if webView.canGoBack {
+            webView.goBack()
+        }
+    }
+    
+    @IBAction func refreshAction(_ sender: Any) {
+        webView.reload()
+    }
 }
 
