@@ -8,11 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController,UIWebViewDelegate {
+class ViewController: UIViewController,UIWebViewDelegate,UIScrollViewDelegate {
     @IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var loadSpinner: UIActivityIndicatorView!
     @IBOutlet weak var navigationTitle: UINavigationItem!
-    
+   
+    var lastOffsetY :CGFloat = 0
     func webViewDidStartLoad(_ : UIWebView) {
         loadSpinner.startAnimating()
     }
@@ -26,12 +27,24 @@ class ViewController: UIViewController,UIWebViewDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         // Removes it:
         webView.delegate = self
+        webView.scrollView.delegate = self
         view.addSubview(webView)
         let url = URL(string: "http://www.firstcrush.co")
         let request = URLRequest(url: url!)
             webView.loadRequest(request)
     }
     
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView){
+        if webView.canGoBack {
+            lastOffsetY = scrollView.contentOffset.y
+        }
+    }
+    
+    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView){
+        
+        let hide = scrollView.contentOffset.y > self.lastOffsetY
+        self.navigationController?.setNavigationBarHidden(hide, animated: true)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
