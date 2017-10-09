@@ -31,7 +31,7 @@ class ViewController: UIViewController,UIWebViewDelegate {
         let request = URLRequest(url: url!)
             webView.loadRequest(request)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -40,6 +40,8 @@ class ViewController: UIViewController,UIWebViewDelegate {
     @IBAction func backAction(_ sender: Any) {
         if webView.canGoBack {
             webView.goBack()
+        }else {
+            self.navigationController?.popViewController(animated:true)
         }
     }
     

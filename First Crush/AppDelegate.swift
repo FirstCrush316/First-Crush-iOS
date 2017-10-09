@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import OneSignal
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +17,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        return true
+        
+        let notificationReceivedBlock: OSHandleNotificationReceivedBlock = { notification in
+        
+        print("Received Notification: \(notification!.payload.notificationID)")
+    }
+    
+    let notificationOpenedBlock: OSHandleNotificationActionBlock = { result in
+        // This block gets called when the user reacts to a notification received
+        let payload: OSNotificationPayload = result!.notification.payload
+        
+        var fullMessage = payload.body
+        print("Message = \(String(describing: fullMessage))")
+        
+        if payload.additionalData != nil {
+            if payload.title != nil {
+                let messageTitle = payload.title
+                print("Message Title = \(messageTitle!)")
+            }
+            
+            let additionalData = payload.additionalData
+            if additionalData?["actionSelected"] != nil {
+                fullMessage = fullMessage! + "\nPressed ButtonID: \(String(describing: additionalData!["actionSelected"]))"
+            }
+        }
+    }
+    
+    let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false,
+                                 kOSSettingsKeyInAppLaunchURL: true]
+    
+    OneSignal.initWithLaunchOptions(launchOptions,appId: "ea063994-c980-468b-8895-fcdd9dd93cf4",handleNotificationReceived: notificationReceivedBlock, handleNotificationAction: notificationOpenedBlock, settings: onesignalInitSettings)
+    
+    OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification
+    
+            return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

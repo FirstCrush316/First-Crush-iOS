@@ -67,7 +67,7 @@
         <!--Navigation Controller-->
         <scene sceneID="vNI-vo-SmK">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnSwipe="YES" hidesBarsOnTap="YES" id="OO7-bA-swO" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnTap="YES" id="OO7-bA-swO" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" barStyle="black" id="JL6-Ik-U0g">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
