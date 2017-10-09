@@ -17,7 +17,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false, kOSSettingsKeyInAppLaunchURL: true]
+        // Replace 'YOUR_APP_ID' with your OneSignal App ID.
+        OneSignal.initWithLaunchOptions(launchOptions,
+                                        appId: "ea063994-c980-468b-8895-fcdd9dd93cf4",
+                                        handleNotificationAction: nil,
+                                        settings: onesignalInitSettings)
         
+        OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification;
+        
+        // Recommend moving the below line to prompt for push after informing the user about
+        //   how your app will use them.
+        OneSignal.promptForPushNotifications(userResponse: { accepted in
+            print("User accepted notifications: \(accepted)")
+        })
+        
+        // Sync hashed email if you have a login system or collect it.
+        //   Will be used to reach the user at the most optimal time of day.
+        // OneSignal.syncHashedEmail(userEmail)
         let notificationReceivedBlock: OSHandleNotificationReceivedBlock = { notification in
         
         print("Received Notification: \(notification!.payload.notificationID)")
@@ -43,9 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false,
-                                 kOSSettingsKeyInAppLaunchURL: true]
-    
+   
     OneSignal.initWithLaunchOptions(launchOptions,appId: "ea063994-c980-468b-8895-fcdd9dd93cf4",handleNotificationReceived: notificationReceivedBlock, handleNotificationAction: notificationOpenedBlock, settings: onesignalInitSettings)
     
     OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification
