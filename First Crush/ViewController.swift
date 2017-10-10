@@ -14,13 +14,6 @@ class ViewController: UIViewController,UIWebViewDelegate,UIScrollViewDelegate {
     @IBOutlet weak var navigationTitle: UINavigationItem!
    
     var lastOffsetY :CGFloat = 0
-    func webViewDidStartLoad(_ : UIWebView) {
-        loadSpinner.startAnimating()
-    }
-    
-    func webViewDidFinishLoad(_ : UIWebView) {
-        loadSpinner.stopAnimating()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,10 +27,16 @@ class ViewController: UIViewController,UIWebViewDelegate,UIScrollViewDelegate {
             webView.loadRequest(request)
     }
     
+    func webViewDidStartLoad(_ : UIWebView) {
+        loadSpinner.startAnimating()
+    }
+    
+    func webViewDidFinishLoad(_ : UIWebView) {
+        loadSpinner.stopAnimating()
+    }
+    
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView){
-        if webView.canGoBack {
-            lastOffsetY = scrollView.contentOffset.y
-        }
+        lastOffsetY = scrollView.contentOffset.y
     }
     
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView){
