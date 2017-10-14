@@ -15,6 +15,7 @@
 		2C726D751F88AAC60037928B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C726D731F88AAC60037928B /* Main.storyboard */; };
 		2C726D771F88AAC60037928B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C726D761F88AAC60037928B /* Assets.xcassets */; };
 		2C726D7A1F88AAC60037928B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C726D781F88AAC60037928B /* LaunchScreen.storyboard */; };
+		2C79A8F71F928259006DFAE4 /* Icon-App-76x76@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C79A8F61F928259006DFAE4 /* Icon-App-76x76@3x.png */; };
 		2C8056851F8A5BEF00126BB4 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8056841F8A5BEF00126BB4 /* NotificationService.swift */; };
 		2C8056891F8A5BEF00126BB4 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2C8056821F8A5BEE00126BB4 /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -53,6 +54,7 @@
 		2C726D761F88AAC60037928B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C726D791F88AAC60037928B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2C726D7B1F88AAC60037928B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C79A8F61F928259006DFAE4 /* Icon-App-76x76@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-App-76x76@3x.png"; path = "../../../../Library/Mobile Documents/com~apple~CloudDocs/First Crush/ios/AppIcon.appiconset/Icon-App-76x76@3x.png"; sourceTree = "<group>"; };
 		2C8056821F8A5BEE00126BB4 /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C8056841F8A5BEF00126BB4 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		2C8056861F8A5BEF00126BB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				2C80568E1F8A632D00126BB4 /* First Crush.entitlements */,
 				2C726D6F1F88AAC60037928B /* AppDelegate.swift */,
 				2C726D711F88AAC60037928B /* ViewController.swift */,
+				2C79A8F61F928259006DFAE4 /* Icon-App-76x76@3x.png */,
 				2C726D731F88AAC60037928B /* Main.storyboard */,
 				2C726D761F88AAC60037928B /* Assets.xcassets */,
 				2C726D781F88AAC60037928B /* LaunchScreen.storyboard */,
@@ -251,6 +254,7 @@
 			files = (
 				2C726D7A1F88AAC60037928B /* LaunchScreen.storyboard in Resources */,
 				2C726D771F88AAC60037928B /* Assets.xcassets in Resources */,
+				2C79A8F71F928259006DFAE4 /* Icon-App-76x76@3x.png in Resources */,
 				2C726D751F88AAC60037928B /* Main.storyboard in Resources */,
 				2C1F602E1F89199D003CD739 /* Default.png in Resources */,
 			);
