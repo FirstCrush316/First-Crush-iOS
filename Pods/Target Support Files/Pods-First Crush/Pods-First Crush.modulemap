@@ -1,0 +1,6 @@
+framework module Pods_First_Crush {
+  umbrella header "Pods-First Crush-umbrella.h"
+
+  export *
+  module * { export * }
+}
