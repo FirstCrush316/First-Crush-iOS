@@ -38,13 +38,22 @@ class ViewController: UIViewController,UIWebViewDelegate,UIScrollViewDelegate {
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView){
+        if webView.canGoBack {
         lastOffsetY = scrollView.contentOffset.y
+        }
+        else {
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
+        }
     }
     
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView){
-        
+        if webView.canGoBack {
         let hide = scrollView.contentOffset.y > self.lastOffsetY
         self.navigationController?.setNavigationBarHidden(hide, animated: true)
+        }
+        else {
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -54,8 +63,10 @@ class ViewController: UIViewController,UIWebViewDelegate,UIScrollViewDelegate {
     @IBAction func backAction(_ sender: Any) {
         if webView.canGoBack {
             webView.goBack()
-        }else {
-            self.navigationController?.popViewController(animated:true)
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
+        }
+        else {
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
         }
     }
     
