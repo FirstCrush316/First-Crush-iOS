@@ -505,6 +505,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "First Crush/First Crush.entitlements";
 				DEVELOPMENT_TEAM = E3B7R4BZNB;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "First Crush/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "co.firstcrush.first-crush";
@@ -522,6 +523,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "First Crush/First Crush.entitlements";
 				DEVELOPMENT_TEAM = E3B7R4BZNB;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "First Crush/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "co.firstcrush.first-crush";
