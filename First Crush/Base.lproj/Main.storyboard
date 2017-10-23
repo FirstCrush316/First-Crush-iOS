@@ -21,38 +21,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="CFM-T0-Nkk">
-                                <rect key="frame" x="169" y="325" width="37" height="37"/>
-                                <color key="color" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading.." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BRn-df-17S">
+                                <rect key="frame" x="0.0" y="283" width="375" height="100"/>
+                                <fontDescription key="fontDescription" name="SavoyeLetPlain" family="Savoye LET" pointSize="48"/>
+                                <color key="textColor" red="0.1058898306" green="0.80861398959999997" blue="0.13258427919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ee3-81-VCf">
+                                <rect key="frame" x="0.0" y="28" width="375" height="2"/>
+                            </progressView>
                             <webView opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N6n-N7-krE">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="639"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Vke-4Q-AYK"/>
                                 </connections>
                             </webView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZjV-cA-7Af">
-                                <rect key="frame" x="125" y="411" width="125" height="90"/>
-                                <accessibility key="accessibilityConfiguration" label="Loading"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="125" id="ZHa-cM-F7p"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="SavoyeLetPlain" family="Savoye LET" pointSize="36"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </label>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="ZjV-cA-7Af" firstAttribute="centerX" secondItem="CFM-T0-Nkk" secondAttribute="centerX" id="476-7X-cD7"/>
-                            <constraint firstItem="N6n-N7-krE" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="FDp-4E-c9T"/>
-                            <constraint firstItem="CFM-T0-Nkk" firstAttribute="centerY" secondItem="N6n-N7-krE" secondAttribute="centerY" id="GSd-eu-gmj"/>
-                            <constraint firstItem="N6n-N7-krE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="QmT-vC-DIA"/>
-                            <constraint firstItem="N6n-N7-krE" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="Zbc-aY-1Kh"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ZjV-cA-7Af" secondAttribute="bottom" constant="166" id="fwr-UG-fqe"/>
-                            <constraint firstItem="ZjV-cA-7Af" firstAttribute="top" secondItem="CFM-T0-Nkk" secondAttribute="bottom" constant="49" id="pG9-7E-VFU"/>
-                            <constraint firstAttribute="trailing" secondItem="N6n-N7-krE" secondAttribute="trailing" id="sgg-WN-RVI"/>
-                            <constraint firstItem="ZjV-cA-7Af" firstAttribute="centerX" secondItem="N6n-N7-krE" secondAttribute="centerX" id="z9s-CV-76I"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="BRn-df-17S" secondAttribute="bottom" constant="284" id="19g-Ys-Bif"/>
+                            <constraint firstItem="BRn-df-17S" firstAttribute="leading" secondItem="Ee3-81-VCf" secondAttribute="leading" id="7ry-EQ-Fi3"/>
+                            <constraint firstItem="BRn-df-17S" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="BAq-dr-Rfe"/>
+                            <constraint firstAttribute="trailing" secondItem="Ee3-81-VCf" secondAttribute="trailing" id="J1V-lG-OW1"/>
+                            <constraint firstItem="N6n-N7-krE" firstAttribute="top" secondItem="Ee3-81-VCf" secondAttribute="top" id="cY9-dS-uOC"/>
+                            <constraint firstItem="Ee3-81-VCf" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="g6l-hH-Oj4"/>
+                            <constraint firstItem="N6n-N7-krE" firstAttribute="trailing" secondItem="Ee3-81-VCf" secondAttribute="trailing" id="gvI-QR-DF2"/>
+                            <constraint firstItem="Ee3-81-VCf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="kDV-dt-aEY"/>
+                            <constraint firstItem="N6n-N7-krE" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="qFP-fy-e8i"/>
+                            <constraint firstItem="N6n-N7-krE" firstAttribute="leading" secondItem="Ee3-81-VCf" secondAttribute="leading" id="r39-o5-P6R"/>
+                            <constraint firstItem="BRn-df-17S" firstAttribute="trailing" secondItem="Ee3-81-VCf" secondAttribute="trailing" id="tgE-N0-8Kh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7pj-vA-kLM">
@@ -69,8 +66,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="loadSpinner" destination="CFM-T0-Nkk" id="Yb9-KX-wgI"/>
-                        <outlet property="myLabel" destination="ZjV-cA-7Af" id="B2Q-SW-et2"/>
+                        <outlet property="myLabel" destination="BRn-df-17S" id="UNJ-jl-uZL"/>
+                        <outlet property="progressView" destination="Ee3-81-VCf" id="y8Y-S9-1uD"/>
                         <outlet property="webView" destination="N6n-N7-krE" id="rP2-rG-h5h"/>
                     </connections>
                 </viewController>

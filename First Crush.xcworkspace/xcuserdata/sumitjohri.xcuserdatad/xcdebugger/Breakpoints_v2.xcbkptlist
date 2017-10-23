@@ -26,13 +26,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "First Crush/ViewController.swift"
-            timestampString = "529693412.543124"
+            timestampString = "530475808.937112"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "First Crush/Reachability.swift"
+            timestampString = "530474360.709179"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "10"
+            endingLineNumber = "10">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

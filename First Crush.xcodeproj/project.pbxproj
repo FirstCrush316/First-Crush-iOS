@@ -10,6 +10,7 @@
 		009158FC89285198A2869C04 /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 636C7B4A80E790625202A718 /* Pods_OneSignalNotificationServiceExtension.framework */; };
 		24C8D2E29EBF7110254AD87D /* Pods_First_Crush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D41F15D9098B1034EE88ACFF /* Pods_First_Crush.framework */; };
 		2C1F602E1F89199D003CD739 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C1F602D1F89199D003CD739 /* Default.png */; };
+		2C36FD861F9E5B4400C9E1A1 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C36FD851F9E5B4400C9E1A1 /* Reachability.swift */; };
 		2C726D701F88AAC60037928B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C726D6F1F88AAC60037928B /* AppDelegate.swift */; };
 		2C726D721F88AAC60037928B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C726D711F88AAC60037928B /* ViewController.swift */; };
 		2C726D751F88AAC60037928B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C726D731F88AAC60037928B /* Main.storyboard */; };
@@ -47,6 +48,7 @@
 /* Begin PBXFileReference section */
 		194B17E22940D024FB1EE0B6 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
 		2C1F602D1F89199D003CD739 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../../../../Downloads/ApeToolsGeneratedAssets/iOS/Resources/splash/Default.png; sourceTree = "<group>"; };
+		2C36FD851F9E5B4400C9E1A1 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		2C726D6C1F88AAC60037928B /* First Crush.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "First Crush.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C726D6F1F88AAC60037928B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C726D711F88AAC60037928B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				2C726D781F88AAC60037928B /* LaunchScreen.storyboard */,
 				2C1F602D1F89199D003CD739 /* Default.png */,
 				2C726D7B1F88AAC60037928B /* Info.plist */,
+				2C36FD851F9E5B4400C9E1A1 /* Reachability.swift */,
 			);
 			path = "First Crush";
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 			files = (
 				2C726D721F88AAC60037928B /* ViewController.swift in Sources */,
 				2C726D701F88AAC60037928B /* AppDelegate.swift in Sources */,
+				2C36FD861F9E5B4400C9E1A1 /* Reachability.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
