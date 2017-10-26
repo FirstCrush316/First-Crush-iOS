@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import WebKit
 
-class ViewController: UIViewController,UIWebViewDelegate,UIScrollViewDelegate {
-    @IBOutlet weak var webView: UIWebView!
-    @IBOutlet weak var navigationTitle: UINavigationItem!
-    @IBOutlet weak var progressView: UIProgressView!
-    @IBOutlet weak var myLabel: UILabel!
+
+class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNavigationDelegate {
+    @IBOutlet var wkWebBackgroundView: UIView!
+    @IBOutlet var contentView: UIView!
+    var webView: WKWebView!
+    var myLabel: UILabel!
     var lastOffsetY :CGFloat = 0
     
     var time : Float = 0.0
@@ -22,15 +24,12 @@ class ViewController: UIViewController,UIWebViewDelegate,UIScrollViewDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         // Removes it:
-        self.webView.delegate = self
         webView.scrollView.delegate = self
-        view.addSubview(webView)
-        let url = URL(string: "http://www.firstcrush.co")
-        let request = URLRequest(url: url!)
+        let url = NSURL(string: "http://www.firstcrush.co")
+        let request = URLRequest(url: url! as URL)
         if Reachability.isConnectedToNetwork() == true {
-            webView.loadRequest(request)
-             timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector:#selector(ViewController.setProgress), userInfo: nil, repeats: true)
-        } else {
+            webView.load(request)
+        }else {
             let alertController = UIAlertController(title: NSLocalizedString("No Internet Connection",comment:""), message: NSLocalizedString("Please ensure your device is connected to the internet.",comment:""), preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default, handler: { (pAlert) in
                 //Do whatever you wants here
@@ -38,45 +37,29 @@ class ViewController: UIViewController,UIWebViewDelegate,UIScrollViewDelegate {
             alertController.addAction(defaultAction)
             self.present(alertController, animated: true, completion: nil)
         }
-        
-}
-    func setProgress() {
-        time += 0.1
-        progressView.progress = time / 5
-        if time >= 5 {
-            timer!.invalidate()
-        }
     }
-    func webViewDidStartLoad(_ : UIWebView) {
-       self.progressView.setProgress(0.1, animated: true)
-        myLabel.isHidden=false
-    }
-    
-    override func viewDidAppear(_ animated: Bool)
-    {
-        super.viewDidAppear(animated)
-        UIView.animate(withDuration: 0.5, animations: { () -> Void in
-        self.progressView.setProgress(1.0, animated: true)
-            })
-
+    override func loadView() {
+        super.loadView()
+        let webConfiguration = WKWebViewConfiguration()
+        webConfiguration.allowsInlineMediaPlayback=true
+        webConfiguration.allowsAirPlayForMediaPlayback=true
+        webConfiguration.allowsPictureInPictureMediaPlayback=true
+        webView = WKWebView(frame:contentView.frame, configuration: webConfiguration)
+        contentView.backgroundColor=UIColor.black
+        contentView.addSubview(webView)
+        constrainView(view: webView, toView: contentView)
+        webView.uiDelegate = self
+        view = webView
+       
     }
     
-    func webViewDidFinishLoad(_ : UIWebView) {
-       self.progressView.setProgress(1.0, animated: true)
-        myLabel.isHidden=true
-        self.progressView.isHidden=true
-    }
-    
-    func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
-        self.progressView.setProgress(1.0, animated: true)
-        if Reachability.isConnectedToNetwork() == false {
-        let alertController = UIAlertController(title: NSLocalizedString("No Internet Connection",comment:""), message: NSLocalizedString("Please ensure your device is connected to the internet.",comment:""), preferredStyle: .alert)
-        let defaultAction = UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default, handler: { (pAlert) in
-            //Do whatever you wants here
-        })
-        alertController.addAction(defaultAction)
-        self.present(alertController, animated: true, completion: nil)
-        }
+    func constrainView(view:UIView, toView contentView:UIView) {
+        view.autoresizesSubviews=true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        view.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView){
@@ -114,6 +97,26 @@ class ViewController: UIViewController,UIWebViewDelegate,UIScrollViewDelegate {
     
     @IBAction func refreshAction(_ sender: Any) {
         webView.reload()
+    }
+    
+    //MARK:- WKNavigationDelegate
+    
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        print(error.localizedDescription)
+        if Reachability.isConnectedToNetwork() == false {
+            let alertController = UIAlertController(title: NSLocalizedString("No Internet Connection",comment:""), message: NSLocalizedString("Please ensure your device is connected to the internet.",comment:""), preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default, handler: { (pAlert) in
+                //Do whatever you wants here
+            })
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        print("Strat to load")
+    }
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        print("finish to load")
     }
 }
 

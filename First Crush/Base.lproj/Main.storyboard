@@ -21,35 +21,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading.." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BRn-df-17S">
-                                <rect key="frame" x="0.0" y="283" width="375" height="100"/>
-                                <fontDescription key="fontDescription" name="SavoyeLetPlain" family="Savoye LET" pointSize="48"/>
-                                <color key="textColor" red="0.1058898306" green="0.80861398959999997" blue="0.13258427919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ee3-81-VCf">
-                                <rect key="frame" x="0.0" y="28" width="375" height="2"/>
-                            </progressView>
-                            <webView opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N6n-N7-krE">
-                                <rect key="frame" x="0.0" y="28" width="375" height="639"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Vke-4Q-AYK"/>
-                                </connections>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k1F-ea-hzB">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                         </subviews>
+                        <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="BRn-df-17S" secondAttribute="bottom" constant="284" id="19g-Ys-Bif"/>
-                            <constraint firstItem="BRn-df-17S" firstAttribute="leading" secondItem="Ee3-81-VCf" secondAttribute="leading" id="7ry-EQ-Fi3"/>
-                            <constraint firstItem="BRn-df-17S" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="BAq-dr-Rfe"/>
-                            <constraint firstAttribute="trailing" secondItem="Ee3-81-VCf" secondAttribute="trailing" id="J1V-lG-OW1"/>
-                            <constraint firstItem="N6n-N7-krE" firstAttribute="top" secondItem="Ee3-81-VCf" secondAttribute="top" id="cY9-dS-uOC"/>
-                            <constraint firstItem="Ee3-81-VCf" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="g6l-hH-Oj4"/>
-                            <constraint firstItem="N6n-N7-krE" firstAttribute="trailing" secondItem="Ee3-81-VCf" secondAttribute="trailing" id="gvI-QR-DF2"/>
-                            <constraint firstItem="Ee3-81-VCf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="kDV-dt-aEY"/>
-                            <constraint firstItem="N6n-N7-krE" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="qFP-fy-e8i"/>
-                            <constraint firstItem="N6n-N7-krE" firstAttribute="leading" secondItem="Ee3-81-VCf" secondAttribute="leading" id="r39-o5-P6R"/>
-                            <constraint firstItem="BRn-df-17S" firstAttribute="trailing" secondItem="Ee3-81-VCf" secondAttribute="trailing" id="tgE-N0-8Kh"/>
+                            <constraint firstItem="k1F-ea-hzB" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="FD7-2K-lKs"/>
+                            <constraint firstAttribute="trailing" secondItem="k1F-ea-hzB" secondAttribute="trailing" id="UUm-AH-59N"/>
+                            <constraint firstItem="k1F-ea-hzB" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="nQc-HZ-bQj"/>
+                            <constraint firstItem="k1F-ea-hzB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="szq-0P-dhd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7pj-vA-kLM">
@@ -66,9 +48,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="myLabel" destination="BRn-df-17S" id="UNJ-jl-uZL"/>
-                        <outlet property="progressView" destination="Ee3-81-VCf" id="y8Y-S9-1uD"/>
-                        <outlet property="webView" destination="N6n-N7-krE" id="rP2-rG-h5h"/>
+                        <outlet property="contentView" destination="8bC-Xf-vdC" id="kZ4-e8-qtA"/>
+                        <outlet property="wkWebBackgroundView" destination="8bC-Xf-vdC" id="1y3-v6-Urv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
