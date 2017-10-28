@@ -24,7 +24,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNav
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         // Removes it:
-        webView.scrollView.delegate = self
+        //webView.scrollView.delegate = self
         let url = NSURL(string: "http://www.firstcrush.co")
         let request = URLRequest(url: url! as URL)
         if Reachability.isConnectedToNetwork() == true {
@@ -45,21 +45,41 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNav
         webConfiguration.allowsAirPlayForMediaPlayback=true
         webConfiguration.allowsPictureInPictureMediaPlayback=true
         webView = WKWebView(frame:contentView.frame, configuration: webConfiguration)
-        contentView.backgroundColor=UIColor.black
-        contentView.addSubview(webView)
-        constrainView(view: webView, toView: contentView)
-        webView.uiDelegate = self
-        view = webView
-       
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        webView.navigationDelegate = self
+        self.contentView.addSubview(webView!)
+        constrainView()
+        
+        
     }
     
-    @objc func constrainView(view:UIView, toView contentView:UIView) {
-        view.autoresizesSubviews=true
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-        view.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-        view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+    
+    @objc func constrainView() {
+        //self.webView = WKWebView(frame: CGRect.zero)
+        let height = NSLayoutConstraint(item: webView, attribute: .height, relatedBy: .equal, toItem: wkWebBackgroundView, attribute: .height, multiplier: 1, constant: 0)
+        let width = NSLayoutConstraint(item: webView, attribute: .width, relatedBy: .equal, toItem: wkWebBackgroundView, attribute: .width, multiplier: 1, constant: 0)
+        let top = NSLayoutConstraint(item: webView, attribute: .top, relatedBy: .equal, toItem: wkWebBackgroundView, attribute: .top, multiplier: 1, constant: 0)
+        let leading = NSLayoutConstraint(item: webView, attribute: .leading, relatedBy: .equal, toItem: wkWebBackgroundView, attribute: .leading, multiplier: 1, constant: 0)
+        let bottom = NSLayoutConstraint(item: webView, attribute: .bottom, relatedBy: .equal, toItem: wkWebBackgroundView, attribute: .leading, multiplier: 1, constant: 0)
+        let trailing = NSLayoutConstraint(item: webView, attribute: .trailing, relatedBy: .equal, toItem: wkWebBackgroundView, attribute: .leading, multiplier: 1, constant: 0)
+        view.addConstraints([leading,top,trailing,bottom,height,width])
+        [webView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+         webView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor),
+         webView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor),
+         webView.leftAnchor.constraint(equalTo: view.leftAnchor),
+         webView.rightAnchor.constraint(equalTo: view.rightAnchor),
+         ].forEach  { anchor in
+            anchor.isActive = true
+        }
+        contentView.backgroundColor=UIColor.black
+        webView.backgroundColor=UIColor.black
+        webView.autoresizesSubviews=true
+        view.backgroundColor=UIColor.black
+        self.contentView.clipsToBounds = true
+        self.webView.clipsToBounds=true
+        webView.uiDelegate = self
+        view = webView
+        
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView){

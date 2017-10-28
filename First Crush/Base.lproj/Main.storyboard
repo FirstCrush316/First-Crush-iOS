@@ -20,7 +20,19 @@
                     <view key="view" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nQd-Lu-Y8R">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                        </subviews>
                         <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="nQd-Lu-Y8R" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="6DU-4u-FfW"/>
+                            <constraint firstItem="nQd-Lu-Y8R" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="8tX-C8-O7b"/>
+                            <constraint firstAttribute="trailing" secondItem="nQd-Lu-Y8R" secondAttribute="trailing" id="YWh-RX-jc8"/>
+                            <constraint firstItem="nQd-Lu-Y8R" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="qdj-08-dOG"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7pj-vA-kLM">
                         <barButtonItem key="backBarButtonItem" title="Back" id="xqE-Aj-X7W"/>
