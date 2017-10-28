@@ -13,12 +13,12 @@ import WebKit
 class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNavigationDelegate {
     @IBOutlet var wkWebBackgroundView: UIView!
     @IBOutlet var contentView: UIView!
-    var webView: WKWebView!
-    var myLabel: UILabel!
-    var lastOffsetY :CGFloat = 0
+    @objc var webView: WKWebView!
+    @objc var myLabel: UILabel!
+    @objc var lastOffsetY :CGFloat = 0
     
-    var time : Float = 0.0
-    var timer: Timer?
+    @objc var time : Float = 0.0
+    @objc var timer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +53,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNav
        
     }
     
-    func constrainView(view:UIView, toView contentView:UIView) {
+    @objc func constrainView(view:UIView, toView contentView:UIView) {
         view.autoresizesSubviews=true
         view.translatesAutoresizingMaskIntoConstraints = false
         view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true

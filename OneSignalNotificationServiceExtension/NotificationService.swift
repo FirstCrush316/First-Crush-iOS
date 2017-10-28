@@ -4,9 +4,9 @@ import OneSignal
 
 class NotificationService: UNNotificationServiceExtension {
     
-    var contentHandler: ((UNNotificationContent) -> Void)?
-    var receivedRequest: UNNotificationRequest!
-    var bestAttemptContent: UNMutableNotificationContent?
+    @objc var contentHandler: ((UNNotificationContent) -> Void)?
+    @objc var receivedRequest: UNNotificationRequest!
+    @objc var bestAttemptContent: UNMutableNotificationContent?
     
     override func didReceive(_ request: UNNotificationRequest, withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
         self.receivedRequest = request;
