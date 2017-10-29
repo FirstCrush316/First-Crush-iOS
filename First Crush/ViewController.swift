@@ -11,24 +11,58 @@ import WebKit
 
 
 class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNavigationDelegate {
-    @IBOutlet var wkWebBackgroundView: UIView!
     @IBOutlet var contentView: UIView!
+    let webConfiguration = WKWebViewConfiguration()
     @objc var webView: WKWebView!
+    @objc var progressView: UIProgressView!
     @objc var myLabel: UILabel!
     @objc var lastOffsetY :CGFloat = 0
     
     @objc var time : Float = 0.0
     @objc var timer: Timer?
     
+    var myContext = 0
+    
+    override func loadView() {
+        super.loadView()
+        webConfiguration.allowsInlineMediaPlayback=true
+        webConfiguration.allowsAirPlayForMediaPlayback=true
+        webConfiguration.allowsPictureInPictureMediaPlayback=true
+        webView = WKWebView(frame:.zero, configuration: webConfiguration)
+        webView.translatesAutoresizingMaskIntoConstraints = true
+        contentView.backgroundColor=UIColor.darkGray
+        webView.backgroundColor=UIColor.darkGray
+        webView.autoresizesSubviews=true
+        constrainView()
+        webView.uiDelegate = self
+        view = webView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         // Removes it:
-        //webView.scrollView.delegate = self
+        // Create Progress View
+        progressView = UIProgressView(progressViewStyle: .bar)
+        progressView.autoresizingMask = [.flexibleWidth, .flexibleTopMargin]
+        progressView.tintColor = #colorLiteral(red: 0.6576176882, green: 0.7789518833, blue: 0.2271372974, alpha: 1)
+        progressView.setProgress(0.0, animated: true)
+        //progressView.sizeToFit()
+        let progressButton = UIBarButtonItem(customView: progressView)
+        toolbarItems = [progressButton]
+        navigationController?.isToolbarHidden = false
+        webView.allowsBackForwardNavigationGestures = true
+        webView.scrollView.isScrollEnabled = true
+        webView.scrollView.bounces = true
         let url = NSURL(string: "http://www.firstcrush.co")
         let request = URLRequest(url: url! as URL)
         if Reachability.isConnectedToNetwork() == true {
             webView.load(request)
+            // Allow Scroll to Refresh
+            let refreshControl = UIRefreshControl()
+            refreshControl.addTarget(self, action: #selector(ViewController.refreshWebView), for: UIControlEvents.valueChanged)
+            webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
+
         }else {
             let alertController = UIAlertController(title: NSLocalizedString("No Internet Connection",comment:""), message: NSLocalizedString("Please ensure your device is connected to the internet.",comment:""), preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default, handler: { (pAlert) in
@@ -37,49 +71,33 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNav
             alertController.addAction(defaultAction)
             self.present(alertController, animated: true, completion: nil)
         }
-    }
-    override func loadView() {
-        super.loadView()
-        let webConfiguration = WKWebViewConfiguration()
-        webConfiguration.allowsInlineMediaPlayback=true
-        webConfiguration.allowsAirPlayForMediaPlayback=true
-        webConfiguration.allowsPictureInPictureMediaPlayback=true
-        webView = WKWebView(frame:contentView.frame, configuration: webConfiguration)
-        webView.translatesAutoresizingMaskIntoConstraints = false
         webView.navigationDelegate = self
-        self.contentView.addSubview(webView!)
-        constrainView()
-        
-        
+        webView.scrollView.delegate = self
+        lastOffsetY = 0.0
     }
     
-    
-    @objc func constrainView() {
-        //self.webView = WKWebView(frame: CGRect.zero)
-        let height = NSLayoutConstraint(item: webView, attribute: .height, relatedBy: .equal, toItem: wkWebBackgroundView, attribute: .height, multiplier: 1, constant: 0)
-        let width = NSLayoutConstraint(item: webView, attribute: .width, relatedBy: .equal, toItem: wkWebBackgroundView, attribute: .width, multiplier: 1, constant: 0)
-        let top = NSLayoutConstraint(item: webView, attribute: .top, relatedBy: .equal, toItem: wkWebBackgroundView, attribute: .top, multiplier: 1, constant: 0)
-        let leading = NSLayoutConstraint(item: webView, attribute: .leading, relatedBy: .equal, toItem: wkWebBackgroundView, attribute: .leading, multiplier: 1, constant: 0)
-        let bottom = NSLayoutConstraint(item: webView, attribute: .bottom, relatedBy: .equal, toItem: wkWebBackgroundView, attribute: .leading, multiplier: 1, constant: 0)
-        let trailing = NSLayoutConstraint(item: webView, attribute: .trailing, relatedBy: .equal, toItem: wkWebBackgroundView, attribute: .leading, multiplier: 1, constant: 0)
-        view.addConstraints([leading,top,trailing,bottom,height,width])
-        [webView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-         webView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor),
-         webView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor),
-         webView.leftAnchor.constraint(equalTo: view.leftAnchor),
-         webView.rightAnchor.constraint(equalTo: view.rightAnchor),
-         ].forEach  { anchor in
-            anchor.isActive = true
+    @objc func refreshWebView() {
+        // On Scroll to Refresh, Reload Current Page
+        webView.reload()
+    }
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        // Display Progress Bar While Loading Pages
+        if keyPath == "estimatedProgress" {
+            progressView.progress = Float(webView.estimatedProgress)
         }
-        contentView.backgroundColor=UIColor.black
-        webView.backgroundColor=UIColor.black
-        webView.autoresizesSubviews=true
-        view.backgroundColor=UIColor.black
-        self.contentView.clipsToBounds = true
-        self.webView.clipsToBounds=true
-        webView.uiDelegate = self
-        view = webView
-        
+    }
+    @objc func constrainView() {
+        self.contentView.addSubview(webView!)
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":webView]))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-20-[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":webView]))
+        let height = NSLayoutConstraint(item: webView, attribute: .height, relatedBy: .equal, toItem: contentView, attribute: .height, multiplier: 1, constant: 0)
+        let width = NSLayoutConstraint(item: webView, attribute: .width, relatedBy: .equal, toItem: contentView, attribute: .width, multiplier: 1, constant: 0)
+        let top = NSLayoutConstraint(item: webView, attribute: .top, relatedBy: .equal, toItem: contentView, attribute: .top, multiplier: 1, constant: 0)
+        let leading = NSLayoutConstraint(item: webView, attribute: .leading, relatedBy: .equal, toItem: contentView, attribute: .leading, multiplier: 1, constant: 0)
+        let bottom = NSLayoutConstraint(item: webView, attribute: .bottom, relatedBy: .equal, toItem: contentView, attribute: .leading, multiplier: 1, constant: 0)
+        let trailing = NSLayoutConstraint(item: webView, attribute: .trailing, relatedBy: .equal, toItem: contentView, attribute: .leading, multiplier: 1, constant: 0)
+        view.addConstraints([leading,top,trailing,bottom,height,width])
+ 
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView){
@@ -88,6 +106,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNav
         }
         else {
             self.navigationController?.setNavigationBarHidden(true, animated: true)
+            navigationController?.isToolbarHidden = true
         }
     }
     
@@ -98,6 +117,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNav
         }
         else {
             self.navigationController?.setNavigationBarHidden(true, animated: true)
+            navigationController?.isToolbarHidden = true
         }
     }
     override func didReceiveMemoryWarning() {
@@ -130,13 +150,19 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNav
             })
             alertController.addAction(defaultAction)
             self.present(alertController, animated: true, completion: nil)
+            progressView.isHidden = true
         }
     }
-    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        print("Strat to load")
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!)
+    {
+       progressView.isHidden = true
+       navigationController?.isToolbarHidden = true
     }
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        print("finish to load")
+    
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        navigationController?.isToolbarHidden = false
+        progressView.isHidden = false
     }
 }
 
