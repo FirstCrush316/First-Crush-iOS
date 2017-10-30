@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.statusBarStyle = .lightContent
         //application.isStatusBarHidden=true
         UIApplication.shared.keyWindow?.backgroundColor = UIColor.black
-        //UINavigationBar.appearance().clipsToBounds = true
+        UINavigationBar.appearance().clipsToBounds = true
         let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false, kOSSettingsKeyInAppLaunchURL: true]
         // Replace 'YOUR_APP_ID' with your OneSignal App ID.
         OneSignal.initWithLaunchOptions(launchOptions,

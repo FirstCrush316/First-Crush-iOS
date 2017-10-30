@@ -13,7 +13,8 @@ import WebKit
 class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNavigationDelegate {
     @IBOutlet var contentView: UIView!
     let webConfiguration = WKWebViewConfiguration()
-    @objc var webView: WKWebView!
+    var webView = WKWebView()
+    //@objc var webView: WKWebView!
     @objc var progressView: UIProgressView!
     @objc var myLabel: UILabel!
     @objc var lastOffsetY :CGFloat = 0
@@ -28,11 +29,15 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNav
         webConfiguration.allowsInlineMediaPlayback=true
         webConfiguration.allowsAirPlayForMediaPlayback=true
         webConfiguration.allowsPictureInPictureMediaPlayback=true
-        webView = WKWebView(frame:.zero, configuration: webConfiguration)
+        webView = WKWebView(frame:contentView.frame, configuration: webConfiguration)
+        webView.autoresizingMask = [.flexibleHeight]
+        contentView.addSubview(webView)
         webView.translatesAutoresizingMaskIntoConstraints = true
-        contentView.backgroundColor=UIColor.darkGray
-        webView.backgroundColor=UIColor.darkGray
+        contentView.backgroundColor=UIColor.black
+        webView.backgroundColor=UIColor.black
         webView.autoresizesSubviews=true
+        webView.contentMode = .scaleToFill
+        webView.frame = contentView.bounds
         constrainView()
         webView.uiDelegate = self
         view = webView
@@ -40,14 +45,12 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNav
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        // Removes it:
         // Create Progress View
         progressView = UIProgressView(progressViewStyle: .bar)
         progressView.autoresizingMask = [.flexibleWidth, .flexibleTopMargin]
         progressView.tintColor = #colorLiteral(red: 0.6576176882, green: 0.7789518833, blue: 0.2271372974, alpha: 1)
         progressView.setProgress(0.0, animated: true)
-        //progressView.sizeToFit()
+        progressView.sizeToFit()
         let progressButton = UIBarButtonItem(customView: progressView)
         toolbarItems = [progressButton]
         navigationController?.isToolbarHidden = false
@@ -87,16 +90,15 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNav
         }
     }
     @objc func constrainView() {
-        self.contentView.addSubview(webView!)
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":webView]))
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-20-[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":webView]))
-        let height = NSLayoutConstraint(item: webView, attribute: .height, relatedBy: .equal, toItem: contentView, attribute: .height, multiplier: 1, constant: 0)
+        contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":webView]))
+        contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-20-[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":webView]))
+        /*let height = NSLayoutConstraint(item: webView, attribute: .height, relatedBy: .equal, toItem: contentView, attribute: .height, multiplier: 1, constant: 0)
         let width = NSLayoutConstraint(item: webView, attribute: .width, relatedBy: .equal, toItem: contentView, attribute: .width, multiplier: 1, constant: 0)
         let top = NSLayoutConstraint(item: webView, attribute: .top, relatedBy: .equal, toItem: contentView, attribute: .top, multiplier: 1, constant: 0)
         let leading = NSLayoutConstraint(item: webView, attribute: .leading, relatedBy: .equal, toItem: contentView, attribute: .leading, multiplier: 1, constant: 0)
         let bottom = NSLayoutConstraint(item: webView, attribute: .bottom, relatedBy: .equal, toItem: contentView, attribute: .leading, multiplier: 1, constant: 0)
         let trailing = NSLayoutConstraint(item: webView, attribute: .trailing, relatedBy: .equal, toItem: contentView, attribute: .leading, multiplier: 1, constant: 0)
-        view.addConstraints([leading,top,trailing,bottom,height,width])
+        view.addConstraints([leading,top,trailing,bottom,height,width])*/
  
     }
     
