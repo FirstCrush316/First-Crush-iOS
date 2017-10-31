@@ -29,12 +29,16 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNav
         webConfiguration.allowsInlineMediaPlayback=true
         webConfiguration.allowsAirPlayForMediaPlayback=true
         webConfiguration.allowsPictureInPictureMediaPlayback=true
+       
         webView = WKWebView(frame:contentView.frame, configuration: webConfiguration)
         webView.autoresizingMask = [.flexibleHeight]
         contentView.addSubview(webView)
         webView.translatesAutoresizingMaskIntoConstraints = true
         contentView.backgroundColor=UIColor.black
-        webView.backgroundColor=UIColor.black
+        self.webView.isOpaque = false
+        self.webView.backgroundColor = UIColor.clear
+        self.webView.scrollView.backgroundColor = UIColor.clear
+        //webView.backgroundColor=UIColor.black
         webView.autoresizesSubviews=true
         webView.contentMode = .scaleToFill
         webView.frame = contentView.bounds
