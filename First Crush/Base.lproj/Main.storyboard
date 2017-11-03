@@ -40,11 +40,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1453.125" y="122.53521126760563"/>
+            <point key="canvasLocation" x="1633" y="123"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vNI-vo-SmK">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eeS-ro-yzo" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController hidesBottomBarWhenPushed="YES" navigationBarHidden="YES" id="OO7-bA-swO" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" barStyle="black" translucent="NO" id="JL6-Ik-U0g">
@@ -58,7 +59,6 @@
                         <segue destination="O3H-hv-Mio" kind="relationship" relationship="rootViewController" id="5EV-rG-KJe"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eeS-ro-yzo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-264" y="123"/>
         </scene>

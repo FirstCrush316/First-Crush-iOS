@@ -57,7 +57,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNav
         progressView.sizeToFit()
         let progressButton = UIBarButtonItem(customView: progressView)
         toolbarItems = [progressButton]
-        //navigationController?.isToolbarHidden = false
+        navigationController?.isToolbarHidden = false
         webView.allowsBackForwardNavigationGestures = true
         webView.scrollView.isScrollEnabled = true
         webView.scrollView.bounces = true
@@ -96,14 +96,6 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNav
     @objc func constrainView() {
         contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":webView]))
         contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-20-[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":webView]))
-        /*let height = NSLayoutConstraint(item: webView, attribute: .height, relatedBy: .equal, toItem: contentView, attribute: .height, multiplier: 1, constant: 0)
-        let width = NSLayoutConstraint(item: webView, attribute: .width, relatedBy: .equal, toItem: contentView, attribute: .width, multiplier: 1, constant: 0)
-        let top = NSLayoutConstraint(item: webView, attribute: .top, relatedBy: .equal, toItem: contentView, attribute: .top, multiplier: 1, constant: 0)
-        let leading = NSLayoutConstraint(item: webView, attribute: .leading, relatedBy: .equal, toItem: contentView, attribute: .leading, multiplier: 1, constant: 0)
-        let bottom = NSLayoutConstraint(item: webView, attribute: .bottom, relatedBy: .equal, toItem: contentView, attribute: .leading, multiplier: 1, constant: 0)
-        let trailing = NSLayoutConstraint(item: webView, attribute: .trailing, relatedBy: .equal, toItem: contentView, attribute: .leading, multiplier: 1, constant: 0)
-        view.addConstraints([leading,top,trailing,bottom,height,width])*/
- 
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView){
