@@ -101,6 +101,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNav
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView){
         if webView.canGoBack {
         lastOffsetY = scrollView.contentOffset.y
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         }
         else {
             self.navigationController?.setNavigationBarHidden(true, animated: true)

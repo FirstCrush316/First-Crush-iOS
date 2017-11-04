@@ -143,5 +143,4 @@
         <image name="home.png" width="30" height="30"/>
         <image name="user_male.png" width="30" height="30"/>
     </resources>
-    <color key="tintColor" red="0.077902363990000001" green="0.077902363990000001" blue="0.077902363990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
