@@ -57,7 +57,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNav
         progressView.sizeToFit()
         let progressButton = UIBarButtonItem(customView: progressView)
         toolbarItems = [progressButton]
-        navigationController?.isToolbarHidden = false
+        //navigationController?.isToolbarHidden = false
         webView.allowsBackForwardNavigationGestures = true
         webView.scrollView.isScrollEnabled = true
         webView.scrollView.bounces = true
@@ -154,13 +154,13 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNav
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!)
     {
-       progressView.isHidden = true
-       navigationController?.isToolbarHidden = true
+       //progressView.isHidden = true
+       //navigationController?.isToolbarHidden = true
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        navigationController?.isToolbarHidden = false
-        progressView.isHidden = false
+        //navigationController?.isToolbarHidden = false
+        //progressView.isHidden = false
     }
 }
 

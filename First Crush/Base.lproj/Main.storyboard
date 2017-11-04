@@ -45,20 +45,17 @@
         <!--Navigation Controller-->
         <scene sceneID="vNI-vo-SmK">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eeS-ro-yzo" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController hidesBottomBarWhenPushed="YES" navigationBarHidden="YES" id="OO7-bA-swO" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" barStyle="black" translucent="NO" id="JL6-Ik-U0g">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" barStyle="black" translucent="NO" id="3vM-HP-5ka">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
                     <connections>
                         <segue destination="O3H-hv-Mio" kind="relationship" relationship="rootViewController" id="5EV-rG-KJe"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eeS-ro-yzo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-264" y="123"/>
         </scene>
