@@ -44,7 +44,7 @@
         <!--Radio View Controller-->
         <scene sceneID="JcD-io-gyI">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="psL-4k-8u1" customClass="RadioViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="psL-4k-8u1" customClass="RadioViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bV0-hA-8Mh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -63,7 +63,7 @@
         <!--Profile View Controller-->
         <scene sceneID="G9R-H7-Cm1">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="MS0-sj-iT1" customClass="ProfileViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="MS0-sj-iT1" customClass="ProfileViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Udx-Se-c8Z">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -82,7 +82,7 @@
         <!--Notification View Controller-->
         <scene sceneID="UI7-3u-YLd">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="hzr-NA-Ne1" customClass="NotificationViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hzr-NA-Ne1" customClass="NotificationViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0OW-wk-IsF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
