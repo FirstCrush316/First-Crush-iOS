@@ -51,7 +51,19 @@
                         <color key="backgroundColor" red="0.077902363990000001" green="0.077902363990000001" blue="0.077902363990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6iw-WC-2r5"/>
                     </view>
-                    <navigationItem key="navigationItem" id="ftG-wf-VAF"/>
+                    <navigationItem key="navigationItem" id="ftG-wf-VAF">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="kcy-9m-B7A"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="Tar-OS-Z9V">
+                            <connections>
+                                <action selector="backAction:" destination="psL-4k-8u1" id="fJG-uS-1Uz"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="tXD-tZ-FJB">
+                            <connections>
+                                <action selector="refreshAction:" destination="psL-4k-8u1" id="TYN-lG-sLQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="contentView" destination="bV0-hA-8Mh" id="qAg-77-o2z"/>
                     </connections>
@@ -70,7 +82,19 @@
                         <color key="backgroundColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="cgp-nD-GF8"/>
                     </view>
-                    <navigationItem key="navigationItem" id="D4s-9r-pI8"/>
+                    <navigationItem key="navigationItem" id="D4s-9r-pI8">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="SUU-MM-HrD"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="I10-Wx-Jog">
+                            <connections>
+                                <action selector="backAction:" destination="MS0-sj-iT1" id="d5S-qS-gfg"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="PDA-we-hbW">
+                            <connections>
+                                <action selector="refreshAction:" destination="MS0-sj-iT1" id="rRg-Wo-hy1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="contentView" destination="Udx-Se-c8Z" id="Y3e-2Q-a8I"/>
                     </connections>
@@ -89,7 +113,11 @@
                         <color key="backgroundColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="3ei-Qd-DIl"/>
                     </view>
-                    <navigationItem key="navigationItem" id="bEp-O9-tUK"/>
+                    <navigationItem key="navigationItem" id="bEp-O9-tUK">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="2MG-H7-2u1"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="IS7-ub-eN2"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="1W0-nD-hjJ"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YbK-cT-cjh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -120,7 +148,7 @@
         <!--Home-->
         <scene sceneID="mpZ-TR-Rjh">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Ilg-bP-bAe" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="Ilg-bP-bAe" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="home.png" selectedImage="home new.png" id="FMx-3u-kob"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zMA-7Y-omL">
@@ -138,7 +166,7 @@
         <!--Notifications-->
         <scene sceneID="9te-e5-guQ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="yrx-0q-xkB" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="yrx-0q-xkB" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Notifications" image="bell.png" id="1xt-9O-f81"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="B1D-g3-fvX">
@@ -156,7 +184,7 @@
         <!--Radio-->
         <scene sceneID="WzC-Ra-jLI">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Dh1-jM-Xct" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="Dh1-jM-Xct" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Radio" image="button-play.png" id="voS-H0-XrD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jy3-ix-GG8">
@@ -174,7 +202,7 @@
         <!--Profile-->
         <scene sceneID="JqS-tW-LNJ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="13s-e8-QF9" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="13s-e8-QF9" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Profile" image="user_male.png" id="S5r-gV-wgH"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="J5w-XX-yjg">
