@@ -49,13 +49,12 @@ class RadioViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         // Create Progress View
-        progressView = UIProgressView(progressViewStyle: .bar)
+        progressView = UIProgressView(frame:CGRect(x: 0,y: 68,width: self.view.frame.width,height: self.view.frame.height))
         progressView.autoresizingMask = [.flexibleWidth, .flexibleTopMargin]
         progressView.tintColor = #colorLiteral(red: 0.6576176882, green: 0.7789518833, blue: 0.2271372974, alpha: 1)
         progressView.setProgress(0.0, animated: true)
         progressView.sizeToFit()
-        let progressButton = UIBarButtonItem(customView: progressView)
-        toolbarItems = [progressButton]
+        webView.addSubview(progressView)
         //navigationController?.isToolbarHidden = false
         webView.allowsBackForwardNavigationGestures = true
         webView.scrollView.isScrollEnabled = true
@@ -64,6 +63,8 @@ class RadioViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,
         let request = URLRequest(url: url! as URL)
         if Reachability.isConnectedToNetwork() == true {
             webView.load(request)
+            webView.navigationDelegate = self
+            
             // Allow Scroll to Refresh
             let refreshControl = UIRefreshControl()
             refreshControl.addTarget(self, action: #selector(ViewController.refreshWebView), for: UIControlEvents.valueChanged)
@@ -77,7 +78,7 @@ class RadioViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,
             alertController.addAction(defaultAction)
             self.present(alertController, animated: true, completion: nil)
         }
-        webView.navigationDelegate = self
+        
         webView.scrollView.delegate = self
         lastOffsetY = 0.0
     }
@@ -162,12 +163,10 @@ class RadioViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!)
     {
         progressView.isHidden = true
-        navigationController?.isToolbarHidden = true
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        //navigationController?.isToolbarHidden = false
-        //progressView.isHidden = false
+        progressView.isHidden = false
     }
 }
 

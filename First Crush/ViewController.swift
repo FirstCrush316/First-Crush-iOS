@@ -30,7 +30,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNav
         webConfiguration.allowsAirPlayForMediaPlayback=true
         webConfiguration.allowsPictureInPictureMediaPlayback=true
        
-        webView = WKWebView(frame:contentView.frame, configuration: webConfiguration)
+        webView = WKWebView(frame:CGRect(x: 0,y: 0,width: self.view.frame.width,height: self.view.frame.height), configuration: webConfiguration)
         webView.autoresizingMask = [.flexibleHeight]
         contentView.addSubview(webView)
         webView.translatesAutoresizingMaskIntoConstraints = true
@@ -50,26 +50,27 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNav
     override func viewDidLoad() {
         super.viewDidLoad()
         // Create Progress View
-        progressView = UIProgressView(progressViewStyle: .bar)
+        progressView = UIProgressView(frame:CGRect(x: 0,y: 68,width: self.view.frame.width,height: self.view.frame.height))
         progressView.autoresizingMask = [.flexibleWidth, .flexibleTopMargin]
         progressView.tintColor = #colorLiteral(red: 0.6576176882, green: 0.7789518833, blue: 0.2271372974, alpha: 1)
         progressView.setProgress(0.0, animated: true)
         progressView.sizeToFit()
-        let progressButton = UIBarButtonItem(customView: progressView)
-        toolbarItems = [progressButton]
-        //navigationController?.isToolbarHidden = false
+        webView.addSubview(progressView)
+
         webView.allowsBackForwardNavigationGestures = true
         webView.scrollView.isScrollEnabled = true
         webView.scrollView.bounces = true
         let url = NSURL(string: "http://www.firstcrush.co")
         let request = URLRequest(url: url! as URL)
+        
         if Reachability.isConnectedToNetwork() == true {
             webView.load(request)
+            webView.navigationDelegate = self
+            
             // Allow Scroll to Refresh
             let refreshControl = UIRefreshControl()
             refreshControl.addTarget(self, action: #selector(ViewController.refreshWebView), for: UIControlEvents.valueChanged)
             webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
-
         }else {
             let alertController = UIAlertController(title: NSLocalizedString("No Internet Connection",comment:""), message: NSLocalizedString("Please ensure your device is connected to the internet.",comment:""), preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default, handler: { (pAlert) in
@@ -78,7 +79,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNav
             alertController.addAction(defaultAction)
             self.present(alertController, animated: true, completion: nil)
         }
-        webView.navigationDelegate = self
+        
         webView.scrollView.delegate = self
         lastOffsetY = 0.0
     }
@@ -135,6 +136,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNav
     }
     
     @IBAction func refreshAction(_ sender: Any) {
+        progressView.isHidden = false
         webView.reload()
     }
     
@@ -149,19 +151,21 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNav
             })
             alertController.addAction(defaultAction)
             self.present(alertController, animated: true, completion: nil)
+            self.progressView.setProgress(1.0, animated: true)
             progressView.isHidden = true
         }
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!)
     {
-       //progressView.isHidden = true
-       //navigationController?.isToolbarHidden = true
+       self.progressView.setProgress(1.0, animated: true)
+        progressView.isHidden = true
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        //navigationController?.isToolbarHidden = false
-        //progressView.isHidden = false
+        self.progressView.setProgress(0.1, animated: false)
+        progressView.isHidden = false
+        
     }
 }
 

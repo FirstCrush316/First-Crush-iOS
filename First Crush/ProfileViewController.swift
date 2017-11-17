@@ -49,13 +49,13 @@ class ProfileViewController: UIViewController, WKUIDelegate, UIScrollViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         // Create Progress View
-        progressView = UIProgressView(progressViewStyle: .bar)
+        progressView = UIProgressView(frame:CGRect(x: 0,y: 68,width: self.view.frame.width,height: self.view.frame.height))
         progressView.autoresizingMask = [.flexibleWidth, .flexibleTopMargin]
         progressView.tintColor = #colorLiteral(red: 0.6576176882, green: 0.7789518833, blue: 0.2271372974, alpha: 1)
         progressView.setProgress(0.0, animated: true)
         progressView.sizeToFit()
-        let progressButton = UIBarButtonItem(customView: progressView)
-        toolbarItems = [progressButton]
+        webView.addSubview(progressView)
+        
         //navigationController?.isToolbarHidden = false
         webView.allowsBackForwardNavigationGestures = true
         webView.scrollView.isScrollEnabled = true
@@ -64,6 +64,8 @@ class ProfileViewController: UIViewController, WKUIDelegate, UIScrollViewDelegat
         let request = URLRequest(url: url! as URL)
         if Reachability.isConnectedToNetwork() == true {
             webView.load(request)
+            webView.navigationDelegate = self
+            
             // Allow Scroll to Refresh
             let refreshControl = UIRefreshControl()
             refreshControl.addTarget(self, action: #selector(ViewController.refreshWebView), for: UIControlEvents.valueChanged)
@@ -77,7 +79,7 @@ class ProfileViewController: UIViewController, WKUIDelegate, UIScrollViewDelegat
             alertController.addAction(defaultAction)
             self.present(alertController, animated: true, completion: nil)
         }
-        webView.navigationDelegate = self
+        
         webView.scrollView.delegate = self
         lastOffsetY = 0.0
     }
@@ -95,14 +97,6 @@ class ProfileViewController: UIViewController, WKUIDelegate, UIScrollViewDelegat
     @objc func constrainView() {
         contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":webView]))
         contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-20-[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":webView]))
-        /*let height = NSLayoutConstraint(item: webView, attribute: .height, relatedBy: .equal, toItem: contentView, attribute: .height, multiplier: 1, constant: 0)
-         let width = NSLayoutConstraint(item: webView, attribute: .width, relatedBy: .equal, toItem: contentView, attribute: .width, multiplier: 1, constant: 0)
-         let top = NSLayoutConstraint(item: webView, attribute: .top, relatedBy: .equal, toItem: contentView, attribute: .top, multiplier: 1, constant: 0)
-         let leading = NSLayoutConstraint(item: webView, attribute: .leading, relatedBy: .equal, toItem: contentView, attribute: .leading, multiplier: 1, constant: 0)
-         let bottom = NSLayoutConstraint(item: webView, attribute: .bottom, relatedBy: .equal, toItem: contentView, attribute: .leading, multiplier: 1, constant: 0)
-         let trailing = NSLayoutConstraint(item: webView, attribute: .trailing, relatedBy: .equal, toItem: contentView, attribute: .leading, multiplier: 1, constant: 0)
-         view.addConstraints([leading,top,trailing,bottom,height,width])*/
-        
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView){
@@ -162,12 +156,10 @@ class ProfileViewController: UIViewController, WKUIDelegate, UIScrollViewDelegat
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!)
     {
         progressView.isHidden = true
-        navigationController?.isToolbarHidden = true
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        //navigationController?.isToolbarHidden = false
-        //progressView.isHidden = false
+        progressView.isHidden = false
     }
 }
 
