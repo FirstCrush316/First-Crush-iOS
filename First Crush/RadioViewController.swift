@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-class RadioViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNavigationDelegate {
+class RadioViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNavigationDelegate, UITabBarControllerDelegate {
     @IBOutlet var contentView: UIView!
     let webConfiguration = WKWebViewConfiguration()
     var webView = WKWebView()
@@ -48,6 +48,7 @@ class RadioViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarController?.delegate = self
         // Create Progress View
         progressView = UIProgressView(frame:CGRect(x: 0,y: 68,width: self.view.frame.width,height: self.view.frame.height))
         progressView.autoresizingMask = [.flexibleWidth, .flexibleTopMargin]
@@ -168,6 +169,13 @@ class RadioViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         progressView.isHidden = false
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        let tabBarIndex = tabBarController.selectedIndex
+        if tabBarIndex == 1 {
+            webView.reload()
+        }
     }
 }
 
