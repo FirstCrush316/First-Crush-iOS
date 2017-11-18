@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-class ProfileViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNavigationDelegate {
+class ProfileViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNavigationDelegate, UITabBarControllerDelegate {
     @IBOutlet var contentView: UIView!
     let webConfiguration = WKWebViewConfiguration()
     var webView = WKWebView()
@@ -48,6 +48,7 @@ class ProfileViewController: UIViewController, WKUIDelegate, UIScrollViewDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarController?.delegate = self
         // Create Progress View
         progressView = UIProgressView(frame:CGRect(x: 0,y: 68,width: self.view.frame.width,height: self.view.frame.height))
         progressView.autoresizingMask = [.flexibleWidth, .flexibleTopMargin]
@@ -160,6 +161,13 @@ class ProfileViewController: UIViewController, WKUIDelegate, UIScrollViewDelegat
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         progressView.isHidden = false
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        let tabBarIndex = tabBarController.selectedIndex
+        if tabBarIndex == 2 {
+            webView.reload()
+        }
     }
 }
 
