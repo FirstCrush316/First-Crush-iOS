@@ -171,6 +171,22 @@ class RadioViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,
         progressView.isHidden = false
     }
     
+    
+    
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping ((WKNavigationActionPolicy) -> Void)) {
+        
+        switch navigationAction.navigationType {
+        case .linkActivated:
+            if navigationAction.targetFrame == nil {
+                //self.webView.load(navigationAction.request)// It will load that link in same WKWebView
+                UIApplication.shared.open(navigationAction.request.url!,options: [:], completionHandler: nil)
+            }
+        default:
+            break
+        }
+        decisionHandler(.allow)
+    }
+    
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         let tabBarIndex = tabBarController.selectedIndex
         if tabBarIndex == 1 {

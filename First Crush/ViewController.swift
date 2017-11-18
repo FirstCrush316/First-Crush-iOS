@@ -173,7 +173,8 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNav
         switch navigationAction.navigationType {
         case .linkActivated:
             if navigationAction.targetFrame == nil {
-                self.webView.load(navigationAction.request)// It will load that link in same WKWebView
+                //self.webView.load(navigationAction.request)// It will load that link in same WKWebView
+                UIApplication.shared.open(navigationAction.request.url!,options: [:], completionHandler: nil)
             }
         default:
             break
