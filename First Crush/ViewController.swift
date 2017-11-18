@@ -166,8 +166,21 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNav
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         self.progressView.setProgress(0.1, animated: false)
         progressView.isHidden = false
-        
     }
+    
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping ((WKNavigationActionPolicy) -> Void)) {
+        
+        switch navigationAction.navigationType {
+        case .linkActivated:
+            if navigationAction.targetFrame == nil {
+                self.webView.load(navigationAction.request)// It will load that link in same WKWebView
+            }
+        default:
+            break
+        }
+        decisionHandler(.allow)
+    }
+    
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         let tabBarIndex = tabBarController.selectedIndex
         if tabBarIndex == 0 {
