@@ -1,0 +1,1289 @@
+2017-11-19 17:23:47 +0000  Initial pipeline context: <IDEDistributionProcessingPipelineContext: 0x7fdd29028c00; archive(resolved)='<IDEArchive: 0x7fdd19013880>', distributionTask(resolved)='2', distributionMethod(resolved)='<IDEDistributionMethodiOSAppStoreExport: 0x7fdd28c02100>', team(resolved)='<IDEProvisioningBasicTeam 0x7fdd29f35980: teamID: E3B7R4BZNB, teamName: Sumit Johri>'>
+	Chain (11, self inclusive):
+	<IDEDistributionProcessingPipelineContext: 0x7fdd29028c00; archive = '<IDEArchive: 0x7fdd19013880>', distributionMethod='<IDEDistributionMethodiOSAppStoreExport: 0x7fdd28c02100>', team='<IDEProvisioningBasicTeam 0x7fdd29f35980: teamID: E3B7R4BZNB, teamName: Sumit Johri>'>
+	<IDEDistributionProcessingPipelineContext: 0x7fdd2df90410; archive = '<IDEArchive: 0x7fdd19013880>', distributionMethod='<IDEDistributionMethodiOSAppStoreExport: 0x7fdd28c02100>', team='<IDEProvisioningBasicTeam 0x7fdd29f35980: teamID: E3B7R4BZNB, teamName: Sumit Johri>'>
+	<IDEDistributionContext: 0x7fdd29f33a70; archive = '<IDEArchive: 0x7fdd19013880>', distributionMethod='<IDEDistributionMethodiOSAppStoreExport: 0x7fdd28c02100>', team='<IDEProvisioningBasicTeam 0x7fdd29f35980: teamID: E3B7R4BZNB, teamName: Sumit Johri>'>
+	<IDEDistributionContext: 0x7fdd29f3ebf0; archive = '<IDEArchive: 0x7fdd19013880>', distributionMethod='<IDEDistributionMethodiOSAppStoreExport: 0x7fdd28c02100>', team='<IDEProvisioningBasicTeam 0x7fdd29f35980: teamID: E3B7R4BZNB, teamName: Sumit Johri>'>
+	<IDEDistributionContext: 0x7fdd29f20de0; archive = '<IDEArchive: 0x7fdd19013880>', distributionMethod='<IDEDistributionMethodiOSAppStoreExport: 0x7fdd28c02100>', team='<IDEProvisioningBasicTeam 0x7fdd29f35980: teamID: E3B7R4BZNB, teamName: Sumit Johri>'>
+	<IDEDistributionContext: 0x7fdd2bce7320; archive = '<IDEArchive: 0x7fdd19013880>', distributionMethod='<IDEDistributionMethodiOSAppStoreExport: 0x7fdd28c02100>', team='<IDEProvisioningBasicTeam 0x7fdd29f35980: teamID: E3B7R4BZNB, teamName: Sumit Johri>'>
+	<IDEDistributionContext: 0x7fdd16cc4420; archive = '<IDEArchive: 0x7fdd19013880>', distributionMethod='<IDEDistributionMethodiOSAppStoreExport: 0x7fdd28c02100>', team='<IDEProvisioningBasicTeam 0x7fdd29f35980: teamID: E3B7R4BZNB, teamName: Sumit Johri>'>
+	<IDEDistributionContext: 0x7fdd181ba100; archive = '<IDEArchive: 0x7fdd19013880>', distributionMethod='<IDEDistributionMethodiOSAppStoreExport: 0x7fdd28c02100>', team='<IDEProvisioningBasicTeam 0x7fdd29f35980: teamID: E3B7R4BZNB, teamName: Sumit Johri>'>
+	<IDEDistributionContext: 0x7fdd29f39b80; archive = '<IDEArchive: 0x7fdd19013880>', distributionMethod='<IDEDistributionMethodiOSAppStoreExport: 0x7fdd28c02100>', team='<IDEProvisioningBasicTeam 0x7fdd29f35980: teamID: E3B7R4BZNB, teamName: Sumit Johri>'>
+	<IDEDistributionContext: 0x7fdd29b625a0; archive = '<IDEArchive: 0x7fdd19013880>', distributionMethod='<IDEDistributionMethodiOSAppStoreExport: 0x7fdd28c02100>', team='(null)'>
+	<IDEDistributionContext: 0x7fdd29b62030; archive = '<IDEArchive: 0x7fdd19013880>', distributionMethod='(null)', team='(null)'>
+</IDEDistributionProcessingPipelineContext: 0x7fdd29028c00>
+2017-11-19 17:23:47 +0000  Processing step: IDEDistributionCreateDestRootStep
+2017-11-19 17:23:47 +0000  Processing step: IDEDistributionCopyItemStep
+2017-11-19 17:23:47 +0000  Running /usr/bin/ditto '-V' '/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app'
+2017-11-19 17:23:47 +0000  >>> Copying /Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app 
+2017-11-19 17:23:47 +0000  copying file ./_CodeSignature/CodeResources ... 
+2017-11-19 17:23:47 +0000  24357 bytes for ./_CodeSignature/CodeResources
+copying file ./AppIcon20x20@2x.png ... 
+4662 bytes for ./AppIcon20x20@2x.png
+copying file ./AppIcon20x20@2x~ipad.png ... 
+4662 bytes for ./AppIcon20x20@2x~ipad.png
+copying file ./AppIcon20x20@3x.png ... 
+9660 bytes for ./AppIcon20x20@3x.png
+copying file ./AppIcon20x20~ipad.png ... 
+1380 bytes for ./AppIcon20x20~ipad.png
+copying file ./AppIcon29x29@2x.png ... 
+9037 bytes for ./AppIcon29x29@2x.png
+copying file ./AppIcon29x29@2x~ipad.png ... 
+9037 bytes for ./AppIcon29x29@2x~ipad.png
+copying file ./AppIcon29x29@3x.png ... 
+18725 bytes for ./AppIcon29x29@3x.png
+copying file ./AppIcon29x29~ipad.png ... 
+2620 bytes for ./AppIcon29x29~ipad.png
+copying file ./AppIcon40x40@2x.png ... 
+16089 bytes for ./AppIcon40x40@2x.png
+copying file ./AppIcon40x40@2x~ipad.png ... 
+16089 bytes for ./AppIcon40x40@2x~ipad.png
+copying file ./AppIcon40x40@3x.png ... 
+32769 bytes for ./AppIcon40x40@3x.png
+copying file ./AppIcon40x40~ipad.png ... 
+4662 bytes for ./AppIcon40x40~ipad.png
+copying file ./AppIcon60x60@2x.png ... 
+32769 bytes for ./AppIcon60x60@2x.png
+copying file ./AppIcon60x60@3x.png ... 
+66819 bytes for ./AppIcon60x60@3x.png
+copying file ./AppIcon76x76@2x~ipad.png ... 
+49727 bytes for ./AppIcon76x76@2x~ipad.png
+copying file ./AppIcon76x76~ipad.png ... 
+14725 bytes for ./AppIcon76x76~ipad.png
+copying file ./AppIcon83.5x83.5@2x~ipad.png ... 
+58466 bytes for ./AppIcon83.5x83.5@2x~ipad.png
+copying file ./archived-expanded-entitlements.xcent ... 
+246 bytes for ./archived-expanded-entitlements.xcent
+copying file ./Assets.car ... 
+2017-11-19 17:23:48 +0000  1551048 bytes for ./Assets.car
+copying file ./Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib ... 
+2337 bytes for ./Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib
+copying file ./Base.lproj/LaunchScreen.storyboardc/Info.plist ... 
+258 bytes for ./Base.lproj/LaunchScreen.storyboardc/Info.plist
+copying file ./Base.lproj/LaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib ... 
+832 bytes for ./Base.lproj/LaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib
+copying file ./Base.lproj/Main.storyboardc/BYZ-38-t0r-view-8bC-Xf-vdC.nib ... 
+2300 bytes for ./Base.lproj/Main.storyboardc/BYZ-38-t0r-view-8bC-Xf-vdC.nib
+copying file ./Base.lproj/Main.storyboardc/hzr-NA-Ne1-view-0OW-wk-IsF.nib ... 
+2100 bytes for ./Base.lproj/Main.storyboardc/hzr-NA-Ne1-view-0OW-wk-IsF.nib
+copying file ./Base.lproj/Main.storyboardc/Info.plist ... 
+264 bytes for ./Base.lproj/Main.storyboardc/Info.plist
+copying file ./Base.lproj/Main.storyboardc/MS0-sj-iT1-view-Udx-Se-c8Z.nib ... 
+2100 bytes for ./Base.lproj/Main.storyboardc/MS0-sj-iT1-view-Udx-Se-c8Z.nib
+copying file ./Base.lproj/Main.storyboardc/psL-4k-8u1-view-bV0-hA-8Mh.nib ... 
+2103 bytes for ./Base.lproj/Main.storyboardc/psL-4k-8u1-view-bV0-hA-8Mh.nib
+copying file ./Base.lproj/Main.storyboardc/UITabBarController-O3H-hv-Mio.nib ... 
+2017-11-19 17:23:48 +0000  5762 bytes for ./Base.lproj/Main.storyboardc/UITabBarController-O3H-hv-Mio.nib
+copying file ./bell.png ... 
+253 bytes for ./bell.png
+copying file ./button-play.png ... 
+460 bytes for ./button-play.png
+copying file ./Default.png ... 
+266239 bytes for ./Default.png
+copying file ./embedded.mobileprovision ... 
+13624 bytes for ./embedded.mobileprovision
+copying file ./First Crush ... 
+2017-11-19 17:23:49 +0000  915408 bytes for ./First Crush
+copying file ./Frameworks/libswiftCore.dylib ... 
+2017-11-19 17:23:51 +0000  21079632 bytes for ./Frameworks/libswiftCore.dylib
+copying file ./Frameworks/libswiftCoreFoundation.dylib ... 
+2017-11-19 17:23:51 +0000  208336 bytes for ./Frameworks/libswiftCoreFoundation.dylib
+copying file ./Frameworks/libswiftCoreGraphics.dylib ... 
+577808 bytes for ./Frameworks/libswiftCoreGraphics.dylib
+copying file ./Frameworks/libswiftCoreImage.dylib ... 
+208912 bytes for ./Frameworks/libswiftCoreImage.dylib
+copying file ./Frameworks/libswiftDarwin.dylib ... 
+303120 bytes for ./Frameworks/libswiftDarwin.dylib
+copying file ./Frameworks/libswiftDispatch.dylib ... 
+1009296 bytes for ./Frameworks/libswiftDispatch.dylib
+copying file ./Frameworks/libswiftFoundation.dylib ... 
+2017-11-19 17:23:53 +0000  8425360 bytes for ./Frameworks/libswiftFoundation.dylib
+copying file ./Frameworks/libswiftMetal.dylib ... 
+2017-11-19 17:23:53 +0000  251296 bytes for ./Frameworks/libswiftMetal.dylib
+copying file ./Frameworks/libswiftObjectiveC.dylib ... 
+2017-11-19 17:23:53 +0000  258992 bytes for ./Frameworks/libswiftObjectiveC.dylib
+copying file ./Frameworks/libswiftos.dylib ... 
+248960 bytes for ./Frameworks/libswiftos.dylib
+copying file ./Frameworks/libswiftQuartzCore.dylib ... 
+212256 bytes for ./Frameworks/libswiftQuartzCore.dylib
+copying file ./Frameworks/libswiftUIKit.dylib ... 
+361536 bytes for ./Frameworks/libswiftUIKit.dylib
+copying file ./home new.png ... 
+329 bytes for ./home new.png
+copying file ./home.png ... 
+2017-11-19 17:23:55 +0000  246 bytes for ./home.png
+copying file ./Info.plist ... 
+2044 bytes for ./Info.plist
+copying file ./LaunchImage-568h@2x.png ... 
+323480 bytes for ./LaunchImage-568h@2x.png
+copying file ./LaunchImage-700-568h@2x.png ... 
+323480 bytes for ./LaunchImage-700-568h@2x.png
+copying file ./LaunchImage-700-Landscape@2x~ipad.png ... 
+880413 bytes for ./LaunchImage-700-Landscape@2x~ipad.png
+copying file ./LaunchImage-700-Landscape~ipad.png ... 
+282059 bytes for ./LaunchImage-700-Landscape~ipad.png
+copying file ./LaunchImage-700-Portrait@2x~ipad.png ... 
+868643 bytes for ./LaunchImage-700-Portrait@2x~ipad.png
+copying file ./LaunchImage-700-Portrait~ipad.png ... 
+279859 bytes for ./LaunchImage-700-Portrait~ipad.png
+copying file ./LaunchImage-700@2x.png ... 
+244915 bytes for ./LaunchImage-700@2x.png
+copying file ./LaunchImage-800-667h@2x.png ... 
+424014 bytes for ./LaunchImage-800-667h@2x.png
+copying file ./LaunchImage-800-Landscape-736h@3x.png ... 
+786323 bytes for ./LaunchImage-800-Landscape-736h@3x.png
+copying file ./LaunchImage-800-Portrait-736h@3x.png ... 
+913871 bytes for ./LaunchImage-800-Portrait-736h@3x.png
+copying file ./LaunchImage-Landscape@2x~ipad.png ... 
+880413 bytes for ./LaunchImage-Landscape@2x~ipad.png
+copying file ./LaunchImage-Landscape~ipad.png ... 
+282059 bytes for ./LaunchImage-Landscape~ipad.png
+copying file ./LaunchImage-Portrait@2x~ipad.png ... 
+868643 bytes for ./LaunchImage-Portrait@2x~ipad.png
+copying file ./LaunchImage-Portrait~ipad.png ... 
+279859 bytes for ./LaunchImage-Portrait~ipad.png
+copying file ./LaunchImage.png ... 
+71469 bytes for ./LaunchImage.png
+copying file ./LaunchImage@2x.png ... 
+244915 bytes for ./LaunchImage@2x.png
+copying file ./PkgInfo ... 
+8 bytes for ./PkgInfo
+copying file ./PlugIns/OneSignalNotificationServiceExtension.appex/_CodeSignature/CodeResources ... 
+2846 bytes for ./PlugIns/OneSignalNotificationServiceExtension.appex/_CodeSignature/CodeResources
+copying file ./PlugIns/OneSignalNotificationServiceExtension.appex/archived-expanded-entitlements.xcent ... 
+464 bytes for ./PlugIns/OneSignalNotificationServiceExtension.appex/archived-expanded-entitlements.xcent
+copying file ./PlugIns/OneSignalNotificationServiceExtension.appex/embedded.mobileprovision ... 
+13426 bytes for ./PlugIns/OneSignalNotificationServiceExtension.appex/embedded.mobileprovision
+copying file ./PlugIns/OneSignalNotificationServiceExtension.appex/Info.plist ... 
+988 bytes for ./PlugIns/OneSignalNotificationServiceExtension.appex/Info.plist
+copying file ./PlugIns/OneSignalNotificationServiceExtension.appex/OneSignalNotificationServiceExtension ... 
+2017-11-19 17:23:55 +0000  2017-11-19 17:23:55 +0000  /usr/bin/ditto exited with 0
+
+2017-11-19 17:23:56 +0000  2242384 bytes for ./PlugIns/OneSignalNotificationServiceExtension.appex/OneSignalNotificationServiceExtension
+copying file ./user_male.png ... 
+272 bytes for ./user_male.png
+2017-11-19 17:23:56 +0000  Processing step: IDEDistributionEmbedProfileStep
+2017-11-19 17:23:56 +0000  Skipping profile for item: <IDEDistributionItem: 0x7fdd2dbbefc0 'com.apple.dt.runtime.swiftCore' '<DVTFilePath:0x7fdd2bec86c0:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftCore.dylib'>'>
+2017-11-19 17:23:57 +0000  Skipping profile for item: <IDEDistributionItem: 0x7fdd19216a70 'com.apple.dt.runtime.swiftCoreFoundation' '<DVTFilePath:0x7fdd16de2780:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftCoreFoundation.dylib'>'>
+2017-11-19 17:23:57 +0000  Skipping profile for item: <IDEDistributionItem: 0x7fdd2dbae860 'com.apple.dt.runtime.swiftCoreGraphics' '<DVTFilePath:0x7fdd16b3b2c0:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftCoreGraphics.dylib'>'>
+2017-11-19 17:23:57 +0000  Skipping profile for item: <IDEDistributionItem: 0x7fdd182dc1b0 'com.apple.dt.runtime.swiftCoreImage' '<DVTFilePath:0x7fdd182ee2f0:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftCoreImage.dylib'>'>
+2017-11-19 17:23:57 +0000  Skipping profile for item: <IDEDistributionItem: 0x7fdd2bce7460 'com.apple.dt.runtime.swiftDarwin' '<DVTFilePath:0x7fdd182d1560:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftDarwin.dylib'>'>
+2017-11-19 17:23:57 +0000  Skipping profile for item: <IDEDistributionItem: 0x7fdd16b3d290 'com.apple.dt.runtime.swiftDispatch' '<DVTFilePath:0x7fdd1829f6a0:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftDispatch.dylib'>'>
+2017-11-19 17:23:57 +0000  Skipping profile for item: <IDEDistributionItem: 0x7fdd19219350 'com.apple.dt.runtime.swiftFoundation' '<DVTFilePath:0x7fdd29f2eda0:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftFoundation.dylib'>'>
+2017-11-19 17:23:57 +0000  Skipping profile for item: <IDEDistributionItem: 0x7fdd2bdc0500 'com.apple.dt.runtime.swiftMetal' '<DVTFilePath:0x7fdd191d3600:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftMetal.dylib'>'>
+2017-11-19 17:23:57 +0000  Skipping profile for item: <IDEDistributionItem: 0x7fdd192163d0 'com.apple.dt.runtime.swiftObjectiveC' '<DVTFilePath:0x7fdd191f8890:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftObjectiveC.dylib'>'>
+2017-11-19 17:23:57 +0000  Skipping profile for item: <IDEDistributionItem: 0x7fdd182d1aa0 'com.apple.dt.runtime.swiftQuartzCore' '<DVTFilePath:0x7fdd191fae70:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftQuartzCore.dylib'>'>
+2017-11-19 17:23:57 +0000  Skipping profile for item: <IDEDistributionItem: 0x7fdd19217520 'com.apple.dt.runtime.swiftUIKit' '<DVTFilePath:0x7fdd2df51720:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftUIKit.dylib'>'>
+2017-11-19 17:23:57 +0000  Skipping profile for item: <IDEDistributionItem: 0x7fdd182ad380 'com.apple.dt.runtime.swiftos' '<DVTFilePath:0x7fdd191f9b60:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftos.dylib'>'>
+2017-11-19 17:23:57 +0000  Processing step: IDEDistributionItemRemovalStep
+2017-11-19 17:23:57 +0000  Processing step: IDEDistributionAppThinningPlistStep
+2017-11-19 17:23:57 +0000  Skipping step: IDEDistributionAppThinningPlistStep because it said so
+2017-11-19 17:23:57 +0000  Processing step: IDEDistributionCompileBitcodeStep
+2017-11-19 17:23:57 +0000  Skipping step: IDEDistributionCompileBitcodeStep because it said so
+2017-11-19 17:23:57 +0000  Processing step: IDEDistributionCodeSlimmingStep
+2017-11-19 17:23:57 +0000  Processing step: IDEDistributionCopyBCSymbolMapsStep
+2017-11-19 17:23:57 +0000  Processing step: IDEDistributionSymbolsStep
+2017-11-19 17:23:57 +0000  Processing symbols for libswiftCore.dylib
+2017-11-19 17:23:57 +0000  Running /usr/bin/rsync '-8aPhhE' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftCore.dylib' '--link-dest' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN'
+2017-11-19 17:23:57 +0000  building file list ... 
+2017-11-19 17:23:57 +0000   0 files...2017-11-19 17:23:57 +0000  1 file to consider
+2017-11-19 17:23:57 +0000  
+sent 95 bytes  received 20 bytes  230.00 bytes/sec
+total size is 20.10M  speedup is 183301.15
+2017-11-19 17:23:57 +0000  
+2017-11-19 17:23:57 +0000  
+2017-11-19 17:23:57 +0000  /usr/bin/rsync exited with 0
+2017-11-19 17:23:57 +0000  
+2017-11-19 17:23:57 +0000  
+2017-11-19 17:23:57 +0000  Running /usr/bin/rsync '-8aPhhE' '/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/dSYMs/' '--link-dest' '/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/dSYMs/' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN'
+2017-11-19 17:23:57 +0000  building file list ... 
+2017-11-19 17:23:57 +0000   0 files...2017-11-19 17:23:57 +0000  13 files to consider
+2017-11-19 17:23:57 +0000  ./
+2017-11-19 17:23:57 +0000  First Crush.app.dSYM/
+First Crush.app.dSYM/Contents/
+2017-11-19 17:23:57 +0000  First Crush.app.dSYM/Contents/Resources/
+First Crush.app.dSYM/Contents/Resources/DWARF/
+OneSignalNotificationServiceExtension.appex.dSYM/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/Resources/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/Resources/DWARF/
+2017-11-19 17:23:57 +0000  
+sent 524 bytes  received 74 bytes  1.17K bytes/sec
+total size is 2.27M  speedup is 3972.75
+2017-11-19 17:23:57 +0000  
+2017-11-19 17:23:57 +0000  
+2017-11-19 17:23:57 +0000  /usr/bin/rsync exited with 0
+2017-11-19 17:23:57 +0000  
+2017-11-19 17:23:57 +0000  
+2017-11-19 17:23:57 +0000  Running /Applications/Xcode.app/Contents/Developer/usr/bin/symbols '-noTextInSOD' '-noDaemon' '-arch' 'all' '-symbolsPackageDir' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Symbols' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftCore.dylib'
+2017-11-19 17:24:02 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftCore.dylib [armv7, 0.968186 seconds]:
+/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftCore.dylib [armv7s, 0.968186 seconds]:
+/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftCore.dylib [arm64, 0.968186 seconds]:
+2017-11-19 17:24:02 +0000  
+2017-11-19 17:24:02 +0000  2017-11-19 17:24:02 +0000  /Applications/Xcode.app/Contents/Developer/usr/bin/symbols exited with 0
+
+2017-11-19 17:24:02 +0000  
+2017-11-19 17:24:02 +0000  
+2017-11-19 17:24:02 +0000  Processing symbols for libswiftCoreFoundation.dylib
+2017-11-19 17:24:02 +0000  Running /usr/bin/rsync '-8aPhhE' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftCoreFoundation.dylib' '--link-dest' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN'
+2017-11-19 17:24:02 +0000  building file list ... 
+2017-11-19 17:24:02 +0000   0 files...2017-11-19 17:24:02 +0000  1 file to consider
+2017-11-19 17:24:02 +0000  
+sent 105 bytes  received 20 bytes  250.00 bytes/sec
+total size is 203.45K  speedup is 1666.69
+2017-11-19 17:24:02 +0000  
+2017-11-19 17:24:02 +0000  
+2017-11-19 17:24:02 +0000  /usr/bin/rsync exited with 0
+2017-11-19 17:24:02 +0000  
+2017-11-19 17:24:02 +0000  2017-11-19 17:24:02 +0000  Running /usr/bin/rsync '-8aPhhE' '/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/dSYMs/' '--link-dest' '/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/dSYMs/' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN'
+
+2017-11-19 17:24:02 +0000  building file list ... 
+2017-11-19 17:24:02 +0000   0 files...2017-11-19 17:24:02 +0000  13 files to consider
+2017-11-19 17:24:02 +0000  ./
+2017-11-19 17:24:02 +0000  First Crush.app.dSYM/
+First Crush.app.dSYM/Contents/
+First Crush.app.dSYM/Contents/Resources/
+First Crush.app.dSYM/Contents/Resources/DWARF/
+OneSignalNotificationServiceExtension.appex.dSYM/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/Resources/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/Resources/DWARF/
+2017-11-19 17:24:02 +0000  
+sent 548 bytes  received 98 bytes  1.26K bytes/sec
+total size is 2.27M  speedup is 3677.57
+2017-11-19 17:24:02 +0000  
+2017-11-19 17:24:02 +0000  
+2017-11-19 17:24:02 +0000  /usr/bin/rsync exited with 0
+2017-11-19 17:24:02 +0000  
+2017-11-19 17:24:02 +0000  2017-11-19 17:24:02 +0000  Running /Applications/Xcode.app/Contents/Developer/usr/bin/symbols '-noTextInSOD' '-noDaemon' '-arch' 'all' '-symbolsPackageDir' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Symbols' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftCoreFoundation.dylib'
+
+2017-11-19 17:24:02 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftCoreFoundation.dylib [armv7, 0.002659 seconds]:
+/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftCoreFoundation.dylib [armv7s, 0.002659 seconds]:
+/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftCoreFoundation.dylib [arm64, 0.002659 seconds]:
+2017-11-19 17:24:02 +0000  2017-11-19 17:24:02 +0000  
+
+2017-11-19 17:24:02 +0000  /Applications/Xcode.app/Contents/Developer/usr/bin/symbols exited with 0
+2017-11-19 17:24:02 +0000  
+2017-11-19 17:24:02 +0000  
+2017-11-19 17:24:02 +0000  Processing symbols for libswiftCoreGraphics.dylib
+2017-11-19 17:24:02 +0000  Running /usr/bin/rsync '-8aPhhE' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftCoreGraphics.dylib' '--link-dest' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN'
+2017-11-19 17:24:02 +0000  building file list ... 
+2017-11-19 17:24:02 +0000   0 files...2017-11-19 17:24:02 +0000  1 file to consider
+2017-11-19 17:24:02 +0000  
+sent 103 bytes  received 20 bytes  246.00 bytes/sec
+total size is 564.27K  speedup is 4697.63
+2017-11-19 17:24:02 +0000  
+2017-11-19 17:24:02 +0000  /usr/bin/rsync exited with 02017-11-19 17:24:02 +0000  
+
+2017-11-19 17:24:02 +0000  
+2017-11-19 17:24:02 +0000  Running /usr/bin/rsync '-8aPhhE' '/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/dSYMs/' '--link-dest' '/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/dSYMs/' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN'
+2017-11-19 17:24:02 +0000  building file list ... 
+2017-11-19 17:24:02 +0000   0 files...2017-11-19 17:24:02 +0000  13 files to consider
+2017-11-19 17:24:02 +0000  ./
+2017-11-19 17:24:02 +0000  First Crush.app.dSYM/
+First Crush.app.dSYM/Contents/
+First Crush.app.dSYM/Contents/Resources/
+First Crush.app.dSYM/Contents/Resources/DWARF/
+OneSignalNotificationServiceExtension.appex.dSYM/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/Resources/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/Resources/DWARF/
+2017-11-19 17:24:02 +0000  
+sent 548 bytes  received 98 bytes  1.26K bytes/sec
+total size is 2.27M  speedup is 3677.57
+2017-11-19 17:24:02 +0000  
+2017-11-19 17:24:02 +0000  
+2017-11-19 17:24:02 +0000  /usr/bin/rsync exited with 0
+2017-11-19 17:24:02 +0000  
+2017-11-19 17:24:02 +0000  
+2017-11-19 17:24:02 +0000  Running /Applications/Xcode.app/Contents/Developer/usr/bin/symbols '-noTextInSOD' '-noDaemon' '-arch' 'all' '-symbolsPackageDir' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Symbols' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftCoreGraphics.dylib'
+2017-11-19 17:24:03 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftCoreGraphics.dylib [armv7, 0.014830 seconds]:
+/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftCoreGraphics.dylib [armv7s, 0.014830 seconds]:
+/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftCoreGraphics.dylib [arm64, 0.014830 seconds]:
+2017-11-19 17:24:03 +0000  
+2017-11-19 17:24:03 +0000  
+2017-11-19 17:24:03 +0000  /Applications/Xcode.app/Contents/Developer/usr/bin/symbols exited with 0
+2017-11-19 17:24:03 +0000  
+2017-11-19 17:24:03 +0000  
+2017-11-19 17:24:03 +0000  Processing symbols for libswiftCoreImage.dylib
+2017-11-19 17:24:03 +0000  Running /usr/bin/rsync '-8aPhhE' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftCoreImage.dylib' '--link-dest' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN'
+2017-11-19 17:24:03 +0000  building file list ... 
+2017-11-19 17:24:03 +0000   0 files...2017-11-19 17:24:03 +0000  1 file to consider
+2017-11-19 17:24:03 +0000  
+sent 100 bytes  received 20 bytes  240.00 bytes/sec
+total size is 204.02K  speedup is 1740.93
+2017-11-19 17:24:03 +0000  
+2017-11-19 17:24:03 +0000  
+2017-11-19 17:24:03 +0000  /usr/bin/rsync exited with 02017-11-19 17:24:03 +0000  
+
+2017-11-19 17:24:03 +0000  
+2017-11-19 17:24:03 +0000  Running /usr/bin/rsync '-8aPhhE' '/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/dSYMs/' '--link-dest' '/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/dSYMs/' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN'
+2017-11-19 17:24:03 +0000  building file list ... 
+2017-11-19 17:24:03 +0000   0 files...2017-11-19 17:24:03 +0000  13 files to consider
+2017-11-19 17:24:03 +0000  ./
+2017-11-19 17:24:03 +0000  First Crush.app.dSYM/
+First Crush.app.dSYM/Contents/
+First Crush.app.dSYM/Contents/Resources/
+First Crush.app.dSYM/Contents/Resources/DWARF/
+OneSignalNotificationServiceExtension.appex.dSYM/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/Resources/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/Resources/DWARF/
+2017-11-19 17:24:03 +0000  
+sent 548 bytes  received 98 bytes  1.26K bytes/sec
+total size is 2.27M  speedup is 3677.57
+2017-11-19 17:24:03 +0000  
+2017-11-19 17:24:03 +0000  
+2017-11-19 17:24:03 +0000  /usr/bin/rsync exited with 0
+2017-11-19 17:24:03 +0000  
+2017-11-19 17:24:03 +0000  
+2017-11-19 17:24:03 +0000  Running /Applications/Xcode.app/Contents/Developer/usr/bin/symbols '-noTextInSOD' '-noDaemon' '-arch' 'all' '-symbolsPackageDir' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Symbols' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftCoreImage.dylib'
+2017-11-19 17:24:03 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftCoreImage.dylib [armv7, 0.002843 seconds]:
+/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftCoreImage.dylib [armv7s, 0.002843 seconds]:
+/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftCoreImage.dylib [arm64, 0.002843 seconds]:
+2017-11-19 17:24:03 +0000  
+2017-11-19 17:24:03 +0000  
+2017-11-19 17:24:03 +0000  /Applications/Xcode.app/Contents/Developer/usr/bin/symbols exited with 0
+2017-11-19 17:24:03 +0000  2017-11-19 17:24:03 +0000  
+
+2017-11-19 17:24:03 +0000  Processing symbols for libswiftDarwin.dylib
+2017-11-19 17:24:03 +0000  Running /usr/bin/rsync '-8aPhhE' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftDarwin.dylib' '--link-dest' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN'
+2017-11-19 17:24:03 +0000  building file list ... 
+2017-11-19 17:24:03 +0000   0 files...2017-11-19 17:24:03 +0000  1 file to consider
+2017-11-19 17:24:03 +0000  
+sent 97 bytes  received 20 bytes  234.00 bytes/sec
+total size is 296.02K  speedup is 2590.77
+2017-11-19 17:24:03 +0000  
+2017-11-19 17:24:03 +0000  
+2017-11-19 17:24:03 +0000  /usr/bin/rsync exited with 02017-11-19 17:24:03 +0000  
+
+2017-11-19 17:24:03 +0000  
+2017-11-19 17:24:03 +0000  Running /usr/bin/rsync '-8aPhhE' '/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/dSYMs/' '--link-dest' '/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/dSYMs/' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN'
+2017-11-19 17:24:03 +0000  building file list ... 
+2017-11-19 17:24:03 +0000   0 files...2017-11-19 17:24:03 +0000  13 files to consider
+2017-11-19 17:24:03 +0000  ./
+2017-11-19 17:24:03 +0000  First Crush.app.dSYM/
+First Crush.app.dSYM/Contents/
+First Crush.app.dSYM/Contents/Resources/
+First Crush.app.dSYM/Contents/Resources/DWARF/
+OneSignalNotificationServiceExtension.appex.dSYM/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/Resources/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/Resources/DWARF/
+2017-11-19 17:24:03 +0000  
+sent 548 bytes  received 98 bytes  1.26K bytes/sec
+total size is 2.27M  speedup is 3677.57
+2017-11-19 17:24:03 +0000  
+2017-11-19 17:24:03 +0000  2017-11-19 17:24:03 +0000  /usr/bin/rsync exited with 0
+
+2017-11-19 17:24:03 +0000  
+2017-11-19 17:24:03 +0000  
+2017-11-19 17:24:03 +0000  Running /Applications/Xcode.app/Contents/Developer/usr/bin/symbols '-noTextInSOD' '-noDaemon' '-arch' 'all' '-symbolsPackageDir' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Symbols' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftDarwin.dylib'
+2017-11-19 17:24:03 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftDarwin.dylib [armv7, 0.007459 seconds]:
+/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftDarwin.dylib [armv7s, 0.007459 seconds]:
+/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftDarwin.dylib [arm64, 0.007459 seconds]:
+2017-11-19 17:24:03 +0000  
+2017-11-19 17:24:03 +0000  /Applications/Xcode.app/Contents/Developer/usr/bin/symbols exited with 0
+2017-11-19 17:24:03 +0000  
+2017-11-19 17:24:03 +0000  
+2017-11-19 17:24:03 +0000  Processing symbols for libswiftDispatch.dylib
+2017-11-19 17:24:03 +0000  Running /usr/bin/rsync '-8aPhhE' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftDispatch.dylib' '--link-dest' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN'
+2017-11-19 17:24:03 +0000  building file list ... 
+2017-11-19 17:24:03 +0000   0 files...2017-11-19 17:24:03 +0000  1 file to consider
+2017-11-19 17:24:03 +0000  
+sent 99 bytes  received 20 bytes  238.00 bytes/sec
+total size is 985.64K  speedup is 8481.48
+2017-11-19 17:24:03 +0000  
+2017-11-19 17:24:03 +0000  
+2017-11-19 17:24:03 +0000  /usr/bin/rsync exited with 0
+2017-11-19 17:24:03 +0000  
+2017-11-19 17:24:03 +0000  
+2017-11-19 17:24:03 +0000  Running /usr/bin/rsync '-8aPhhE' '/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/dSYMs/' '--link-dest' '/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/dSYMs/' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN'
+2017-11-19 17:24:03 +0000  building file list ... 
+2017-11-19 17:24:03 +0000   0 files...2017-11-19 17:24:03 +0000  13 files to consider
+2017-11-19 17:24:03 +0000  ./
+2017-11-19 17:24:03 +0000  First Crush.app.dSYM/
+First Crush.app.dSYM/Contents/
+First Crush.app.dSYM/Contents/Resources/
+First Crush.app.dSYM/Contents/Resources/DWARF/
+OneSignalNotificationServiceExtension.appex.dSYM/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/Resources/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/Resources/DWARF/
+2017-11-19 17:24:03 +0000  
+sent 548 bytes  received 98 bytes  1.26K bytes/sec
+total size is 2.27M  speedup is 3677.57
+2017-11-19 17:24:03 +0000  
+2017-11-19 17:24:03 +0000  
+2017-11-19 17:24:03 +0000  /usr/bin/rsync exited with 02017-11-19 17:24:03 +0000  
+
+2017-11-19 17:24:03 +0000  
+2017-11-19 17:24:03 +0000  
+2017-11-19 17:24:03 +0000  Running /Applications/Xcode.app/Contents/Developer/usr/bin/symbols '-noTextInSOD' '-noDaemon' '-arch' 'all' '-symbolsPackageDir' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Symbols' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftDispatch.dylib'
+2017-11-19 17:24:04 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftDispatch.dylib [armv7, 0.032836 seconds]:
+/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftDispatch.dylib [armv7s, 0.032836 seconds]:
+/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftDispatch.dylib [arm64, 0.032836 seconds]:
+2017-11-19 17:24:04 +0000  
+2017-11-19 17:24:04 +0000  2017-11-19 17:24:04 +0000  /Applications/Xcode.app/Contents/Developer/usr/bin/symbols exited with 0
+
+2017-11-19 17:24:04 +0000  
+2017-11-19 17:24:04 +0000  
+2017-11-19 17:24:04 +0000  Processing symbols for libswiftFoundation.dylib
+2017-11-19 17:24:04 +0000  Running /usr/bin/rsync '-8aPhhE' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftFoundation.dylib' '--link-dest' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN'
+2017-11-19 17:24:04 +0000  building file list ... 
+2017-11-19 17:24:04 +0000   0 files...2017-11-19 17:24:04 +0000  1 file to consider
+2017-11-19 17:24:04 +0000  
+sent 101 bytes  received 20 bytes  242.00 bytes/sec
+total size is 8.04M  speedup is 69631.07
+2017-11-19 17:24:04 +0000  
+2017-11-19 17:24:04 +0000  
+2017-11-19 17:24:04 +0000  /usr/bin/rsync exited with 02017-11-19 17:24:04 +0000  
+2017-11-19 17:24:04 +0000  
+
+2017-11-19 17:24:04 +0000  
+2017-11-19 17:24:04 +0000  2017-11-19 17:24:04 +0000  Running /usr/bin/rsync '-8aPhhE' '/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/dSYMs/' '--link-dest' '/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/dSYMs/' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN'
+
+2017-11-19 17:24:04 +0000  building file list ... 
+2017-11-19 17:24:04 +0000   0 files...2017-11-19 17:24:04 +0000  13 files to consider
+2017-11-19 17:24:04 +0000  ./
+2017-11-19 17:24:04 +0000  First Crush.app.dSYM/
+First Crush.app.dSYM/Contents/
+First Crush.app.dSYM/Contents/Resources/
+First Crush.app.dSYM/Contents/Resources/DWARF/
+OneSignalNotificationServiceExtension.appex.dSYM/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/Resources/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/Resources/DWARF/
+2017-11-19 17:24:04 +0000  
+sent 548 bytes  received 98 bytes  1.26K bytes/sec
+total size is 2.27M  speedup is 3677.57
+2017-11-19 17:24:04 +0000  
+2017-11-19 17:24:04 +0000  
+2017-11-19 17:24:04 +0000  /usr/bin/rsync exited with 0
+2017-11-19 17:24:04 +0000  
+2017-11-19 17:24:04 +0000  2017-11-19 17:24:04 +0000  Running /Applications/Xcode.app/Contents/Developer/usr/bin/symbols '-noTextInSOD' '-noDaemon' '-arch' 'all' '-symbolsPackageDir' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Symbols' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftFoundation.dylib'
+
+2017-11-19 17:24:06 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftFoundation.dylib [armv7, 0.245094 seconds]:
+/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftFoundation.dylib [armv7s, 0.245094 seconds]:
+/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftFoundation.dylib [arm64, 0.245094 seconds]:
+2017-11-19 17:24:06 +0000  2017-11-19 17:24:06 +0000  /Applications/Xcode.app/Contents/Developer/usr/bin/symbols exited with 0
+
+2017-11-19 17:24:06 +0000  
+2017-11-19 17:24:06 +0000  Processing symbols for libswiftMetal.dylib
+2017-11-19 17:24:06 +0000  Running /usr/bin/rsync '-8aPhhE' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftMetal.dylib' '--link-dest' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN'
+2017-11-19 17:24:06 +0000  building file list ... 
+2017-11-19 17:24:06 +0000   0 files...2017-11-19 17:24:06 +0000  1 file to consider
+2017-11-19 17:24:06 +0000  
+sent 96 bytes  received 20 bytes  232.00 bytes/sec
+total size is 245.41K  speedup is 2166.34
+2017-11-19 17:24:06 +0000  2017-11-19 17:24:06 +0000  
+
+2017-11-19 17:24:06 +0000  /usr/bin/rsync exited with 0
+2017-11-19 17:24:06 +0000  2017-11-19 17:24:06 +0000  
+
+2017-11-19 17:24:06 +0000  Running /usr/bin/rsync '-8aPhhE' '/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/dSYMs/' '--link-dest' '/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/dSYMs/' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN'
+2017-11-19 17:24:06 +0000  building file list ... 
+2017-11-19 17:24:06 +0000   0 files...2017-11-19 17:24:06 +0000  13 files to consider
+2017-11-19 17:24:06 +0000  ./
+2017-11-19 17:24:06 +0000  First Crush.app.dSYM/
+First Crush.app.dSYM/Contents/
+First Crush.app.dSYM/Contents/Resources/
+First Crush.app.dSYM/Contents/Resources/DWARF/
+OneSignalNotificationServiceExtension.appex.dSYM/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/Resources/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/Resources/DWARF/
+2017-11-19 17:24:06 +0000  
+sent 548 bytes  received 98 bytes  1.26K bytes/sec
+total size is 2.27M  speedup is 3677.57
+2017-11-19 17:24:06 +0000  
+2017-11-19 17:24:06 +0000  
+2017-11-19 17:24:06 +0000  
+2017-11-19 17:24:06 +0000  
+2017-11-19 17:24:06 +0000  /usr/bin/rsync exited with 0
+2017-11-19 17:24:06 +0000  
+2017-11-19 17:24:06 +0000  
+2017-11-19 17:24:06 +0000  Running /Applications/Xcode.app/Contents/Developer/usr/bin/symbols '-noTextInSOD' '-noDaemon' '-arch' 'all' '-symbolsPackageDir' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Symbols' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftMetal.dylib'
+2017-11-19 17:24:06 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftMetal.dylib [armv7, 0.005588 seconds]:
+/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftMetal.dylib [armv7s, 0.005588 seconds]:
+/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftMetal.dylib [arm64, 0.005588 seconds]:
+2017-11-19 17:24:06 +0000  
+2017-11-19 17:24:06 +0000  
+2017-11-19 17:24:06 +0000  /Applications/Xcode.app/Contents/Developer/usr/bin/symbols exited with 0
+2017-11-19 17:24:06 +0000  
+2017-11-19 17:24:06 +0000  
+2017-11-19 17:24:06 +0000  Processing symbols for libswiftObjectiveC.dylib
+2017-11-19 17:24:06 +0000  Running /usr/bin/rsync '-8aPhhE' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftObjectiveC.dylib' '--link-dest' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN'
+2017-11-19 17:24:06 +0000  building file list ... 
+2017-11-19 17:24:06 +0000   0 files...2017-11-19 17:24:06 +0000  1 file to consider
+2017-11-19 17:24:06 +0000  
+sent 101 bytes  received 20 bytes  242.00 bytes/sec
+total size is 252.92K  speedup is 2140.43
+2017-11-19 17:24:06 +0000  
+2017-11-19 17:24:06 +0000  
+2017-11-19 17:24:06 +0000  /usr/bin/rsync exited with 0
+2017-11-19 17:24:06 +0000  
+2017-11-19 17:24:06 +0000  
+2017-11-19 17:24:06 +0000  Running /usr/bin/rsync '-8aPhhE' '/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/dSYMs/' '--link-dest' '/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/dSYMs/' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN'
+2017-11-19 17:24:06 +0000  building file list ... 
+2017-11-19 17:24:06 +0000   0 files...2017-11-19 17:24:06 +0000  13 files to consider
+2017-11-19 17:24:06 +0000  ./
+2017-11-19 17:24:06 +0000  First Crush.app.dSYM/
+First Crush.app.dSYM/Contents/
+First Crush.app.dSYM/Contents/Resources/
+First Crush.app.dSYM/Contents/Resources/DWARF/
+OneSignalNotificationServiceExtension.appex.dSYM/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/Resources/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/Resources/DWARF/
+2017-11-19 17:24:06 +0000  
+sent 548 bytes  received 98 bytes  1.26K bytes/sec
+total size is 2.27M  speedup is 3677.57
+2017-11-19 17:24:06 +0000  2017-11-19 17:24:06 +0000  
+
+2017-11-19 17:24:06 +0000  /usr/bin/rsync exited with 0
+2017-11-19 17:24:06 +0000  
+2017-11-19 17:24:06 +0000  
+2017-11-19 17:24:06 +0000  Running /Applications/Xcode.app/Contents/Developer/usr/bin/symbols '-noTextInSOD' '-noDaemon' '-arch' 'all' '-symbolsPackageDir' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Symbols' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftObjectiveC.dylib'
+2017-11-19 17:24:06 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftObjectiveC.dylib [armv7, 0.005345 seconds]:
+/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftObjectiveC.dylib [armv7s, 0.005345 seconds]:
+/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftObjectiveC.dylib [arm64, 0.005345 seconds]:
+2017-11-19 17:24:06 +0000  
+2017-11-19 17:24:06 +0000  
+2017-11-19 17:24:06 +0000  /Applications/Xcode.app/Contents/Developer/usr/bin/symbols exited with 0
+2017-11-19 17:24:06 +0000  
+2017-11-19 17:24:06 +0000  
+2017-11-19 17:24:06 +0000  Processing symbols for libswiftQuartzCore.dylib
+2017-11-19 17:24:06 +0000  Running /usr/bin/rsync '-8aPhhE' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftQuartzCore.dylib' '--link-dest' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN'
+2017-11-19 17:24:06 +0000  building file list ... 
+2017-11-19 17:24:06 +0000   0 files...2017-11-19 17:24:06 +0000  1 file to consider
+2017-11-19 17:24:06 +0000  
+sent 101 bytes  received 20 bytes  242.00 bytes/sec
+total size is 207.28K  speedup is 1754.18
+2017-11-19 17:24:06 +0000  2017-11-19 17:24:06 +0000  
+
+2017-11-19 17:24:06 +0000  /usr/bin/rsync exited with 0
+2017-11-19 17:24:06 +0000  2017-11-19 17:24:06 +0000  
+
+2017-11-19 17:24:06 +0000  Running /usr/bin/rsync '-8aPhhE' '/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/dSYMs/' '--link-dest' '/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/dSYMs/' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN'
+2017-11-19 17:24:06 +0000  building file list ... 
+2017-11-19 17:24:06 +0000   0 files...2017-11-19 17:24:06 +0000  13 files to consider
+2017-11-19 17:24:06 +0000  ./
+2017-11-19 17:24:06 +0000  First Crush.app.dSYM/
+First Crush.app.dSYM/Contents/
+First Crush.app.dSYM/Contents/Resources/
+First Crush.app.dSYM/Contents/Resources/DWARF/
+OneSignalNotificationServiceExtension.appex.dSYM/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/Resources/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/Resources/DWARF/
+2017-11-19 17:24:06 +0000  
+sent 548 bytes  received 98 bytes  1.26K bytes/sec
+total size is 2.27M  speedup is 3677.57
+2017-11-19 17:24:06 +0000  
+2017-11-19 17:24:06 +0000  
+2017-11-19 17:24:06 +0000  /usr/bin/rsync exited with 0
+2017-11-19 17:24:06 +0000  
+2017-11-19 17:24:06 +0000  
+2017-11-19 17:24:06 +0000  Running /Applications/Xcode.app/Contents/Developer/usr/bin/symbols '-noTextInSOD' '-noDaemon' '-arch' 'all' '-symbolsPackageDir' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Symbols' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftQuartzCore.dylib'
+2017-11-19 17:24:06 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftQuartzCore.dylib [armv7, 0.003301 seconds]:
+/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftQuartzCore.dylib [armv7s, 0.003301 seconds]:
+/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftQuartzCore.dylib [arm64, 0.003301 seconds]:
+2017-11-19 17:24:06 +0000  
+2017-11-19 17:24:06 +0000  
+2017-11-19 17:24:06 +0000  /Applications/Xcode.app/Contents/Developer/usr/bin/symbols exited with 0
+2017-11-19 17:24:06 +0000  
+2017-11-19 17:24:06 +0000  
+2017-11-19 17:24:06 +0000  Processing symbols for libswiftUIKit.dylib
+2017-11-19 17:24:06 +0000  Running /usr/bin/rsync '-8aPhhE' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftUIKit.dylib' '--link-dest' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN'
+2017-11-19 17:24:06 +0000  building file list ... 
+ 0 files...2017-11-19 17:24:06 +0000  1 file to consider
+2017-11-19 17:24:06 +0000  
+sent 96 bytes  received 20 bytes  232.00 bytes/sec
+total size is 353.06K  speedup is 3116.69
+2017-11-19 17:24:06 +0000  
+2017-11-19 17:24:06 +0000  
+2017-11-19 17:24:06 +0000  /usr/bin/rsync exited with 0
+2017-11-19 17:24:06 +0000  
+2017-11-19 17:24:06 +0000  
+2017-11-19 17:24:06 +0000  Running /usr/bin/rsync '-8aPhhE' '/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/dSYMs/' '--link-dest' '/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/dSYMs/' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN'
+2017-11-19 17:24:06 +0000  building file list ... 
+2017-11-19 17:24:06 +0000   0 files...2017-11-19 17:24:06 +0000  13 files to consider
+2017-11-19 17:24:06 +0000  ./
+2017-11-19 17:24:07 +0000  First Crush.app.dSYM/
+First Crush.app.dSYM/Contents/
+First Crush.app.dSYM/Contents/Resources/
+First Crush.app.dSYM/Contents/Resources/DWARF/
+OneSignalNotificationServiceExtension.appex.dSYM/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/Resources/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/Resources/DWARF/
+2017-11-19 17:24:07 +0000  
+sent 548 bytes  received 98 bytes  430.67 bytes/sec
+total size is 2.27M  speedup is 3677.57
+2017-11-19 17:24:07 +0000  
+2017-11-19 17:24:07 +0000  2017-11-19 17:24:07 +0000  /usr/bin/rsync exited with 0
+2017-11-19 17:24:07 +0000  
+
+2017-11-19 17:24:07 +0000  Running /Applications/Xcode.app/Contents/Developer/usr/bin/symbols '-noTextInSOD' '-noDaemon' '-arch' 'all' '-symbolsPackageDir' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Symbols' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftUIKit.dylib'
+2017-11-19 17:24:07 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftUIKit.dylib [armv7, 0.009149 seconds]:
+/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftUIKit.dylib [armv7s, 0.009149 seconds]:
+/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftUIKit.dylib [arm64, 0.009149 seconds]:
+2017-11-19 17:24:07 +0000  
+2017-11-19 17:24:07 +0000  
+2017-11-19 17:24:07 +0000  /Applications/Xcode.app/Contents/Developer/usr/bin/symbols exited with 0
+2017-11-19 17:24:07 +0000  
+2017-11-19 17:24:07 +0000  
+2017-11-19 17:24:07 +0000  Processing symbols for libswiftos.dylib
+2017-11-19 17:24:07 +0000  Running /usr/bin/rsync '-8aPhhE' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftos.dylib' '--link-dest' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN'
+2017-11-19 17:24:07 +0000  building file list ... 
+2017-11-19 17:24:07 +0000   0 files...2017-11-19 17:24:07 +0000  1 file to consider
+2017-11-19 17:24:07 +0000  
+sent 93 bytes  received 20 bytes  226.00 bytes/sec
+total size is 243.12K  speedup is 2203.19
+2017-11-19 17:24:07 +0000  
+2017-11-19 17:24:07 +0000  2017-11-19 17:24:07 +0000  /usr/bin/rsync exited with 0
+
+2017-11-19 17:24:07 +0000  
+2017-11-19 17:24:07 +0000  Running /usr/bin/rsync '-8aPhhE' '/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/dSYMs/' '--link-dest' '/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/dSYMs/' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN'
+2017-11-19 17:24:07 +0000  building file list ... 
+ 0 files...2017-11-19 17:24:07 +0000  13 files to consider
+2017-11-19 17:24:07 +0000  ./
+2017-11-19 17:24:07 +0000  First Crush.app.dSYM/
+First Crush.app.dSYM/Contents/
+First Crush.app.dSYM/Contents/Resources/
+First Crush.app.dSYM/Contents/Resources/DWARF/
+OneSignalNotificationServiceExtension.appex.dSYM/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/Resources/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/Resources/DWARF/
+2017-11-19 17:24:07 +0000  
+sent 548 bytes  received 98 bytes  1.26K bytes/sec
+total size is 2.27M  speedup is 3677.57
+2017-11-19 17:24:07 +0000  
+2017-11-19 17:24:07 +0000  
+2017-11-19 17:24:07 +0000  /usr/bin/rsync exited with 0
+2017-11-19 17:24:07 +0000  
+2017-11-19 17:24:07 +0000  
+2017-11-19 17:24:07 +0000  Running /Applications/Xcode.app/Contents/Developer/usr/bin/symbols '-noTextInSOD' '-noDaemon' '-arch' 'all' '-symbolsPackageDir' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Symbols' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftos.dylib'
+2017-11-19 17:24:07 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftos.dylib [armv7, 0.003866 seconds]:
+/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftos.dylib [armv7s, 0.003866 seconds]:
+/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/libswiftos.dylib [arm64, 0.003866 seconds]:
+2017-11-19 17:24:07 +0000  
+2017-11-19 17:24:07 +0000  
+2017-11-19 17:24:07 +0000  /Applications/Xcode.app/Contents/Developer/usr/bin/symbols exited with 0
+2017-11-19 17:24:07 +0000  
+2017-11-19 17:24:07 +0000  
+2017-11-19 17:24:07 +0000  Processing symbols for OneSignalNotificationServiceExtension.appex
+2017-11-19 17:24:07 +0000  Running /usr/bin/rsync '-8aPhhE' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/PlugIns/OneSignalNotificationServiceExtension.appex' '--link-dest' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/PlugIns' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN'
+2017-11-19 17:24:07 +0000  building file list ... 
+2017-11-19 17:24:07 +0000   0 files...2017-11-19 17:24:07 +0000  7 files to consider
+2017-11-19 17:24:07 +0000  OneSignalNotificationServiceExtension.appex/
+2017-11-19 17:24:07 +0000  OneSignalNotificationServiceExtension.appex/_CodeSignature/
+2017-11-19 17:24:07 +0000  
+sent 362 bytes  received 32 bytes  788.00 bytes/sec
+total size is 627.21K  speedup is 1630.11
+2017-11-19 17:24:07 +0000  
+2017-11-19 17:24:07 +0000  
+2017-11-19 17:24:07 +0000  /usr/bin/rsync exited with 0
+2017-11-19 17:24:07 +0000  
+2017-11-19 17:24:07 +0000  2017-11-19 17:24:07 +0000  Running /usr/bin/rsync '-8aPhhE' '/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/dSYMs/' '--link-dest' '/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/dSYMs/' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN'
+
+2017-11-19 17:24:07 +0000  building file list ... 
+2017-11-19 17:24:07 +0000   0 files...2017-11-19 17:24:07 +0000  13 files to consider
+2017-11-19 17:24:07 +0000  ./
+2017-11-19 17:24:07 +0000  First Crush.app.dSYM/
+First Crush.app.dSYM/Contents/
+First Crush.app.dSYM/Contents/Resources/
+First Crush.app.dSYM/Contents/Resources/DWARF/
+OneSignalNotificationServiceExtension.appex.dSYM/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/Resources/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/Resources/DWARF/
+2017-11-19 17:24:07 +0000  
+sent 548 bytes  received 98 bytes  1.26K bytes/sec
+total size is 2.27M  speedup is 3677.57
+2017-11-19 17:24:07 +0000  
+2017-11-19 17:24:07 +0000  2017-11-19 17:24:07 +0000  /usr/bin/rsync exited with 0
+
+2017-11-19 17:24:07 +0000  
+2017-11-19 17:24:07 +0000  Running /Applications/Xcode.app/Contents/Developer/usr/bin/symbols '-noTextInSOD' '-noDaemon' '-arch' 'all' '-symbolsPackageDir' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Symbols' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/OneSignalNotificationServiceExtension.appex.dSYM/Contents/Resources/Dwarf/OneSignalNotificationServiceExtension'
+2017-11-19 17:24:07 +0000  Provided dSYM: [/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-10-31/First Crush 31-10-17, 10.13 AM.xcarchive/dSYMs/OneSignalNotificationServiceExtension.appex.dSYM/Contents/Resources/DWARF/OneSignalNotificationServiceExtension] does not match symbol owner 0x7fdf71c18360
+2017-11-19 17:24:07 +0000  Provided dSYM: [/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-10-31/First Crush 31-10-17, 10.13 AM.xcarchive/dSYMs/OneSignalNotificationServiceExtension.appex.dSYM/Contents/Resources/DWARF/OneSignalNotificationServiceExtension] does not match symbol owner 0x7fdf71e03890
+2017-11-19 17:24:08 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/OneSignalNotificationServiceExtension.appex.dSYM/Contents/Resources/Dwarf/OneSignalNotificationServiceExtension [armv7, 0.170751 seconds]:
+/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/OneSignalNotificationServiceExtension.appex.dSYM/Contents/Resources/Dwarf/OneSignalNotificationServiceExtension [arm64, 0.170751 seconds]:
+2017-11-19 17:24:08 +0000  
+2017-11-19 17:24:08 +0000  /Applications/Xcode.app/Contents/Developer/usr/bin/symbols exited with 0
+2017-11-19 17:24:08 +0000  
+2017-11-19 17:24:08 +0000  
+2017-11-19 17:24:08 +0000  Processing symbols for First Crush.app
+2017-11-19 17:24:08 +0000  Running /usr/bin/rsync '-8aPhhE' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app' '--link-dest' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN'
+2017-11-19 17:24:08 +0000  building file list ... 
+2017-11-19 17:24:08 +0000   0 files...2017-11-19 17:24:08 +0000  81 files to consider
+2017-11-19 17:24:08 +0000  First Crush.app/
+2017-11-19 17:24:08 +0000  First Crush.app/Base.lproj/
+First Crush.app/Base.lproj/LaunchScreen.storyboardc/
+First Crush.app/Base.lproj/Main.storyboardc/
+2017-11-19 17:24:08 +0000  First Crush.app/Frameworks/
+First Crush.app/PlugIns/
+First Crush.app/PlugIns/OneSignalNotificationServiceExtension.appex/
+First Crush.app/PlugIns/OneSignalNotificationServiceExtension.appex/_CodeSignature/
+First Crush.app/_CodeSignature/
+2017-11-19 17:24:08 +0000  
+sent 2.39K bytes  received 74 bytes  4.93K bytes/sec
+total size is 42.80M  speedup is 17796.42
+2017-11-19 17:24:08 +0000  
+2017-11-19 17:24:08 +0000  2017-11-19 17:24:08 +0000  /usr/bin/rsync exited with 0
+2017-11-19 17:24:08 +0000  
+
+2017-11-19 17:24:08 +0000  Running /usr/bin/rsync '-8aPhhE' '/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/dSYMs/' '--link-dest' '/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/dSYMs/' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN'
+2017-11-19 17:24:08 +0000  building file list ... 
+2017-11-19 17:24:08 +0000   0 files...2017-11-19 17:24:08 +0000  13 files to consider
+2017-11-19 17:24:08 +0000  ./
+2017-11-19 17:24:08 +0000  First Crush.app.dSYM/
+First Crush.app.dSYM/Contents/
+First Crush.app.dSYM/Contents/Resources/
+First Crush.app.dSYM/Contents/Resources/DWARF/
+OneSignalNotificationServiceExtension.appex.dSYM/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/Resources/
+OneSignalNotificationServiceExtension.appex.dSYM/Contents/Resources/DWARF/
+2017-11-19 17:24:08 +0000  
+sent 548 bytes  received 98 bytes  1.26K bytes/sec
+total size is 2.27M  speedup is 3677.57
+2017-11-19 17:24:08 +0000  
+2017-11-19 17:24:08 +0000  
+2017-11-19 17:24:08 +0000  /usr/bin/rsync exited with 0
+2017-11-19 17:24:08 +0000  
+2017-11-19 17:24:08 +0000  
+2017-11-19 17:24:08 +0000  Running /Applications/Xcode.app/Contents/Developer/usr/bin/symbols '-noTextInSOD' '-noDaemon' '-arch' 'all' '-symbolsPackageDir' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Symbols' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/First Crush.app.dSYM/Contents/Resources/Dwarf/First Crush'
+2017-11-19 17:24:08 +0000  Provided dSYM: [/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-10-31/First Crush 31-10-17, 10.13 AM.xcarchive/dSYMs/First Crush.app.dSYM/Contents/Resources/DWARF/First Crush] does not match symbol owner 0x7fba4b506b20
+2017-11-19 17:24:08 +0000  Provided dSYM: [/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-10-31/First Crush 31-10-17, 10.13 AM.xcarchive/dSYMs/First Crush.app.dSYM/Contents/Resources/DWARF/First Crush] does not match symbol owner 0x7fba4b602570
+2017-11-19 17:24:08 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/First Crush.app.dSYM/Contents/Resources/Dwarf/First Crush [armv7, 0.269113 seconds]:
+/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/First Crush.app.dSYM/Contents/Resources/Dwarf/First Crush [arm64, 0.269113 seconds]:
+2017-11-19 17:24:08 +0000  
+2017-11-19 17:24:08 +0000  2017-11-19 17:24:08 +0000  /Applications/Xcode.app/Contents/Developer/usr/bin/symbols exited with 0
+
+2017-11-19 17:24:08 +0000  
+2017-11-19 17:24:08 +0000  Processing step: IDEDistributionCopyAppleProvidedContentStep
+2017-11-19 17:24:09 +0000  Running /usr/bin/ditto '-V' '/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/SwiftSupport' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/SwiftSupport'
+2017-11-19 17:24:09 +0000  >>> Copying /Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/SwiftSupport 
+2017-11-19 17:24:09 +0000  copying file ./iphoneos/libswiftCore.dylib ... 
+2017-11-19 17:24:16 +0000  100105869 bytes for ./iphoneos/libswiftCore.dylib
+copying file ./iphoneos/libswiftCoreFoundation.dylib ... 
+287519 bytes for ./iphoneos/libswiftCoreFoundation.dylib
+copying file ./iphoneos/libswiftCoreGraphics.dylib ... 
+2017-11-19 17:24:17 +0000  1736854 bytes for ./iphoneos/libswiftCoreGraphics.dylib
+copying file ./iphoneos/libswiftCoreImage.dylib ... 
+300324 bytes for ./iphoneos/libswiftCoreImage.dylib
+copying file ./iphoneos/libswiftDarwin.dylib ... 
+790347 bytes for ./iphoneos/libswiftDarwin.dylib
+copying file ./iphoneos/libswiftDispatch.dylib ... 
+3398327 bytes for ./iphoneos/libswiftDispatch.dylib
+copying file ./iphoneos/libswiftFoundation.dylib ... 
+2017-11-19 17:24:19 +0000  40949491 bytes for ./iphoneos/libswiftFoundation.dylib
+2017-11-19 17:24:19 +0000  copying file ./iphoneos/libswiftMetal.dylib ... 
+2017-11-19 17:24:19 +0000  504006 bytes for ./iphoneos/libswiftMetal.dylib
+2017-11-19 17:24:19 +0000  copying file ./iphoneos/libswiftObjectiveC.dylib ... 
+2017-11-19 17:24:19 +0000  681315 bytes for ./iphoneos/libswiftObjectiveC.dylib
+copying file ./iphoneos/libswiftos.dylib ... 
+2017-11-19 17:24:20 +0000  589732 bytes for ./iphoneos/libswiftos.dylib
+copying file ./iphoneos/libswiftQuartzCore.dylib ... 
+2017-11-19 17:24:20 +0000  370132 bytes for ./iphoneos/libswiftQuartzCore.dylib
+copying file ./iphoneos/libswiftUIKit.dylib ... 
+2017-11-19 17:24:20 +0000  2017-11-19 17:24:20 +0000  /usr/bin/ditto exited with 0
+
+2017-11-19 17:24:20 +0000  1117164 bytes for ./iphoneos/libswiftUIKit.dylib
+2017-11-19 17:24:20 +0000  Processing step: IDEDistributionAppThinningStep
+2017-11-19 17:24:20 +0000  Skipping step: IDEDistributionAppThinningStep because it said so
+2017-11-19 17:24:20 +0000  Processing step: IDEDistributionODRStep
+2017-11-19 17:24:20 +0000  Processing step: IDEDistributionStripXattrsStep
+2017-11-19 17:24:20 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x7fdd2dbbefc0 'com.apple.dt.runtime.swiftCore' '<DVTFilePath:0x7fdd2bec86c0:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftCore.dylib'>'>
+2017-11-19 17:24:21 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x7fdd19216a70 'com.apple.dt.runtime.swiftCoreFoundation' '<DVTFilePath:0x7fdd16de2780:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftCoreFoundation.dylib'>'>
+2017-11-19 17:24:21 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x7fdd2dbae860 'com.apple.dt.runtime.swiftCoreGraphics' '<DVTFilePath:0x7fdd16b3b2c0:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftCoreGraphics.dylib'>'>
+2017-11-19 17:24:21 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x7fdd182dc1b0 'com.apple.dt.runtime.swiftCoreImage' '<DVTFilePath:0x7fdd182ee2f0:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftCoreImage.dylib'>'>
+2017-11-19 17:24:21 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x7fdd2bce7460 'com.apple.dt.runtime.swiftDarwin' '<DVTFilePath:0x7fdd182d1560:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftDarwin.dylib'>'>
+2017-11-19 17:24:21 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x7fdd16b3d290 'com.apple.dt.runtime.swiftDispatch' '<DVTFilePath:0x7fdd1829f6a0:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftDispatch.dylib'>'>
+2017-11-19 17:24:21 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x7fdd19219350 'com.apple.dt.runtime.swiftFoundation' '<DVTFilePath:0x7fdd29f2eda0:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftFoundation.dylib'>'>
+2017-11-19 17:24:21 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x7fdd2bdc0500 'com.apple.dt.runtime.swiftMetal' '<DVTFilePath:0x7fdd191d3600:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftMetal.dylib'>'>
+2017-11-19 17:24:21 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x7fdd192163d0 'com.apple.dt.runtime.swiftObjectiveC' '<DVTFilePath:0x7fdd191f8890:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftObjectiveC.dylib'>'>
+2017-11-19 17:24:21 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x7fdd182d1aa0 'com.apple.dt.runtime.swiftQuartzCore' '<DVTFilePath:0x7fdd191fae70:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftQuartzCore.dylib'>'>
+2017-11-19 17:24:21 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x7fdd19217520 'com.apple.dt.runtime.swiftUIKit' '<DVTFilePath:0x7fdd2df51720:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftUIKit.dylib'>'>
+2017-11-19 17:24:21 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x7fdd182ad380 'com.apple.dt.runtime.swiftos' '<DVTFilePath:0x7fdd191f9b60:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftos.dylib'>'>
+2017-11-19 17:24:21 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x7fdd1921b640 'co.firstcrush.first-crush.OneSignalNotificationServiceExtension' '<DVTFilePath:0x7fdd16c7b2e0:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/PlugIns/OneSignalNotificationServiceExtension.appex'>'>
+2017-11-19 17:24:21 +0000  Running /usr/bin/xattr '-crs' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app'
+2017-11-19 17:24:30 +0000  
+2017-11-19 17:24:30 +0000  2017-11-19 17:24:30 +0000  /usr/bin/xattr exited with 0
+
+2017-11-19 17:24:30 +0000  
+2017-11-19 17:24:30 +0000  Processing step: IDEDistributionCodesignStep
+2017-11-19 17:24:30 +0000  Applying entitlements delta for <IDEDistributionItem: 0x7fdd2dbbefc0 'com.apple.dt.runtime.swiftCore' '<DVTFilePath:0x7fdd2bec86c0:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftCore.dylib'>'> from <IDEiCloudEntitlementsProcessor: 0x7fdd191d2c40>: {
+}
+2017-11-19 17:24:30 +0000  Entitlements for <IDEDistributionItem: 0x7fdd2dbbefc0 'com.apple.dt.runtime.swiftCore' '<DVTFilePath:0x7fdd2bec86c0:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftCore.dylib'>'>: {
+}
+2017-11-19 17:24:30 +0000  Writing entitlements for <IDEDistributionItem: 0x7fdd2dbbefc0 'com.apple.dt.runtime.swiftCore' '<DVTFilePath:0x7fdd2bec86c0:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftCore.dylib'>'> to: /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/entitlementsvVifQw
+2017-11-19 17:24:30 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' 'AB6BF5AF9AC822E1633016C348034B2AAB655CE4' '--preserve-metadata=identifier,flags' '--entitlements' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/entitlementsvVifQw' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftCore.dylib'
+2017-11-19 17:24:30 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftCore.dylib: replacing existing signature
+2017-11-19 17:24:37 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftCore.dylib: signed Mach-O universal (armv7 armv7s arm64) [com.apple.dt.runtime.swiftCore]
+2017-11-19 17:24:37 +0000  
+2017-11-19 17:24:37 +0000  2017-11-19 17:24:37 +0000  /usr/bin/codesign exited with 0
+
+2017-11-19 17:24:37 +0000  
+2017-11-19 17:24:37 +0000  Applying entitlements delta for <IDEDistributionItem: 0x7fdd19216a70 'com.apple.dt.runtime.swiftCoreFoundation' '<DVTFilePath:0x7fdd16de2780:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftCoreFoundation.dylib'>'> from <IDEiCloudEntitlementsProcessor: 0x7fdd191db4b0>: {
+}
+2017-11-19 17:24:37 +0000  Entitlements for <IDEDistributionItem: 0x7fdd19216a70 'com.apple.dt.runtime.swiftCoreFoundation' '<DVTFilePath:0x7fdd16de2780:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftCoreFoundation.dylib'>'>: {
+}
+2017-11-19 17:24:37 +0000  Writing entitlements for <IDEDistributionItem: 0x7fdd19216a70 'com.apple.dt.runtime.swiftCoreFoundation' '<DVTFilePath:0x7fdd16de2780:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftCoreFoundation.dylib'>'> to: /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/entitlementsN76CZx
+2017-11-19 17:24:37 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' 'AB6BF5AF9AC822E1633016C348034B2AAB655CE4' '--preserve-metadata=identifier,flags' '--entitlements' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/entitlementsN76CZx' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftCoreFoundation.dylib'
+2017-11-19 17:24:37 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftCoreFoundation.dylib: replacing existing signature
+2017-11-19 17:24:37 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftCoreFoundation.dylib: signed Mach-O universal (armv7 armv7s arm64) [com.apple.dt.runtime.swiftCoreFoundation]
+2017-11-19 17:24:37 +0000  2017-11-19 17:24:37 +0000  
+
+2017-11-19 17:24:37 +0000  /usr/bin/codesign exited with 02017-11-19 17:24:37 +0000  
+
+2017-11-19 17:24:37 +0000  2017-11-19 17:24:37 +0000  Applying entitlements delta for <IDEDistributionItem: 0x7fdd2dbae860 'com.apple.dt.runtime.swiftCoreGraphics' '<DVTFilePath:0x7fdd16b3b2c0:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftCoreGraphics.dylib'>'> from <IDEiCloudEntitlementsProcessor: 0x7fdd16839cb0>: {
+}
+
+2017-11-19 17:24:37 +0000  Entitlements for <IDEDistributionItem: 0x7fdd2dbae860 'com.apple.dt.runtime.swiftCoreGraphics' '<DVTFilePath:0x7fdd16b3b2c0:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftCoreGraphics.dylib'>'>: {
+}
+2017-11-19 17:24:37 +0000  Writing entitlements for <IDEDistributionItem: 0x7fdd2dbae860 'com.apple.dt.runtime.swiftCoreGraphics' '<DVTFilePath:0x7fdd16b3b2c0:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftCoreGraphics.dylib'>'> to: /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/entitlements7vu4Q2
+2017-11-19 17:24:37 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' 'AB6BF5AF9AC822E1633016C348034B2AAB655CE4' '--preserve-metadata=identifier,flags' '--entitlements' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/entitlements7vu4Q2' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftCoreGraphics.dylib'
+2017-11-19 17:24:37 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftCoreGraphics.dylib: replacing existing signature
+2017-11-19 17:24:38 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftCoreGraphics.dylib: signed Mach-O universal (armv7 armv7s arm64) [com.apple.dt.runtime.swiftCoreGraphics]
+2017-11-19 17:24:38 +0000  
+2017-11-19 17:24:38 +0000  
+2017-11-19 17:24:38 +0000  /usr/bin/codesign exited with 0
+2017-11-19 17:24:38 +0000  
+2017-11-19 17:24:38 +0000  2017-11-19 17:24:38 +0000  Applying entitlements delta for <IDEDistributionItem: 0x7fdd182dc1b0 'com.apple.dt.runtime.swiftCoreImage' '<DVTFilePath:0x7fdd182ee2f0:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftCoreImage.dylib'>'> from <IDEiCloudEntitlementsProcessor: 0x7fdd14549810>: {
+}
+
+2017-11-19 17:24:38 +0000  Entitlements for <IDEDistributionItem: 0x7fdd182dc1b0 'com.apple.dt.runtime.swiftCoreImage' '<DVTFilePath:0x7fdd182ee2f0:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftCoreImage.dylib'>'>: {
+}
+2017-11-19 17:24:38 +0000  Writing entitlements for <IDEDistributionItem: 0x7fdd182dc1b0 'com.apple.dt.runtime.swiftCoreImage' '<DVTFilePath:0x7fdd182ee2f0:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftCoreImage.dylib'>'> to: /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/entitlementsbaV9SY
+2017-11-19 17:24:38 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' 'AB6BF5AF9AC822E1633016C348034B2AAB655CE4' '--preserve-metadata=identifier,flags' '--entitlements' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/entitlementsbaV9SY' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftCoreImage.dylib'
+2017-11-19 17:24:38 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftCoreImage.dylib: replacing existing signature
+2017-11-19 17:24:38 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftCoreImage.dylib: signed Mach-O universal (armv7 armv7s arm64) [com.apple.dt.runtime.swiftCoreImage]
+2017-11-19 17:24:38 +0000  
+2017-11-19 17:24:38 +0000  
+2017-11-19 17:24:38 +0000  /usr/bin/codesign exited with 0
+2017-11-19 17:24:38 +0000  
+2017-11-19 17:24:38 +0000  2017-11-19 17:24:38 +0000  Applying entitlements delta for <IDEDistributionItem: 0x7fdd2bce7460 'com.apple.dt.runtime.swiftDarwin' '<DVTFilePath:0x7fdd182d1560:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftDarwin.dylib'>'> from <IDEiCloudEntitlementsProcessor: 0x7fdd191d95a0>: {
+}
+
+2017-11-19 17:24:38 +0000  Entitlements for <IDEDistributionItem: 0x7fdd2bce7460 'com.apple.dt.runtime.swiftDarwin' '<DVTFilePath:0x7fdd182d1560:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftDarwin.dylib'>'>: {
+}
+2017-11-19 17:24:38 +0000  Writing entitlements for <IDEDistributionItem: 0x7fdd2bce7460 'com.apple.dt.runtime.swiftDarwin' '<DVTFilePath:0x7fdd182d1560:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftDarwin.dylib'>'> to: /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/entitlementsSfkxxT
+2017-11-19 17:24:38 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' 'AB6BF5AF9AC822E1633016C348034B2AAB655CE4' '--preserve-metadata=identifier,flags' '--entitlements' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/entitlementsSfkxxT' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftDarwin.dylib'
+2017-11-19 17:24:38 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftDarwin.dylib: replacing existing signature
+2017-11-19 17:24:39 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftDarwin.dylib: signed Mach-O universal (armv7 armv7s arm64) [com.apple.dt.runtime.swiftDarwin]
+2017-11-19 17:24:39 +0000  
+2017-11-19 17:24:39 +0000  
+2017-11-19 17:24:39 +0000  /usr/bin/codesign exited with 0
+2017-11-19 17:24:39 +0000  
+2017-11-19 17:24:39 +0000  2017-11-19 17:24:39 +0000  Applying entitlements delta for <IDEDistributionItem: 0x7fdd16b3d290 'com.apple.dt.runtime.swiftDispatch' '<DVTFilePath:0x7fdd1829f6a0:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftDispatch.dylib'>'> from <IDEiCloudEntitlementsProcessor: 0x7fdd185537b0>: {
+}
+
+2017-11-19 17:24:39 +0000  Entitlements for <IDEDistributionItem: 0x7fdd16b3d290 'com.apple.dt.runtime.swiftDispatch' '<DVTFilePath:0x7fdd1829f6a0:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftDispatch.dylib'>'>: {
+}
+2017-11-19 17:24:39 +0000  Writing entitlements for <IDEDistributionItem: 0x7fdd16b3d290 'com.apple.dt.runtime.swiftDispatch' '<DVTFilePath:0x7fdd1829f6a0:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftDispatch.dylib'>'> to: /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/entitlements6zwlPW
+2017-11-19 17:24:39 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' 'AB6BF5AF9AC822E1633016C348034B2AAB655CE4' '--preserve-metadata=identifier,flags' '--entitlements' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/entitlements6zwlPW' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftDispatch.dylib'
+2017-11-19 17:24:39 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftDispatch.dylib: replacing existing signature
+2017-11-19 17:24:39 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftDispatch.dylib: signed Mach-O universal (armv7 armv7s arm64) [com.apple.dt.runtime.swiftDispatch]
+2017-11-19 17:24:39 +0000  
+2017-11-19 17:24:39 +0000  /usr/bin/codesign exited with 0
+2017-11-19 17:24:39 +0000  
+2017-11-19 17:24:39 +0000  
+2017-11-19 17:24:39 +0000  Applying entitlements delta for <IDEDistributionItem: 0x7fdd19219350 'com.apple.dt.runtime.swiftFoundation' '<DVTFilePath:0x7fdd29f2eda0:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftFoundation.dylib'>'> from <IDEiCloudEntitlementsProcessor: 0x7fdd1914b280>: {
+}
+2017-11-19 17:24:39 +0000  Entitlements for <IDEDistributionItem: 0x7fdd19219350 'com.apple.dt.runtime.swiftFoundation' '<DVTFilePath:0x7fdd29f2eda0:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftFoundation.dylib'>'>: {
+}
+2017-11-19 17:24:39 +0000  Writing entitlements for <IDEDistributionItem: 0x7fdd19219350 'com.apple.dt.runtime.swiftFoundation' '<DVTFilePath:0x7fdd29f2eda0:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftFoundation.dylib'>'> to: /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/entitlementsiw3Otn
+2017-11-19 17:24:39 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' 'AB6BF5AF9AC822E1633016C348034B2AAB655CE4' '--preserve-metadata=identifier,flags' '--entitlements' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/entitlementsiw3Otn' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftFoundation.dylib'
+2017-11-19 17:24:40 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftFoundation.dylib: replacing existing signature
+2017-11-19 17:24:43 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftFoundation.dylib: signed Mach-O universal (armv7 armv7s arm64) [com.apple.dt.runtime.swiftFoundation]
+2017-11-19 17:24:43 +0000  
+2017-11-19 17:24:43 +0000  
+2017-11-19 17:24:43 +0000  /usr/bin/codesign exited with 0
+2017-11-19 17:24:43 +0000  
+2017-11-19 17:24:43 +0000  
+2017-11-19 17:24:43 +0000  Applying entitlements delta for <IDEDistributionItem: 0x7fdd2bdc0500 'com.apple.dt.runtime.swiftMetal' '<DVTFilePath:0x7fdd191d3600:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftMetal.dylib'>'> from <IDEiCloudEntitlementsProcessor: 0x7fdd289c60d0>: {
+}
+2017-11-19 17:24:43 +0000  Entitlements for <IDEDistributionItem: 0x7fdd2bdc0500 'com.apple.dt.runtime.swiftMetal' '<DVTFilePath:0x7fdd191d3600:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftMetal.dylib'>'>: {
+}
+2017-11-19 17:24:43 +0000  Writing entitlements for <IDEDistributionItem: 0x7fdd2bdc0500 'com.apple.dt.runtime.swiftMetal' '<DVTFilePath:0x7fdd191d3600:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftMetal.dylib'>'> to: /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/entitlementsK04I1U
+2017-11-19 17:24:43 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' 'AB6BF5AF9AC822E1633016C348034B2AAB655CE4' '--preserve-metadata=identifier,flags' '--entitlements' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/entitlementsK04I1U' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftMetal.dylib'
+2017-11-19 17:24:43 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftMetal.dylib: replacing existing signature
+2017-11-19 17:24:43 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftMetal.dylib: signed Mach-O universal (armv7 armv7s arm64) [com.apple.dt.runtime.swiftMetal]
+2017-11-19 17:24:43 +0000  2017-11-19 17:24:43 +0000  /usr/bin/codesign exited with 0
+
+2017-11-19 17:24:43 +0000  
+2017-11-19 17:24:43 +0000  
+2017-11-19 17:24:43 +0000  Applying entitlements delta for <IDEDistributionItem: 0x7fdd192163d0 'com.apple.dt.runtime.swiftObjectiveC' '<DVTFilePath:0x7fdd191f8890:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftObjectiveC.dylib'>'> from <IDEiCloudEntitlementsProcessor: 0x7fdd19175f00>: {
+}
+2017-11-19 17:24:43 +0000  Entitlements for <IDEDistributionItem: 0x7fdd192163d0 'com.apple.dt.runtime.swiftObjectiveC' '<DVTFilePath:0x7fdd191f8890:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftObjectiveC.dylib'>'>: {
+}
+2017-11-19 17:24:43 +0000  Writing entitlements for <IDEDistributionItem: 0x7fdd192163d0 'com.apple.dt.runtime.swiftObjectiveC' '<DVTFilePath:0x7fdd191f8890:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftObjectiveC.dylib'>'> to: /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/entitlementszULLxr
+2017-11-19 17:24:43 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' 'AB6BF5AF9AC822E1633016C348034B2AAB655CE4' '--preserve-metadata=identifier,flags' '--entitlements' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/entitlementszULLxr' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftObjectiveC.dylib'
+2017-11-19 17:24:43 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftObjectiveC.dylib: replacing existing signature
+2017-11-19 17:24:43 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftObjectiveC.dylib: signed Mach-O universal (armv7 armv7s arm64) [com.apple.dt.runtime.swiftObjectiveC]
+2017-11-19 17:24:43 +0000  
+2017-11-19 17:24:43 +0000  
+2017-11-19 17:24:43 +0000  /usr/bin/codesign exited with 0
+2017-11-19 17:24:43 +0000  
+2017-11-19 17:24:43 +0000  
+2017-11-19 17:24:43 +0000  Applying entitlements delta for <IDEDistributionItem: 0x7fdd182d1aa0 'com.apple.dt.runtime.swiftQuartzCore' '<DVTFilePath:0x7fdd191fae70:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftQuartzCore.dylib'>'> from <IDEiCloudEntitlementsProcessor: 0x7fdd191dacc0>: {
+}
+2017-11-19 17:24:43 +0000  Entitlements for <IDEDistributionItem: 0x7fdd182d1aa0 'com.apple.dt.runtime.swiftQuartzCore' '<DVTFilePath:0x7fdd191fae70:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftQuartzCore.dylib'>'>: {
+}
+2017-11-19 17:24:43 +0000  Writing entitlements for <IDEDistributionItem: 0x7fdd182d1aa0 'com.apple.dt.runtime.swiftQuartzCore' '<DVTFilePath:0x7fdd191fae70:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftQuartzCore.dylib'>'> to: /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/entitlements7eoYx1
+2017-11-19 17:24:43 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' 'AB6BF5AF9AC822E1633016C348034B2AAB655CE4' '--preserve-metadata=identifier,flags' '--entitlements' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/entitlements7eoYx1' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftQuartzCore.dylib'
+2017-11-19 17:24:43 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftQuartzCore.dylib: replacing existing signature
+2017-11-19 17:24:44 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftQuartzCore.dylib: signed Mach-O universal (armv7 armv7s arm64) [com.apple.dt.runtime.swiftQuartzCore]
+2017-11-19 17:24:44 +0000  2017-11-19 17:24:44 +0000  
+
+2017-11-19 17:24:44 +0000  /usr/bin/codesign exited with 0
+2017-11-19 17:24:44 +0000  
+2017-11-19 17:24:44 +0000  
+2017-11-19 17:24:44 +0000  Applying entitlements delta for <IDEDistributionItem: 0x7fdd19217520 'com.apple.dt.runtime.swiftUIKit' '<DVTFilePath:0x7fdd2df51720:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftUIKit.dylib'>'> from <IDEiCloudEntitlementsProcessor: 0x7fdd18536d70>: {
+}
+2017-11-19 17:24:44 +0000  Entitlements for <IDEDistributionItem: 0x7fdd19217520 'com.apple.dt.runtime.swiftUIKit' '<DVTFilePath:0x7fdd2df51720:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftUIKit.dylib'>'>: {
+}
+2017-11-19 17:24:44 +0000  Writing entitlements for <IDEDistributionItem: 0x7fdd19217520 'com.apple.dt.runtime.swiftUIKit' '<DVTFilePath:0x7fdd2df51720:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftUIKit.dylib'>'> to: /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/entitlements61sSED
+2017-11-19 17:24:44 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' 'AB6BF5AF9AC822E1633016C348034B2AAB655CE4' '--preserve-metadata=identifier,flags' '--entitlements' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/entitlements61sSED' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftUIKit.dylib'
+2017-11-19 17:24:44 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftUIKit.dylib: replacing existing signature
+2017-11-19 17:24:44 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftUIKit.dylib: signed Mach-O universal (armv7 armv7s arm64) [com.apple.dt.runtime.swiftUIKit]
+2017-11-19 17:24:44 +0000  2017-11-19 17:24:44 +0000  
+
+2017-11-19 17:24:44 +0000  
+2017-11-19 17:24:44 +0000  /usr/bin/codesign exited with 0
+2017-11-19 17:24:44 +0000  
+2017-11-19 17:24:44 +0000  
+2017-11-19 17:24:44 +0000  Applying entitlements delta for <IDEDistributionItem: 0x7fdd182ad380 'com.apple.dt.runtime.swiftos' '<DVTFilePath:0x7fdd191f9b60:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftos.dylib'>'> from <IDEiCloudEntitlementsProcessor: 0x7fdd191c6fb0>: {
+}
+2017-11-19 17:24:44 +0000  Entitlements for <IDEDistributionItem: 0x7fdd182ad380 'com.apple.dt.runtime.swiftos' '<DVTFilePath:0x7fdd191f9b60:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftos.dylib'>'>: {
+}
+2017-11-19 17:24:44 +0000  Writing entitlements for <IDEDistributionItem: 0x7fdd182ad380 'com.apple.dt.runtime.swiftos' '<DVTFilePath:0x7fdd191f9b60:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/Frameworks/libswiftos.dylib'>'> to: /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/entitlementsigd6nI
+2017-11-19 17:24:44 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' 'AB6BF5AF9AC822E1633016C348034B2AAB655CE4' '--preserve-metadata=identifier,flags' '--entitlements' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/entitlementsigd6nI' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftos.dylib'
+2017-11-19 17:24:45 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftos.dylib: replacing existing signature
+2017-11-19 17:24:46 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/Frameworks/libswiftos.dylib: signed Mach-O universal (armv7 armv7s arm64) [com.apple.dt.runtime.swiftos]
+2017-11-19 17:24:46 +0000  2017-11-19 17:24:46 +0000  /usr/bin/codesign exited with 0
+
+2017-11-19 17:24:46 +0000  2017-11-19 17:24:46 +0000  
+
+2017-11-19 17:24:46 +0000  Applying entitlements delta for <IDEDistributionItem: 0x7fdd1921b640 'co.firstcrush.first-crush.OneSignalNotificationServiceExtension' '<DVTFilePath:0x7fdd16c7b2e0:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/PlugIns/OneSignalNotificationServiceExtension.appex'>'> from <IDEiCloudEntitlementsProcessor: 0x7fdd28ece7e0>: {
+}
+2017-11-19 17:24:46 +0000  Entitlements for <IDEDistributionItem: 0x7fdd1921b640 'co.firstcrush.first-crush.OneSignalNotificationServiceExtension' '<DVTFilePath:0x7fdd16c7b2e0:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/PlugIns/OneSignalNotificationServiceExtension.appex'>'>: {
+    "application-identifier" = "E3B7R4BZNB.co.firstcrush.first-crush.OneSignalNotificationServiceExtension";
+    "beta-reports-active" = 1;
+    "com.apple.developer.team-identifier" = E3B7R4BZNB;
+    "get-task-allow" = 0;
+    "keychain-access-groups" =     (
+        "E3B7R4BZNB.co.firstcrush.first-crush.OneSignalNotificationServiceExtension"
+    );
+}
+2017-11-19 17:24:46 +0000  Writing entitlements for <IDEDistributionItem: 0x7fdd1921b640 'co.firstcrush.first-crush.OneSignalNotificationServiceExtension' '<DVTFilePath:0x7fdd16c7b2e0:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app/PlugIns/OneSignalNotificationServiceExtension.appex'>'> to: /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/entitlementsO9Jtm3
+2017-11-19 17:24:46 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' 'AB6BF5AF9AC822E1633016C348034B2AAB655CE4' '--preserve-metadata=identifier,flags' '--entitlements' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/entitlementsO9Jtm3' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/PlugIns/OneSignalNotificationServiceExtension.appex'
+2017-11-19 17:24:47 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app/PlugIns/OneSignalNotificationServiceExtension.appex: signed bundle with Mach-O universal (armv7 arm64) [co.firstcrush.first-crush.OneSignalNotificationServiceExtension]
+2017-11-19 17:24:47 +0000  2017-11-19 17:24:47 +0000  /usr/bin/codesign exited with 0
+
+2017-11-19 17:24:47 +0000  
+2017-11-19 17:24:47 +0000  Applying entitlements delta for <IDEDistributionItem: 0x7fdd1843e250 'co.firstcrush.first-crush' '<DVTFilePath:0x7fdd2bf495a0:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app'>'> from <IDEiCloudEntitlementsProcessor: 0x7fdd185c6680>: {
+}
+2017-11-19 17:24:47 +0000  Entitlements for <IDEDistributionItem: 0x7fdd1843e250 'co.firstcrush.first-crush' '<DVTFilePath:0x7fdd2bf495a0:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app'>'>: {
+    "application-identifier" = "E3B7R4BZNB.co.firstcrush.first-crush";
+    "aps-environment" = production;
+    "beta-reports-active" = 1;
+    "com.apple.developer.team-identifier" = E3B7R4BZNB;
+    "get-task-allow" = 0;
+}
+2017-11-19 17:24:47 +0000  Writing entitlements for <IDEDistributionItem: 0x7fdd1843e250 'co.firstcrush.first-crush' '<DVTFilePath:0x7fdd2bf495a0:'/Users/sumitjohri/Library/Developer/Xcode/Archives/2017-11-19/First Crush 19-11-17, 9.22 AM.xcarchive/Products/Applications/First Crush.app'>'> to: /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/entitlementshryFxS
+2017-11-19 17:24:47 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' 'AB6BF5AF9AC822E1633016C348034B2AAB655CE4' '--preserve-metadata=identifier,flags' '--entitlements' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/entitlementshryFxS' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app'
+2017-11-19 17:24:47 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app: replacing existing signature
+2017-11-19 17:24:48 +0000  /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root/Payload/First Crush.app: signed app bundle with Mach-O universal (armv7 arm64) [co.firstcrush.first-crush]
+2017-11-19 17:24:48 +0000  
+2017-11-19 17:24:48 +0000  /usr/bin/codesign exited with 0
+2017-11-19 17:24:48 +0000  2017-11-19 17:24:48 +0000  Processing step: IDEDistributionStreamingZipItemStep
+2017-11-19 17:24:48 +0000  
+
+2017-11-19 17:24:48 +0000  Skipping step: IDEDistributionStreamingZipItemStep because it said so
+2017-11-19 17:24:48 +0000  Skipping step: IDEDistributionStreamingZipItemStep because it said so
+2017-11-19 17:24:48 +0000  Skipping step: IDEDistributionStreamingZipItemStep because it said so
+2017-11-19 17:24:49 +0000  Skipping step: IDEDistributionStreamingZipItemStep because it said so
+2017-11-19 17:24:49 +0000  Skipping step: IDEDistributionStreamingZipItemStep because it said so
+2017-11-19 17:24:49 +0000  Skipping step: IDEDistributionStreamingZipItemStep because it said so
+2017-11-19 17:24:49 +0000  Skipping step: IDEDistributionStreamingZipItemStep because it said so
+2017-11-19 17:24:49 +0000  Skipping step: IDEDistributionStreamingZipItemStep because it said so
+2017-11-19 17:24:49 +0000  Skipping step: IDEDistributionStreamingZipItemStep because it said so
+2017-11-19 17:24:49 +0000  Skipping step: IDEDistributionStreamingZipItemStep because it said so
+2017-11-19 17:24:49 +0000  Skipping step: IDEDistributionStreamingZipItemStep because it said so
+2017-11-19 17:24:49 +0000  Skipping step: IDEDistributionStreamingZipItemStep because it said so
+2017-11-19 17:24:49 +0000  Skipping step: IDEDistributionStreamingZipItemStep because it said so
+2017-11-19 17:24:49 +0000  Skipping step: IDEDistributionStreamingZipItemStep because it said so
+2017-11-19 17:24:49 +0000  Processing step: IDEDistributionCreateIPAStep
+2017-11-19 17:24:49 +0000  Running /usr/bin/rsync '-8aPhhE' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Symbols' '--link-dest' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root'
+2017-11-19 17:24:49 +0000  building file list ... 
+2017-11-19 17:24:49 +0000   0 files...2017-11-19 17:24:49 +0000  41 files to consider
+2017-11-19 17:24:49 +0000  Symbols/
+2017-11-19 17:24:49 +0000  
+sent 2.25K bytes  received 26 bytes  4.55K bytes/sec
+total size is 20.65M  speedup is 9296.71
+2017-11-19 17:24:49 +0000  
+2017-11-19 17:24:49 +0000  
+2017-11-19 17:24:49 +0000  /usr/bin/rsync exited with 0
+2017-11-19 17:24:49 +0000  
+2017-11-19 17:24:49 +0000  2017-11-19 17:24:49 +0000  Running /usr/bin/ditto '-V' '-c' '-k' '--norsrc' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root' '/var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Packages/First Crush.ipa'
+
+2017-11-19 17:24:49 +0000  >>> Copying /var/folders/y4/3xhzm9391msd4vnz6l9rxnw80000gn/T/XcodeDistPipeline.MnN/Root 
+2017-11-19 17:24:49 +0000  copying file ./Payload/First Crush.app/_CodeSignature/CodeResources ... 
+2017-11-19 17:24:49 +0000  24357 bytes for ./Payload/First Crush.app/_CodeSignature/CodeResources
+2017-11-19 17:24:49 +0000  copying file ./Payload/First Crush.app/AppIcon20x20@2x.png ... 
+4662 bytes for ./Payload/First Crush.app/AppIcon20x20@2x.png
+copying file ./Payload/First Crush.app/AppIcon20x20@2x~ipad.png ... 
+4662 bytes for ./Payload/First Crush.app/AppIcon20x20@2x~ipad.png
+copying file ./Payload/First Crush.app/AppIcon20x20@3x.png ... 
+2017-11-19 17:24:49 +0000  9660 bytes for ./Payload/First Crush.app/AppIcon20x20@3x.png
+copying file ./Payload/First Crush.app/AppIcon20x20~ipad.png ... 
+1380 bytes for ./Payload/First Crush.app/AppIcon20x20~ipad.png
+copying file ./Payload/First Crush.app/AppIcon29x29@2x.png ... 
+9037 bytes for ./Payload/First Crush.app/AppIcon29x29@2x.png
+copying file ./Payload/First Crush.app/AppIcon29x29@2x~ipad.png ... 
+9037 bytes for ./Payload/First Crush.app/AppIcon29x29@2x~ipad.png
+copying file ./Payload/First Crush.app/AppIcon29x29@3x.png ... 
+2017-11-19 17:24:49 +0000  18725 bytes for ./Payload/First Crush.app/AppIcon29x29@3x.png
+copying file ./Payload/First Crush.app/AppIcon29x29~ipad.png ... 
+2620 bytes for ./Payload/First Crush.app/AppIcon29x29~ipad.png
+copying file ./Payload/First Crush.app/AppIcon40x40@2x.png ... 
+2017-11-19 17:24:49 +0000  16089 bytes for ./Payload/First Crush.app/AppIcon40x40@2x.png
+copying file ./Payload/First Crush.app/AppIcon40x40@2x~ipad.png ... 
+16089 bytes for ./Payload/First Crush.app/AppIcon40x40@2x~ipad.png
+copying file ./Payload/First Crush.app/AppIcon40x40@3x.png ... 
+2017-11-19 17:24:49 +0000  32769 bytes for ./Payload/First Crush.app/AppIcon40x40@3x.png
+copying file ./Payload/First Crush.app/AppIcon40x40~ipad.png ... 
+2017-11-19 17:24:49 +0000  4662 bytes for ./Payload/First Crush.app/AppIcon40x40~ipad.png
+copying file ./Payload/First Crush.app/AppIcon60x60@2x.png ... 
+2017-11-19 17:24:49 +0000  32769 bytes for ./Payload/First Crush.app/AppIcon60x60@2x.png
+copying file ./Payload/First Crush.app/AppIcon60x60@3x.png ... 
+2017-11-19 17:24:49 +0000  66819 bytes for ./Payload/First Crush.app/AppIcon60x60@3x.png
+copying file ./Payload/First Crush.app/AppIcon76x76@2x~ipad.png ... 
+2017-11-19 17:24:49 +0000  49727 bytes for ./Payload/First Crush.app/AppIcon76x76@2x~ipad.png
+2017-11-19 17:24:49 +0000  copying file ./Payload/First Crush.app/AppIcon76x76~ipad.png ... 
+14725 bytes for ./Payload/First Crush.app/AppIcon76x76~ipad.png
+copying file ./Payload/First Crush.app/AppIcon83.5x83.5@2x~ipad.png ... 
+2017-11-19 17:24:49 +0000  58466 bytes for ./Payload/First Crush.app/AppIcon83.5x83.5@2x~ipad.png
+copying file ./Payload/First Crush.app/archived-expanded-entitlements.xcent ... 
+2017-11-19 17:24:49 +0000  246 bytes for ./Payload/First Crush.app/archived-expanded-entitlements.xcent
+copying file ./Payload/First Crush.app/Assets.car ... 
+2017-11-19 17:24:49 +0000  1551048 bytes for ./Payload/First Crush.app/Assets.car
+2017-11-19 17:24:49 +0000  copying file ./Payload/First Crush.app/Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib ... 
+2337 bytes for ./Payload/First Crush.app/Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib
+copying file ./Payload/First Crush.app/Base.lproj/LaunchScreen.storyboardc/Info.plist ... 
+258 bytes for ./Payload/First Crush.app/Base.lproj/LaunchScreen.storyboardc/Info.plist
+copying file ./Payload/First Crush.app/Base.lproj/LaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib ... 
+832 bytes for ./Payload/First Crush.app/Base.lproj/LaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib
+copying file ./Payload/First Crush.app/Base.lproj/Main.storyboardc/BYZ-38-t0r-view-8bC-Xf-vdC.nib ... 
+2300 bytes for ./Payload/First Crush.app/Base.lproj/Main.storyboardc/BYZ-38-t0r-view-8bC-Xf-vdC.nib
+copying file ./Payload/First Crush.app/Base.lproj/Main.storyboardc/hzr-NA-Ne1-view-0OW-wk-IsF.nib ... 
+2100 bytes for ./Payload/First Crush.app/Base.lproj/Main.storyboardc/hzr-NA-Ne1-view-0OW-wk-IsF.nib
+copying file ./Payload/First Crush.app/Base.lproj/Main.storyboardc/Info.plist ... 
+264 bytes for ./Payload/First Crush.app/Base.lproj/Main.storyboardc/Info.plist
+copying file ./Payload/First Crush.app/Base.lproj/Main.storyboardc/MS0-sj-iT1-view-Udx-Se-c8Z.nib ... 
+2100 bytes for ./Payload/First Crush.app/Base.lproj/Main.storyboardc/MS0-sj-iT1-view-Udx-Se-c8Z.nib
+copying file ./Payload/First Crush.app/Base.lproj/Main.storyboardc/psL-4k-8u1-view-bV0-hA-8Mh.nib ... 
+2103 bytes for ./Payload/First Crush.app/Base.lproj/Main.storyboardc/psL-4k-8u1-view-bV0-hA-8Mh.nib
+copying file ./Payload/First Crush.app/Base.lproj/Main.storyboardc/UITabBarController-O3H-hv-Mio.nib ... 
+5762 bytes for ./Payload/First Crush.app/Base.lproj/Main.storyboardc/UITabBarController-O3H-hv-Mio.nib
+copying file ./Payload/First Crush.app/bell.png ... 
+253 bytes for ./Payload/First Crush.app/bell.png
+copying file ./Payload/First Crush.app/button-play.png ... 
+460 bytes for ./Payload/First Crush.app/button-play.png
+copying file ./Payload/First Crush.app/Default.png ... 
+266239 bytes for ./Payload/First Crush.app/Default.png
+copying file ./Payload/First Crush.app/embedded.mobileprovision ... 
+9535 bytes for ./Payload/First Crush.app/embedded.mobileprovision
+copying file ./Payload/First Crush.app/First Crush ... 
+2017-11-19 17:24:49 +0000  915456 bytes for ./Payload/First Crush.app/First Crush
+2017-11-19 17:24:49 +0000  copying file ./Payload/First Crush.app/Frameworks/libswiftCore.dylib ... 
+2017-11-19 17:24:50 +0000  21080000 bytes for ./Payload/First Crush.app/Frameworks/libswiftCore.dylib
+copying file ./Payload/First Crush.app/Frameworks/libswiftCoreFoundation.dylib ... 
+2017-11-19 17:24:51 +0000  208704 bytes for ./Payload/First Crush.app/Frameworks/libswiftCoreFoundation.dylib
+copying file ./Payload/First Crush.app/Frameworks/libswiftCoreGraphics.dylib ... 
+2017-11-19 17:24:51 +0000  578160 bytes for ./Payload/First Crush.app/Frameworks/libswiftCoreGraphics.dylib
+2017-11-19 17:24:51 +0000  copying file ./Payload/First Crush.app/Frameworks/libswiftCoreImage.dylib ... 
+209264 bytes for ./Payload/First Crush.app/Frameworks/libswiftCoreImage.dylib
+copying file ./Payload/First Crush.app/Frameworks/libswiftDarwin.dylib ... 
+2017-11-19 17:24:51 +0000  303472 bytes for ./Payload/First Crush.app/Frameworks/libswiftDarwin.dylib
+copying file ./Payload/First Crush.app/Frameworks/libswiftDispatch.dylib ... 
+2017-11-19 17:24:51 +0000  1009664 bytes for ./Payload/First Crush.app/Frameworks/libswiftDispatch.dylib
+copying file ./Payload/First Crush.app/Frameworks/libswiftFoundation.dylib ... 
+2017-11-19 17:24:53 +0000  8425728 bytes for ./Payload/First Crush.app/Frameworks/libswiftFoundation.dylib
+copying file ./Payload/First Crush.app/Frameworks/libswiftMetal.dylib ... 
+2017-11-19 17:24:53 +0000  251664 bytes for ./Payload/First Crush.app/Frameworks/libswiftMetal.dylib
+copying file ./Payload/First Crush.app/Frameworks/libswiftObjectiveC.dylib ... 
+2017-11-19 17:24:53 +0000  259344 bytes for ./Payload/First Crush.app/Frameworks/libswiftObjectiveC.dylib
+copying file ./Payload/First Crush.app/Frameworks/libswiftos.dylib ... 
+2017-11-19 17:24:53 +0000  249312 bytes for ./Payload/First Crush.app/Frameworks/libswiftos.dylib
+copying file ./Payload/First Crush.app/Frameworks/libswiftQuartzCore.dylib ... 
+2017-11-19 17:24:53 +0000  212608 bytes for ./Payload/First Crush.app/Frameworks/libswiftQuartzCore.dylib
+copying file ./Payload/First Crush.app/Frameworks/libswiftUIKit.dylib ... 
+2017-11-19 17:24:53 +0000  361888 bytes for ./Payload/First Crush.app/Frameworks/libswiftUIKit.dylib
+2017-11-19 17:24:53 +0000  copying file ./Payload/First Crush.app/home new.png ... 
+329 bytes for ./Payload/First Crush.app/home new.png
+copying file ./Payload/First Crush.app/home.png ... 
+246 bytes for ./Payload/First Crush.app/home.png
+copying file ./Payload/First Crush.app/Info.plist ... 
+2044 bytes for ./Payload/First Crush.app/Info.plist
+copying file ./Payload/First Crush.app/LaunchImage-568h@2x.png ... 
+2017-11-19 17:24:53 +0000  323480 bytes for ./Payload/First Crush.app/LaunchImage-568h@2x.png
+copying file ./Payload/First Crush.app/LaunchImage-700-568h@2x.png ... 
+2017-11-19 17:24:53 +0000  323480 bytes for ./Payload/First Crush.app/LaunchImage-700-568h@2x.png
+2017-11-19 17:24:53 +0000  copying file ./Payload/First Crush.app/LaunchImage-700-Landscape@2x~ipad.png ... 
+2017-11-19 17:24:53 +0000  880413 bytes for ./Payload/First Crush.app/LaunchImage-700-Landscape@2x~ipad.png
+copying file ./Payload/First Crush.app/LaunchImage-700-Landscape~ipad.png ... 
+2017-11-19 17:24:53 +0000  282059 bytes for ./Payload/First Crush.app/LaunchImage-700-Landscape~ipad.png
+copying file ./Payload/First Crush.app/LaunchImage-700-Portrait@2x~ipad.png ... 
+2017-11-19 17:24:53 +0000  868643 bytes for ./Payload/First Crush.app/LaunchImage-700-Portrait@2x~ipad.png
+copying file ./Payload/First Crush.app/LaunchImage-700-Portrait~ipad.png ... 
+2017-11-19 17:24:54 +0000  279859 bytes for ./Payload/First Crush.app/LaunchImage-700-Portrait~ipad.png
+2017-11-19 17:24:54 +0000  copying file ./Payload/First Crush.app/LaunchImage-700@2x.png ... 
+2017-11-19 17:24:54 +0000  244915 bytes for ./Payload/First Crush.app/LaunchImage-700@2x.png
+copying file ./Payload/First Crush.app/LaunchImage-800-667h@2x.png ... 
+2017-11-19 17:24:54 +0000  424014 bytes for ./Payload/First Crush.app/LaunchImage-800-667h@2x.png
+2017-11-19 17:24:54 +0000  copying file ./Payload/First Crush.app/LaunchImage-800-Landscape-736h@3x.png ... 
+2017-11-19 17:24:54 +0000  786323 bytes for ./Payload/First Crush.app/LaunchImage-800-Landscape-736h@3x.png
+copying file ./Payload/First Crush.app/LaunchImage-800-Portrait-736h@3x.png ... 
+2017-11-19 17:24:54 +0000  913871 bytes for ./Payload/First Crush.app/LaunchImage-800-Portrait-736h@3x.png
+copying file ./Payload/First Crush.app/LaunchImage-Landscape@2x~ipad.png ... 
+2017-11-19 17:24:54 +0000  880413 bytes for ./Payload/First Crush.app/LaunchImage-Landscape@2x~ipad.png
+copying file ./Payload/First Crush.app/LaunchImage-Landscape~ipad.png ... 
+2017-11-19 17:24:54 +0000  282059 bytes for ./Payload/First Crush.app/LaunchImage-Landscape~ipad.png
+2017-11-19 17:24:54 +0000  copying file ./Payload/First Crush.app/LaunchImage-Portrait@2x~ipad.png ... 
+2017-11-19 17:24:55 +0000  868643 bytes for ./Payload/First Crush.app/LaunchImage-Portrait@2x~ipad.png
+copying file ./Payload/First Crush.app/LaunchImage-Portrait~ipad.png ... 
+2017-11-19 17:24:55 +0000  279859 bytes for ./Payload/First Crush.app/LaunchImage-Portrait~ipad.png
+copying file ./Payload/First Crush.app/LaunchImage.png ... 
+71469 bytes for ./Payload/First Crush.app/LaunchImage.png
+copying file ./Payload/First Crush.app/LaunchImage@2x.png ... 
+244915 bytes for ./Payload/First Crush.app/LaunchImage@2x.png
+copying file ./Payload/First Crush.app/PkgInfo ... 
+8 bytes for ./Payload/First Crush.app/PkgInfo
+copying file ./Payload/First Crush.app/PlugIns/OneSignalNotificationServiceExtension.appex/_CodeSignature/CodeResources ... 
+2846 bytes for ./Payload/First Crush.app/PlugIns/OneSignalNotificationServiceExtension.appex/_CodeSignature/CodeResources
+copying file ./Payload/First Crush.app/PlugIns/OneSignalNotificationServiceExtension.appex/archived-expanded-entitlements.xcent ... 
+464 bytes for ./Payload/First Crush.app/PlugIns/OneSignalNotificationServiceExtension.appex/archived-expanded-entitlements.xcent
+copying file ./Payload/First Crush.app/PlugIns/OneSignalNotificationServiceExtension.appex/embedded.mobileprovision ... 
+9338 bytes for ./Payload/First Crush.app/PlugIns/OneSignalNotificationServiceExtension.appex/embedded.mobileprovision
+copying file ./Payload/First Crush.app/PlugIns/OneSignalNotificationServiceExtension.appex/Info.plist ... 
+988 bytes for ./Payload/First Crush.app/PlugIns/OneSignalNotificationServiceExtension.appex/Info.plist
+copying file ./Payload/First Crush.app/PlugIns/OneSignalNotificationServiceExtension.appex/OneSignalNotificationServiceExtension ... 
+2017-11-19 17:24:55 +0000  659584 bytes for ./Payload/First Crush.app/PlugIns/OneSignalNotificationServiceExtension.appex/OneSignalNotificationServiceExtension
+2017-11-19 17:24:55 +0000  copying file ./Payload/First Crush.app/user_male.png ... 
+272 bytes for ./Payload/First Crush.app/user_male.png
+copying file ./SwiftSupport/iphoneos/libswiftCore.dylib ... 
+2017-11-19 17:25:08 +0000  68838832 bytes for ./SwiftSupport/iphoneos/libswiftCore.dylib
+copying file ./SwiftSupport/iphoneos/libswiftCoreFoundation.dylib ... 
+2017-11-19 17:25:08 +0000  257584 bytes for ./SwiftSupport/iphoneos/libswiftCoreFoundation.dylib
+2017-11-19 17:25:08 +0000  copying file ./SwiftSupport/iphoneos/libswiftCoreGraphics.dylib ... 
+2017-11-19 17:25:08 +0000  1268736 bytes for ./SwiftSupport/iphoneos/libswiftCoreGraphics.dylib
+2017-11-19 17:25:08 +0000  copying file ./SwiftSupport/iphoneos/libswiftCoreImage.dylib ... 
+2017-11-19 17:25:08 +0000  258160 bytes for ./SwiftSupport/iphoneos/libswiftCoreImage.dylib
+copying file ./SwiftSupport/iphoneos/libswiftDarwin.dylib ... 
+2017-11-19 17:25:08 +0000  599168 bytes for ./SwiftSupport/iphoneos/libswiftDarwin.dylib
+copying file ./SwiftSupport/iphoneos/libswiftDispatch.dylib ... 
+2017-11-19 17:25:09 +0000  2440624 bytes for ./SwiftSupport/iphoneos/libswiftDispatch.dylib
+copying file ./SwiftSupport/iphoneos/libswiftFoundation.dylib ... 
+2017-11-19 17:25:13 +0000  27922864 bytes for ./SwiftSupport/iphoneos/libswiftFoundation.dylib
+copying file ./SwiftSupport/iphoneos/libswiftMetal.dylib ... 
+2017-11-19 17:25:13 +0000  399264 bytes for ./SwiftSupport/iphoneos/libswiftMetal.dylib
+copying file ./SwiftSupport/iphoneos/libswiftObjectiveC.dylib ... 
+2017-11-19 17:25:13 +0000  505680 bytes for ./SwiftSupport/iphoneos/libswiftObjectiveC.dylib
+copying file ./SwiftSupport/iphoneos/libswiftos.dylib ... 
+2017-11-19 17:25:13 +0000  446288 bytes for ./SwiftSupport/iphoneos/libswiftos.dylib
+copying file ./SwiftSupport/iphoneos/libswiftQuartzCore.dylib ... 
+2017-11-19 17:25:13 +0000  310864 bytes for ./SwiftSupport/iphoneos/libswiftQuartzCore.dylib
+copying file ./SwiftSupport/iphoneos/libswiftUIKit.dylib ... 
+2017-11-19 17:25:13 +0000  789072 bytes for ./SwiftSupport/iphoneos/libswiftUIKit.dylib
+2017-11-19 17:25:13 +0000  copying file ./Symbols/0DCA260A-ADF7-3BB0-BCA9-ACC9A8717C99.symbols ... 
+7288 bytes for ./Symbols/0DCA260A-ADF7-3BB0-BCA9-ACC9A8717C99.symbols
+copying file ./Symbols/1CD043A2-CD22-3163-8F98-B468EEC2892E.symbols ... 
+2017-11-19 17:25:14 +0000  4424912 bytes for ./Symbols/1CD043A2-CD22-3163-8F98-B468EEC2892E.symbols
+2017-11-19 17:25:14 +0000  copying file ./Symbols/1D7154AC-BD75-3E84-B0AD-621A11D37063.symbols ... 
+38456 bytes for ./Symbols/1D7154AC-BD75-3E84-B0AD-621A11D37063.symbols
+copying file ./Symbols/298A74FE-C787-378E-B614-8BEE4A7F65C3.symbols ... 
+12208 bytes for ./Symbols/298A74FE-C787-378E-B614-8BEE4A7F65C3.symbols
+copying file ./Symbols/2A830D61-12AC-3410-841D-0EAA98D30420.symbols ... 
+23856 bytes for ./Symbols/2A830D61-12AC-3410-841D-0EAA98D30420.symbols
+copying file ./Symbols/33DF7B2D-DFB7-3E44-B9B2-2860E0BCE993.symbols ... 
+12024 bytes for ./Symbols/33DF7B2D-DFB7-3E44-B9B2-2860E0BCE993.symbols
+copying file ./Symbols/3440193D-01A2-3A2E-B814-E6082BEAF3FC.symbols ... 
+2352 bytes for ./Symbols/3440193D-01A2-3A2E-B814-E6082BEAF3FC.symbols
+copying file ./Symbols/4687A4F0-CD49-30D9-AC8D-0343DF250E0C.symbols ... 
+2017-11-19 17:25:14 +0000  12960 bytes for ./Symbols/4687A4F0-CD49-30D9-AC8D-0343DF250E0C.symbols
+copying file ./Symbols/4A28F23A-0431-31AB-9E8A-EE07AA8784E0.symbols ... 
+2017-11-19 17:25:14 +0000  55600 bytes for ./Symbols/4A28F23A-0431-31AB-9E8A-EE07AA8784E0.symbols
+2017-11-19 17:25:14 +0000  copying file ./Symbols/4B736565-3876-324D-B702-34FD4857D667.symbols ... 
+24280 bytes for ./Symbols/4B736565-3876-324D-B702-34FD4857D667.symbols
+2017-11-19 17:25:14 +0000  copying file ./Symbols/513C98C9-23B0-3EF1-9886-79E3006E92FF.symbols ... 
+2017-11-19 17:25:14 +0000  1591480 bytes for ./Symbols/513C98C9-23B0-3EF1-9886-79E3006E92FF.symbols
+copying file ./Symbols/54028052-4A70-307B-BFF2-CC759A40A625.symbols ... 
+2017-11-19 17:25:14 +0000  12960 bytes for ./Symbols/54028052-4A70-307B-BFF2-CC759A40A625.symbols
+copying file ./Symbols/58017138-A496-35AE-BE46-BE1BB713F28A.symbols ... 
+2017-11-19 17:25:14 +0000  380936 bytes for ./Symbols/58017138-A496-35AE-BE46-BE1BB713F28A.symbols
+copying file ./Symbols/607F837C-AAE9-37A3-BDE5-CA7F6F8D083B.symbols ... 
+2017-11-19 17:25:14 +0000  7288 bytes for ./Symbols/607F837C-AAE9-37A3-BDE5-CA7F6F8D083B.symbols
+copying file ./Symbols/61BB3809-7A1E-31F7-ADC9-95D06C80577B.symbols ... 
+55560 bytes for ./Symbols/61BB3809-7A1E-31F7-ADC9-95D06C80577B.symbols
+copying file ./Symbols/68056500-6DC4-366C-95BF-C0F0DA3240D9.symbols ... 
+2017-11-19 17:25:14 +0000  13128 bytes for ./Symbols/68056500-6DC4-366C-95BF-C0F0DA3240D9.symbols
+copying file ./Symbols/6BDC6B0B-294C-34F6-80DF-96AD95556D9D.symbols ... 
+2640 bytes for ./Symbols/6BDC6B0B-294C-34F6-80DF-96AD95556D9D.symbols
+copying file ./Symbols/75E701E4-5D9B-3B95-8A8C-AF2BC4F2F6B6.symbols ... 
+2017-11-19 17:25:14 +0000  672144 bytes for ./Symbols/75E701E4-5D9B-3B95-8A8C-AF2BC4F2F6B6.symbols
+copying file ./Symbols/8CBF4442-EC83-3195-9AA6-162ACA7C70D8.symbols ... 
+2017-11-19 17:25:14 +0000  96512 bytes for ./Symbols/8CBF4442-EC83-3195-9AA6-162ACA7C70D8.symbols
+copying file ./Symbols/8ECBCD9C-85EE-3DA3-B89D-16C15C9652D5.symbols ... 
+2017-11-19 17:25:14 +0000  231936 bytes for ./Symbols/8ECBCD9C-85EE-3DA3-B89D-16C15C9652D5.symbols
+2017-11-19 17:25:14 +0000  copying file ./Symbols/A59FF381-A6A1-392D-9319-3D45FB08872A.symbols ... 
+2017-11-19 17:25:17 +0000  680624 bytes for ./Symbols/A59FF381-A6A1-392D-9319-3D45FB08872A.symbols
+2017-11-19 17:25:17 +0000  copying file ./Symbols/B1EC1A59-54E0-3567-8985-6DBD962AFCA3.symbols ... 
+2017-11-19 17:25:17 +0000  55600 bytes for ./Symbols/B1EC1A59-54E0-3567-8985-6DBD962AFCA3.symbols
+2017-11-19 17:25:17 +0000  copying file ./Symbols/B82BAD0E-530C-3E9F-AFA7-99ABCB7DE318.symbols ... 
+2017-11-19 17:25:17 +0000  2720 bytes for ./Symbols/B82BAD0E-530C-3E9F-AFA7-99ABCB7DE318.symbols
+2017-11-19 17:25:17 +0000  copying file ./Symbols/BC4CE972-AA93-39B1-AD07-1F154DFE84AB.symbols ... 
+2017-11-19 17:25:17 +0000  234176 bytes for ./Symbols/BC4CE972-AA93-39B1-AD07-1F154DFE84AB.symbols
+2017-11-19 17:25:17 +0000  copying file ./Symbols/BD37ACF3-A8D0-38B2-93EC-7961B8617604.symbols ... 
+2017-11-19 17:25:17 +0000  4443880 bytes for ./Symbols/BD37ACF3-A8D0-38B2-93EC-7961B8617604.symbols
+copying file ./Symbols/C2CF886B-6E9C-3D16-AE67-F6C2F6A97D97.symbols ... 
+2017-11-19 17:25:17 +0000  12208 bytes for ./Symbols/C2CF886B-6E9C-3D16-AE67-F6C2F6A97D97.symbols
+copying file ./Symbols/C2F136C9-F96B-320A-8F63-5432156DDD31.symbols ... 
+7552 bytes for ./Symbols/C2F136C9-F96B-320A-8F63-5432156DDD31.symbols
+copying file ./Symbols/C35B43BC-2D3C-3CD0-8BED-6C9CAA92F143.symbols ... 
+96288 bytes for ./Symbols/C35B43BC-2D3C-3CD0-8BED-6C9CAA92F143.symbols
+copying file ./Symbols/C5E5A346-09FC-35F7-A627-77A33F39CA0C.symbols ... 
+2640 bytes for ./Symbols/C5E5A346-09FC-35F7-A627-77A33F39CA0C.symbols
+copying file ./Symbols/C99C131E-EDA3-3F9A-9633-9D108703F344.symbols ... 
+2017-11-19 17:25:17 +0000  1591632 bytes for ./Symbols/C99C131E-EDA3-3F9A-9633-9D108703F344.symbols
+copying file ./Symbols/CE43E435-BB9F-3C78-8019-D2A13B9DAFD0.symbols ... 
+2017-11-19 17:25:18 +0000  96448 bytes for ./Symbols/CE43E435-BB9F-3C78-8019-D2A13B9DAFD0.symbols
+copying file ./Symbols/D744E904-BA3F-3BCD-82EE-B8756DBB2171.symbols ... 
+2256 bytes for ./Symbols/D744E904-BA3F-3BCD-82EE-B8756DBB2171.symbols
+copying file ./Symbols/D7C9EE68-E7AC-3AF8-9F6F-8C70A96A98E7.symbols ... 
+37848 bytes for ./Symbols/D7C9EE68-E7AC-3AF8-9F6F-8C70A96A98E7.symbols
+copying file ./Symbols/DEA8A23F-8C8D-3737-B7BD-47623B1BE8C4.symbols ... 
+234032 bytes for ./Symbols/DEA8A23F-8C8D-3737-B7BD-47623B1BE8C4.symbols
+copying file ./Symbols/E6638AB9-966E-338B-97D8-FEF3B2E96EFC.symbols ... 
+2017-11-19 17:25:18 +0000  379808 bytes for ./Symbols/E6638AB9-966E-338B-97D8-FEF3B2E96EFC.symbols
+2017-11-19 17:25:18 +0000  copying file ./Symbols/EBA0EA5E-7316-3472-98BE-385B3E5F0AEB.symbols ... 
+38456 bytes for ./Symbols/EBA0EA5E-7316-3472-98BE-385B3E5F0AEB.symbols
+copying file ./Symbols/F04E0EF2-C398-3CB0-82E7-CF3C71A04773.symbols ... 
+2256 bytes for ./Symbols/F04E0EF2-C398-3CB0-82E7-CF3C71A04773.symbols
+copying file ./Symbols/F0965F4E-3BB0-383E-87F0-60AFE69C248B.symbols ... 
+2017-11-19 17:25:18 +0000  4443296 bytes for ./Symbols/F0965F4E-3BB0-383E-87F0-60AFE69C248B.symbols
+copying file ./Symbols/F147851F-9FA5-30A0-A1C8-03C062AD6EE6.symbols ... 
+2017-11-19 17:25:18 +0000  23856 bytes for ./Symbols/F147851F-9FA5-30A0-A1C8-03C062AD6EE6.symbols
+copying file ./Symbols/FACCD862-6C3A-3C99-AB9D-EC64A54107E6.symbols ... 
+2017-11-19 17:25:18 +0000  1587936 bytes for ./Symbols/FACCD862-6C3A-3C99-AB9D-EC64A54107E6.symbols
+2017-11-19 17:25:18 +0000  2017-11-19 17:25:18 +0000  /usr/bin/ditto exited with 0
+
+2017-11-19 17:25:18 +0000  Processing step: IDEDistributionCreateManifestStep
+2017-11-19 17:25:18 +0000  
+2017-11-19 17:25:18 +0000  Skipping step: IDEDistributionCreateManifestStep because it said so

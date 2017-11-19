@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>First Crush.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>armv7</string>
+				<string>arm64</string>
+			</array>
+			<key>bitcode</key>
+			<false/>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>AB6BF5AF9AC822E1633016C348034B2AAB655CE4</string>
+				<key>dateExpires</key>
+				<string>31/10/18</string>
+				<key>type</key>
+				<string>iOS Distribution</string>
+			</dict>
+			<key>embeddedBinaries</key>
+			<array>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>armv7</string>
+						<string>arm64</string>
+					</array>
+					<key>bitcode</key>
+					<false/>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>AB6BF5AF9AC822E1633016C348034B2AAB655CE4</string>
+						<key>dateExpires</key>
+						<string>31/10/18</string>
+						<key>type</key>
+						<string>iOS Distribution</string>
+					</dict>
+					<key>entitlements</key>
+					<dict>
+						<key>application-identifier</key>
+						<string>E3B7R4BZNB.co.firstcrush.first-crush.OneSignalNotificationServiceExtension</string>
+						<key>beta-reports-active</key>
+						<true/>
+						<key>com.apple.developer.team-identifier</key>
+						<string>E3B7R4BZNB</string>
+						<key>get-task-allow</key>
+						<false/>
+						<key>keychain-access-groups</key>
+						<array>
+							<string>E3B7R4BZNB.co.firstcrush.first-crush.OneSignalNotificationServiceExtension</string>
+						</array>
+					</dict>
+					<key>name</key>
+					<string>OneSignalNotificationServiceExtension.appex</string>
+					<key>profile</key>
+					<dict>
+						<key>UUID</key>
+						<string>cafab1d3-deb8-4893-9ad8-c1b18880dd0b</string>
+						<key>name</key>
+						<string>iOS Team Store Provisioning Profile: *</string>
+					</dict>
+					<key>symbols</key>
+					<true/>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>E3B7R4BZNB</string>
+						<key>name</key>
+						<string>Sumit Johri</string>
+					</dict>
+				</dict>
+			</array>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>E3B7R4BZNB.co.firstcrush.first-crush</string>
+				<key>aps-environment</key>
+				<string>production</string>
+				<key>beta-reports-active</key>
+				<true/>
+				<key>com.apple.developer.team-identifier</key>
+				<string>E3B7R4BZNB</string>
+				<key>get-task-allow</key>
+				<false/>
+			</dict>
+			<key>name</key>
+			<string>First Crush.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>415e3f16-79a0-49ed-9504-b35eba61cc46</string>
+				<key>name</key>
+				<string>iOS Team Store Provisioning Profile: co.firstcrush.first-crush</string>
+			</dict>
+			<key>symbols</key>
+			<true/>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>E3B7R4BZNB</string>
+				<key>name</key>
+				<string>Sumit Johri</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
