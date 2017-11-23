@@ -16,6 +16,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNav
     var webView = WKWebView()
     //@objc var webView: WKWebView!
     @objc var progressView: UIProgressView!
+    @IBOutlet weak var loadSpinner: UIActivityIndicatorView!
     @objc var myLabel: UILabel!
     @objc var lastOffsetY :CGFloat = 0
     
@@ -32,7 +33,9 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNav
        
         webView = WKWebView(frame:CGRect(x: 0,y: 0,width: self.view.frame.width,height: self.view.frame.height), configuration: webConfiguration)
         webView.autoresizingMask = [.flexibleHeight]
+        webView.navigationDelegate = self
         contentView.addSubview(webView)
+        contentView.sendSubview(toBack: webView)
         webView.translatesAutoresizingMaskIntoConstraints = true
         contentView.backgroundColor=UIColor.black
         self.webView.isOpaque = false
@@ -49,6 +52,8 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNav
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadSpinner.center = self.view.center
+        self.view.addSubview(self.loadSpinner)
         self.tabBarController?.delegate = self
         // Create Progress View
         progressView = UIProgressView(frame:CGRect(x: 0,y: 68,width: self.view.frame.width,height: self.view.frame.height))
@@ -57,7 +62,6 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNav
         progressView.setProgress(0.0, animated: true)
         progressView.sizeToFit()
         webView.addSubview(progressView)
-
         webView.allowsBackForwardNavigationGestures = true
         webView.scrollView.isScrollEnabled = true
         webView.scrollView.bounces = true
@@ -66,8 +70,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNav
         
         if Reachability.isConnectedToNetwork() == true {
             webView.load(request)
-            webView.navigationDelegate = self
-            
+            webView.allowsBackForwardNavigationGestures = true
             // Allow Scroll to Refresh
             let refreshControl = UIRefreshControl()
             refreshControl.addTarget(self, action: #selector(ViewController.refreshWebView), for: UIControlEvents.valueChanged)
@@ -154,6 +157,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNav
             self.present(alertController, animated: true, completion: nil)
             self.progressView.setProgress(1.0, animated: true)
             progressView.isHidden = true
+            loadSpinner.stopAnimating()
         }
     }
     
@@ -161,11 +165,14 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNav
     {
        self.progressView.setProgress(1.0, animated: true)
         progressView.isHidden = true
+        loadSpinner.stopAnimating()
+        loadSpinner.isHidden = true
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         self.progressView.setProgress(0.1, animated: false)
         progressView.isHidden = false
+        loadSpinner.startAnimating()
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping ((WKNavigationActionPolicy) -> Void)) {

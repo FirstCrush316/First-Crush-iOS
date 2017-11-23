@@ -15,6 +15,7 @@ class ProfileViewController: UIViewController, WKUIDelegate, UIScrollViewDelegat
     var webView = WKWebView()
     //@objc var webView: WKWebView!
     @objc var progressView: UIProgressView!
+    @IBOutlet weak var loadSpinner: UIActivityIndicatorView!
     @objc var myLabel: UILabel!
     @objc var lastOffsetY :CGFloat = 0
     

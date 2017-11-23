@@ -17,7 +17,20 @@
                     <view key="view" clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="qvy-T2-RCO">
+                                <rect key="frame" x="142" y="241" width="37" height="37"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <color key="backgroundColor" red="0.077902363989637347" green="0.077902363989637347" blue="0.077902363989637347" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="qvy-T2-RCO" firstAttribute="leading" secondItem="tBy-PA-VXd" secondAttribute="leading" constant="142" id="CPQ-kJ-6Ds"/>
+                            <constraint firstItem="qvy-T2-RCO" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Urt-4x-pet"/>
+                            <constraint firstItem="qvy-T2-RCO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VYk-xs-Xky"/>
+                            <constraint firstItem="tBy-PA-VXd" firstAttribute="trailing" secondItem="qvy-T2-RCO" secondAttribute="trailing" constant="141" id="YLx-bu-88l"/>
+                            <constraint firstItem="qvy-T2-RCO" firstAttribute="top" secondItem="tBy-PA-VXd" secondAttribute="top" constant="221" id="vDJ-br-LV6"/>
+                            <constraint firstItem="tBy-PA-VXd" firstAttribute="bottom" secondItem="qvy-T2-RCO" secondAttribute="bottom" constant="241" id="xC9-Bm-XVv"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="tBy-PA-VXd"/>
                     </view>
                     <navigationItem key="navigationItem" id="7pj-vA-kLM">
@@ -35,6 +48,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="contentView" destination="8bC-Xf-vdC" id="kZ4-e8-qtA"/>
+                        <outlet property="loadSpinner" destination="qvy-T2-RCO" id="2PM-vA-yRG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -48,7 +62,20 @@
                     <view key="view" contentMode="scaleToFill" id="bV0-hA-8Mh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="2L9-9G-1xl">
+                                <rect key="frame" x="142" y="241" width="37" height="37"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <color key="backgroundColor" red="0.077902363990000001" green="0.077902363990000001" blue="0.077902363990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="2L9-9G-1xl" firstAttribute="top" secondItem="6iw-WC-2r5" secondAttribute="top" constant="221" id="6zZ-Cq-Gdi"/>
+                            <constraint firstItem="2L9-9G-1xl" firstAttribute="centerY" secondItem="bV0-hA-8Mh" secondAttribute="centerY" id="CyR-dt-wc8"/>
+                            <constraint firstItem="6iw-WC-2r5" firstAttribute="trailing" secondItem="2L9-9G-1xl" secondAttribute="trailing" constant="141" id="S1z-aQ-uKB"/>
+                            <constraint firstItem="2L9-9G-1xl" firstAttribute="centerX" secondItem="bV0-hA-8Mh" secondAttribute="centerX" id="Zhv-At-R61"/>
+                            <constraint firstItem="2L9-9G-1xl" firstAttribute="leading" secondItem="6iw-WC-2r5" secondAttribute="leading" constant="142" id="lgE-Nh-G2g"/>
+                            <constraint firstItem="6iw-WC-2r5" firstAttribute="bottom" secondItem="2L9-9G-1xl" secondAttribute="bottom" constant="241" id="xrL-UG-mgh"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6iw-WC-2r5"/>
                     </view>
                     <navigationItem key="navigationItem" id="ftG-wf-VAF">
@@ -66,6 +93,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="contentView" destination="bV0-hA-8Mh" id="qAg-77-o2z"/>
+                        <outlet property="loadSpinner" destination="2L9-9G-1xl" id="aWR-rz-G4F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ULs-We-XdP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -79,7 +107,20 @@
                     <view key="view" contentMode="scaleToFill" id="Udx-Se-c8Z">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="lNk-4P-f6S">
+                                <rect key="frame" x="142" y="241" width="37" height="37"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <color key="backgroundColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="cgp-nD-GF8" firstAttribute="bottom" secondItem="lNk-4P-f6S" secondAttribute="bottom" constant="241" id="4lr-qG-25w"/>
+                            <constraint firstItem="cgp-nD-GF8" firstAttribute="trailing" secondItem="lNk-4P-f6S" secondAttribute="trailing" constant="141" id="6gu-AX-5R9"/>
+                            <constraint firstItem="lNk-4P-f6S" firstAttribute="leading" secondItem="cgp-nD-GF8" secondAttribute="leading" constant="142" id="GXk-i6-GFG"/>
+                            <constraint firstItem="lNk-4P-f6S" firstAttribute="centerY" secondItem="Udx-Se-c8Z" secondAttribute="centerY" id="KQl-Qx-PND"/>
+                            <constraint firstItem="lNk-4P-f6S" firstAttribute="top" secondItem="cgp-nD-GF8" secondAttribute="top" constant="221" id="hxl-8P-R44"/>
+                            <constraint firstItem="lNk-4P-f6S" firstAttribute="centerX" secondItem="Udx-Se-c8Z" secondAttribute="centerX" id="mmZ-dr-EyW"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="cgp-nD-GF8"/>
                     </view>
                     <navigationItem key="navigationItem" id="D4s-9r-pI8">
@@ -97,6 +138,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="contentView" destination="Udx-Se-c8Z" id="Y3e-2Q-a8I"/>
+                        <outlet property="loadSpinner" destination="lNk-4P-f6S" id="Me6-R5-IPr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ls8-KW-4Zu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -110,7 +152,16 @@
                     <view key="view" contentMode="scaleToFill" id="0OW-wk-IsF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="ind-wC-y6m">
+                                <rect key="frame" x="142" y="241" width="37" height="37"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <color key="backgroundColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ind-wC-y6m" firstAttribute="centerX" secondItem="0OW-wk-IsF" secondAttribute="centerX" id="VjA-uX-xSg"/>
+                            <constraint firstItem="ind-wC-y6m" firstAttribute="centerY" secondItem="0OW-wk-IsF" secondAttribute="centerY" id="jHm-7P-tUe"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="3ei-Qd-DIl"/>
                     </view>
                     <navigationItem key="navigationItem" id="bEp-O9-tUK">
@@ -128,6 +179,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="contentView" destination="0OW-wk-IsF" id="fd9-zh-EGx"/>
+                        <outlet property="loadSpinner" destination="ind-wC-y6m" id="qyT-E4-QrS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YbK-cT-cjh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -162,7 +214,7 @@
                 <navigationController navigationBarHidden="YES" id="Ilg-bP-bAe" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="home.png" selectedImage="home new.png" id="FMx-3u-kob"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zMA-7Y-omL">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="zMA-7Y-omL">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -180,7 +232,7 @@
                 <navigationController navigationBarHidden="YES" id="yrx-0q-xkB" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Notifications" image="bell.png" id="1xt-9O-f81"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="B1D-g3-fvX">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="B1D-g3-fvX">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -198,7 +250,7 @@
                 <navigationController navigationBarHidden="YES" id="Dh1-jM-Xct" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Radio" image="button-play.png" id="voS-H0-XrD"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jy3-ix-GG8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="jy3-ix-GG8">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -216,7 +268,7 @@
                 <navigationController navigationBarHidden="YES" id="13s-e8-QF9" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Profile" image="user_male.png" id="S5r-gV-wgH"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="J5w-XX-yjg">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="J5w-XX-yjg">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
