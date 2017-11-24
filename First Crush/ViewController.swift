@@ -52,6 +52,11 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNav
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // only standard '<' will appear; proper target and action will be added automatically
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain , target: nil, action: nil)
+        
+        //create Load Spinner
         loadSpinner = UIActivityIndicatorView(frame:CGRect(x: self.view.frame.height/2 , y: self.view.frame.width/2 ,width: 37,height: 37))
         loadSpinner.activityIndicatorViewStyle=UIActivityIndicatorViewStyle.whiteLarge
         loadSpinner.center = self.view.center
@@ -75,7 +80,8 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNav
             webView.allowsBackForwardNavigationGestures = true
             // Allow Scroll to Refresh
             let refreshControl = UIRefreshControl()
-            refreshControl.addTarget(self, action: #selector(ViewController.refreshWebView), for: UIControlEvents.valueChanged)
+           refreshControl.addTarget(self, action: #selector(ViewController.refreshWebView), for: UIControlEvents.valueChanged)
+            webView.scrollView.addSubview(refreshControl)
             webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
         }else {
             let alertController = UIAlertController(title: NSLocalizedString("No Internet Connection",comment:""), message: NSLocalizedString("Please ensure your device is connected to the internet.",comment:""), preferredStyle: .alert)
@@ -90,9 +96,11 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNav
         lastOffsetY = 0.0
     }
     
-    @objc func refreshWebView() {
+    @objc func refreshWebView(sender: UIRefreshControl) {
         // On Scroll to Refresh, Reload Current Page
+        print("Reloading Page")
         webView.reload()
+        sender.endRefreshing()
     }
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         // Display Progress Bar While Loading Pages

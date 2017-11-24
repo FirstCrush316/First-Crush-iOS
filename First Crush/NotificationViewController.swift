@@ -74,6 +74,7 @@ class NotificationViewController: UIViewController, WKUIDelegate, UIScrollViewDe
             // Allow Scroll to Refresh
             let refreshControl = UIRefreshControl()
             refreshControl.addTarget(self, action: #selector(ViewController.refreshWebView), for: UIControlEvents.valueChanged)
+            webView.scrollView.addSubview(refreshControl)
             webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
             
         }else {
@@ -89,9 +90,11 @@ class NotificationViewController: UIViewController, WKUIDelegate, UIScrollViewDe
         lastOffsetY = 0.0
     }
     
-    @objc func refreshWebView() {
+    @objc func refreshWebView(sender: UIRefreshControl) {
         // On Scroll to Refresh, Reload Current Page
+        print("Reloading Page")
         webView.reload()
+        sender.endRefreshing()
     }
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         // Display Progress Bar While Loading Pages
