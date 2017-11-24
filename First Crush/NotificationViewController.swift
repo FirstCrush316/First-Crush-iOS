@@ -10,12 +10,12 @@ import UIKit
 import WebKit
 
 class NotificationViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNavigationDelegate, UITabBarControllerDelegate {
-    @IBOutlet var contentView: UIView!
+    @objc var contentView: UIView!
     let webConfiguration = WKWebViewConfiguration()
-    var webView = WKWebView()
+    @objc var webView = WKWebView()
     //@objc var webView: WKWebView!
     @objc var progressView: UIProgressView!
-    @IBOutlet weak var loadSpinner: UIActivityIndicatorView!
+    @objc var loadSpinner: UIActivityIndicatorView!
     @objc var myLabel: UILabel!
     @objc var lastOffsetY :CGFloat = 0
     
@@ -49,6 +49,10 @@ class NotificationViewController: UIViewController, WKUIDelegate, UIScrollViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadSpinner = UIActivityIndicatorView(frame:CGRect(x: self.view.frame.height/2 , y: self.view.frame.width/2 ,width: 37,height: 37))
+        loadSpinner.activityIndicatorViewStyle=UIActivityIndicatorViewStyle.whiteLarge
+        loadSpinner.center = self.view.center
+        view.addSubview(loadSpinner)
         self.tabBarController?.delegate = self
         // Create Progress View
         progressView = UIProgressView(frame:CGRect(x: 0,y: 68,width: self.view.frame.width,height: self.view.frame.height))
@@ -159,16 +163,22 @@ class NotificationViewController: UIViewController, WKUIDelegate, UIScrollViewDe
             alertController.addAction(defaultAction)
             self.present(alertController, animated: true, completion: nil)
             progressView.isHidden = true
+            loadSpinner.stopAnimating()
+            loadSpinner.isHidden = true
         }
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!)
     {
         progressView.isHidden = true
+        loadSpinner.stopAnimating()
+        loadSpinner.isHidden = true
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         progressView.isHidden = false
+        loadSpinner.startAnimating()
+        
     }
     
     

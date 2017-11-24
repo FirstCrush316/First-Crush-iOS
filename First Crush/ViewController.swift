@@ -11,12 +11,12 @@ import WebKit
 
 
 class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNavigationDelegate,UITabBarControllerDelegate {
-    @IBOutlet var contentView: UIView!
+    @objc var contentView: UIView!
     let webConfiguration = WKWebViewConfiguration()
-    var webView = WKWebView()
+    @objc var webView = WKWebView()
     //@objc var webView: WKWebView!
     @objc var progressView: UIProgressView!
-    @IBOutlet weak var loadSpinner: UIActivityIndicatorView!
+    @objc var loadSpinner: UIActivityIndicatorView!
     @objc var myLabel: UILabel!
     @objc var lastOffsetY :CGFloat = 0
     
@@ -52,8 +52,10 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNav
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadSpinner = UIActivityIndicatorView(frame:CGRect(x: self.view.frame.height/2 , y: self.view.frame.width/2 ,width: 37,height: 37))
+        loadSpinner.activityIndicatorViewStyle=UIActivityIndicatorViewStyle.whiteLarge
         loadSpinner.center = self.view.center
-        self.view.addSubview(self.loadSpinner)
+        view.addSubview(loadSpinner)
         self.tabBarController?.delegate = self
         // Create Progress View
         progressView = UIProgressView(frame:CGRect(x: 0,y: 68,width: self.view.frame.width,height: self.view.frame.height))
