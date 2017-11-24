@@ -20,11 +20,6 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        let rootView = self.viewControllers![self.selectedIndex] as! UINavigationController
-        rootView.popToRootViewController(animated: false)
-    }
 
     /*
     // MARK: - Navigation
