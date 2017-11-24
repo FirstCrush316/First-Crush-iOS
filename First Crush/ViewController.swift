@@ -10,7 +10,7 @@ import UIKit
 import WebKit
 
 
-class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNavigationDelegate,UITabBarControllerDelegate {
+class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNavigationDelegate,  UITabBarControllerDelegate {
     @objc var contentView: UIView!
     let webConfiguration = WKWebViewConfiguration()
     @objc var webView = WKWebView()
@@ -52,10 +52,6 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNav
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // only standard '<' will appear; proper target and action will be added automatically
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain , target: nil, action: nil)
-        
         //create Load Spinner
         loadSpinner = UIActivityIndicatorView(frame:CGRect(x: self.view.frame.height/2 , y: self.view.frame.width/2 ,width: 37,height: 37))
         loadSpinner.activityIndicatorViewStyle=UIActivityIndicatorViewStyle.whiteLarge
@@ -202,9 +198,14 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,WKNav
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         let tabBarIndex = tabBarController.selectedIndex
         if tabBarIndex == 0 {
-            webView.reload()
+            let url = NSURL(string: "http://www.firstcrush.co")
+            let request = URLRequest(url: url! as URL)
+            webView.load(request)
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
+            lastOffsetY = 0
         }
-    }
+
+}
 
 }
 

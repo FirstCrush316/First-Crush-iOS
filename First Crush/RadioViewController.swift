@@ -204,7 +204,11 @@ class RadioViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         let tabBarIndex = tabBarController.selectedIndex
         if tabBarIndex == 1 {
-            webView.reload()
+            let url = NSURL(string: "http://www.firstcrush.co/first-crush-101-radio/")
+            let request = URLRequest(url: url! as URL)
+            webView.load(request)
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
+            lastOffsetY = 0
         }
     }
 }

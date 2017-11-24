@@ -203,7 +203,11 @@ class NotificationViewController: UIViewController, WKUIDelegate, UIScrollViewDe
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         let tabBarIndex = tabBarController.selectedIndex
         if tabBarIndex == 3 {
-            webView.reload()
+            let url = NSURL(string: "http://www.firstcrush.co/notifications")
+            let request = URLRequest(url: url! as URL)
+            webView.load(request)
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
+            lastOffsetY = 0
         }
     }
 }

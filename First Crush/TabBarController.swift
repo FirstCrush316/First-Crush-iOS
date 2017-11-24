@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TabBarController: UITabBarController {
+class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,13 +16,15 @@ class TabBarController: UITabBarController {
         // Do any additional setup after loading the view.
     }
 
-    @IBAction func backAction(_ sender: Any) {
-    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        let rootView = self.viewControllers![self.selectedIndex] as! UINavigationController
+        rootView.popToRootViewController(animated: false)
+    }
 
     /*
     // MARK: - Navigation
