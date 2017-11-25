@@ -72,7 +72,7 @@ class NotificationViewController: UIViewController, WKUIDelegate, UIScrollViewDe
             webView.navigationDelegate = self
             
             // Allow Scroll to Refresh
-            let refreshControl = UIRefreshControl(frame:(CGRect(x: 0,y: 50,width: 50, height: 50)))
+            let refreshControl = UIRefreshControl(frame:(CGRect(x: 0,y: 25,width: 25, height: 25)))
             let title = NSLocalizedString("Pull To Refresh", comment: "Pull To Refresh")
             refreshControl.attributedTitle=NSAttributedString(string: title)
             refreshControl.tintColor=UIColor.white
