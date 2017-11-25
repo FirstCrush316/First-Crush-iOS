@@ -18,10 +18,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         application.statusBarStyle = .lightContent
+        UIApplication.shared.isStatusBarHidden = false
+        application.isStatusBarHidden=false
         UINavigationBar.appearance().clipsToBounds = true
         UINavigationBar.appearance().barTintColor = UIColor.black;
         let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
-        statusBar.backgroundColor = UIColor.black
+        if statusBar.responds(to: #selector(setter: UIView.backgroundColor)){
+            statusBar.backgroundColor = UIColor.black
+        }
         let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false, kOSSettingsKeyInAppLaunchURL: true]
         // Replace 'YOUR_APP_ID' with your OneSignal App ID.
         OneSignal.initWithLaunchOptions(launchOptions,

@@ -93,6 +93,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         (self.navigationController?.navigationBar.topItem?.titleView as? UILabel)?.text=webView.title
         webView.scrollView.delegate = self
         lastOffsetY = 0.0
+
     }
     
     @objc func refreshWebView(sender: UIRefreshControl) {
@@ -221,6 +222,22 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
             break
         }
         decisionHandler(.allow)
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        if UIDevice.current.orientation.isLandscape {
+            UIApplication.shared.isStatusBarHidden = true // Landscape
+        } else {
+            UIApplication.shared.isStatusBarHidden = false //Portrait
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return false
     }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {

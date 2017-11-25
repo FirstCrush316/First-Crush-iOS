@@ -193,6 +193,10 @@ class ProfileViewController: UIViewController, WKUIDelegate, UIScrollViewDelegat
         }
         decisionHandler(.allow)
     }
+   
+    override var prefersStatusBarHidden: Bool{
+        return false
+    }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         let tabBarIndex = tabBarController.selectedIndex
