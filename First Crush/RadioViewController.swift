@@ -73,11 +73,13 @@ class RadioViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,
             webView.navigationDelegate = self
             
             // Allow Scroll to Refresh
-            let refreshControl = UIRefreshControl()
+            let refreshControl = UIRefreshControl(frame:(CGRect(x: 0,y: 50,width: 50, height: 50)))
+            let title = NSLocalizedString("Pull To Refresh", comment: "Pull To Refresh")
+            refreshControl.attributedTitle=NSAttributedString(string: title)
+            refreshControl.tintColor=UIColor.white
+            refreshControl.backgroundColor=UIColor.darkGray
             refreshControl.addTarget(self, action: #selector(ViewController.refreshWebView), for: UIControlEvents.valueChanged)
             webView.scrollView.addSubview(refreshControl)
-            webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
-            
         }else {
             let alertController = UIAlertController(title: NSLocalizedString("No Internet Connection",comment:""), message: NSLocalizedString("Please ensure your device is connected to the internet.",comment:""), preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default, handler: { (pAlert) in

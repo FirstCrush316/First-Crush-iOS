@@ -65,9 +65,8 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         progressView.setProgress(0.0, animated: true)
         progressView.sizeToFit()
         webView.addSubview(progressView)
-        webView.allowsBackForwardNavigationGestures = true
         webView.scrollView.isScrollEnabled = true
-        webView.scrollView.bounces = true
+        webView.scrollView.alwaysBounceVertical = true
         let url = NSURL(string: "http://www.firstcrush.co")
         let request = URLRequest(url: url! as URL)
         
@@ -75,8 +74,12 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
             webView.load(request)
             webView.allowsBackForwardNavigationGestures = true
             // Allow Scroll to Refresh
-            let refreshControl = UIRefreshControl()
-           refreshControl.addTarget(self, action: #selector(ViewController.refreshWebView), for: UIControlEvents.valueChanged)
+            let refreshControl = UIRefreshControl(frame:(CGRect(x: 0,y: 50,width: 50, height: 50)))
+            let title = NSLocalizedString("Pull To Refresh", comment: "Pull To Refresh")
+            refreshControl.attributedTitle=NSAttributedString(string: title)
+            refreshControl.tintColor=UIColor.white
+            refreshControl.backgroundColor=UIColor.darkGray
+            refreshControl.addTarget(self, action: #selector(ViewController.refreshWebView), for: UIControlEvents.valueChanged)
             webView.scrollView.addSubview(refreshControl)
             webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
         }else {
@@ -87,7 +90,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
             alertController.addAction(defaultAction)
             self.present(alertController, animated: true, completion: nil)
         }
-        
+        (self.navigationController?.navigationBar.topItem?.titleView as? UILabel)?.text=webView.title
         webView.scrollView.delegate = self
         lastOffsetY = 0.0
     }
@@ -110,24 +113,49 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView){
-        if webView.canGoBack {
-        lastOffsetY = scrollView.contentOffset.y
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        let request = webView.url?.absoluteString
+        var flag = 1
+        if request == "www.firstcrush.co"
+        {
+            flag = 0
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
+            navigationController?.isToolbarHidden = true
+            self.webView.frame = self.view.bounds
+        }
+        if webView.canGoBack
+        { if flag == 1 {
+            lastOffsetY = scrollView.contentOffset.y
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
+            
+            }
         }
         else {
             self.navigationController?.setNavigationBarHidden(true, animated: true)
             navigationController?.isToolbarHidden = true
+            self.webView.frame = self.view.bounds
         }
     }
     
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView){
+        let request = webView.url?.absoluteString
+        var flag = 1
+        if request == "http://www.firstcrush.co"
+        {
+            flag = 0
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
+            navigationController?.isToolbarHidden = true
+            self.webView.frame = self.view.bounds
+        }
         if webView.canGoBack {
-        let hide = scrollView.contentOffset.y > self.lastOffsetY
-        self.navigationController?.setNavigationBarHidden(hide, animated: true)
+            if flag == 1 {
+                let hide = scrollView.contentOffset.y > self.lastOffsetY
+                self.navigationController?.setNavigationBarHidden(hide, animated: true)
+            }
         }
         else {
             self.navigationController?.setNavigationBarHidden(true, animated: true)
             navigationController?.isToolbarHidden = true
+            self.webView.frame = self.view.bounds
         }
     }
     override func didReceiveMemoryWarning() {
