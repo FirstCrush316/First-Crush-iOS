@@ -16,6 +16,7 @@ class NotificationViewController: UIViewController, WKUIDelegate, UIScrollViewDe
     //@objc var webView: WKWebView!
     @objc var progressView: UIProgressView!
     @objc var loadSpinner: UIActivityIndicatorView!
+    @IBOutlet weak var navigationTitle: UINavigationItem!
     @objc var myLabel: UILabel!
     @objc var lastOffsetY :CGFloat = 0
     
@@ -178,6 +179,11 @@ class NotificationViewController: UIViewController, WKUIDelegate, UIScrollViewDe
         progressView.isHidden = true
         loadSpinner.stopAnimating()
         loadSpinner.isHidden = true
+        webView.evaluateJavaScript("document.getElementById('pageTitle').textContent") { (result, error) -> Void in
+            if error == nil {
+                print(result!)
+            }
+        }
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {

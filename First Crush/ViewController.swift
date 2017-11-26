@@ -19,6 +19,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
     @objc var loadSpinner: UIActivityIndicatorView!
     @objc var myLabel: UILabel!
     @objc var lastOffsetY :CGFloat = 0
+    @IBOutlet weak var navigationTitle: UINavigationItem!
     
     @objc var time : Float = 0.0
     @objc var timer: Timer?
@@ -208,6 +209,11 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         self.progressView.setProgress(0.1, animated: false)
         progressView.isHidden = false
         loadSpinner.startAnimating()
+        webView.evaluateJavaScript("document.getElementById('pageTitle').textContent") { (result, error) -> Void in
+            if error == nil {
+                print(result!)
+            }
+        }
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping ((WKNavigationActionPolicy) -> Void)) {

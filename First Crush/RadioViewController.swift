@@ -18,6 +18,7 @@ class RadioViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,
     @objc var loadSpinner: UIActivityIndicatorView!
     @objc var myLabel: UILabel!
     @objc var lastOffsetY :CGFloat = 0
+    @IBOutlet weak var navigationTitle: UINavigationItem!
     
     @objc var time : Float = 0.0
     @objc var timer: Timer?
@@ -180,6 +181,11 @@ class RadioViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,
         progressView.isHidden = true
         loadSpinner.stopAnimating()
         loadSpinner.isHidden = true
+    webView.evaluateJavaScript("document.getElementById('pageTitle').textContent") { (result, error) -> Void in
+            if error == nil {
+                print(result!)
+            }
+        }
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {

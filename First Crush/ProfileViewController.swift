@@ -22,6 +22,7 @@ class ProfileViewController: UIViewController, WKUIDelegate, UIScrollViewDelegat
     @objc var time : Float = 0.0
     @objc var timer: Timer?
     
+    @IBOutlet weak var navigationTitle: UINavigationItem!
     var myContext = 0
     
     override func loadView() {
@@ -171,6 +172,11 @@ class ProfileViewController: UIViewController, WKUIDelegate, UIScrollViewDelegat
         progressView.isHidden = true
         loadSpinner.stopAnimating()
         loadSpinner.isHidden = true
+        webView.evaluateJavaScript("document.getElementById('pageTitle').textContent") { (result, error) -> Void in
+            if error == nil {
+                print(result!)
+            }
+        }
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
