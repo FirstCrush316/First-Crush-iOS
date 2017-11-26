@@ -10,9 +10,9 @@ import UIKit
 import WebKit
 
 
-class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNavigationDelegate,  UITabBarControllerDelegate {
+class DetailViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNavigationDelegate,  UITabBarControllerDelegate {
     @objc var contentView: UIView!
-    let webConfiguration = WKWebViewConfiguration()
+    var webConfiguration = WKWebViewConfiguration()
     @objc var webView = WKWebView()
     //@objc var webView: WKWebView!
     @objc var progressView: UIProgressView!
@@ -20,9 +20,11 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
     @objc var myLabel: UILabel!
     @objc var lastOffsetY :CGFloat = 0
     @IBOutlet weak var navigationTitle: UINavigationItem!
+    var detailURLRequest: URLRequest?
     
     @objc var time : Float = 0.0
     @objc var timer: Timer?
+    var firstURLRequest: URLRequest?
     
     var myContext = 0
     
@@ -31,7 +33,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         webConfiguration.allowsInlineMediaPlayback=true
         webConfiguration.allowsAirPlayForMediaPlayback=true
         webConfiguration.allowsPictureInPictureMediaPlayback=true
-       
+        
         webView = WKWebView(frame:CGRect(x: 0,y: 0,width: self.view.frame.width,height: self.view.frame.height), configuration: webConfiguration)
         webView.autoresizingMask = [.flexibleHeight]
         webView.navigationDelegate = self
@@ -42,7 +44,6 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         self.webView.isOpaque = false
         self.webView.backgroundColor = UIColor.clear
         self.webView.scrollView.backgroundColor = UIColor.clear
-        //webView.backgroundColor=UIColor.black
         webView.autoresizesSubviews=true
         webView.contentMode = .scaleToFill
         webView.frame = contentView.bounds
@@ -68,11 +69,8 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         webView.addSubview(progressView)
         webView.scrollView.isScrollEnabled = true
         webView.scrollView.alwaysBounceVertical = true
-        let url = NSURL(string: "http://www.firstcrush.co")
-        let request = URLRequest(url: url! as URL)
-        
         if Reachability.isConnectedToNetwork() == true {
-            webView.load(request)
+            webView.load(detailURLRequest!)
             webView.allowsBackForwardNavigationGestures = true
             // Allow Scroll to Refresh
             let refreshControl = UIRefreshControl(frame:(CGRect(x: 0,y: 25,width: 25, height: 25)))
@@ -94,7 +92,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         (self.navigationController?.navigationBar.topItem?.titleView as? UILabel)?.text=webView.title
         webView.scrollView.delegate = self
         lastOffsetY = 0.0
-
+        
     }
     
     @objc func refreshWebView(sender: UIRefreshControl) {
@@ -199,7 +197,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!)
     {
-       self.progressView.setProgress(1.0, animated: true)
+        self.progressView.setProgress(1.0, animated: true)
         progressView.isHidden = true
         loadSpinner.stopAnimating()
         loadSpinner.isHidden = true
@@ -212,10 +210,10 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         webView.evaluateJavaScript("document.getElementById('pageTitle').textContent") { (result, error) -> Void in
             if error == nil {
                 print(result!)
-                self.navigationTitle=result as! UINavigationItem
             }
         }
     }
+    
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping ((WKNavigationActionPolicy) -> Void)) {
         
@@ -225,23 +223,10 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
                 //self.webView.load(navigationAction.request)// It will load that link in same WKWebView
                 UIApplication.shared.open(navigationAction.request.url!,options: [:], completionHandler: nil)
             }
-            else
-            {
-                self.performSegue(withIdentifier: "detailView", sender: navigationAction.request.url!)
-            }
         default:
             break
         }
         decisionHandler(.allow)
-    }
-    
-    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
-    {
-        if let destination = segue.destination as? DetailViewController{
-            if let easyURLStart = sender as? NSURL{
-                destination.detailURL = easyURLStart
-            }
-        }
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -251,17 +236,24 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
             UIApplication.shared.isStatusBarHidden = false //Portrait
         }
     }
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        let tabBarIndex = tabBarController.selectedIndex
-        if tabBarIndex == 0 {
-            let url = NSURL(string: "http://www.firstcrush.co")
-            let request = URLRequest(url: url! as URL)
-            webView.load(request)
-            self.navigationController?.setNavigationBarHidden(true, animated: true)
-            lastOffsetY = 0
+    
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let segueIdentifier = segue.identifier {
+            
+            switch segueIdentifier {
+            case "ViewDetail":
+                if let detailViewController = segue.destination as? DetailViewController {
+                    if detailURLRequest != nil {
+                    detailViewController.detailURLRequest = detailURLRequest! as URLRequest }
+                    detailViewController.webConfiguration = webView.configuration
+                }
+            default:
+                return
+            }
         }
-
+        
+    }
 }
 
-}
 

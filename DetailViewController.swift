@@ -1,17 +1,16 @@
 //
-//  ViewController.swift
+//  DetailViewController.swift
 //  First Crush
 //
-//  Created by Sumit Johri on 10/6/17.
+//  Created by Sumit Johri on 26/11/17.
 //  Copyright © 2017 Sumit Johri. All rights reserved.
-//
 
 import UIKit
 import WebKit
 
 
-class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNavigationDelegate,  UITabBarControllerDelegate {
-    @objc var contentView: UIView!
+class DetailViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNavigationDelegate,  UITabBarControllerDelegate {
+    @IBOutlet var contentView: UIView!
     let webConfiguration = WKWebViewConfiguration()
     @objc var webView = WKWebView()
     //@objc var webView: WKWebView!
@@ -23,6 +22,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
     
     @objc var time : Float = 0.0
     @objc var timer: Timer?
+    var detailURL = NSURL(string: "http://radio.firstcrush.co")
     
     var myContext = 0
     
@@ -31,10 +31,9 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         webConfiguration.allowsInlineMediaPlayback=true
         webConfiguration.allowsAirPlayForMediaPlayback=true
         webConfiguration.allowsPictureInPictureMediaPlayback=true
-       
+        
         webView = WKWebView(frame:CGRect(x: 0,y: 0,width: self.view.frame.width,height: self.view.frame.height), configuration: webConfiguration)
         webView.autoresizingMask = [.flexibleHeight]
-        webView.navigationDelegate = self
         contentView.addSubview(webView)
         contentView.sendSubview(toBack: webView)
         webView.translatesAutoresizingMaskIntoConstraints = true
@@ -47,7 +46,6 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         webView.contentMode = .scaleToFill
         webView.frame = contentView.bounds
         constrainView()
-        webView.uiDelegate = self
         view = webView
     }
     
@@ -58,7 +56,6 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         loadSpinner.activityIndicatorViewStyle=UIActivityIndicatorViewStyle.whiteLarge
         loadSpinner.center = self.view.center
         view.addSubview(loadSpinner)
-        self.tabBarController?.delegate = self
         // Create Progress View
         progressView = UIProgressView(frame:CGRect(x: 0,y: 68,width: self.view.frame.width,height: self.view.frame.height))
         progressView.autoresizingMask = [.flexibleWidth, .flexibleTopMargin]
@@ -68,8 +65,8 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         webView.addSubview(progressView)
         webView.scrollView.isScrollEnabled = true
         webView.scrollView.alwaysBounceVertical = true
-        let url = NSURL(string: "http://www.firstcrush.co")
-        let request = URLRequest(url: url! as URL)
+        
+        let request = URLRequest(url: detailURL! as URL)
         
         if Reachability.isConnectedToNetwork() == true {
             webView.load(request)
@@ -94,7 +91,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         (self.navigationController?.navigationBar.topItem?.titleView as? UILabel)?.text=webView.title
         webView.scrollView.delegate = self
         lastOffsetY = 0.0
-
+        
     }
     
     @objc func refreshWebView(sender: UIRefreshControl) {
@@ -115,21 +112,10 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView){
-        let request = webView.url?.absoluteString
-        var flag = 1
-        if request == "www.firstcrush.co"
-        {
-            flag = 0
-            self.navigationController?.setNavigationBarHidden(true, animated: true)
-            navigationController?.isToolbarHidden = true
-            self.webView.frame = self.view.bounds
-        }
+        //let request = webView.url?.absoluteString
         if webView.canGoBack
-        { if flag == 1 {
-            lastOffsetY = scrollView.contentOffset.y
+        {   lastOffsetY = scrollView.contentOffset.y
             self.navigationController?.setNavigationBarHidden(false, animated: true)
-            
-            }
         }
         else {
             self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -139,20 +125,12 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
     }
     
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView){
-        let request = webView.url?.absoluteString
-        var flag = 1
-        if request == "http://www.firstcrush.co"
-        {
-            flag = 0
-            self.navigationController?.setNavigationBarHidden(true, animated: true)
-            navigationController?.isToolbarHidden = true
-            self.webView.frame = self.view.bounds
-        }
+        //let request = webView.url?.absoluteString
+
         if webView.canGoBack {
-            if flag == 1 {
                 let hide = scrollView.contentOffset.y > self.lastOffsetY
                 self.navigationController?.setNavigationBarHidden(hide, animated: true)
-            }
+                self.webView.frame = self.view.bounds
         }
         else {
             self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -199,7 +177,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!)
     {
-       self.progressView.setProgress(1.0, animated: true)
+        self.progressView.setProgress(1.0, animated: true)
         progressView.isHidden = true
         loadSpinner.stopAnimating()
         loadSpinner.isHidden = true
@@ -225,23 +203,10 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
                 //self.webView.load(navigationAction.request)// It will load that link in same WKWebView
                 UIApplication.shared.open(navigationAction.request.url!,options: [:], completionHandler: nil)
             }
-            else
-            {
-                self.performSegue(withIdentifier: "detailView", sender: navigationAction.request.url!)
-            }
         default:
             break
         }
         decisionHandler(.allow)
-    }
-    
-    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
-    {
-        if let destination = segue.destination as? DetailViewController{
-            if let easyURLStart = sender as? NSURL{
-                destination.detailURL = easyURLStart
-            }
-        }
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -251,17 +216,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
             UIApplication.shared.isStatusBarHidden = false //Portrait
         }
     }
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        let tabBarIndex = tabBarController.selectedIndex
-        if tabBarIndex == 0 {
-            let url = NSURL(string: "http://www.firstcrush.co")
-            let request = URLRequest(url: url! as URL)
-            webView.load(request)
-            self.navigationController?.setNavigationBarHidden(true, animated: true)
-            lastOffsetY = 0
-        }
-
+    
 }
 
-}
 

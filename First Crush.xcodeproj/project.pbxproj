@@ -17,6 +17,7 @@
 		2C072D601FAB94DF00F4D9D7 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C072D5F1FAB94DF00F4D9D7 /* NotificationViewController.swift */; };
 		2C072D621FAB9A9500F4D9D7 /* user_male.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C072D611FAB9A9500F4D9D7 /* user_male.png */; };
 		2C072D641FAB9AC400F4D9D7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C072D631FAB9AC400F4D9D7 /* ProfileViewController.swift */; };
+		2C12F8511FCB514F0037611A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C12F8501FCB514F0037611A /* DetailViewController.swift */; };
 		2C13C2521FA4E7D80067D188 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C13C2511FA4E7D70067D188 /* Default.png */; };
 		2C36FD861F9E5B4400C9E1A1 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C36FD851F9E5B4400C9E1A1 /* Reachability.swift */; };
 		2C5AC7D21FAE59CF00ACF4E4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5AC7D11FAE59CF00ACF4E4 /* TabBarController.swift */; };
@@ -63,6 +64,7 @@
 		2C072D5F1FAB94DF00F4D9D7 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		2C072D611FAB9A9500F4D9D7 /* user_male.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = user_male.png; path = ../../../Downloads/iOS_11_glyph_icons/PNG/user_male.png; sourceTree = "<group>"; };
 		2C072D631FAB9AC400F4D9D7 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		2C12F8501FCB514F0037611A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = ../DetailViewController.swift; sourceTree = "<group>"; };
 		2C13C2511FA4E7D70067D188 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = "../../../Library/Mobile Documents/com~apple~CloudDocs/ApeToolsGeneratedAssets/iOS/Resources/splash/Default.png"; sourceTree = "<group>"; };
 		2C36FD851F9E5B4400C9E1A1 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		2C5AC7D11FAE59CF00ACF4E4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 		2C726D6E1F88AAC60037928B /* First Crush */ = {
 			isa = PBXGroup;
 			children = (
+				2C12F8501FCB514F0037611A /* DetailViewController.swift */,
 				2C072D611FAB9A9500F4D9D7 /* user_male.png */,
 				2C072D5B1FAB919D00F4D9D7 /* button-play.png */,
 				2C072D571FAB8D8F00F4D9D7 /* bell.png */,
@@ -398,6 +401,7 @@
 				2C5AC7D21FAE59CF00ACF4E4 /* TabBarController.swift in Sources */,
 				2C072D5E1FAB926F00F4D9D7 /* RadioViewController.swift in Sources */,
 				2C36FD861F9E5B4400C9E1A1 /* Reachability.swift in Sources */,
+				2C12F8511FCB514F0037611A /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
