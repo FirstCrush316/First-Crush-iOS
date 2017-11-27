@@ -115,21 +115,13 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView){
-        let request = webView.url?.absoluteString
-        var flag = 1
-        if request == "www.firstcrush.co"
-        {
-            flag = 0
-            self.navigationController?.setNavigationBarHidden(true, animated: true)
-            navigationController?.isToolbarHidden = true
-            self.webView.frame = self.view.bounds
-        }
+        //let request = webView.url?.absoluteString
         if webView.canGoBack
-        { if flag == 1 {
+        {
             lastOffsetY = scrollView.contentOffset.y
             self.navigationController?.setNavigationBarHidden(false, animated: true)
+            self.webView.frame = self.view.bounds
             
-            }
         }
         else {
             self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -139,20 +131,11 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
     }
     
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView){
-        let request = webView.url?.absoluteString
-        var flag = 1
-        if request == "http://www.firstcrush.co"
-        {
-            flag = 0
-            self.navigationController?.setNavigationBarHidden(true, animated: true)
-            navigationController?.isToolbarHidden = true
-            self.webView.frame = self.view.bounds
-        }
+        //let request = webView.url?.absoluteString
         if webView.canGoBack {
-            if flag == 1 {
                 let hide = scrollView.contentOffset.y > self.lastOffsetY
                 self.navigationController?.setNavigationBarHidden(hide, animated: true)
-            }
+            self.webView.frame = self.view.bounds
         }
         else {
             self.navigationController?.setNavigationBarHidden(true, animated: true)
