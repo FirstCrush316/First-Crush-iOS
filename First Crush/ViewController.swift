@@ -217,15 +217,28 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         }
         decisionHandler(.allow)
     }
-    
-    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        if let destination = segue.destination as? DetailViewController{
-            if let easyURLStart = sender as? NSURL{
-                destination.detailURL = easyURLStart
+        if let detailViewController = segue.destination as? DetailViewController{
+            if let detailURL = sender as? NSURL{
+                detailViewController.detailURL = detailURL
             }
         }
     }
+    
+    /*func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        if let detailViewController = segue.destination as? DetailViewController{
+            if let detailURL = sender as? NSURL{
+                //detailViewController.detailURL = easyURLStart
+                detailViewController.setdetailURL(detailURL)
+                detailViewController.loadView()
+                detailViewController.viewDidLoad()
+                let request = URLRequest(url: detailURL as URL)
+                detailViewController.webView.load(request)
+            }
+        }
+    }*/
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         if UIDevice.current.orientation.isLandscape {

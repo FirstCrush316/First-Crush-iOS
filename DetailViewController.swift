@@ -26,6 +26,11 @@ class DetailViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate
     
     var myContext = 0
     
+    func setdetailURL (_ NSURL: NSURL)
+    {
+    detailURL = NSURL
+    }
+    
     override func loadView() {
         super.loadView()
         webConfiguration.allowsInlineMediaPlayback=true
