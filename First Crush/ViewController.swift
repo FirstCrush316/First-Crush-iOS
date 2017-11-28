@@ -12,7 +12,7 @@ import WebKit
 
 class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNavigationDelegate,  UITabBarControllerDelegate {
     @objc var contentView: UIView!
-    let webConfiguration = WKWebViewConfiguration()
+    var webConfiguration = WKWebViewConfiguration()
     @objc var webView = WKWebView()
     //@objc var webView: WKWebView!
     @objc var progressView: UIProgressView!
@@ -203,13 +203,21 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
             }
             else
             {
+                /*if let vc = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController")  as? DetailViewController {
+                    vc.detailURL = navigationAction.request.url! as NSURL
+                    vc.webConfiguration = webConfiguration
+                    //wv = vc.webView as? WKWebView
+                    
+                    self.navigationController?.pushViewController(vc, animated: true)
                 //self.performSegue(withIdentifier: "detailView", sender: webView.url!)
+            }*/
             }
         default:
             break
         }
         decisionHandler(.allow)
     }
+    
     /*override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if let detailViewController = segue.destination as? DetailViewController{

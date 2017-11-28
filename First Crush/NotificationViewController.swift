@@ -9,16 +9,17 @@
 import UIKit
 import WebKit
 
-class NotificationViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNavigationDelegate, UITabBarControllerDelegate {
+
+class NotificationViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNavigationDelegate,  UITabBarControllerDelegate {
     @objc var contentView: UIView!
-    let webConfiguration = WKWebViewConfiguration()
+    var webConfiguration = WKWebViewConfiguration()
     @objc var webView = WKWebView()
     //@objc var webView: WKWebView!
     @objc var progressView: UIProgressView!
     @objc var loadSpinner: UIActivityIndicatorView!
-    @IBOutlet weak var navigationTitle: UINavigationItem!
     @objc var myLabel: UILabel!
     @objc var lastOffsetY :CGFloat = 0
+    @IBOutlet weak var navigationTitle: UINavigationItem!
     
     @objc var time : Float = 0.0
     @objc var timer: Timer?
@@ -31,9 +32,11 @@ class NotificationViewController: UIViewController, WKUIDelegate, UIScrollViewDe
         webConfiguration.allowsAirPlayForMediaPlayback=true
         webConfiguration.allowsPictureInPictureMediaPlayback=true
         
-        webView = WKWebView(frame:contentView.frame, configuration: webConfiguration)
+        webView = WKWebView(frame:CGRect(x: 0,y: 0,width: self.view.frame.width,height: self.view.frame.height), configuration: webConfiguration)
         webView.autoresizingMask = [.flexibleHeight]
+        webView.navigationDelegate = self
         contentView.addSubview(webView)
+        contentView.sendSubview(toBack: webView)
         webView.translatesAutoresizingMaskIntoConstraints = true
         contentView.backgroundColor=UIColor.black
         self.webView.isOpaque = false
@@ -50,6 +53,7 @@ class NotificationViewController: UIViewController, WKUIDelegate, UIScrollViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //create Load Spinner
         loadSpinner = UIActivityIndicatorView(frame:CGRect(x: self.view.frame.height/2 , y: self.view.frame.width/2 ,width: 37,height: 37))
         loadSpinner.activityIndicatorViewStyle=UIActivityIndicatorViewStyle.whiteLarge
         loadSpinner.center = self.view.center
@@ -62,16 +66,14 @@ class NotificationViewController: UIViewController, WKUIDelegate, UIScrollViewDe
         progressView.setProgress(0.0, animated: true)
         progressView.sizeToFit()
         webView.addSubview(progressView)
-        //navigationController?.isToolbarHidden = false
-        webView.allowsBackForwardNavigationGestures = true
         webView.scrollView.isScrollEnabled = true
-        webView.scrollView.bounces = true
-        let url = NSURL(string: "http://www.firstcrush.co/notifications")
+        webView.scrollView.alwaysBounceVertical = true
+        let url = NSURL(string: "http://www.firstcrush.co/notifications/")
         let request = URLRequest(url: url! as URL)
+        
         if Reachability.isConnectedToNetwork() == true {
             webView.load(request)
-            webView.navigationDelegate = self
-            
+            webView.allowsBackForwardNavigationGestures = true
             // Allow Scroll to Refresh
             let refreshControl = UIRefreshControl(frame:(CGRect(x: 0,y: 25,width: 25, height: 25)))
             let title = NSLocalizedString("Pull To Refresh", comment: "Pull To Refresh")
@@ -80,6 +82,8 @@ class NotificationViewController: UIViewController, WKUIDelegate, UIScrollViewDe
             refreshControl.backgroundColor=UIColor.darkGray
             refreshControl.addTarget(self, action: #selector(ViewController.refreshWebView), for: UIControlEvents.valueChanged)
             webView.scrollView.addSubview(refreshControl)
+            webView.addObserver(self, forKeyPath: "title", options: .new, context: nil)
+            webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
         }else {
             let alertController = UIAlertController(title: NSLocalizedString("No Internet Connection",comment:""), message: NSLocalizedString("Please ensure your device is connected to the internet.",comment:""), preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default, handler: { (pAlert) in
@@ -88,9 +92,9 @@ class NotificationViewController: UIViewController, WKUIDelegate, UIScrollViewDe
             alertController.addAction(defaultAction)
             self.present(alertController, animated: true, completion: nil)
         }
-        
         webView.scrollView.delegate = self
         lastOffsetY = 0.0
+        
     }
     
     @objc func refreshWebView(sender: UIRefreshControl) {
@@ -104,38 +108,38 @@ class NotificationViewController: UIViewController, WKUIDelegate, UIScrollViewDe
         if keyPath == "estimatedProgress" {
             progressView.progress = Float(webView.estimatedProgress)
         }
+        //Display Title
+        if (keyPath == "title") {
+            self.navigationItem.title = webView.title
+        }
     }
     @objc func constrainView() {
         contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":webView]))
         contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-20-[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":webView]))
-        /*let height = NSLayoutConstraint(item: webView, attribute: .height, relatedBy: .equal, toItem: contentView, attribute: .height, multiplier: 1, constant: 0)
-         let width = NSLayoutConstraint(item: webView, attribute: .width, relatedBy: .equal, toItem: contentView, attribute: .width, multiplier: 1, constant: 0)
-         let top = NSLayoutConstraint(item: webView, attribute: .top, relatedBy: .equal, toItem: contentView, attribute: .top, multiplier: 1, constant: 0)
-         let leading = NSLayoutConstraint(item: webView, attribute: .leading, relatedBy: .equal, toItem: contentView, attribute: .leading, multiplier: 1, constant: 0)
-         let bottom = NSLayoutConstraint(item: webView, attribute: .bottom, relatedBy: .equal, toItem: contentView, attribute: .leading, multiplier: 1, constant: 0)
-         let trailing = NSLayoutConstraint(item: webView, attribute: .trailing, relatedBy: .equal, toItem: contentView, attribute: .leading, multiplier: 1, constant: 0)
-         view.addConstraints([leading,top,trailing,bottom,height,width])*/
-        
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView){
-        if webView.canGoBack {
+        //let request = webView.url?.absoluteString
+        if webView.canGoBack
+        {
             lastOffsetY = scrollView.contentOffset.y
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
         }
         else {
             self.navigationController?.setNavigationBarHidden(true, animated: true)
-            navigationController?.isToolbarHidden = true
+            self.webView.frame = self.view.bounds
         }
     }
     
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView){
+        //let request = webView.url?.absoluteString
         if webView.canGoBack {
             let hide = scrollView.contentOffset.y > self.lastOffsetY
             self.navigationController?.setNavigationBarHidden(hide, animated: true)
         }
         else {
             self.navigationController?.setNavigationBarHidden(true, animated: true)
-            navigationController?.isToolbarHidden = true
+            self.webView.frame = self.view.bounds
         }
     }
     override func didReceiveMemoryWarning() {
@@ -154,6 +158,7 @@ class NotificationViewController: UIViewController, WKUIDelegate, UIScrollViewDe
     }
     
     @IBAction func refreshAction(_ sender: Any) {
+        progressView.isHidden = false
         webView.reload()
     }
     
@@ -168,31 +173,25 @@ class NotificationViewController: UIViewController, WKUIDelegate, UIScrollViewDe
             })
             alertController.addAction(defaultAction)
             self.present(alertController, animated: true, completion: nil)
+            self.progressView.setProgress(1.0, animated: true)
             progressView.isHidden = true
             loadSpinner.stopAnimating()
-            loadSpinner.isHidden = true
         }
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!)
     {
+        self.progressView.setProgress(1.0, animated: true)
         progressView.isHidden = true
         loadSpinner.stopAnimating()
         loadSpinner.isHidden = true
-        webView.evaluateJavaScript("document.getElementById('pageTitle').textContent") { (result, error) -> Void in
-            if error == nil {
-                print(result!)
-            }
-        }
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        self.progressView.setProgress(0.1, animated: false)
         progressView.isHidden = false
         loadSpinner.startAnimating()
-        
     }
-    
-    
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping ((WKNavigationActionPolicy) -> Void)) {
         
@@ -202,23 +201,71 @@ class NotificationViewController: UIViewController, WKUIDelegate, UIScrollViewDe
                 //self.webView.load(navigationAction.request)// It will load that link in same WKWebView
                 UIApplication.shared.open(navigationAction.request.url!,options: [:], completionHandler: nil)
             }
+            else
+            {
+                /*if let vc = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController")  as? DetailViewController {
+                 vc.detailURL = navigationAction.request.url! as NSURL
+                 vc.webConfiguration = webConfiguration
+                 //wv = vc.webView as? WKWebView
+                 
+                 self.navigationController?.pushViewController(vc, animated: true)
+                 //self.performSegue(withIdentifier: "detailView", sender: webView.url!)
+                 }*/
+            }
         default:
             break
         }
         decisionHandler(.allow)
     }
     
+    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+     {
+     if let detailViewController = segue.destination as? DetailViewController{
+     if let detailURL = sender as? NSURL{
+     detailViewController.detailURL = detailURL
+     }
+     }
+     }*/
+    
+    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "detailView") {
+            let navigationController = segue.destination as! UINavigationController
+            let detailViewController = navigationController.topViewController as! DetailViewController
+            detailViewController.detailURL=sender as! NSURL
+        }
+    }
+    /*func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+     {
+     if let detailViewController = segue.destination as? DetailViewController{
+     if let detailURL = sender as? NSURL{
+     //detailViewController.detailURL = easyURLStart
+     detailViewController.setdetailURL(detailURL)
+     detailViewController.loadView()
+     detailViewController.viewDidLoad()
+     let request = URLRequest(url: detailURL as URL)
+     detailViewController.webView.load(request)
+     }
+     }
+     }*/
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        if UIDevice.current.orientation.isLandscape {
+            UIApplication.shared.isStatusBarHidden = true // Landscape
+        } else {
+            UIApplication.shared.isStatusBarHidden = false //Portrait
+        }
+    }
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         let tabBarIndex = tabBarController.selectedIndex
         if tabBarIndex == 3 {
-            let url = NSURL(string: "http://www.firstcrush.co/notifications")
+            let url = NSURL(string: "http://www.firstcrush.co/notifications/")
             let request = URLRequest(url: url! as URL)
             webView.load(request)
             self.navigationController?.setNavigationBarHidden(true, animated: true)
             lastOffsetY = 0
         }
+        
     }
+    
 }
-
-
 

@@ -11,7 +11,7 @@ import WebKit
 
 class DetailViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNavigationDelegate,  UITabBarControllerDelegate {
     @IBOutlet var contentView: UIView!
-    let webConfiguration = WKWebViewConfiguration()
+    var webConfiguration = WKWebViewConfiguration()
     @objc var webView = WKWebView()
     //@objc var webView: WKWebView!
     @objc var progressView: UIProgressView!
@@ -192,12 +192,6 @@ class DetailViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate
         self.progressView.setProgress(0.1, animated: false)
         progressView.isHidden = false
         loadSpinner.startAnimating()
-        webView.evaluateJavaScript("document.getElementById('pageTitle').textContent") { (result, error) -> Void in
-            if error == nil {
-                print(result!)
-                self.navigationTitle=result as! UINavigationItem
-            }
-        }
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping ((WKNavigationActionPolicy) -> Void)) {

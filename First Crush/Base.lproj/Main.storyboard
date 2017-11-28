@@ -57,7 +57,7 @@
         <scene sceneID="JcD-io-gyI">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="psL-4k-8u1" customClass="RadioViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="bV0-hA-8Mh">
+                    <view key="view" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" id="bV0-hA-8Mh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -141,7 +141,7 @@
         <scene sceneID="UI7-3u-YLd">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" modalTransitionStyle="partialCurl" id="hzr-NA-Ne1" customClass="NotificationViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="0OW-wk-IsF">
+                    <view key="view" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" id="0OW-wk-IsF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -183,10 +183,11 @@
         <scene sceneID="8nD-6p-M5i">
             <objects>
                 <viewController title="DetailViewController" automaticallyAdjustsScrollViewInsets="NO" id="8tY-t9-Cew" customClass="DetailViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Owq-Bd-2QC">
+                    <view key="view" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" id="Owq-Bd-2QC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <accessibility key="accessibilityConfiguration" identifier="DetailViewController"/>
                         <viewLayoutGuide key="safeArea" id="UOh-ee-f5p"/>
                     </view>
                     <navigationItem key="navigationItem" title="Detail View" id="ekI-8Y-Twt">
