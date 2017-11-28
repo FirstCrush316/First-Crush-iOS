@@ -22,7 +22,7 @@ class DetailViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate
     
     @objc var time : Float = 0.0
     @objc var timer: Timer?
-    var detailURL = NSURL(string: "http://radio.firstcrush.co")
+    @objc var detailURL: NSURL!
     
     var myContext = 0
     

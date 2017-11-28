@@ -31,7 +31,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Featured" id="7pj-vA-kLM">
                         <barButtonItem key="backBarButtonItem" title="&lt; Back" id="xqE-Aj-X7W"/>
-                        <barButtonItem key="leftBarButtonItem" title="&lt; Back" id="wVk-U2-U1I">
+                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="wVk-U2-U1I">
                             <connections>
                                 <action selector="backAction:" destination="BYZ-38-t0r" id="bdu-FX-4g1"/>
                             </connections>
@@ -74,7 +74,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="First Crush Radio" id="ftG-wf-VAF">
                         <barButtonItem key="backBarButtonItem" title="&lt; Back" id="kcy-9m-B7A"/>
-                        <barButtonItem key="leftBarButtonItem" title="&lt; Back" id="Tar-OS-Z9V">
+                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="Tar-OS-Z9V">
                             <connections>
                                 <action selector="backAction:" destination="psL-4k-8u1" id="fJG-uS-1Uz"/>
                             </connections>
@@ -116,7 +116,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="D4s-9r-pI8">
                         <barButtonItem key="backBarButtonItem" title="&lt; Back" id="SUU-MM-HrD"/>
-                        <barButtonItem key="leftBarButtonItem" title="&lt; Back" id="I10-Wx-Jog">
+                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="I10-Wx-Jog">
                             <connections>
                                 <action selector="backAction:" destination="MS0-sj-iT1" id="d5S-qS-gfg"/>
                             </connections>
@@ -158,7 +158,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Notifications" id="bEp-O9-tUK">
                         <barButtonItem key="backBarButtonItem" title="&lt; Back" id="2MG-H7-2u1"/>
-                        <barButtonItem key="leftBarButtonItem" title="&lt; Back" id="IS7-ub-eN2">
+                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="IS7-ub-eN2">
                             <connections>
                                 <action selector="backAction:" destination="hzr-NA-Ne1" id="lXw-Ta-3cU"/>
                             </connections>
@@ -184,7 +184,7 @@
             <objects>
                 <viewController title="DetailViewController" automaticallyAdjustsScrollViewInsets="NO" id="8tY-t9-Cew" customClass="DetailViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Owq-Bd-2QC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="UOh-ee-f5p"/>
@@ -203,13 +203,15 @@
         <!--Tab Bar Controller-->
         <scene sceneID="cIa-rc-nWS">
             <objects>
-                <tabBarController id="O3H-hv-Mio" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="O3H-hv-Mio" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="9ij-KI-zzH"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="fKH-yX-nX1">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.0" green="0.3357647258" blue="0.69952234459999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="Ilg-bP-bAe" kind="relationship" relationship="viewControllers" id="V4B-jO-qIl"/>
@@ -230,9 +232,9 @@
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="zMA-7Y-omL">
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.0" green="0.3357647258" blue="0.69952234459999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
@@ -253,9 +255,9 @@
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="B1D-g3-fvX">
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.0" green="0.33576472577221689" blue="0.69952234455958551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
@@ -276,9 +278,9 @@
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="jy3-ix-GG8">
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.0" green="0.3357647258" blue="0.69952234459999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
@@ -299,9 +301,9 @@
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="J5w-XX-yjg">
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.0" green="0.3357647258" blue="0.69952234459999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
@@ -317,14 +319,13 @@
         <!--Navigation Controller-->
         <scene sceneID="PHR-xj-R7X">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="40w-Dd-jqb" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="40w-Dd-jqb" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="u70-iE-DVV">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.0" green="0.3357647258" blue="0.69952234459999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>

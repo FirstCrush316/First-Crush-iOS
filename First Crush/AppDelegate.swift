@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.isStatusBarHidden = false
         application.isStatusBarHidden=false
         UINavigationBar.appearance().clipsToBounds = true
-        UINavigationBar.appearance().barTintColor = UIColor.black;
+        //UINavigationBar.appearance().barTintColor = UIColor.black;
         let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
         if statusBar.responds(to: #selector(setter: UIView.backgroundColor)){
             statusBar.backgroundColor = UIColor.black

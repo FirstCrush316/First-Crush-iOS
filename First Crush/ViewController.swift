@@ -82,6 +82,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
             refreshControl.backgroundColor=UIColor.darkGray
             refreshControl.addTarget(self, action: #selector(ViewController.refreshWebView), for: UIControlEvents.valueChanged)
             webView.scrollView.addSubview(refreshControl)
+            webView.addObserver(self, forKeyPath: "title", options: .new, context: nil)
             webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
         }else {
             let alertController = UIAlertController(title: NSLocalizedString("No Internet Connection",comment:""), message: NSLocalizedString("Please ensure your device is connected to the internet.",comment:""), preferredStyle: .alert)
@@ -91,7 +92,6 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
             alertController.addAction(defaultAction)
             self.present(alertController, animated: true, completion: nil)
         }
-        (self.navigationController?.navigationBar.topItem?.titleView as? UILabel)?.text=webView.title
         webView.scrollView.delegate = self
         lastOffsetY = 0.0
 
@@ -108,6 +108,10 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         if keyPath == "estimatedProgress" {
             progressView.progress = Float(webView.estimatedProgress)
         }
+        //Display Title
+        if (keyPath == "title") {
+            self.navigationItem.title = webView.title
+        }
     }
     @objc func constrainView() {
         contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":webView]))
@@ -120,12 +124,9 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         {
             lastOffsetY = scrollView.contentOffset.y
             self.navigationController?.setNavigationBarHidden(false, animated: true)
-            self.webView.frame = self.view.bounds
-            
         }
         else {
             self.navigationController?.setNavigationBarHidden(true, animated: true)
-            navigationController?.isToolbarHidden = true
             self.webView.frame = self.view.bounds
         }
     }
@@ -135,11 +136,9 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         if webView.canGoBack {
                 let hide = scrollView.contentOffset.y > self.lastOffsetY
                 self.navigationController?.setNavigationBarHidden(hide, animated: true)
-            self.webView.frame = self.view.bounds
         }
         else {
             self.navigationController?.setNavigationBarHidden(true, animated: true)
-            navigationController?.isToolbarHidden = true
             self.webView.frame = self.view.bounds
         }
     }
@@ -192,12 +191,6 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         self.progressView.setProgress(0.1, animated: false)
         progressView.isHidden = false
         loadSpinner.startAnimating()
-        webView.evaluateJavaScript("document.getElementById('pageTitle').textContent") { (result, error) -> Void in
-            if error == nil {
-                print(result!)
-                self.navigationTitle=result as! UINavigationItem
-            }
-        }
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping ((WKNavigationActionPolicy) -> Void)) {
@@ -210,22 +203,29 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
             }
             else
             {
-                self.performSegue(withIdentifier: "detailView", sender: navigationAction.request.url!)
+                //self.performSegue(withIdentifier: "detailView", sender: webView.url!)
             }
         default:
             break
         }
         decisionHandler(.allow)
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if let detailViewController = segue.destination as? DetailViewController{
             if let detailURL = sender as? NSURL{
                 detailViewController.detailURL = detailURL
             }
         }
-    }
+    }*/
     
+    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "detailView") {
+            let navigationController = segue.destination as! UINavigationController
+            let detailViewController = navigationController.topViewController as! DetailViewController
+            detailViewController.detailURL=sender as! NSURL
+        }
+    }
     /*func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
         if let detailViewController = segue.destination as? DetailViewController{
