@@ -8,7 +8,7 @@
 
 import UIKit
 import WebKit
-
+import AVFoundation;
 
 class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNavigationDelegate,  UITabBarControllerDelegate {
     @objc var contentView: UIView!
@@ -30,8 +30,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         super.loadView()
         webConfiguration.allowsInlineMediaPlayback=true
         webConfiguration.allowsAirPlayForMediaPlayback=true
-        webConfiguration.allowsPictureInPictureMediaPlayback=true
-       
+        webConfiguration.allowsPictureInPictureMediaPlayback=true       
         webView = WKWebView(frame:CGRect(x: 0,y: 0,width: self.view.frame.width,height: self.view.frame.height), configuration: webConfiguration)
         webView.autoresizingMask = [.flexibleHeight]
         webView.navigationDelegate = self
@@ -255,6 +254,31 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
             UIApplication.shared.isStatusBarHidden = false //Portrait
         }
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        UIApplication.shared.beginReceivingRemoteControlEvents();
+        self.becomeFirstResponder();
+    }
+    override func remoteControlReceived(with event: UIEvent?)
+    {
+            switch (event?.subtype) {
+            case UIEventSubtype.remoteControlPlay?:
+                //handle it
+            break;
+            case UIEventSubtype.remoteControlPause?:
+            // handle it
+            break;
+            case UIEventSubtype.remoteControlNextTrack?:
+            // handle it
+            break;
+            case UIEventSubtype.remoteControlPreviousTrack?:
+            // handle it
+            break;
+            default:
+            break;
+            }
+    }
+    
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         let tabBarIndex = tabBarController.selectedIndex
         if tabBarIndex == 0 {

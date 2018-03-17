@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 import OneSignal
 
 @UIApplicationMain
@@ -26,6 +27,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if statusBar.responds(to: #selector(setter: UIView.backgroundColor)){
             statusBar.backgroundColor = UIColor.black
         }
+
+        //Background Play Handling
+        
+        try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback);
+        try? AVAudioSession.sharedInstance().setActive(true);
+        UIApplication.shared.beginReceivingRemoteControlEvents();
+        
+        
+        //One Signal Code
         let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false, kOSSettingsKeyInAppLaunchURL: true]
         // Replace 'YOUR_APP_ID' with your OneSignal App ID.
         OneSignal.initWithLaunchOptions(launchOptions,
@@ -85,6 +95,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
