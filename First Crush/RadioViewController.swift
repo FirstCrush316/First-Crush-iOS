@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import AVFoundation;
 
 
 class RadioViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNavigationDelegate,  UITabBarControllerDelegate {
@@ -25,6 +26,7 @@ class RadioViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,
     @objc var timer: Timer?
     
     var myContext = 0
+    var mPlayer:AVPlayer?
     
     override func loadView() {
         super.loadView()
@@ -94,7 +96,7 @@ class RadioViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,
         }
         webView.scrollView.delegate = self
         lastOffsetY = 0.0
-        
+        mPlayer=AVPlayer();
     }
     
     @objc func refreshWebView(sender: UIRefreshControl) {
@@ -253,6 +255,43 @@ class RadioViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,
             UIApplication.shared.isStatusBarHidden = true // Landscape
         } else {
             UIApplication.shared.isStatusBarHidden = false //Portrait
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        UIApplication.shared.beginReceivingRemoteControlEvents();
+        self.becomeFirstResponder();
+    }
+    
+    override func remoteControlReceived(with event: UIEvent?)
+    {
+        switch (event?.subtype) {
+        case UIEventSubtype.remoteControlTogglePlayPause?:
+            if (mPlayer?.rate==0)
+            {
+                mPlayer?.play();
+            }
+            else
+            {
+                mPlayer?.pause()
+            }
+            break;
+        case UIEventSubtype.remoteControlPlay?:
+            mPlayer?.play()
+            print("Play Remote Received");
+            break;
+        case UIEventSubtype.remoteControlPause?:
+            mPlayer?.pause()
+            break;
+        case UIEventSubtype.remoteControlNextTrack?:
+            //Handle It
+            break;
+        case UIEventSubtype.remoteControlPreviousTrack?:
+            //Handle It
+            break;
+        default:
+            break;
         }
     }
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {

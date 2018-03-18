@@ -9,6 +9,7 @@
 import UIKit
 import WebKit
 import AVFoundation;
+import MediaPlayer;
 
 class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNavigationDelegate,  UITabBarControllerDelegate {
     @objc var contentView: UIView!
@@ -25,6 +26,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
     @objc var timer: Timer?
     
     var myContext = 0
+    var mPlayer:AVPlayer?
     
     override func loadView() {
         super.loadView()
@@ -48,6 +50,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         constrainView()
         webView.uiDelegate = self
         view = webView
+        
     }
     
     override func viewDidLoad() {
@@ -93,7 +96,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         }
         webView.scrollView.delegate = self
         lastOffsetY = 0.0
-
+         mPlayer = AVPlayer ();
     }
     
     @objc func refreshWebView(sender: UIRefreshControl) {
@@ -262,17 +265,27 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
     override func remoteControlReceived(with event: UIEvent?)
     {
             switch (event?.subtype) {
+            case UIEventSubtype.remoteControlTogglePlayPause?:
+                if (mPlayer?.rate==0)
+                    {
+                    mPlayer?.play();
+                    }
+                else
+                    {
+                    mPlayer?.pause()
+                    }
+                break;
             case UIEventSubtype.remoteControlPlay?:
-                //handle it
-            break;
+                mPlayer?.play()
+                break;
             case UIEventSubtype.remoteControlPause?:
-            // handle it
+                mPlayer?.pause()
             break;
             case UIEventSubtype.remoteControlNextTrack?:
-            // handle it
+               //Handle It
             break;
             case UIEventSubtype.remoteControlPreviousTrack?:
-            // handle it
+              //Handle It
             break;
             default:
             break;
