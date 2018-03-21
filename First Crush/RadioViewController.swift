@@ -96,7 +96,6 @@ class RadioViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,
         }
         webView.scrollView.delegate = self
         lastOffsetY = 0.0
-        mPlayer=AVPlayer();
     }
     
     @objc func refreshWebView(sender: UIRefreshControl) {
@@ -264,25 +263,34 @@ class RadioViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,
         self.becomeFirstResponder();
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        UIApplication.shared.endReceivingRemoteControlEvents();
+        self.resignFirstResponder();
+    }
+    
     override func remoteControlReceived(with event: UIEvent?)
     {
         switch (event?.subtype) {
         case UIEventSubtype.remoteControlTogglePlayPause?:
             if (mPlayer?.rate==0)
             {
-                mPlayer?.play();
+                self.mPlayer?.play()
+                print("Received Headphone Play")
+                
             }
             else
             {
-                mPlayer?.pause()
+                self.mPlayer?.pause()
+                print("Received Headphone Pause")
             }
             break;
         case UIEventSubtype.remoteControlPlay?:
-            mPlayer?.play()
-            print("Play Remote Received");
+            self.mPlayer?.play()
+            print("Received Remote Play")
             break;
         case UIEventSubtype.remoteControlPause?:
-            mPlayer?.pause()
+            self.mPlayer?.pause()
+            print("Received Remote Pause")
             break;
         case UIEventSubtype.remoteControlNextTrack?:
             //Handle It
@@ -294,6 +302,7 @@ class RadioViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,
             break;
         }
     }
+    
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         let tabBarIndex = tabBarController.selectedIndex
         if tabBarIndex == 1 {

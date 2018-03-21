@@ -72,7 +72,6 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         webView.scrollView.alwaysBounceVertical = true
         let url = NSURL(string: "http://www.firstcrush.co")
         let request = URLRequest(url: url! as URL)
-        
         if Reachability.isConnectedToNetwork() == true {
             webView.load(request)
             webView.allowsBackForwardNavigationGestures = true
@@ -96,7 +95,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         }
         webView.scrollView.delegate = self
         lastOffsetY = 0.0
-         mPlayer = AVPlayer ();
+        mPlayer=AVPlayer.init(url: url! as URL)
     }
     
     @objc func refreshWebView(sender: UIRefreshControl) {
@@ -262,24 +261,33 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         UIApplication.shared.beginReceivingRemoteControlEvents();
         self.becomeFirstResponder();
     }
+    override func viewDidDisappear(_ animated: Bool) {
+        UIApplication.shared.endReceivingRemoteControlEvents();
+        self.resignFirstResponder();
+    }
     override func remoteControlReceived(with event: UIEvent?)
     {
             switch (event?.subtype) {
             case UIEventSubtype.remoteControlTogglePlayPause?:
                 if (mPlayer?.rate==0)
                     {
-                    mPlayer?.play();
+                    self.mPlayer?.play()
+                       print("Received Headphone Play")
+                    
                     }
                 else
                     {
-                    mPlayer?.pause()
+                    self.mPlayer?.pause()
+                        print("Received Headphone Pause")
                     }
                 break;
             case UIEventSubtype.remoteControlPlay?:
-                mPlayer?.play()
+                self.mPlayer?.play()
+                print("Received Remote Play")
                 break;
             case UIEventSubtype.remoteControlPause?:
-                mPlayer?.pause()
+                self.mPlayer?.pause()
+                print("Received Remote Pause")
             break;
             case UIEventSubtype.remoteControlNextTrack?:
                //Handle It
