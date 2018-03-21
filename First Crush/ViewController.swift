@@ -95,7 +95,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         }
         webView.scrollView.delegate = self
         lastOffsetY = 0.0
-        mPlayer=AVPlayer.init(url: url! as URL)
+        
     }
     
     @objc func refreshWebView(sender: UIRefreshControl) {
@@ -261,7 +261,9 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         UIApplication.shared.beginReceivingRemoteControlEvents();
         self.becomeFirstResponder();
     }
-    override func viewDidDisappear(_ animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
+        mPlayer?.pause();
+        super.viewWillDisappear(true)
         UIApplication.shared.endReceivingRemoteControlEvents();
         self.resignFirstResponder();
     }
@@ -271,7 +273,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
             case UIEventSubtype.remoteControlTogglePlayPause?:
                 if (mPlayer?.rate==0)
                     {
-                    self.mPlayer?.play()
+                        self.mPlayer?.play()
                        print("Received Headphone Play")
                     
                     }
