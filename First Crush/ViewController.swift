@@ -272,8 +272,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
     }
    
         override func remoteControlReceived(with event: UIEvent?)
-    {
-            print("Remote Event Received")
+    {       print("Remote Event Received")
             switch (event?.subtype) {
             case UIEventSubtype.remoteControlTogglePlayPause?:
                 print("Received Headphone Play Pause")
