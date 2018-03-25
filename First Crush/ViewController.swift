@@ -32,24 +32,22 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         super.loadView()
         webConfiguration.allowsInlineMediaPlayback=true
         webConfiguration.allowsAirPlayForMediaPlayback=true
-        webConfiguration.allowsPictureInPictureMediaPlayback=true       
+        webConfiguration.allowsPictureInPictureMediaPlayback=true
         webView = WKWebView(frame:CGRect(x: 0,y: 0,width: self.view.frame.width,height: self.view.frame.height), configuration: webConfiguration)
-        webView.autoresizingMask = [.flexibleHeight]
-        webView.navigationDelegate = self
         contentView.addSubview(webView)
-        contentView.sendSubview(toBack: webView)
         webView.translatesAutoresizingMaskIntoConstraints = true
         contentView.backgroundColor=UIColor.black
         self.webView.isOpaque = false
         self.webView.backgroundColor = UIColor.clear
         self.webView.scrollView.backgroundColor = UIColor.clear
+        webView.navigationDelegate = self
         //webView.backgroundColor=UIColor.black
         webView.autoresizesSubviews=true
         webView.contentMode = .scaleToFill
         webView.frame = contentView.bounds
         constrainView()
         webView.uiDelegate = self
-        view = webView
+        view=webView
         
     }
     
@@ -61,6 +59,14 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         loadSpinner.center = self.view.center
         view.addSubview(loadSpinner)
         self.tabBarController?.delegate = self
+        
+        //Setup Menu Bar
+        /*let menuBar  = MenuBar()
+        view.addSubview(menuBar)
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(50)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))*/
+        
+        
         // Create Progress View
         progressView = UIProgressView(frame:CGRect(x: 0,y: 68,width: self.view.frame.width,height: self.view.frame.height))
         progressView.autoresizingMask = [.flexibleWidth, .flexibleTopMargin]
@@ -68,14 +74,18 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         progressView.setProgress(0.0, animated: true)
         progressView.sizeToFit()
         webView.addSubview(progressView)
+        
+        
         webView.scrollView.isScrollEnabled = true
         webView.scrollView.alwaysBounceVertical = true
+               
         let url = NSURL(string: "http://www.firstcrush.co")
         let request = URLRequest(url: url! as URL)
         if Reachability.isConnectedToNetwork() == true {
             webView.load(request)
             webView.allowsBackForwardNavigationGestures = true
-            // Allow Scroll to Refresh
+            
+        // Implement Scroll to Refresh
             let refreshControl = UIRefreshControl(frame:(CGRect(x: 0,y: 25,width: 25, height: 25)))
             let title = NSLocalizedString("Pull To Refresh", comment: "Pull To Refresh")
             refreshControl.attributedTitle=NSAttributedString(string: title)
@@ -100,7 +110,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
     
     @objc func refreshWebView(sender: UIRefreshControl) {
         // On Scroll to Refresh, Reload Current Page
-        print("Reloading Page")
+        print("Scroll to Refresh Initiated")
         webView.reload()
         sender.endRefreshing()
     }
@@ -116,7 +126,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
     }
     @objc func constrainView() {
         contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":webView]))
-        contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-20-[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":webView]))
+        contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":webView]))
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView){
@@ -186,12 +196,19 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         progressView.isHidden = true
         loadSpinner.stopAnimating()
         loadSpinner.isHidden = true
+        /*UIApplication.shared.endReceivingRemoteControlEvents();
+        //UIApplication.shared.beginBackgroundTask(expirationHandler:NULL);
+        self.resignFirstResponder();
+        print("View Will Dissapear")*/
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         self.progressView.setProgress(0.1, animated: false)
         progressView.isHidden = false
         loadSpinner.startAnimating()
+        UIApplication.shared.beginReceivingRemoteControlEvents();
+        self.becomeFirstResponder();
+        print("Started Received Remote Control Events")
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping ((WKNavigationActionPolicy) -> Void)) {
@@ -256,19 +273,10 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
             UIApplication.shared.isStatusBarHidden = false //Portrait
         }
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        UIApplication.shared.beginReceivingRemoteControlEvents();
-        self.becomeFirstResponder();
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        mPlayer?.pause();
-        super.viewWillDisappear(true)
-        UIApplication.shared.endReceivingRemoteControlEvents();
-        self.resignFirstResponder();
-    }
-    override func remoteControlReceived(with event: UIEvent?)
+   
+        override func remoteControlReceived(with event: UIEvent?)
     {
+            print("Remote Event Received")
             switch (event?.subtype) {
             case UIEventSubtype.remoteControlTogglePlayPause?:
                 if (mPlayer?.rate==0)

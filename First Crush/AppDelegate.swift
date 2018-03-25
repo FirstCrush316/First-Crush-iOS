@@ -77,6 +77,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     OneSignal.initWithLaunchOptions(launchOptions,appId: "ea063994-c980-468b-8895-fcdd9dd93cf4",handleNotificationReceived: notificationReceivedBlock, handleNotificationAction: notificationOpenedBlock, settings: onesignalInitSettings)
     
     OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification
+        
+        //Background Play Handling
+        
+        try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback);
+        try? AVAudioSession.sharedInstance().setActive(true);
+        UIApplication.shared.beginReceivingRemoteControlEvents();
     
             return true
     }
@@ -89,11 +95,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        //Background Play Handling
         
-        try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback);
-        try? AVAudioSession.sharedInstance().setActive(true);
-        UIApplication.shared.beginReceivingRemoteControlEvents();
         
     }
 
