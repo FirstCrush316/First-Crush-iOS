@@ -22,7 +22,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.isStatusBarHidden = false
         application.isStatusBarHidden=false
         UINavigationBar.appearance().clipsToBounds = true
+        
+        //Get Rid of Black Bar under Nav Bar
+        UINavigationBar.appearance().shadowImage = UIImage ()
+        UINavigationBar.appearance().setBackgroundImage(UIImage(),for: .default)
         //UINavigationBar.appearance().barTintColor = UIColor.black;
+        
+        //Status Bar Look and Feel
         let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
         if statusBar.responds(to: #selector(setter: UIView.backgroundColor)){
             statusBar.backgroundColor = UIColor.black

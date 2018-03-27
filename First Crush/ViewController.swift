@@ -33,7 +33,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         webConfiguration.allowsInlineMediaPlayback=true
         webConfiguration.allowsAirPlayForMediaPlayback=true
         webConfiguration.allowsPictureInPictureMediaPlayback=true
-        webView = WKWebView(frame:CGRect(x: 0,y: 0,width: self.view.frame.width,height: self.view.frame.height), configuration: webConfiguration)
+        webView = WKWebView(frame:CGRect(x: 0,y: 75,width: self.view.frame.width,height: self.view.frame.height), configuration: webConfiguration)
         contentView.addSubview(webView)
         webView.translatesAutoresizingMaskIntoConstraints = true
         contentView.backgroundColor=UIColor.black
@@ -47,7 +47,6 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         webView.frame = contentView.bounds
         constrainView()
         webView.uiDelegate = self
-        view=webView
         
     }
     
@@ -61,22 +60,20 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         view.addSubview(loadSpinner)
         self.tabBarController?.delegate = self
         
-        //Setup Menu Bar
-        /*let menuBar  = MenuBar()
-        view.addSubview(menuBar)
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(50)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))*/
         
         
         // Create Progress View
-        progressView = UIProgressView(frame:CGRect(x: 0,y: 68,width: self.view.frame.width,height: self.view.frame.height))
+        progressView = UIProgressView(frame:CGRect(x: 0,y: 163,width: self.view.frame.width,height: self.view.frame.height))
         progressView.autoresizingMask = [.flexibleWidth, .flexibleTopMargin]
         progressView.tintColor = #colorLiteral(red: 0.6576176882, green: 0.7789518833, blue: 0.2271372974, alpha: 1)
         progressView.setProgress(0.0, animated: true)
         progressView.sizeToFit()
         webView.addSubview(progressView)
         
-        
+        //Setup Menu Bar
+        let menuBar  = MenuBar(frame:CGRect(x: 0,y: 64,width: self.view.frame.width,height: 50))
+        menuBar.clipsToBounds=true
+        webView.addSubview(menuBar)
         webView.scrollView.isScrollEnabled = true
         webView.scrollView.alwaysBounceVertical = true
                
@@ -106,6 +103,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         }
         webView.scrollView.delegate = self
         lastOffsetY = 0.0
+        view=webView
     }
     
     @objc func refreshWebView(sender: UIRefreshControl) {
