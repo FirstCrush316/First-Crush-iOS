@@ -255,6 +255,10 @@ class NotificationViewController: UIViewController, WKUIDelegate, UIScrollViewDe
             UIApplication.shared.isStatusBarHidden = false //Portrait
         }
     }
+    //Disable Zooming
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return nil;
+    }
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         let tabBarIndex = tabBarController.selectedIndex
         if tabBarIndex == 3 {

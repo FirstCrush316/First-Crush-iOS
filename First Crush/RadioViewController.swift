@@ -302,7 +302,10 @@ class RadioViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,
             break;
         }
     }
-    
+    //Disable Zooming
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return nil;
+    }
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         let tabBarIndex = tabBarController.selectedIndex
         if tabBarIndex == 1 {
