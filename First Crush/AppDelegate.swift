@@ -85,14 +85,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification
         
         //Background Play Handling
-        
         try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback);
         try? AVAudioSession.sharedInstance().setActive(true);
-        UIApplication.shared.beginReceivingRemoteControlEvents();
-        self.becomeFirstResponder();
-        print("Started Receiving Remote Control Events")
-    
-            return true
+        return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

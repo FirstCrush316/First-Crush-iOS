@@ -11,17 +11,18 @@ import UIKit
 class MenuBar:UIView {
     
     
-    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init())
-    let layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
     
     override init(frame: CGRect)
     {
         super.init(frame: frame)
-        backgroundColor = UIColor.black
         
-        //addSubview(collectionView)
-        //addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":collectionView]))
-        //addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":collectionView]))
+        let layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
+        let collectionView = UICollectionView(frame:CGRect(x: 0,y: 0,width: self.frame.width,height: 60), collectionViewLayout: layout)
+        
+        //backgroundColor = UIColor.black
+        collectionView.backgroundColor=UIColor.black
+        
+        addSubview(collectionView)
     }
     
     required init?(coder aDecoder: NSCoder) {

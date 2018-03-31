@@ -103,6 +103,21 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         self.tabBarController?.delegate = self
         lastOffsetY = 0.0
         view=webView
+        
+        //Handling Lock Screen Events
+        try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback);
+        try? AVAudioSession.sharedInstance().setActive(true);
+        
+        UIApplication.shared.beginReceivingRemoteControlEvents();
+        self.becomeFirstResponder();
+        print("Started Receiving Remote Control Events")
+        
+        let commandCenter=MPRemoteCommandCenter.shared()
+        commandCenter.nextTrackCommand.isEnabled=true
+        MPRemoteCommandCenter.shared().nextTrackCommand.addTarget {
+            (event) -> MPRemoteCommandHandlerStatus in
+            return .success
+        }
     }
     
     @objc func refreshWebView(sender: UIRefreshControl) {
