@@ -284,48 +284,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         }
     }
    
-        override func remoteControlReceived(with event: UIEvent?)
-    {       print("Remote Event Received")
-            switch (event?.subtype) {
-            case UIEventSubtype.remoteControlTogglePlayPause?:
-                print("Received Headphone Play Pause")
-                MPRemoteCommandCenter.shared().togglePlayPauseCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
-                    return .success
-                }
-                break;
-            case UIEventSubtype.remoteControlPlay?:
-                self.mPlayer?.play()
-                print("Received Remote Play")
-                MPRemoteCommandCenter.shared().playCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
-                    return .success
-                }
-                break;
-            case UIEventSubtype.remoteControlPause?:
-                self.mPlayer?.pause()
-                print("Received Remote Pause")
-                MPRemoteCommandCenter.shared().pauseCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
-                    return .success
-                }
-            break;
-            case UIEventSubtype.remoteControlNextTrack?:
-               //Handle It
-                print("Received Next Event")
-                MPRemoteCommandCenter.shared().nextTrackCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
-                    return .success
-                }
-            break;
-            case UIEventSubtype.remoteControlPreviousTrack?:
-              //Handle It
-                 print("Received Previous Event")
-                MPRemoteCommandCenter.shared().previousTrackCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
-                    return .success
-                }
-            break;
-            default:
-            break;
-            }
-    }
-    
+        
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         let tabBarIndex = tabBarController.selectedIndex
         if tabBarIndex == 0 {
