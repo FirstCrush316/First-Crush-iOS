@@ -233,28 +233,33 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         commandCenter.skipBackwardCommand.isEnabled = true;
         MPRemoteCommandCenter.shared().skipBackwardCommand.addTarget {
             (event) -> MPRemoteCommandHandlerStatus in
+            print("Skip Pressed")
             return .success
         }
         
         commandCenter.nextTrackCommand.isEnabled=true
         MPRemoteCommandCenter.shared().nextTrackCommand.addTarget {
             (event) -> MPRemoteCommandHandlerStatus in
+            print("Next Pressed")
             return .success
         }
         commandCenter.playCommand.isEnabled = true
         MPRemoteCommandCenter.shared().playCommand.addTarget {
             (event) -> MPRemoteCommandHandlerStatus in
+            print("Play Pressed")
             return .success
         }
         
         commandCenter.pauseCommand.isEnabled = true
         MPRemoteCommandCenter.shared().pauseCommand.addTarget {
             (event) -> MPRemoteCommandHandlerStatus in
+            print("Pause Pressed")
             return .success
         }
         commandCenter.togglePlayPauseCommand.isEnabled = true
         MPRemoteCommandCenter.shared().togglePlayPauseCommand.addTarget {
             (event) -> MPRemoteCommandHandlerStatus in
+            print("Toggle Play Pre Pressed")
             return .success
         }
         
