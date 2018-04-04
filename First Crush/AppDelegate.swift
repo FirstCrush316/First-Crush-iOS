@@ -89,9 +89,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
         try? AVAudioSession.sharedInstance().setActive(true);
-        UIApplication.shared.beginReceivingRemoteControlEvents();
-        self.becomeFirstResponder();
-        print("Started Receiving Remote Control Events")
         return true
     }
 
