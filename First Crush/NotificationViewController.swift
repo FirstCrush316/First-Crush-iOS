@@ -95,6 +95,57 @@ class NotificationViewController: UIViewController, WKUIDelegate, UIScrollViewDe
         webView.scrollView.delegate = self
         lastOffsetY = 0.0
         
+        let mpic = MPNowPlayingInfoCenter.default()
+        let image:UIImage = UIImage(named: "AppIcon")!
+        let artwork = MPMediaItemArtwork.init(boundsSize: image.size, requestHandler: { (size) -> UIImage in
+            return image
+        })
+        mpic.nowPlayingInfo =
+            [
+                MPMediaItemPropertyArtwork:artwork
+        ]
+        
+        
+        let commandCenter=MPRemoteCommandCenter.shared()
+        commandCenter.previousTrackCommand.isEnabled = true;
+        MPRemoteCommandCenter.shared().previousTrackCommand.addTarget {
+            (event) -> MPRemoteCommandHandlerStatus in
+            return .success
+        }
+        
+        commandCenter.skipForwardCommand.isEnabled = true;
+        MPRemoteCommandCenter.shared().skipForwardCommand.addTarget {
+            (event) -> MPRemoteCommandHandlerStatus in
+            return .success
+        }
+        commandCenter.skipBackwardCommand.isEnabled = true;
+        MPRemoteCommandCenter.shared().skipBackwardCommand.addTarget {
+            (event) -> MPRemoteCommandHandlerStatus in
+            return .success
+        }
+        
+        commandCenter.nextTrackCommand.isEnabled=true
+        MPRemoteCommandCenter.shared().nextTrackCommand.addTarget {
+            (event) -> MPRemoteCommandHandlerStatus in
+            return .success
+        }
+        commandCenter.playCommand.isEnabled = true
+        MPRemoteCommandCenter.shared().playCommand.addTarget {
+            (event) -> MPRemoteCommandHandlerStatus in
+            return .success
+        }
+        
+        commandCenter.pauseCommand.isEnabled = true
+        MPRemoteCommandCenter.shared().pauseCommand.addTarget {
+            (event) -> MPRemoteCommandHandlerStatus in
+            return .success
+        }
+        commandCenter.togglePlayPauseCommand.isEnabled = true
+        MPRemoteCommandCenter.shared().togglePlayPauseCommand.addTarget {
+            (event) -> MPRemoteCommandHandlerStatus in
+            return .success
+        }
+        
     }
     
     @objc func refreshWebView(sender: UIRefreshControl) {

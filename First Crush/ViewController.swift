@@ -105,20 +105,64 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         view=webView
         
         //Handling Lock Screen Events
-        try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback);
-        try? AVAudioSession.sharedInstance().setActive(true);
         
         UIApplication.shared.beginReceivingRemoteControlEvents();
         self.becomeFirstResponder();
         print("Started Receiving Remote Control Events")
         
+        let mpic = MPNowPlayingInfoCenter.default()
+        let image:UIImage = UIImage(named: "AppIcon")!
+        let artwork = MPMediaItemArtwork.init(boundsSize: image.size, requestHandler: { (size) -> UIImage in
+            return image
+        })
+        mpic.nowPlayingInfo =
+            [
+                MPMediaItemPropertyArtwork:artwork
+        ]
+
+        
         let commandCenter=MPRemoteCommandCenter.shared()
+        commandCenter.previousTrackCommand.isEnabled = true;
+        MPRemoteCommandCenter.shared().previousTrackCommand.addTarget {
+            (event) -> MPRemoteCommandHandlerStatus in
+            return .success
+        }
+        
+        commandCenter.skipForwardCommand.isEnabled = true;
+        MPRemoteCommandCenter.shared().skipForwardCommand.addTarget {
+            (event) -> MPRemoteCommandHandlerStatus in
+            return .success
+        }
+        commandCenter.skipBackwardCommand.isEnabled = true;
+        MPRemoteCommandCenter.shared().skipBackwardCommand.addTarget {
+            (event) -> MPRemoteCommandHandlerStatus in
+            return .success
+        }
+        
         commandCenter.nextTrackCommand.isEnabled=true
         MPRemoteCommandCenter.shared().nextTrackCommand.addTarget {
             (event) -> MPRemoteCommandHandlerStatus in
             return .success
         }
+        commandCenter.playCommand.isEnabled = true
+        MPRemoteCommandCenter.shared().playCommand.addTarget {
+            (event) -> MPRemoteCommandHandlerStatus in
+            return .success
+        }
+        
+        commandCenter.pauseCommand.isEnabled = true
+        MPRemoteCommandCenter.shared().pauseCommand.addTarget {
+            (event) -> MPRemoteCommandHandlerStatus in
+            return .success
+        }
+        commandCenter.togglePlayPauseCommand.isEnabled = true
+        MPRemoteCommandCenter.shared().togglePlayPauseCommand.addTarget {
+            (event) -> MPRemoteCommandHandlerStatus in
+            return .success
+        }
+        
     }
+    
     
     @objc func refreshWebView(sender: UIRefreshControl) {
         // On Scroll to Refresh, Reload Current Page
@@ -209,16 +253,15 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         progressView.isHidden = true
         loadSpinner.stopAnimating()
         loadSpinner.isHidden = true
-        /*UIApplication.shared.endReceivingRemoteControlEvents();
-        //UIApplication.shared.beginBackgroundTask(expirationHandler:NULL);
-        self.resignFirstResponder();
-        print("View Will Dissapear")*/
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         self.progressView.setProgress(0.1, animated: false)
         progressView.isHidden = false
         loadSpinner.startAnimating()
+        UIApplication.shared.beginReceivingRemoteControlEvents();
+        self.becomeFirstResponder();
+        print("Started Receiving Remote Control Events")
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping ((WKNavigationActionPolicy) -> Void)) {
@@ -284,6 +327,46 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         }
     }
    
+    override func remoteControlReceived(with event: UIEvent?)
+    {       print("Remote Event Received")
+        switch (event?.subtype) {
+        case UIEventSubtype.remoteControlTogglePlayPause?:
+            print("Received Headphone Play Pause")
+            MPRemoteCommandCenter.shared().togglePlayPauseCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
+                return .success
+            }
+            break;
+        case UIEventSubtype.remoteControlPlay?:
+            print("Received Remote Play")
+            MPRemoteCommandCenter.shared().playCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
+                return .success
+            }
+            break;
+        case UIEventSubtype.remoteControlPause?:
+            print("Received Remote Pause")
+            MPRemoteCommandCenter.shared().pauseCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
+                return .success
+            }
+            break;
+        case UIEventSubtype.remoteControlNextTrack?:
+            //Handle It
+            print("Received Next Event")
+            MPRemoteCommandCenter.shared().nextTrackCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
+                return .success
+            }
+            break;
+        case UIEventSubtype.remoteControlPreviousTrack?:
+            //Handle It
+            print("Received Previous Event")
+            MPRemoteCommandCenter.shared().previousTrackCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
+                return .success
+            }
+            break;
+        default:
+            break;
+        }
+    }
+    
         
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         let tabBarIndex = tabBarController.selectedIndex
