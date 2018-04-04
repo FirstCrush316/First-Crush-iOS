@@ -208,7 +208,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         print("Started Receiving Remote Control Events")
         
         let mpic = MPNowPlayingInfoCenter.default()
-        let image:UIImage = UIImage(named: "AppIcon")!
+        let image:UIImage = UIImage(named: "Media")!
         let artwork = MPMediaItemArtwork.init(boundsSize: image.size, requestHandler: { (size) -> UIImage in
             return image
         })
