@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import MediaPlayer
 
 
 class ProfileViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNavigationDelegate,  UITabBarControllerDelegate {
