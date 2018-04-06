@@ -42,6 +42,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         webView.allowsBackForwardNavigationGestures=false
         webView.scrollView.isScrollEnabled = true
         webView.scrollView.alwaysBounceVertical = true
+        webView.scrollView.contentInset=UIEdgeInsets(top: 50,left: 0,bottom: 0,right: 0)
         view.backgroundColor=UIColor.black
         self.webView.isOpaque = false
         self.webView.backgroundColor = UIColor.clear
@@ -59,21 +60,22 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         //Create Load Spinner
         loadSpinner = UIActivityIndicatorView(frame:CGRect(x: self.view.frame.height/2 , y: self.view.frame.width/2 ,width: 37,height: 37))
         loadSpinner.activityIndicatorViewStyle=UIActivityIndicatorViewStyle.whiteLarge
+        loadSpinner.color=UIColor.red
         loadSpinner.center = self.view.center
         webView.addSubview(loadSpinner)
         
         // Create Progress View
-        progressView = UIProgressView(frame:CGRect(x: 0,y: 60,width: self.view.frame.width,height: self.view.frame.height))
+        progressView = UIProgressView(frame:CGRect(x: 0,y: 50,width: self.view.frame.width,height: self.view.frame.height))
         progressView.tintColor = #colorLiteral(red: 0.6576176882, green: 0.7789518833, blue: 0.2271372974, alpha: 1)
         progressView.setProgress(0.0, animated: true)
         //progressView.sizeToFit()
         webView.addSubview(progressView)
         
         //Setup Menu Bar
-        let menuBar  = MenuBar(frame:CGRect(x: 0,y: 0,width: self.view.frame.width,height: 60))
+        let menuBar  = MenuBar(frame:CGRect(x: 0,y: 0,width: self.view.frame.width,height: 50))
         webView.addSubview(menuBar)
         webView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))
-        webView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(60)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))
+        webView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(50)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))
         
                
         //Load URL if connected to Network
@@ -103,6 +105,66 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         self.tabBarController?.delegate = self
         lastOffsetY = 0.0
         view=webView
+        
+        //Handling Lock Screen Events
+        UIApplication.shared.beginReceivingRemoteControlEvents();
+        self.becomeFirstResponder();
+        print("Started Receiving Remote Control Events")
+        let mpic = MPNowPlayingInfoCenter.default()
+        let image:UIImage = UIImage(named: "Media")!
+        let artwork = MPMediaItemArtwork.init(boundsSize: image.size, requestHandler: { (size) -> UIImage in
+            return image
+        })
+        mpic.nowPlayingInfo =
+            [
+                MPMediaItemPropertyArtwork:artwork
+        ]
+        
+        
+        let commandCenter=MPRemoteCommandCenter.shared()
+        commandCenter.previousTrackCommand.isEnabled = true;
+        MPRemoteCommandCenter.shared().previousTrackCommand.addTarget {
+            (event) -> MPRemoteCommandHandlerStatus in
+            return .success
+        }
+        
+        commandCenter.skipForwardCommand.isEnabled = true;
+        MPRemoteCommandCenter.shared().skipForwardCommand.addTarget {
+            (event) -> MPRemoteCommandHandlerStatus in
+            return .success
+        }
+        commandCenter.skipBackwardCommand.isEnabled = true;
+        MPRemoteCommandCenter.shared().skipBackwardCommand.addTarget {
+            (event) -> MPRemoteCommandHandlerStatus in
+            print("Skip Pressed")
+            return .success
+        }
+        
+        commandCenter.nextTrackCommand.isEnabled=true
+        MPRemoteCommandCenter.shared().nextTrackCommand.addTarget {
+            (event) -> MPRemoteCommandHandlerStatus in
+            print("Next Pressed")
+            return .success
+        }
+        commandCenter.playCommand.isEnabled = true
+        MPRemoteCommandCenter.shared().playCommand.addTarget {
+            (event) -> MPRemoteCommandHandlerStatus in
+            print("Play Pressed")
+            return .success
+        }
+        
+        commandCenter.pauseCommand.isEnabled = true
+        MPRemoteCommandCenter.shared().pauseCommand.addTarget {
+            (event) -> MPRemoteCommandHandlerStatus in
+            print("Pause Pressed")
+            return .success
+        }
+        commandCenter.togglePlayPauseCommand.isEnabled = true
+        MPRemoteCommandCenter.shared().togglePlayPauseCommand.addTarget {
+            (event) -> MPRemoteCommandHandlerStatus in
+            print("Toggle Play Pre Pressed")
+            return .success
+        }
     }
     
     
@@ -201,68 +263,10 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         self.progressView.setProgress(0.1, animated: false)
         progressView.isHidden = false
         loadSpinner.startAnimating()
-        
-        //Handling Lock Screen Events
+        //Handling Background Play
         UIApplication.shared.beginReceivingRemoteControlEvents();
         self.becomeFirstResponder();
         print("Started Receiving Remote Control Events")
-        
-        let mpic = MPNowPlayingInfoCenter.default()
-        let image:UIImage = UIImage(named: "Media")!
-        let artwork = MPMediaItemArtwork.init(boundsSize: image.size, requestHandler: { (size) -> UIImage in
-            return image
-        })
-        mpic.nowPlayingInfo =
-            [
-                MPMediaItemPropertyArtwork:artwork
-        ]
-        
-        
-        let commandCenter=MPRemoteCommandCenter.shared()
-        commandCenter.previousTrackCommand.isEnabled = true;
-        MPRemoteCommandCenter.shared().previousTrackCommand.addTarget {
-            (event) -> MPRemoteCommandHandlerStatus in
-            return .success
-        }
-        
-        commandCenter.skipForwardCommand.isEnabled = true;
-        MPRemoteCommandCenter.shared().skipForwardCommand.addTarget {
-            (event) -> MPRemoteCommandHandlerStatus in
-            return .success
-        }
-        commandCenter.skipBackwardCommand.isEnabled = true;
-        MPRemoteCommandCenter.shared().skipBackwardCommand.addTarget {
-            (event) -> MPRemoteCommandHandlerStatus in
-            print("Skip Pressed")
-            return .success
-        }
-        
-        commandCenter.nextTrackCommand.isEnabled=true
-        MPRemoteCommandCenter.shared().nextTrackCommand.addTarget {
-            (event) -> MPRemoteCommandHandlerStatus in
-            print("Next Pressed")
-            return .success
-        }
-        commandCenter.playCommand.isEnabled = true
-        MPRemoteCommandCenter.shared().playCommand.addTarget {
-            (event) -> MPRemoteCommandHandlerStatus in
-            print("Play Pressed")
-            return .success
-        }
-        
-        commandCenter.pauseCommand.isEnabled = true
-        MPRemoteCommandCenter.shared().pauseCommand.addTarget {
-            (event) -> MPRemoteCommandHandlerStatus in
-            print("Pause Pressed")
-            return .success
-        }
-        commandCenter.togglePlayPauseCommand.isEnabled = true
-        MPRemoteCommandCenter.shared().togglePlayPauseCommand.addTarget {
-            (event) -> MPRemoteCommandHandlerStatus in
-            print("Toggle Play Pre Pressed")
-            return .success
-        }
-        
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping ((WKNavigationActionPolicy) -> Void)) {
