@@ -106,11 +106,13 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         lastOffsetY = 0.0
         view=webView
         
-        //Handling Lock Screen Events
-        UIApplication.shared.beginReceivingRemoteControlEvents();
-        self.becomeFirstResponder();
-        print("Started Receiving Remote Control Events")
-        let mpic = MPNowPlayingInfoCenter.default()
+        /*NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.remoteControlReceived(with:UIEvent?(UIEventSubtype))),
+                                               name: .MPRemoteCommandevent,
+                                               object: nil)*/
+
+        
+        /*let mpic = MPNowPlayingInfoCenter.default()
         let image:UIImage = UIImage(named: "Media")!
         let artwork = MPMediaItemArtwork.init(boundsSize: image.size, requestHandler: { (size) -> UIImage in
             return image
@@ -118,7 +120,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         mpic.nowPlayingInfo =
             [
                 MPMediaItemPropertyArtwork:artwork
-        ]
+        ]*/
         
         
         let commandCenter=MPRemoteCommandCenter.shared()
@@ -263,10 +265,31 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         self.progressView.setProgress(0.1, animated: false)
         progressView.isHidden = false
         loadSpinner.startAnimating()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         //Handling Background Play
         UIApplication.shared.beginReceivingRemoteControlEvents();
         self.becomeFirstResponder();
         print("Started Receiving Remote Control Events")
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        MPRemoteCommandCenter.shared().pauseCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
+            return .success
+        }
+        super.viewWillDisappear(true);
+        NotificationCenter.default.removeObserver(self)
+        UIApplication.shared.endReceivingRemoteControlEvents();
+        self.resignFirstResponder();
+        print("End Receiving Remote Control Events")
+        
+    }
+    
+    override var canBecomeFirstResponder : Bool {
+        
+        return true
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping ((WKNavigationActionPolicy) -> Void)) {
@@ -343,12 +366,16 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
             break;
         case UIEventSubtype.remoteControlPlay?:
             print("Received Remote Play")
+            self.mPlayer?.play()
+            NotificationCenter.default.post(name: NSNotification.Name("playSong"), object: nil)
             MPRemoteCommandCenter.shared().playCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
                 return .success
             }
             break;
         case UIEventSubtype.remoteControlPause?:
             print("Received Remote Pause")
+            NotificationCenter.default.post(name: NSNotification.Name("pauseSong"), object: nil)
+            self.mPlayer?.pause()
             MPRemoteCommandCenter.shared().pauseCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
                 return .success
             }
@@ -356,18 +383,21 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         case UIEventSubtype.remoteControlNextTrack?:
             //Handle It
             print("Received Next Event")
+            NotificationCenter.default.post(name: NSNotification.Name("nextSong"), object: nil)
             MPRemoteCommandCenter.shared().nextTrackCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
                 return .success
             }
             break;
         case UIEventSubtype.remoteControlPreviousTrack?:
             //Handle It
+            NotificationCenter.default.post(name: NSNotification.Name("previousSong"), object: nil)
             print("Received Previous Event")
             MPRemoteCommandCenter.shared().previousTrackCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
                 return .success
             }
             break;
         default:
+            print("There is an issue with the control")
             break;
         }
     }
@@ -383,7 +413,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
             lastOffsetY = 0
         }
 
-}
+    }
 
 }
 

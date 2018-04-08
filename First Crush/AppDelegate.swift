@@ -86,11 +86,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification
         
         //Background Play Handling
-        try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback);
-        try? AVAudioSession.sharedInstance().setActive(true);
-        UIApplication.shared.beginReceivingRemoteControlEvents();
-        self.becomeFirstResponder();
-        print("Started Receiving Remote Control Events")
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            print("AVAudioSession Category Playback OK")
+            do {
+                try AVAudioSession.sharedInstance().setActive(true)
+                print("AVAudioSession is Active")
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+        
+        UIApplication.shared.beginReceivingRemoteControlEvents()
         return true
     }
 
@@ -111,7 +120,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Application State",application.applicationState)
             print ("Background Time Remaining", application.backgroundTimeRemaining)
             print("Background Task Started")
-            application.endBackgroundTask(UIBackgroundTaskInvalid)
+            application.endBackgroundTask(backgroundTask)
             backgroundTask = UIBackgroundTaskInvalid;
         })
         // Perform your background task here
@@ -122,17 +131,64 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
         //it’s important to stop background task when we do not need it anymore
-        //print("Cleaning up inactive background tasks");
-        //UIApplication.shared.endBackgroundTask(UIBackgroundTaskInvalid)
+        
+        print("Cleaning up inactive background tasks - inside will enter foreground");
+        UIApplication.shared.endBackgroundTask(UIBackgroundTaskInvalid)
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        print("Activate Audio Session - Did Become Active");
+        try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback);
+        try? AVAudioSession.sharedInstance().setActive(true);
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    override func remoteControlReceived(with event: UIEvent?)
+    {       print("Remote Event Received")
+        switch (event?.subtype) {
+        case UIEventSubtype.remoteControlTogglePlayPause?:
+            print("Received Headphone Play Pause")
+            MPRemoteCommandCenter.shared().togglePlayPauseCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
+                return .success
+            }
+            break;
+        case UIEventSubtype.remoteControlPlay?:
+            print("Received Remote Play")
+            NotificationCenter.default.post(name: NSNotification.Name("playSong"), object: nil)
+            MPRemoteCommandCenter.shared().playCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
+                return .success
+            }
+            break;
+        case UIEventSubtype.remoteControlPause?:
+            print("Received Remote Pause")
+            NotificationCenter.default.post(name: NSNotification.Name("pauseSong"), object: nil)
+            MPRemoteCommandCenter.shared().pauseCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
+                return .success
+            }
+            break;
+        case UIEventSubtype.remoteControlNextTrack?:
+            //Handle It
+            print("Received Next Event")
+            NotificationCenter.default.post(name: NSNotification.Name("nextSong"), object: nil)
+            MPRemoteCommandCenter.shared().nextTrackCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
+                return .success
+            }
+            break;
+        case UIEventSubtype.remoteControlPreviousTrack?:
+            //Handle It
+            NotificationCenter.default.post(name: NSNotification.Name("previousSong"), object: nil)
+            print("Received Previous Event")
+            MPRemoteCommandCenter.shared().previousTrackCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
+                return .success
+            }
+            break;
+        default:
+            print("There is an issue with the control")
+            break;
+        }
+    }
 }
 

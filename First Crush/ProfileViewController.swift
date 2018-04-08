@@ -197,7 +197,7 @@ class ProfileViewController: UIViewController, WKUIDelegate, UIScrollViewDelegat
         self.becomeFirstResponder();
         print("Started Receiving Remote Control Events")
         
-        let mpic = MPNowPlayingInfoCenter.default()
+        /*let mpic = MPNowPlayingInfoCenter.default()
         let image:UIImage = UIImage(named: "AppIcon")!
         let artwork = MPMediaItemArtwork.init(boundsSize: image.size, requestHandler: { (size) -> UIImage in
             return image
@@ -205,7 +205,7 @@ class ProfileViewController: UIViewController, WKUIDelegate, UIScrollViewDelegat
         mpic.nowPlayingInfo =
             [
                 MPMediaItemPropertyArtwork:artwork
-        ]
+        ]*/
         
         
         let commandCenter=MPRemoteCommandCenter.shared()

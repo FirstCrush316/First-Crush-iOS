@@ -199,7 +199,7 @@ class RadioViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,
         self.becomeFirstResponder();
         print("Started Receiving Remote Control Events")
         
-        let mpic = MPNowPlayingInfoCenter.default()
+        /*let mpic = MPNowPlayingInfoCenter.default()
         let image:UIImage = UIImage(named: "AppIcon")!
         let artwork = MPMediaItemArtwork.init(boundsSize: image.size, requestHandler: { (size) -> UIImage in
             return image
@@ -207,7 +207,7 @@ class RadioViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,
         mpic.nowPlayingInfo =
             [
                 MPMediaItemPropertyArtwork:artwork
-        ]
+        ]*/
         
         
         let commandCenter=MPRemoteCommandCenter.shared()
