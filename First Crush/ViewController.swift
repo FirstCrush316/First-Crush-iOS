@@ -406,6 +406,8 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         let tabBarIndex = tabBarController.selectedIndex
         if tabBarIndex == 0 {
+            //Handling for same tab click
+            //self.present(viewController, animated: true, completion: nil)
             let url = NSURL(string: "http://www.firstcrush.co")
             let request = URLRequest(url: url! as URL)
             webView.load(request)

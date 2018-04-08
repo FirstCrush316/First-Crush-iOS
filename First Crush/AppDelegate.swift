@@ -15,6 +15,7 @@ import MediaPlayer;
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var timer: Timer?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -106,9 +107,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
-            print("Application State",application.applicationState)
-            print ("Background Time Remaining", application.backgroundTimeRemaining)
-            print("Background Task Started")
+            print("Application State -- Will Resign Active",application.applicationState)
+            print ("Background Time Remaining -- Will Resign Active", application.backgroundTimeRemaining)
+            print("Background Task Started -- Will Resign Active")
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -120,20 +121,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Application State",application.applicationState)
             print ("Background Time Remaining", application.backgroundTimeRemaining)
             print("Background Task Started")
-            application.endBackgroundTask(backgroundTask)
+            UIApplication.shared.beginReceivingRemoteControlEvents()
             backgroundTask = UIBackgroundTaskInvalid;
         })
         // Perform your background task here
-        
-        
+        //DispatchQueue.main.asyncAfter(deadline: .now() + 30) { }// change 2 to desired number of seconds
+            application.endBackgroundTask(backgroundTask)
+            print("Background Task Completed")
     }
-
+    
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
         //it’s important to stop background task when we do not need it anymore
         
         print("Cleaning up inactive background tasks - inside will enter foreground");
         UIApplication.shared.endBackgroundTask(UIBackgroundTaskInvalid)
+        timer?.invalidate()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
