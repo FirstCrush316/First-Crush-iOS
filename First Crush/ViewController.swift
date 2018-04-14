@@ -60,7 +60,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         //Create Load Spinner
         loadSpinner = UIActivityIndicatorView(frame:CGRect(x: self.view.frame.height/2 , y: self.view.frame.width/2 ,width: 37,height: 37))
         loadSpinner.activityIndicatorViewStyle=UIActivityIndicatorViewStyle.whiteLarge
-        loadSpinner.color=UIColor.red
+        loadSpinner.color=UIColor.white
         loadSpinner.center = self.view.center
         webView.addSubview(loadSpinner)
         

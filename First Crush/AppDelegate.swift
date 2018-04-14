@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var timer: Timer?
-
+    var backgroundTask: UIBackgroundTaskIdentifier = 0;
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -110,25 +110,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Application State -- Will Resign Active",application.applicationState)
             print ("Background Time Remaining -- Will Resign Active", application.backgroundTimeRemaining)
             print("Background Task Started -- Will Resign Active")
+            UIApplication.shared.endBackgroundTask(UIBackgroundTaskInvalid)
+            UIApplication.shared.endBackgroundTask(backgroundTask)
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        var backgroundTask: UIBackgroundTaskIdentifier = 0;
+        var finished = false
+        var count = 30
         backgroundTask = application.beginBackgroundTask(withName:"Radio", expirationHandler: {() -> Void in
             // Time is up.
             print("Application State",application.applicationState)
             print ("Background Time Remaining", application.backgroundTimeRemaining)
-            print("Background Task Started")
-            UIApplication.shared.beginReceivingRemoteControlEvents()
-            backgroundTask = UIBackgroundTaskInvalid;
+            print("Background Task Started",self.backgroundTask)
+            if self.backgroundTask != UIBackgroundTaskInvalid {
+                // Do something to stop our background task or the app will be killed
+                finished = true
+            }
         })
         // Perform your background task here
+        print("The task has started")
+        while !finished{
+            //DispatchQueue.global().asyncAfter(deadline: .now() + 1, qos:.background) {count=count-1;}
+            
+            sleep(1)
+            count=count-1
+            print("Not Finished",count)
+            if count<=0 {
+                finished=true
+                print("Finished",count)
+            }
+        }
         //DispatchQueue.main.asyncAfter(deadline: .now() + 30) { }// change 2 to desired number of seconds
-            application.endBackgroundTask(backgroundTask)
-            print("Background Task Completed")
+        application.endBackgroundTask(backgroundTask)
+        backgroundTask = UIBackgroundTaskInvalid;
+        print("Background Task Completed")
     }
+
+    
     
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
@@ -136,18 +156,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         print("Cleaning up inactive background tasks - inside will enter foreground");
         UIApplication.shared.endBackgroundTask(UIBackgroundTaskInvalid)
-        timer?.invalidate()
+        UIApplication.shared.endBackgroundTask(backgroundTask)
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         print("Activate Audio Session - Did Become Active");
+        UIApplication.shared.endBackgroundTask(UIBackgroundTaskInvalid)
+        UIApplication.shared.endBackgroundTask(backgroundTask)
         try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback);
         try? AVAudioSession.sharedInstance().setActive(true);
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        UIApplication.shared.endBackgroundTask(UIBackgroundTaskInvalid)
+        UIApplication.shared.endBackgroundTask(backgroundTask)
     }
     override func remoteControlReceived(with event: UIEvent?)
     {       print("Remote Event Received")
