@@ -106,6 +106,9 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         lastOffsetY = 0.0
         view=webView
         
+        //Register for the applicationWillResignActive anywhere in your app.
+        //NotificationCenter.default.addObserver(self, selector: #selector(ViewController.(notification:)), name: NSNotification.Name.UIApplicationDidBecomeActiveNotification, object: app)
+        
         /*NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.remoteControlReceived(with:UIEvent?(UIEventSubtype))),
                                                name: .MPRemoteCommandevent,

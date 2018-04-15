@@ -131,15 +131,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
         // Perform your background task here
         print("The task has started")
-        while !finished{
-            //DispatchQueue.global().asyncAfter(deadline: .now() + 1, qos:.background) {count=count-1;}
-            
-            sleep(1)
-            count=count-1
-            print("Not Finished",count)
-            if count<=0 {
+        let appState=UIApplication.shared.applicationState
+        print("App State",appState.rawValue)
+        while (!finished){
+            //DispatchQueue.global(qos:.background).asyncAfter(deadline: .now() + 150) {if count>=0{count=count-1;}
+            if (appState == .background){
+                sleep(1)
+                count=count-1
+                print("Not Finished BG Task",count)
+                if count<=0 {
+                    finished=true
+                    print("Finished BG Task",count)
+                }
+            }
+            else {
                 finished=true
-                print("Finished",count)
+                print("Non Background Finished",count)
             }
         }
         //DispatchQueue.main.asyncAfter(deadline: .now() + 30) { }// change 2 to desired number of seconds
@@ -161,11 +168,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        print("Activate Audio Session - Did Become Active");
+        print("Cleaning up inactive background tasks - inside Did Become Active");
         UIApplication.shared.endBackgroundTask(UIBackgroundTaskInvalid)
         UIApplication.shared.endBackgroundTask(backgroundTask)
-        try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback);
-        try? AVAudioSession.sharedInstance().setActive(true);
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
