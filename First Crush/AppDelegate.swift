@@ -133,26 +133,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("The task has started")
         let appState=UIApplication.shared.applicationState
         print("App State",appState.rawValue)
-        while (!finished){
-            //DispatchQueue.global(qos:.background).asyncAfter(deadline: .now() + 150) {if count>=0{count=count-1;}
-            if (appState == .background){
-                sleep(1)
-                count=count-1
-                print("Not Finished BG Task",count)
-                if count<=0 {
-                    finished=true
-                    print("Finished BG Task",count)
+        
+            while (!finished){
+                //DispatchQueue.global(qos: .background).asyncAfter(deadline: (.now() + .seconds(10)))
+                    
+                if (appState == .background){
+                    sleep(1)
+                    count=count-1
+                    print("Not Finished BG Task",count)
+                    if count<=0 {
+                        finished=true
+                        print("Finished BG Task",count)
+                    }
                 }
-            }
-            else {
-                finished=true
-                print("Non Background Finished",count)
-            }
+                else {
+                    finished=true
+                    print("Non Background Finished",count)
+                }
         }
-        //DispatchQueue.main.asyncAfter(deadline: .now() + 30) { }// change 2 to desired number of seconds
-        application.endBackgroundTask(backgroundTask)
-        backgroundTask = UIBackgroundTaskInvalid;
-        print("Background Task Completed")
+            application.endBackgroundTask(backgroundTask)
+            backgroundTask = UIBackgroundTaskInvalid;
+            print("Background Task Completed")
+
     }
 
     

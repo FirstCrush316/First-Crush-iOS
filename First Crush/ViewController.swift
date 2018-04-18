@@ -201,6 +201,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         {
             lastOffsetY = scrollView.contentOffset.y
             self.navigationController?.setNavigationBarHidden(false, animated: true)
+            
         }
         else {
             self.navigationController?.setNavigationBarHidden(true, animated: true)
