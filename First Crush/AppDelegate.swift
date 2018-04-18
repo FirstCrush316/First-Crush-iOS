@@ -108,7 +108,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
             print("Application State -- Will Resign Active",application.applicationState)
-            print ("Background Time Remaining -- Will Resign Active", application.backgroundTimeRemaining)
+            print ("Background Time Remaining -- Will Resign Active \(application.backgroundTimeRemaining)")
             print("Background Task Started -- Will Resign Active")
             UIApplication.shared.endBackgroundTask(UIBackgroundTaskInvalid)
             UIApplication.shared.endBackgroundTask(backgroundTask)
@@ -122,7 +122,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         backgroundTask = application.beginBackgroundTask(withName:"Radio", expirationHandler: {() -> Void in
             // Time is up.
             print("Application State",application.applicationState)
-            print ("Background Time Remaining", application.backgroundTimeRemaining)
+            print ("Background Time Remaining -- Will Resign Active \(application.backgroundTimeRemaining)")
             print("Background Task Started",self.backgroundTask)
             if self.backgroundTask != UIBackgroundTaskInvalid {
                 // Do something to stop our background task or the app will be killed
@@ -151,6 +151,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     print("Non Background Finished",count)
                 }
         }
+        
             application.endBackgroundTask(backgroundTask)
             backgroundTask = UIBackgroundTaskInvalid;
             print("Background Task Completed")
