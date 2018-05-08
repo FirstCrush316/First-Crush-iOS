@@ -10,7 +10,7 @@ import UIKit
 
 class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
     let cellId="cellId"
-    let tabNames = ["Home","News","Trailers","Travel"]
+    let tabNames = ["Featured","News","Trailers","Travel"]
 
     override init(frame: CGRect)
     {
@@ -22,8 +22,11 @@ class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICol
         collectionView.backgroundColor=UIColor.black
         collectionView.dataSource=self
         collectionView.delegate=self
-        
+        let selectedIndexPath=NSIndexPath(item:0,section:0)
+        collectionView.selectItem(at: selectedIndexPath as IndexPath, animated: false, scrollPosition: [])
+
         addSubview(collectionView)
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -36,7 +39,7 @@ class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICol
         cell.wordLabel.text="\(tabNames[indexPath.item])"
         cell.wordLabel.textAlignment = .center
         cell.wordLabel.font = UIFont (name: "Caption 1", size: 20)
-        cell.wordLabel.textColor = UIColor.white
+        cell.wordLabel.textColor = UIColor.darkGray
         return cell
     }
     
@@ -60,11 +63,22 @@ class MenuCell:UICollectionViewCell {
     
     let wordLabel: UILabel = {
         let label = UILabel()
-        label.text = "HOME"
+        //label.text = "Featured"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
+    override var isHighlighted: Bool{
+        didSet{
+            wordLabel.textColor=isHighlighted ? UIColor.white:UIColor.darkGray
+        }
+    }
+    
+    override var isSelected: Bool{
+        didSet{
+            wordLabel.textColor=isSelected ? UIColor.white:UIColor.darkGray
+        }
+    }
     
     func setupViews() {
         //addSubview(textView!)

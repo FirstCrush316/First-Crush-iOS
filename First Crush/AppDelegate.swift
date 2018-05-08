@@ -118,7 +118,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         var finished = false
-        var count = 30
+        var count = 0
+      
         backgroundTask = application.beginBackgroundTask(withName:"Radio", expirationHandler: {() -> Void in
             // Time is up.
             print("Application State",application.applicationState)
@@ -126,18 +127,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Background Task Started",self.backgroundTask)
             if self.backgroundTask != UIBackgroundTaskInvalid {
                 // Do something to stop our background task or the app will be killed
-                finished = true
+               finished = true
             }
         })
         // Perform your background task here
-        print("The task has started")
+        print("Background task has started")
         let appState=UIApplication.shared.applicationState
         print("App State",appState.rawValue)
+        print("Dispatch Started")
+        /*while (!finished)
+        {
+            DispatchQueue.global(qos: .background).asyncAfter(deadline: (.now() + .seconds(30)))
+                {
+                print("Inside Dispatch Delay")
+                print("Dispatch Completed")
+                application.endBackgroundTask(self.backgroundTask)
+                self.backgroundTask = UIBackgroundTaskInvalid;
+                print("Background Task Completed")
+                finished=true
+                
+                }
+        }*/
         
-            while (!finished){
-                //DispatchQueue.global(qos: .background).asyncAfter(deadline: (.now() + .seconds(10)))
-                    
-                if (appState == .background){
+        while (!finished && (application.applicationState.rawValue==2)){
+         
+                if (appState == .background && (application.applicationState.rawValue==2)){
                     sleep(1)
                     count=count-1
                     print("Not Finished BG Task",count)
@@ -152,9 +166,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
         }
         
-            application.endBackgroundTask(backgroundTask)
-            backgroundTask = UIBackgroundTaskInvalid;
-            print("Background Task Completed")
+        
 
     }
 
