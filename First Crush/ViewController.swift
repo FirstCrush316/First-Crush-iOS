@@ -65,18 +65,19 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         webView.addSubview(loadSpinner)
         
         // Create Progress View
-        progressView = UIProgressView(frame:CGRect(x: 0,y: 61,width: self.view.frame.width,height: self.view.frame.height))
+        progressView = UIProgressView(frame:CGRect(x: 0,y: 68,width: self.view.frame.width,height: self.view.frame.height))
+        progressView.backgroundColor=UIColor.black
         progressView.tintColor = #colorLiteral(red: 0.6576176882, green: 0.7789518833, blue: 0.2271372974, alpha: 1)
         progressView.setProgress(0.0, animated: true)
         //progressView.sizeToFit()
         webView.addSubview(progressView)
         
         //Setup Menu Bar
-        let menuBar  = MenuBar(frame:CGRect(x: 0,y: 0,width: self.view.frame.width,height: 60))
+        let menuBar  = MenuBar(frame:CGRect(x: 0,y: 0,width: self.view.frame.width,height: 65))
     
         webView.addSubview(menuBar)
         webView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))
-        webView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(60)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))
+        webView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(65)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))
         menuBar.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 0.0)
         
                
@@ -413,6 +414,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         let tabBarIndex = tabBarController.selectedIndex
         if tabBarIndex == 0 {
             //Handling for same tab click
+            //let viewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeController") as! ViewController
             //self.present(viewController, animated: true, completion: nil)
             let url = NSURL(string: "http://www.firstcrush.co")
             let request = URLRequest(url: url! as URL)
