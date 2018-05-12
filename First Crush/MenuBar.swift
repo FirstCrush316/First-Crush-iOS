@@ -44,7 +44,7 @@ class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICol
         horizontalBarLeftAnchorConstraint?.isActive=true
         horizontalBarView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         horizontalBarView.widthAnchor.constraint(equalTo: self.widthAnchor,multiplier:1/4).isActive = true
-        horizontalBarView.heightAnchor.constraint(equalToConstant: 1.0).isActive = true
+        horizontalBarView.heightAnchor.constraint(equalToConstant: 2.0).isActive = true
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let x = CGFloat(indexPath.item) * frame.width/4
