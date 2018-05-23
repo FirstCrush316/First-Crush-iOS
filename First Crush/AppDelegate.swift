@@ -158,6 +158,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     if count<=0 {
                         finished=true
                         print("Finished BG Task",count)
+                        application.endBackgroundTask(self.backgroundTask)
+                        self.backgroundTask = UIBackgroundTaskInvalid;
+                        print("Background Task Completed")
                     }
                 }
                 else {
@@ -165,7 +168,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     print("Non Background Finished",count)
                 }
         }
-        
+        //let playerItem = AVPlayerItem.
+        //Reference: https://developer.apple.com/library/content/qa/qa1668/_index.html#//apple_ref/doc/uid/DTS40010209-CH1-VIDEO
+        /*let tracks = AVPlayerItem playerItem
+        for playerItemTrack in tracks {
+ 
+        // Find the video tracks.
+            if playerItemTrack.assetTrack.hasMediaCharacteristic(AVMediaCharacteristicVisual) {
+ 
+                // Disable the track.
+                playerItemTrack.isEnabled = false
+            }
+        }*/
         
 
     }

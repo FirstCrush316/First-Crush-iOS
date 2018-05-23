@@ -21,6 +21,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
     @objc var myLabel: UILabel!
     @objc var lastOffsetY :CGFloat = 0
     @IBOutlet weak var navigationTitle: UINavigationItem!
+    var audioSession = AVAudioSession.sharedInstance()
     
     @objc var time : Float = 0.0
     @objc var timer: Timer?
@@ -109,72 +110,46 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         lastOffsetY = 0.0
         view=webView
         
-        //Register for the applicationWillResignActive anywhere in your app.
-        //NotificationCenter.default.addObserver(self, selector: #selector(ViewController.(notification:)), name: NSNotification.Name.UIApplicationDidBecomeActiveNotification, object: app)
+        try! self.audioSession.setCategory(AVAudioSessionCategoryPlayback)
+        try! self.audioSession.setActive(true)
         
-        /*NotificationCenter.default.addObserver(self,
+        UIApplication.shared.beginReceivingRemoteControlEvents()
+        self.becomeFirstResponder()
+        
+        //Register for the applicationWillResignActive anywhere in your app.
+        /*NotificationCenter.default.addObserver(self, selector: #selector(ViewController.(notification:)), name: NSNotification.Name.UIApplicationDidBecomeActiveNotification, object: app)
+        
+        NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.remoteControlReceived(with:UIEvent?(UIEventSubtype))),
                                                name: .MPRemoteCommandevent,
                                                object: nil)*/
-
-        
-        /*let mpic = MPNowPlayingInfoCenter.default()
-        let image:UIImage = UIImage(named: "Media")!
-        let artwork = MPMediaItemArtwork.init(boundsSize: image.size, requestHandler: { (size) -> UIImage in
-            return image
-        })
-        mpic.nowPlayingInfo =
-            [
-                MPMediaItemPropertyArtwork:artwork
-        ]*/
-        
-        
-        let commandCenter=MPRemoteCommandCenter.shared()
-        commandCenter.previousTrackCommand.isEnabled = true;
-        MPRemoteCommandCenter.shared().previousTrackCommand.addTarget {
-            (event) -> MPRemoteCommandHandlerStatus in
-            return .success
-        }
-        
-        commandCenter.skipForwardCommand.isEnabled = true;
-        MPRemoteCommandCenter.shared().skipForwardCommand.addTarget {
-            (event) -> MPRemoteCommandHandlerStatus in
-            return .success
-        }
-        commandCenter.skipBackwardCommand.isEnabled = true;
-        MPRemoteCommandCenter.shared().skipBackwardCommand.addTarget {
-            (event) -> MPRemoteCommandHandlerStatus in
-            print("Skip Pressed")
-            return .success
-        }
-        
-        commandCenter.nextTrackCommand.isEnabled=true
-        MPRemoteCommandCenter.shared().nextTrackCommand.addTarget {
-            (event) -> MPRemoteCommandHandlerStatus in
-            print("Next Pressed")
-            return .success
-        }
-        commandCenter.playCommand.isEnabled = true
-        MPRemoteCommandCenter.shared().playCommand.addTarget {
-            (event) -> MPRemoteCommandHandlerStatus in
-            print("Play Pressed")
-            return .success
-        }
-        
-        commandCenter.pauseCommand.isEnabled = true
-        MPRemoteCommandCenter.shared().pauseCommand.addTarget {
-            (event) -> MPRemoteCommandHandlerStatus in
-            print("Pause Pressed")
-            return .success
-        }
-        commandCenter.togglePlayPauseCommand.isEnabled = true
-        MPRemoteCommandCenter.shared().togglePlayPauseCommand.addTarget {
-            (event) -> MPRemoteCommandHandlerStatus in
-            print("Toggle Play Pre Pressed")
-            return .success
-        }
     }
+    //End View Did Load
     
+    //Media Attributes Now Playing Info
+    
+    var nowPlayingInfoCenter = MPNowPlayingInfoCenter.default()
+    var remoCommandCenter = MPRemoteCommandCenter.shared()
+    
+    func updateNowPlayingInfo(trackName:String,artistName:String,img:UIImage) {
+        
+        var art = MPMediaItemArtwork(image: img)
+        if #available(iOS 10.0, *) {
+            art = MPMediaItemArtwork(boundsSize: CGSize(width: 200, height: 200)) { (size) -> UIImage in
+                return img
+            }
+        }
+        
+        nowPlayingInfoCenter.nowPlayingInfo = [MPMediaItemPropertyTitle: trackName,
+                                               MPMediaItemPropertyArtist: artistName,
+                                               MPMediaItemPropertyArtwork : art]
+        
+        remoCommandCenter.seekForwardCommand.isEnabled = false
+        remoCommandCenter.seekBackwardCommand.isEnabled = false
+        remoCommandCenter.previousTrackCommand.isEnabled = false
+        remoCommandCenter.nextTrackCommand.isEnabled = false
+        remoCommandCenter.togglePlayPauseCommand.isEnabled = false
+    }
     
     @objc func refreshWebView(sender: UIRefreshControl) {
         // On Scroll to Refresh, Reload Current Page
