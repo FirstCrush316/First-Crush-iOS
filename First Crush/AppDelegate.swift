@@ -17,6 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var timer: Timer?
     var backgroundTask: UIBackgroundTaskIdentifier = 0;
+    var player:AVPlayer?;
+    var playerLayer:AVPlayerLayer?
+    var nowPlayingInfoCenter = MPNowPlayingInfoCenter.default()
+    var remoCommandCenter = MPRemoteCommandCenter.shared()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -36,6 +40,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             statusBar.backgroundColor = UIColor.black
         }
         
+        remoCommandCenter.previousTrackCommand.isEnabled = true
+        remoCommandCenter.nextTrackCommand.isEnabled = true
+        remoCommandCenter.togglePlayPauseCommand.isEnabled = true
         
         //One Signal Code
         let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false, kOSSettingsKeyInAppLaunchURL: true]
@@ -101,40 +108,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         UIApplication.shared.beginReceivingRemoteControlEvents()
+          self.becomeFirstResponder()
         return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
-            print("Application State -- Will Resign Active",application.applicationState)
-            print ("Background Time Remaining -- Will Resign Active \(application.backgroundTimeRemaining)")
-            print("Background Task Started -- Will Resign Active")
-            UIApplication.shared.endBackgroundTask(UIBackgroundTaskInvalid)
-            UIApplication.shared.endBackgroundTask(backgroundTask)
+          //self.resignFirstResponder()
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        var finished = false
-        var count = 0
-      
+        //var finished = false
+       print("Background Task Started")
         backgroundTask = application.beginBackgroundTask(withName:"Radio", expirationHandler: {() -> Void in
             // Time is up.
-            print("Application State",application.applicationState)
-            print ("Background Time Remaining -- Will Resign Active \(application.backgroundTimeRemaining)")
-            print("Background Task Started",self.backgroundTask)
+            print ("Background Time Remaining -- Will Resign Active in \(application.backgroundTimeRemaining)")
+           
             if self.backgroundTask != UIBackgroundTaskInvalid {
                 // Do something to stop our background task or the app will be killed
-               finished = true
+                //Reference https://stackoverflow.com/questions/36684165/how-do-i-keep-my-video-background-to-continuously-play-using-swift
+                
             }
         })
-        // Perform your background task here
-        print("Background task has started")
-        let appState=UIApplication.shared.applicationState
-        print("App State",appState.rawValue)
-        print("Dispatch Started")
+        
+        if let item = self.player?.currentItem {
+             print("Checking for Video")
+            if item.tracks.first!.assetTrack.hasMediaCharacteristic(AVMediaCharacteristic.visual) {
+                item.tracks.first!.isEnabled = false
+                 print("Video Disabled")
+            }
+        }
+        //Bogus Background Handling
+        //var count = 0
         /*while (!finished)
         {
             DispatchQueue.global(qos: .background).asyncAfter(deadline: (.now() + .seconds(30)))
@@ -148,8 +156,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 }
         }*/
-        
-        while (!finished && (application.applicationState.rawValue==2)){
+
+        /*while (!finished && (application.applicationState.rawValue==2)){
          
                 if (appState == .background && (application.applicationState.rawValue==2)){
                     sleep(1)
@@ -167,21 +175,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     finished=true
                     print("Non Background Finished",count)
                 }
-        }
-        //let playerItem = AVPlayerItem.
-        //Reference: https://developer.apple.com/library/content/qa/qa1668/_index.html#//apple_ref/doc/uid/DTS40010209-CH1-VIDEO
-        /*let tracks = AVPlayerItem playerItem
-        for playerItemTrack in tracks {
- 
-        // Find the video tracks.
-            if playerItemTrack.assetTrack.hasMediaCharacteristic(AVMediaCharacteristicVisual) {
- 
-                // Disable the track.
-                playerItemTrack.isEnabled = false
-            }
         }*/
+        //let playerItem = AVPlayerItem.
+        print("Background Task Complete")
         
-
+        self.backgroundTask = UIBackgroundTaskInvalid;
     }
 
     
@@ -189,67 +187,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
         //it’s important to stop background task when we do not need it anymore
+        //Reference https://stackoverflow.com/questions/36684165/how-do-i-keep-my-video-background-to-continuously-play-using-swift
+        if let item = self.player?.currentItem {
+            if item.tracks.first!.assetTrack.hasMediaCharacteristic(AVMediaCharacteristic.visual) {
+                item.tracks.first!.isEnabled = true
+                print("Video Enabled")
+            }
+        }
+        self.becomeFirstResponder()
         
-        print("Cleaning up inactive background tasks - inside will enter foreground");
-        UIApplication.shared.endBackgroundTask(UIBackgroundTaskInvalid)
-        UIApplication.shared.endBackgroundTask(backgroundTask)
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        print("Cleaning up inactive background tasks - inside Did Become Active");
-        UIApplication.shared.endBackgroundTask(UIBackgroundTaskInvalid)
-        UIApplication.shared.endBackgroundTask(backgroundTask)
+        self.becomeFirstResponder()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         UIApplication.shared.endBackgroundTask(UIBackgroundTaskInvalid)
-        UIApplication.shared.endBackgroundTask(backgroundTask)
-    }
-    override func remoteControlReceived(with event: UIEvent?)
-    {       print("Remote Event Received")
-        switch (event?.subtype) {
-        case UIEventSubtype.remoteControlTogglePlayPause?:
-            print("Received Headphone Play Pause")
-            MPRemoteCommandCenter.shared().togglePlayPauseCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
-                return .success
-            }
-            break;
-        case UIEventSubtype.remoteControlPlay?:
-            print("Received Remote Play")
-            NotificationCenter.default.post(name: NSNotification.Name("playSong"), object: nil)
-            MPRemoteCommandCenter.shared().playCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
-                return .success
-            }
-            break;
-        case UIEventSubtype.remoteControlPause?:
-            print("Received Remote Pause")
-            NotificationCenter.default.post(name: NSNotification.Name("pauseSong"), object: nil)
-            MPRemoteCommandCenter.shared().pauseCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
-                return .success
-            }
-            break;
-        case UIEventSubtype.remoteControlNextTrack?:
-            //Handle It
-            print("Received Next Event")
-            NotificationCenter.default.post(name: NSNotification.Name("nextSong"), object: nil)
-            MPRemoteCommandCenter.shared().nextTrackCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
-                return .success
-            }
-            break;
-        case UIEventSubtype.remoteControlPreviousTrack?:
-            //Handle It
-            NotificationCenter.default.post(name: NSNotification.Name("previousSong"), object: nil)
-            print("Received Previous Event")
-            MPRemoteCommandCenter.shared().previousTrackCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
-                return .success
-            }
-            break;
-        default:
-            print("There is an issue with the control")
-            break;
-        }
+        self.resignFirstResponder()
     }
 }
 

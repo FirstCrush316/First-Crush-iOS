@@ -115,41 +115,16 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         
         UIApplication.shared.beginReceivingRemoteControlEvents()
         self.becomeFirstResponder()
-        
-        //Register for the applicationWillResignActive anywhere in your app.
-        /*NotificationCenter.default.addObserver(self, selector: #selector(ViewController.(notification:)), name: NSNotification.Name.UIApplicationDidBecomeActiveNotification, object: app)
-        
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.remoteControlReceived(with:UIEvent?(UIEventSubtype))),
-                                               name: .MPRemoteCommandevent,
-                                               object: nil)*/
+        //NotificationCenter.default.addObserver(self, selector: #selector(self.videoHasStarted(notification:)), name: NSNotification.Name(rawValue: "AVPlayerItemBecameCurrentNotification"), object: nil)
+
+        //Control Music
+        NotificationCenter.default.addObserver(self, selector: #selector(self.remoteControlReceived(with:)), name: NSNotification.Name("playSong"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.remoteControlReceived(with:)), name: NSNotification.Name("nextSong"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.remoteControlReceived(with:)), name: NSNotification.Name("previousSong"), object: nil)
+    
     }
     //End View Did Load
     
-    //Media Attributes Now Playing Info
-    
-    var nowPlayingInfoCenter = MPNowPlayingInfoCenter.default()
-    var remoCommandCenter = MPRemoteCommandCenter.shared()
-    
-    func updateNowPlayingInfo(trackName:String,artistName:String,img:UIImage) {
-        
-        var art = MPMediaItemArtwork(image: img)
-        if #available(iOS 10.0, *) {
-            art = MPMediaItemArtwork(boundsSize: CGSize(width: 200, height: 200)) { (size) -> UIImage in
-                return img
-            }
-        }
-        
-        nowPlayingInfoCenter.nowPlayingInfo = [MPMediaItemPropertyTitle: trackName,
-                                               MPMediaItemPropertyArtist: artistName,
-                                               MPMediaItemPropertyArtwork : art]
-        
-        remoCommandCenter.seekForwardCommand.isEnabled = false
-        remoCommandCenter.seekBackwardCommand.isEnabled = false
-        remoCommandCenter.previousTrackCommand.isEnabled = false
-        remoCommandCenter.nextTrackCommand.isEnabled = false
-        remoCommandCenter.togglePlayPauseCommand.isEnabled = false
-    }
     
     @objc func refreshWebView(sender: UIRefreshControl) {
         // On Scroll to Refresh, Reload Current Page
@@ -401,4 +376,5 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
     }
 
 }
+
 
