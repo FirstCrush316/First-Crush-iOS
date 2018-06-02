@@ -212,7 +212,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         }
         //Display Title
         if (keyPath == "title") {
-            print(webView.title)
+            //print(webView.title)
             //.navigationItem.title = webView.title
         }
     }

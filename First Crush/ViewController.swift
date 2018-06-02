@@ -28,6 +28,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
     
     var myContext = 0
     var mPlayer:AVPlayer?
+    var playerItem:AVPlayerItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -117,14 +118,55 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         self.becomeFirstResponder()
         //NotificationCenter.default.addObserver(self, selector: #selector(self.videoHasStarted(notification:)), name: NSNotification.Name(rawValue: "AVPlayerItemBecameCurrentNotification"), object: nil)
 
-        //Control Music
+        //Notifications
         NotificationCenter.default.addObserver(self, selector: #selector(self.remoteControlReceived(with:)), name: NSNotification.Name("playSong"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.remoteControlReceived(with:)), name: NSNotification.Name("nextSong"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.remoteControlReceived(with:)), name: NSNotification.Name("previousSong"), object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(self.didBecomeActive(NSNotification:)), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.willEnterForeground(NSNotification:)), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        
+         NotificationCenter.default.addObserver(self, selector: #selector(self.didEnterBackground(NSNotification:)), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didFinishPlaying(NSNotification:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
+        
+       playerItem = AVPlayer().currentItem
     
     }
     //End View Did Load
     
+    
+    
+    @objc func willEnterForeground(NSNotification: Notification)
+    {
+        print("Did Become Active")
+        if let item = self.playerItem {
+            if item.tracks.first!.assetTrack.hasMediaCharacteristic(AVMediaCharacteristic.visual) {
+                item.tracks.first!.isEnabled = true
+                print("Video Enabled")
+            }
+        }
+        self.becomeFirstResponder()
+    }
+    
+    @objc func didEnterBackground(NSNotification: Notification)
+    {   print("Did Enter Background")
+        if let item = self.playerItem {
+            print("Checking for Video")
+            if item.tracks.first!.assetTrack.hasMediaCharacteristic(AVMediaCharacteristic.visual) {
+                item.tracks.first!.isEnabled = false
+                print("Video Disabled")
+            }
+        }
+    }
+    
+    @objc func didStartPlaying(NSNotification: Notification)
+    {
+        print("Entered Full Screen")
+    }
+    
+    @objc func didFinishPlaying(NSNotification: Notification)
+    {
+        print("Finished Playing")
+    }
     
     @objc func refreshWebView(sender: UIRefreshControl) {
         // On Scroll to Refresh, Reload Current Page
@@ -250,7 +292,6 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping ((WKNavigationActionPolicy) -> Void)) {
-        
         switch navigationAction.navigationType {
         case .linkActivated:
             if navigationAction.targetFrame == nil {
@@ -267,6 +308,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
                     self.navigationController?.pushViewController(vc, animated: true)
                 //self.performSegue(withIdentifier: "detailView", sender: webView.url!)
             }*/
+                
             }
         default:
             break

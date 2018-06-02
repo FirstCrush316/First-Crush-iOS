@@ -121,7 +121,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        //var finished = false
+        var finished = false
        print("Background Task Started")
         backgroundTask = application.beginBackgroundTask(withName:"Radio", expirationHandler: {() -> Void in
             // Time is up.
@@ -130,36 +130,62 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if self.backgroundTask != UIBackgroundTaskInvalid {
                 // Do something to stop our background task or the app will be killed
                 //Reference https://stackoverflow.com/questions/36684165/how-do-i-keep-my-video-background-to-continuously-play-using-swift
-                
+                finished=true
             }
         })
         
-        if let item = self.player?.currentItem {
+        /* Ideal Solution from Apple
+         if let item = self.player?.currentItem {
              print("Checking for Video")
             if item.tracks.first!.assetTrack.hasMediaCharacteristic(AVMediaCharacteristic.visual) {
                 item.tracks.first!.isEnabled = false
                  print("Video Disabled")
             }
-        }
-        //Bogus Background Handling
-        //var count = 0
+        }*/
+        
+        //Background Handling
+       // let count = 30
+        let appState=UIApplication.shared.applicationState
+        print("App State",appState.rawValue)
         /*while (!finished)
         {
-            DispatchQueue.global(qos: .background).asyncAfter(deadline: (.now() + .seconds(30)))
-                {
-                print("Inside Dispatch Delay")
+        DispatchQueue.main.async {
+            print("Work Dispatched")
+            // Do heavy or time consuming work
+            
+            // Then return the work on the main thread and update the UI
+            DispatchQueue.global(qos: .background).asyncAfter(deadline: (.now() + .seconds(count)))
+            {
+                print("Inside Dispatch 30 Sec Delay")
                 print("Dispatch Completed")
                 application.endBackgroundTask(self.backgroundTask)
                 self.backgroundTask = UIBackgroundTaskInvalid;
                 print("Background Task Completed")
                 finished=true
                 
+                
+            }
+        }
+        }*/
+        /*while (!finished)
+        {
+        DispatchQueue.global(qos: .background).asyncAfter(deadline: (.now() + .seconds(count)))
+                {
+                print("Inside Dispatch 30 Sec Delay")
+                    print("Dispatch Completed")
+                    application.endBackgroundTask(self.backgroundTask)
+                    self.backgroundTask = UIBackgroundTaskInvalid;
+                    print("Background Task Completed")
+                    finished=true
+                    
+                
                 }
         }*/
-
-        /*while (!finished && (application.applicationState.rawValue==2)){
+       
+        
+        /*while (!finished && appState == .background){
          
-                if (appState == .background && (application.applicationState.rawValue==2)){
+                if (appState == .background && {
                     sleep(1)
                     count=count-1
                     print("Not Finished BG Task",count)
