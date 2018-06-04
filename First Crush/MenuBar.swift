@@ -11,7 +11,8 @@ import UIKit
 class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
     let cellId="cellId"
     let tabNames = ["Featured","News","Trailers","Travel"]
-
+    var homeController:HomeViewController?
+    
     override init(frame: CGRect)
     {
         super.init(frame: frame)
@@ -53,6 +54,7 @@ class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICol
         UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseOut, animations: {
             self.layoutIfNeeded()
         }, completion:nil)
+        homeController?.scrollToMenuIndex(menuIndex: indexPath.item)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
