@@ -35,7 +35,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         }
         
         //Menu Bar Setup
-        menuBarHome  = MenuBar(frame:CGRect(x: 0,y: 0,width: self.view.frame.width,height: 50))
+        menuBarHome  = MenuBar(frame:CGRect(x: 0,y: 0,width: self.view.frame.width,height: 65))
         menuBarHome.homeController=self
         setupCollectionView()
     }
@@ -44,7 +44,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         collectionView?.backgroundColor=UIColor.gray
         collectionView?.register(VideoCell.self, forCellWithReuseIdentifier: "videoCellId")
         collectionView?.contentInset = UIEdgeInsetsMake(0,0,0,0)
-        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(50,0,0,0)
+        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(65,0,0,0)
         collectionView?.isPagingEnabled=true
         
         //Root View Setup
@@ -65,6 +65,13 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         collectionView?.scrollToItem(at: indexPath as IndexPath, at: [], animated: true)
         
     }
+    
+    lazy var menuBar: MenuBar = {
+        let mb = MenuBar()
+        mb.homeController = self
+        return mb
+    }()
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 4
     }
@@ -112,6 +119,9 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         return web
     }()
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
     
     func setupViews(){
         backgroundColor=UIColor.black
@@ -131,6 +141,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         self.webView.isOpaque = false
         self.webView.backgroundColor = UIColor.black
         self.webView.scrollView.backgroundColor = UIColor.clear
+        webView.navigationDelegate = self
         
         webView.allowsLinkPreview=false
         webView.allowsBackForwardNavigationGestures=false
@@ -149,7 +160,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         //Create Load Spinner
         loadSpinner = UIActivityIndicatorView(frame:CGRect(x: self.view.frame.height/2 , y: self.view.frame.width/2 ,width: 37,height: 37))
         loadSpinner.activityIndicatorViewStyle=UIActivityIndicatorViewStyle.whiteLarge
-        loadSpinner.color=UIColor.white
+        loadSpinner.color=#colorLiteral(red: 0.6576176882, green: 0.7789518833, blue: 0.2271372974, alpha: 1)
         loadSpinner.center = self.view.center
         webView.addSubview(loadSpinner)
         
@@ -160,6 +171,27 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         progressView.setProgress(0.0, animated: true)
         //progressView.sizeToFit()
         webView.addSubview(progressView)
+        
+        
+        // Implement Scroll to Refresh
+        if Reachability.isConnectedToNetwork() == true {
+        let refreshControl = UIRefreshControl(frame:(CGRect(x: 0,y: 10,width: self.view.frame.width, height: 15)))
+        let title = NSLocalizedString("Pull To Refresh", comment: "Pull To Refresh")
+        refreshControl.attributedTitle=NSAttributedString(string: title)
+        refreshControl.tintColor=UIColor.white
+        refreshControl.backgroundColor=UIColor.darkGray
+        refreshControl.addTarget(self, action: #selector(VideoCell.refreshWebView), for: UIControlEvents.valueChanged)
+        webView.scrollView.addSubview(refreshControl)
+        webView.addObserver(self, forKeyPath: "title", options: .new, context: nil)
+        webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
+        }
+    else {
+        let alertController = UIAlertController(title: NSLocalizedString("No Internet Connection",comment:""), message: NSLocalizedString("Please ensure your device is connected to the internet.",comment:""), preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default, handler: { (pAlert) in
+            })
+            alertController.addAction(defaultAction)
+            self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+    }
         webView.scrollView.delegate = self
         lastOffsetY = 0.0
         
@@ -179,7 +211,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
             UINavigationBar.appearance().isHidden = true
         }
     }
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView){
+    func scrollViewDidScroll(_ scrollView: UIScrollView){
         //let request = webView.url?.absoluteString
         if webView.canGoBack
         {
@@ -193,7 +225,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         }
     }
     
-    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView){
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView){
         //let request = webView.url?.absoluteString
         if webView.canGoBack {
             if(scrollView.contentOffset.y > self.lastOffsetY)
@@ -207,7 +239,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
     }
     }
     
-    func refreshWebView(sender: UIRefreshControl) {
+    @objc func refreshWebView(sender: UIRefreshControl) {
         // On Scroll to Refresh, Reload Current Page
         print("Scroll to Refresh Initiated")
         webView.reload()
@@ -245,4 +277,17 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         loadSpinner.startAnimating()
     }
     
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        let tabBarIndex = tabBarController.selectedIndex
+        if tabBarIndex == 4 {
+            //self.window?.rootViewController?.present(HomeViewController, animated: true, completion: nil)
+            let url = NSURL(string: "http://www.firstcrush.co")
+            let request = URLRequest(url: url! as URL)
+            webView.load(request)
+            //navigationController?.setNavigationBarHidden(true, animated: true)
+            lastOffsetY = 0
+        }
+        
+    }
+
 }
