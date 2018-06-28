@@ -48,15 +48,10 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         collectionView?.isPagingEnabled=true
         
         //Root View Setup
-        let homeView = UIView()
-        view.addSubview(homeView)
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":homeView]))
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":homeView]))
-        
-        homeView.addSubview(menuBarHome)
-        homeView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBarHome]))
-        homeView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(65)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBarHome]))
-        //menuBarHome.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 0.0)
+        view.addSubview(menuBarHome)
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBarHome]))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(65)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBarHome]))
+        menuBarHome.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 0.0)
     }
     
     func scrollToMenuIndex(menuIndex: Int){
@@ -111,12 +106,24 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         return CGSize(width: view.frame.width,height: view.frame.height)
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        if UIDevice.current.orientation.isLandscape {
+            UIApplication.shared.isStatusBarHidden = true // Landscape
+            collectionView?.reloadInputViews()
+        } else {
+            UIApplication.shared.isStatusBarHidden = false //Portrait
+            collectionView?.reloadInputViews()
+        }
+    }
+    
     override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         print(targetContentOffset.pointee.x);
         print(view.frame.width)
         let index = round((targetContentOffset.pointee.x)/view.frame.width)
         print(index)
         let indexPath = NSIndexPath(item: (Int(index)), section: 0)
+        //scrollToMenuIndex(menuIndex: Int(index))
+        //menuBarHome.collectionView(UICollectionView, shouldSelectItemAt: indexPath)
         self.collectionView?.selectItem(at: indexPath as IndexPath, animated: true, scrollPosition: [])
     }
 }
@@ -294,6 +301,62 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         progressView.isHidden = false
         loadSpinner.startAnimating()
     }
+    
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping ((WKNavigationActionPolicy) -> Void)) {
+        switch navigationAction.navigationType {
+        case .linkActivated:
+            if navigationAction.targetFrame == nil {
+                //self.webView.load(navigationAction.request)// It will load that link in same WKWebView
+                UIApplication.shared.open(navigationAction.request.url!,options: [:], completionHandler: nil)
+            }
+            else
+            {
+                /*if let vc = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController")  as? DetailViewController {
+                 vc.detailURL = navigationAction.request.url! as NSURL
+                 vc.webConfiguration = webConfiguration
+                 //wv = vc.webView as? WKWebView
+                 
+                 self.navigationController?.pushViewController(vc, animated: true)
+                 //self.performSegue(withIdentifier: "detailView", sender: webView.url!)
+                 }*/
+                
+            }
+        default:
+            break
+        }
+        decisionHandler(.allow)
+    }
+    
+    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+     {
+     if let detailViewController = segue.destination as? DetailViewController{
+     if let detailURL = sender as? NSURL{
+     detailViewController.detailURL = detailURL
+     }
+     }
+     }*/
+    
+    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "detailView") {
+            let navigationController = segue.destination as! UINavigationController
+            let detailViewController = navigationController.topViewController as! DetailViewController
+            detailViewController.detailURL=sender as! NSURL
+        }
+    }
+    /*func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+     {
+     if let detailViewController = segue.destination as? DetailViewController{
+     if let detailURL = sender as? NSURL{
+     //detailViewController.detailURL = easyURLStart
+     detailViewController.setdetailURL(detailURL)
+     detailViewController.loadView()
+     detailViewController.viewDidLoad()
+     let request = URLRequest(url: detailURL as URL)
+     detailViewController.webView.load(request)
+     }
+     }
+     }*/
+    
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         let tabBarIndex = tabBarController.selectedIndex
