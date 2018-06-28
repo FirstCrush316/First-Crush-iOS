@@ -201,14 +201,14 @@
             </objects>
             <point key="canvasLocation" x="4368" y="121"/>
         </scene>
-        <!--Home View Controller-->
+        <!--Featured-->
         <scene sceneID="BO5-YR-uuP">
             <objects>
                 <collectionViewController id="X0L-L6-HIs" customClass="HomeViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" id="aUu-cf-hDt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.13321876652854284" green="0.14292993011956326" blue="0.15651812217772021" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OQd-61-Geq">
                             <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -230,7 +230,19 @@
                             <outlet property="delegate" destination="X0L-L6-HIs" id="nLc-nu-kI5"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="WgW-bj-xhf"/>
+                    <navigationItem key="navigationItem" title="Featured" id="WgW-bj-xhf">
+                        <barButtonItem key="backBarButtonItem" title="&lt;" id="yvS-ff-6Lk"/>
+                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="S7u-5l-zZC">
+                            <connections>
+                                <action selector="backButton:" destination="X0L-L6-HIs" id="dWo-nm-3kh"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="EnQ-XQ-abK">
+                            <connections>
+                                <action selector="refreshAction:" destination="X0L-L6-HIs" id="bao-0m-Xgb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Tf-X5-c4M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -382,9 +394,9 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" hidesBarsOnSwipe="YES" id="c03-xx-S4F" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="featured" id="5bL-0P-tt9"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="gQ0-x5-jzC">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="gQ0-x5-jzC">
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.051975388601398942" green="0.051975388601398942" blue="0.051975388601398942" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

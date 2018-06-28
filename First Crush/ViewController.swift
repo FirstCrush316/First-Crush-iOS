@@ -44,7 +44,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         webView.allowsBackForwardNavigationGestures=false
         webView.scrollView.isScrollEnabled = true
         webView.scrollView.alwaysBounceVertical = true
-        webView.scrollView.contentInset=UIEdgeInsets(top: 50,left: 0,bottom: 0,right: 0)
+        //webView.scrollView.contentInset=UIEdgeInsets(top: 0,left: 0,bottom: 0,right: 0)
         view.backgroundColor=UIColor.black
         self.webView.isOpaque = false
         self.webView.backgroundColor = UIColor.clear
@@ -74,13 +74,13 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         //progressView.sizeToFit()
         webView.addSubview(progressView)
         
-        //Setup Menu Bar
+        /*Setup Menu Bar
         let menuBar  = MenuBar(frame:CGRect(x: 0,y: 0,width: self.view.frame.width,height: 65))
     
         webView.addSubview(menuBar)
         webView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))
         webView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(65)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))
-        menuBar.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 0.0)
+        menuBar.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 0.0)*/
         
                
         //Load URL if connected to Network

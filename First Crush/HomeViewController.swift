@@ -41,22 +41,16 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
     }
     
     func setupCollectionView(){
-        collectionView?.backgroundColor=UIColor.gray
+        collectionView?.backgroundColor=UIColor.darkGray
         collectionView?.register(VideoCell.self, forCellWithReuseIdentifier: "videoCellId")
         collectionView?.contentInset = UIEdgeInsetsMake(0,0,0,0)
         collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(65,0,0,0)
         collectionView?.isPagingEnabled=true
         
-        //Root View Setup
-        let homeView = UIView()
-        view.addSubview(homeView)
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":homeView]))
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":homeView]))
-        
-        
-        homeView.addSubview(menuBarHome)
-        homeView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBarHome]))
-        homeView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(65)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBarHome]))
+        //Root View Setup        
+        view.addSubview(menuBarHome)
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBarHome]))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(65)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBarHome]))
         menuBarHome.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 0.0)
     }
     
@@ -66,6 +60,20 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         
     }
     
+    @IBAction func backButton(_ sender: Any) {
+       /* if webView.canGoBack {
+            webView.goBack()
+            UINavigationBar.appearance().isHidden = true
+        }
+        else {*/
+            UINavigationBar.appearance().isHidden = false
+        //}
+    }
+  
+    @IBAction func refreshAction(_ sender: Any) {
+        //progressView.isHidden = false
+        collectionView?.reloadData();
+    }
     lazy var menuBar: MenuBar = {
         let mb = MenuBar()
         mb.homeController = self
@@ -85,13 +93,24 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         menuBarHome.horizontalBarLeftAnchorConstraint?.constant=scrollView.contentOffset.x / 4
+        
+        if scrollView.panGestureRecognizer.translation(in: scrollView).y<0{
+            UINavigationBar.appearance().isHidden = false
+        }
+        else {
+            UINavigationBar.appearance().isHidden = true
+        }
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width,height: view.frame.height)
+    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        print(targetContentOffset.pointee.x);
+        print(view.frame.width)
+        let index = round((targetContentOffset.pointee.x)/view.frame.width)
+        print(index)
+        let indexPath = NSIndexPath(item: (Int(index)), section: 0)
+        self.collectionView?.selectItem(at: indexPath as IndexPath, animated: true, scrollPosition: [])
     }
 }
-
 class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate{
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -155,8 +174,6 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(65)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":webView]))
         view=webView
         
-        
-        
         //Create Load Spinner
         loadSpinner = UIActivityIndicatorView(frame:CGRect(x: self.view.frame.height/2 , y: self.view.frame.width/2 ,width: 37,height: 37))
         loadSpinner.activityIndicatorViewStyle=UIActivityIndicatorViewStyle.whiteLarge
@@ -195,23 +212,15 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         webView.scrollView.delegate = self
         lastOffsetY = 0.0
         
-        
+        UIApplication.shared.beginReceivingRemoteControlEvents()
+        self.becomeFirstResponder()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func backAction(_ sender: Any) {
-        if webView.canGoBack {
-            webView.goBack()
-            UINavigationBar.appearance().isHidden = true
-        }
-        else {
-            UINavigationBar.appearance().isHidden = true
-        }
-    }
-    func scrollViewDidScroll(_ scrollView: UIScrollView){
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         //let request = webView.url?.absoluteString
         if webView.canGoBack
         {
@@ -225,7 +234,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         }
     }
     
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView){
+    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView){
         //let request = webView.url?.absoluteString
         if webView.canGoBack {
             if(scrollView.contentOffset.y > self.lastOffsetY)
@@ -238,7 +247,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         }
     }
     }
-    
+  
     @objc func refreshWebView(sender: UIRefreshControl) {
         // On Scroll to Refresh, Reload Current Page
         print("Scroll to Refresh Initiated")

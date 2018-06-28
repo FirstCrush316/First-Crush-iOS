@@ -48,14 +48,14 @@ class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICol
         horizontalBarView.heightAnchor.constraint(equalToConstant: 3.0).isActive = true
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("123")
+        /*print("123")
         let x = CGFloat(indexPath.item) * frame.width/4
         horizontalBarLeftAnchorConstraint?.constant=x
         horizontalBarLeftAnchorConstraint?.isActive = true
         UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseOut, animations: {
             self.layoutIfNeeded()
-        }, completion:nil)
-        //homeController?.scrollToMenuIndex(menuIndex: indexPath.item)
+        }, completion:nil)*/
+        homeController?.scrollToMenuIndex(menuIndex: indexPath.item)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -115,10 +115,7 @@ class MenuCell:UICollectionViewCell {
         addSubview(wordLabel)
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":wordLabel]))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":wordLabel]))
-        /*wordLabel.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        wordLabel.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        wordLabel.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        wordLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true*/
+       
         
     }
     
