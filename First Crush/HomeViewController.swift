@@ -109,10 +109,10 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         if UIDevice.current.orientation.isLandscape {
             UIApplication.shared.isStatusBarHidden = true // Landscape
-            collectionView?.reloadInputViews()
+            menuBarHome.isHidden=true
         } else {
             UIApplication.shared.isStatusBarHidden = false //Portrait
-            collectionView?.reloadInputViews()
+            menuBarHome.isHidden=false
         }
     }
     
@@ -127,7 +127,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         self.collectionView?.selectItem(at: indexPath as IndexPath, animated: true, scrollPosition: [])
     }
 }
-class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate{
+class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate,WKUIDelegate, UITabBarControllerDelegate{
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
@@ -149,7 +149,6 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
     var webView: WKWebView = {
         
         var web=WKWebView()
-        
         web.translatesAutoresizingMaskIntoConstraints=false
         return web
     }()
@@ -198,7 +197,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         webView.addSubview(loadSpinner)
         
         // Create Progress View
-        progressView = UIProgressView(frame:CGRect(x: 0,y: 66,width: self.view.frame.width,height: self.view.frame.height))
+        progressView = UIProgressView(frame:CGRect(x: 0,y: 65,width: self.view.frame.width,height: self.view.frame.height))
         progressView.backgroundColor=UIColor.black
         progressView.tintColor = #colorLiteral(red: 0.6576176882, green: 0.7789518833, blue: 0.2271372974, alpha: 1)
         progressView.setProgress(0.0, animated: true)
@@ -288,18 +287,19 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         }
     }
     
+    
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        self.progressView.setProgress(0.1, animated: false)
+        progressView.isHidden = false
+        loadSpinner.startAnimating()
+    }
+    
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!)
     {
         self.progressView.setProgress(1.0, animated: true)
         progressView.isHidden = true
         loadSpinner.stopAnimating()
         loadSpinner.isHidden = true
-    }
-    
-    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        self.progressView.setProgress(0.1, animated: false)
-        progressView.isHidden = false
-        loadSpinner.startAnimating()
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping ((WKNavigationActionPolicy) -> Void)) {
@@ -327,6 +327,20 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         decisionHandler(.allow)
     }
     
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        print(error.localizedDescription)
+        if Reachability.isConnectedToNetwork() == false {
+            let alertController = UIAlertController(title: NSLocalizedString("No Internet Connection",comment:""), message: NSLocalizedString("Please ensure your device is connected to the internet.",comment:""), preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default, handler: { (pAlert) in
+                //Do whatever you wants here
+            })
+            alertController.addAction(defaultAction)
+            self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+            self.progressView.setProgress(1.0, animated: true)
+            progressView.isHidden = true
+            loadSpinner.stopAnimating()
+        }
+    }
     /*override func prepare(for segue: UIStoryboardSegue, sender: Any?)
      {
      if let detailViewController = segue.destination as? DetailViewController{
@@ -356,7 +370,6 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
      }
      }
      }*/
-    
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         let tabBarIndex = tabBarController.selectedIndex
