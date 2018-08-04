@@ -26,6 +26,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
     let URL = ["http://www.firstcrush.co","http://www.firstcrush.co/news/","http://www.firstcrush.co/trailers/","http://www.firstcrush.co/travel/"]
     weak var navigationTitle: UINavigationItem!
     var menuBarHome = MenuBar()
+    var homeController:HomeViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,6 +88,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         let cell=collectionView.dequeueReusableCell(withReuseIdentifier: videoCellId, for: indexPath) as! VideoCell
         let url = NSURL(string: "\(URL[indexPath.item])")
         let request = URLRequest(url: url! as URL)
+        cell.backgroundColor=UIColor.blue
         cell.webView.load(request)
         return cell
     }
@@ -108,10 +110,6 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        guard let flowLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout else {
-            return
-            
-                 }
         
         if UIDevice.current.orientation.isLandscape {
             UIApplication.shared.isStatusBarHidden = true // Landscape
@@ -119,7 +117,9 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         } else {
             UIApplication.shared.isStatusBarHidden = false //Portrait
         }
-        flowLayout.invalidateLayout()
+        
+        collectionView?.collectionViewLayout.invalidateLayout()
+        collectionView?.setNeedsDisplay()
     }
     
     override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
@@ -127,10 +127,14 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         print(view.frame.width)
         let index = round((targetContentOffset.pointee.x)/view.frame.width)
         print(index)
-        let indexPath = NSIndexPath(item: (Int(index)), section: 0)
+        //let indexPath = NSIndexPath(item: index), section: 0)
         //scrollToMenuIndex(menuIndex: Int(index))
         //menuBarHome.collectionView(UICollectionView, shouldSelectItemAt: indexPath)
-        self.collectionView?.selectItem(at: indexPath as IndexPath, animated: true, scrollPosition: [])
+        //self.collectionView?.selectItem(at: indexPath as IndexPath, animated: true, scrollPosition: [])
+        //let indexPath = NSIndexPath(item: menuIndex, section: 0)
+        let indexPath = NSIndexPath(item: Int(index), section: 0)
+        menuBarHome.collectionView(collectionView!, didSelectItemAt: indexPath as IndexPath)
+        
     }
 }
 class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate,WKUIDelegate, UITabBarControllerDelegate{
@@ -155,7 +159,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
     var webView: WKWebView = {
         
         var web=WKWebView()
-        web.translatesAutoresizingMaskIntoConstraints=false
+        web.translatesAutoresizingMaskIntoConstraints=true
         return web
     }()
     
@@ -381,6 +385,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
             return
                  }
         flowLayout.invalidateLayout()
+        webView.reloadInputViews()
     }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
