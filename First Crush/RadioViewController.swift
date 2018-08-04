@@ -59,6 +59,7 @@ class RadioViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,
         //create Load Spinner
         loadSpinner = UIActivityIndicatorView(frame:CGRect(x: self.view.frame.height/2 , y: self.view.frame.width/2 ,width: 37,height: 37))
         loadSpinner.activityIndicatorViewStyle=UIActivityIndicatorViewStyle.whiteLarge
+         loadSpinner.color=#colorLiteral(red: 0.6576176882, green: 0.7789518833, blue: 0.2271372974, alpha: 1)
         loadSpinner.center = self.view.center
         view.addSubview(loadSpinner)
         self.tabBarController?.delegate = self

@@ -107,13 +107,19 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        guard let flowLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout else {
+            return
+            
+                 }
+        
         if UIDevice.current.orientation.isLandscape {
             UIApplication.shared.isStatusBarHidden = true // Landscape
-            menuBarHome.isHidden=true
+            
         } else {
             UIApplication.shared.isStatusBarHidden = false //Portrait
-            menuBarHome.isHidden=false
         }
+        flowLayout.invalidateLayout()
     }
     
     override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
@@ -370,6 +376,12 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
      }
      }
      }*/
+    override func willTransition(from oldLayout: UICollectionViewLayout, to newLayout: UICollectionViewLayout) {
+        guard let flowLayout = oldLayout as? UICollectionViewFlowLayout else {
+            return
+                 }
+        flowLayout.invalidateLayout()
+    }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         let tabBarIndex = tabBarController.selectedIndex
