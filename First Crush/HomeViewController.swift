@@ -53,6 +53,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBarHome]))
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(65)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBarHome]))
         menuBarHome.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 0.0)
+        menuBarHome.translatesAutoresizingMaskIntoConstraints=true
     }
     
     func scrollToMenuIndex(menuIndex: Int){
@@ -89,6 +90,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         let url = NSURL(string: "\(URL[indexPath.item])")
         let request = URLRequest(url: url! as URL)
         cell.backgroundColor=UIColor.blue
+        cell.setupViews()
         cell.webView.load(request)
         return cell
     }
@@ -113,13 +115,10 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         
         if UIDevice.current.orientation.isLandscape {
             UIApplication.shared.isStatusBarHidden = true // Landscape
-            
         } else {
             UIApplication.shared.isStatusBarHidden = false //Portrait
         }
-        
         collectionView?.collectionViewLayout.invalidateLayout()
-        collectionView?.setNeedsDisplay()
     }
     
     override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
@@ -152,7 +151,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
     
     var view:UIView = {
         var rootView = UIView()
-        rootView.translatesAutoresizingMaskIntoConstraints=false
+        rootView.translatesAutoresizingMaskIntoConstraints=true
         return rootView
     }()
     
@@ -380,22 +379,14 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
      }
      }
      }*/
-    override func willTransition(from oldLayout: UICollectionViewLayout, to newLayout: UICollectionViewLayout) {
-        guard let flowLayout = oldLayout as? UICollectionViewFlowLayout else {
-            return
-                 }
-        flowLayout.invalidateLayout()
-        webView.reloadInputViews()
-    }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         let tabBarIndex = tabBarController.selectedIndex
         if tabBarIndex == 4 {
             //self.window?.rootViewController?.present(HomeViewController, animated: true, completion: nil)
-            let url = NSURL(string: "http://www.firstcrush.co")
-            let request = URLRequest(url: url! as URL)
-            webView.load(request)
             //navigationController?.setNavigationBarHidden(true, animated: true)
+            //let tabBarController: TabBarController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController(withIdentifier: "TabBarController") as! TabBarController
+            webView.reloadFromOrigin()
             lastOffsetY = 0
         }
         

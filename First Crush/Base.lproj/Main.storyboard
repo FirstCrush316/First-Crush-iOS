@@ -204,9 +204,9 @@
         <!--Featured-->
         <scene sceneID="BO5-YR-uuP">
             <objects>
-                <collectionViewController id="X0L-L6-HIs" customClass="HomeViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" id="aUu-cf-hDt">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                <collectionViewController extendedLayoutIncludesOpaqueBars="YES" modalPresentationStyle="currentContext" id="X0L-L6-HIs" customClass="HomeViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" id="aUu-cf-hDt">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.13321876652854284" green="0.14292993011956326" blue="0.15651812217772021" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OQd-61-Geq">
@@ -216,7 +216,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="videoCellId" id="FC3-1C-Yny">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="videoCellId" id="FC3-1C-Yny">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -276,7 +276,7 @@
         <!--Home-->
         <scene sceneID="mpZ-TR-Rjh">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" hidesBarsOnSwipe="YES" id="Ilg-bP-bAe" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" hidesBarsOnSwipe="YES" id="Ilg-bP-bAe" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="home.png" selectedImage="home new.png" id="FMx-3u-kob"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="zMA-7Y-omL">
