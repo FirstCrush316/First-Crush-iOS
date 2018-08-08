@@ -204,11 +204,12 @@
         <!--Featured-->
         <scene sceneID="BO5-YR-uuP">
             <objects>
-                <collectionViewController extendedLayoutIncludesOpaqueBars="YES" modalPresentationStyle="currentContext" id="X0L-L6-HIs" customClass="HomeViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" id="aUu-cf-hDt">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                <collectionViewController modalPresentationStyle="currentContext" id="X0L-L6-HIs" customClass="HomeViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" pagingEnabled="YES" dataMode="prototypes" id="aUu-cf-hDt">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.13321876652854284" green="0.14292993011956326" blue="0.15651812217772021" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="51j-sW-QFn"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OQd-61-Geq">
                             <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -230,6 +231,7 @@
                             <outlet property="delegate" destination="X0L-L6-HIs" id="nLc-nu-kI5"/>
                         </connections>
                     </collectionView>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Featured" id="WgW-bj-xhf">
                         <barButtonItem key="backBarButtonItem" title="&lt;" id="yvS-ff-6Lk"/>
                         <barButtonItem key="leftBarButtonItem" title="&lt;" id="S7u-5l-zZC">
