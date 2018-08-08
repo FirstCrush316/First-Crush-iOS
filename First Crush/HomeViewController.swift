@@ -90,9 +90,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         let url = NSURL(string: "\(URL[indexPath.item])")
         let request = URLRequest(url: url! as URL)
         cell.backgroundColor=UIColor.blue
-        cell.invalidateIntrinsicContentSize()
-        //cell.setNeedsLayout()
-        cell.setupViews()
+        cell.reloadInputViews()
         cell.webView.load(request)
         return cell
     }
@@ -121,7 +119,6 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
             UIApplication.shared.isStatusBarHidden = false //Portrait
         }
         collectionView?.collectionViewLayout.invalidateLayout()
-        setupCollectionView()
         collectionView?.reloadData()
     }
     
