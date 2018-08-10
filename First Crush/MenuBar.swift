@@ -67,10 +67,12 @@ class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICol
         //cell.backgroundColor=UIColor.blue
         cell.wordLabel.text="\(tabNames[indexPath.item])"
         cell.wordLabel.textAlignment = .center
-        cell.wordLabel.font = UIFont (name: "Caption 1", size: 20)
+        cell.wordLabel.font = UIFont (name: "Caption 1",size: 20)
         cell.wordLabel.textColor = UIColor.darkGray
         return cell
     }
+    
+
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: frame.width/4, height: frame.height)
@@ -119,7 +121,10 @@ class MenuCell:UICollectionViewCell {
        
         
     }
-    
+    override func willTransition(from oldLayout: UICollectionViewLayout, to newLayout: UICollectionViewLayout) {
+        self.reloadInputViews()
+        self.setNeedsDisplay()
+    }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

@@ -50,10 +50,10 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         
         //Root View Setup
         view.addSubview(menuBarHome)
-        //view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBarHome]))
-        //view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(65)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBarHome]))
-        //menuBarHome.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 0.0)
-        menuBarHome.translatesAutoresizingMaskIntoConstraints=true
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBarHome]))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(65)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBarHome]))
+        menuBarHome.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 0.0)
+        menuBarHome.translatesAutoresizingMaskIntoConstraints=false
     }
     
     func scrollToMenuIndex(menuIndex: Int){
@@ -90,36 +90,43 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         let url = NSURL(string: "\(URL[indexPath.item])")
         let request = URLRequest(url: url! as URL)
         cell.backgroundColor=UIColor.blue
-        cell.reloadInputViews()
         cell.webView.load(request)
         return cell
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         menuBarHome.horizontalBarLeftAnchorConstraint?.constant=scrollView.contentOffset.x / 4
-        
-        if scrollView.panGestureRecognizer.translation(in: scrollView).y<0{
-            UINavigationBar.appearance().isHidden = false
-        }
-        else {
-            UINavigationBar.appearance().isHidden = true
-        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width,height: view.frame.height)
     }
     
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         
         if UIDevice.current.orientation.isLandscape {
             UIApplication.shared.isStatusBarHidden = true // Landscape
+            //collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(0,0,0,0)
+            menuBarHome.invalidateIntrinsicContentSize()
+            menuBarHome.setNeedsLayout()
+            //menuBarHome.isHidden=true
         } else {
             UIApplication.shared.isStatusBarHidden = false //Portrait
+            //collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(65,0,0,0)
+            menuBarHome.invalidateIntrinsicContentSize()
+            menuBarHome.setNeedsLayout()
+            //menuBarHome.isHidden=false
         }
         collectionView?.collectionViewLayout.invalidateLayout()
+        //self.view.reloadInputViews()
+        self.view.invalidateIntrinsicContentSize()
+        self.view.setNeedsLayout()
         collectionView?.reloadData()
+        //menuBarHome.reloadInputViews()
+        
+        
     }
     
     override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
@@ -176,9 +183,9 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         
       //Setup Content View
         addSubview(view)
-        view.translatesAutoresizingMaskIntoConstraints=true
-        //addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":view]))
-        //addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":view]))
+        view.translatesAutoresizingMaskIntoConstraints=false
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":view]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":view]))
         
         //WebView Setup
         webView = WKWebView(frame:CGRect(x: 0,y: 0,width: frame.width,height: frame.height), configuration: webConfiguration)
@@ -198,24 +205,27 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         //Add WebView
         view.addSubview(webView)
         
-        //view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":webView]))
-        //view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(65)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":webView]))
-        view=webView
-        
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":webView]))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(65)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":webView]))
+        //view=webView
+       
         //Create Load Spinner
         loadSpinner = UIActivityIndicatorView(frame:CGRect(x: self.view.frame.height/2 , y: self.view.frame.width/2 ,width: 37,height: 37))
         loadSpinner.activityIndicatorViewStyle=UIActivityIndicatorViewStyle.whiteLarge
         loadSpinner.color=#colorLiteral(red: 0.6576176882, green: 0.7789518833, blue: 0.2271372974, alpha: 1)
         loadSpinner.center = self.view.center
+        loadSpinner.translatesAutoresizingMaskIntoConstraints=true
         webView.addSubview(loadSpinner)
         
         // Create Progress View
-        progressView = UIProgressView(frame:CGRect(x: 0,y: 65,width: self.view.frame.width,height: self.view.frame.height))
+        progressView = UIProgressView(frame:CGRect(x: 0,y: 66,width: self.view.frame.width,height: self.view.frame.height))
         progressView.backgroundColor=UIColor.black
         progressView.tintColor = #colorLiteral(red: 0.6576176882, green: 0.7789518833, blue: 0.2271372974, alpha: 1)
         progressView.setProgress(0.0, animated: true)
+        progressView.translatesAutoresizingMaskIntoConstraints=true
         //progressView.sizeToFit()
         webView.addSubview(progressView)
+        
         
         
         // Implement Scroll to Refresh
