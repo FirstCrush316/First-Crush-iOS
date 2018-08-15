@@ -38,6 +38,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         //Menu Bar Setup
         menuBarHome  = MenuBar(frame:CGRect(x: 0,y: 0,width: self.view.frame.width,height: 65))
         menuBarHome.homeController=self
+        
         setupCollectionView()
     }
     
@@ -47,6 +48,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         collectionView?.contentInset = UIEdgeInsetsMake(0,0,0,0)
         collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(65,0,0,0)
         collectionView?.isPagingEnabled=true
+        self.automaticallyAdjustsScrollViewInsets=false
         
         //Root View Setup
         view.addSubview(menuBarHome)
@@ -104,7 +106,8 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
     
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         collectionViewLayout.invalidateLayout()
-        collectionView?.setNeedsDisplay()
+        collectionView?.setNeedsLayout()
+        
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -124,7 +127,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
             //menuBarHome.isHidden=false
         }
         collectionView?.collectionViewLayout.invalidateLayout()
-        collectionView?.setNeedsDisplay()
+        collectionView?.setNeedsLayout()
         //self.view.reloadInputViews()
         
     }
@@ -199,14 +202,14 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         webView.allowsBackForwardNavigationGestures=false
         webView.scrollView.isScrollEnabled = true
         webView.scrollView.alwaysBounceVertical = true
-        webView.translatesAutoresizingMaskIntoConstraints=true
+        //webView.translatesAutoresizingMaskIntoConstraints=true
         webView.scrollView.contentInset=UIEdgeInsets(top: 65,left: 0,bottom: 0,right: 0)
         
         //Add WebView
         view.addSubview(webView)
         
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":webView]))
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(65)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":webView]))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":webView]))
         view=webView
        
         //Create Load Spinner
@@ -263,11 +266,11 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         if webView.canGoBack
         {
             lastOffsetY = scrollView.contentOffset.y
-            UINavigationBar.appearance().isHidden = false
+            //UINavigationBar.appearance().isHidden = false
             
         }
         else {
-            UINavigationBar.appearance().isHidden = true
+            //UINavigationBar.appearance().isHidden = true
             self.webView.frame = self.view.bounds
         }
     }
@@ -277,10 +280,10 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         if webView.canGoBack {
             if(scrollView.contentOffset.y > self.lastOffsetY)
             {
-                UINavigationBar.appearance().isHidden = false
+                //UINavigationBar.appearance().isHidden = false
         }
         else {
-            UINavigationBar.appearance().isHidden = true
+            //UINavigationBar.appearance().isHidden = true
             self.webView.frame = self.view.bounds
         }
     }

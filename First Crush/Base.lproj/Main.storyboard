@@ -204,7 +204,7 @@
         <!--Featured-->
         <scene sceneID="BO5-YR-uuP">
             <objects>
-                <collectionViewController modalPresentationStyle="currentContext" id="X0L-L6-HIs" customClass="HomeViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="currentContext" id="X0L-L6-HIs" customClass="HomeViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" pagingEnabled="YES" dataMode="prototypes" id="aUu-cf-hDt">
                         <rect key="frame" x="0.0" y="0.0" width="736" height="365"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
