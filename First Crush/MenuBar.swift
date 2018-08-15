@@ -82,6 +82,13 @@ class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICol
         return 0
     }
     
+    func collectionView(_ collectionView: UICollectionView, transitionLayoutForOldLayout fromLayout: UICollectionViewLayout, newLayout toLayout: UICollectionViewLayout) -> UICollectionViewTransitionLayout {
+        print("Inside Menu Bar Layout Transition")
+        collectionView.collectionViewLayout.invalidateLayout()
+        collectionView.setNeedsDisplay()
+        return toLayout as! UICollectionViewTransitionLayout
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -121,10 +128,7 @@ class MenuCell:UICollectionViewCell {
        
         
     }
-    override func willTransition(from oldLayout: UICollectionViewLayout, to newLayout: UICollectionViewLayout) {
-        self.reloadInputViews()
-        self.setNeedsDisplay()
-    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

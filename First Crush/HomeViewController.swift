@@ -102,6 +102,10 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         return CGSize(width: view.frame.width,height: view.frame.height)
     }
     
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        collectionViewLayout.invalidateLayout()
+        collectionView?.setNeedsDisplay()
+    }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
@@ -120,12 +124,8 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
             //menuBarHome.isHidden=false
         }
         collectionView?.collectionViewLayout.invalidateLayout()
+        collectionView?.setNeedsDisplay()
         //self.view.reloadInputViews()
-        self.view.invalidateIntrinsicContentSize()
-        self.view.setNeedsLayout()
-        collectionView?.reloadData()
-        //menuBarHome.reloadInputViews()
-        
         
     }
     
@@ -207,7 +207,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":webView]))
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(65)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":webView]))
-        //view=webView
+        view=webView
        
         //Create Load Spinner
         loadSpinner = UIActivityIndicatorView(frame:CGRect(x: self.view.frame.height/2 , y: self.view.frame.width/2 ,width: 37,height: 37))
