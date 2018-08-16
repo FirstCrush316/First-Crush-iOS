@@ -204,6 +204,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         webView.scrollView.alwaysBounceVertical = true
         //webView.translatesAutoresizingMaskIntoConstraints=true
         webView.scrollView.contentInset=UIEdgeInsets(top: 65,left: 0,bottom: 0,right: 0)
+        webView.contentMode = .scaleToFill
         
         //Add WebView
         view.addSubview(webView)
