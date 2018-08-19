@@ -112,7 +112,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        
+        view.layoutIfNeeded()
         if UIDevice.current.orientation.isLandscape {
             UIApplication.shared.isStatusBarHidden = true // Landscape
             //collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(0,0,0,0)
@@ -129,7 +129,6 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         collectionView?.collectionViewLayout.invalidateLayout()
         collectionView?.setNeedsLayout()
         //self.view.reloadInputViews()
-        
     }
     
     override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
@@ -186,6 +185,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         
       //Setup Content View
         addSubview(view)
+        view.backgroundColor=UIColor.green
         view.translatesAutoresizingMaskIntoConstraints=false
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":view]))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":view]))
@@ -202,7 +202,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         webView.allowsBackForwardNavigationGestures=false
         webView.scrollView.isScrollEnabled = true
         webView.scrollView.alwaysBounceVertical = true
-        //webView.translatesAutoresizingMaskIntoConstraints=true
+        webView.translatesAutoresizingMaskIntoConstraints=false
         webView.scrollView.contentInset=UIEdgeInsets(top: 65,left: 0,bottom: 0,right: 0)
         webView.contentMode = .scaleToFill
         
