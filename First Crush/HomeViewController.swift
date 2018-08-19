@@ -115,20 +115,11 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         view.layoutIfNeeded()
         if UIDevice.current.orientation.isLandscape {
             UIApplication.shared.isStatusBarHidden = true // Landscape
-            //collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(0,0,0,0)
-            menuBarHome.invalidateIntrinsicContentSize()
-            menuBarHome.setNeedsLayout()
-            //menuBarHome.isHidden=true
         } else {
             UIApplication.shared.isStatusBarHidden = false //Portrait
-            //collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(65,0,0,0)
-            menuBarHome.invalidateIntrinsicContentSize()
-            menuBarHome.setNeedsLayout()
-            //menuBarHome.isHidden=false
         }
         collectionView?.collectionViewLayout.invalidateLayout()
         collectionView?.setNeedsLayout()
-        //self.view.reloadInputViews()
     }
     
     override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
