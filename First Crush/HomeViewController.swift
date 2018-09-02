@@ -51,10 +51,10 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         
         //Root View Setup
         view.addSubview(menuBar)
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(65)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))
+        //view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))
+        //view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(65)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))
         menuBar.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 0.0)
-        menuBar.translatesAutoresizingMaskIntoConstraints=false
+        menuBar.translatesAutoresizingMaskIntoConstraints=true
     }
     
     func scrollToMenuIndex(menuIndex: Int){
@@ -115,8 +115,12 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         view.layoutIfNeeded()
         if UIDevice.current.orientation.isLandscape {
             UIApplication.shared.isStatusBarHidden = true // Landscape
+            menuBar.invalidateIntrinsicContentSize()
+            menuBar.layoutIfNeeded()
         } else {
             UIApplication.shared.isStatusBarHidden = false //Portrait
+            menuBar.invalidateIntrinsicContentSize()
+            menuBar.layoutIfNeeded()
         }
         collectionView?.collectionViewLayout.invalidateLayout()
         collectionView?.setNeedsLayout()
@@ -257,11 +261,11 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         if webView.canGoBack
         {
             lastOffsetY = scrollView.contentOffset.y
-            //UINavigationBar.appearance().isHidden = false
+            UINavigationBar.appearance().isHidden = false
             
         }
         else {
-            //UINavigationBar.appearance().isHidden = true
+            UINavigationBar.appearance().isHidden = true
             self.webView.frame = self.view.bounds
         }
     }
@@ -271,10 +275,10 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         if webView.canGoBack {
             if(scrollView.contentOffset.y > self.lastOffsetY)
             {
-                //UINavigationBar.appearance().isHidden = false
+                UINavigationBar.appearance().isHidden = false
         }
         else {
-            //UINavigationBar.appearance().isHidden = true
+            UINavigationBar.appearance().isHidden = true
             self.webView.frame = self.view.bounds
         }
     }
@@ -300,7 +304,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         //Display Title
         if (keyPath == "title") {
             //print(webView.title)
-            //.navigationItem.title = webView.title
+            //self.navigationTitle.title = webView.title
         }
     }
     
