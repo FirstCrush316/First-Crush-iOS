@@ -23,6 +23,7 @@ class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICol
         collectionView.backgroundColor=UIColor.black
         collectionView.dataSource=self
         collectionView.delegate=self
+        collectionView.allowsMultipleSelection=false
         addSubview(collectionView)
         setupHorizontalBar()
         
@@ -33,7 +34,10 @@ class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICol
         let selectedIndexPath = IndexPath(item: 0, section: 0)
         collectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: [])
     }
-    
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        collectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
+        return true
+    }
     var horizontalBarLeftAnchorConstraint:NSLayoutConstraint?
     
     func setupHorizontalBar(){

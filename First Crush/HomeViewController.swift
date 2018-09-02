@@ -25,7 +25,6 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
     let tabNames = ["Featured","News","Trailers","Travel"]
     let URL = ["http://www.firstcrush.co","http://www.firstcrush.co/news/","http://www.firstcrush.co/trailers/","http://www.firstcrush.co/travel/"]
     weak var navigationTitle: UINavigationItem!
-    var menuBarHome = MenuBar()
     var homeController:HomeViewController?
     
     override func viewDidLoad() {
@@ -36,8 +35,8 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         }
         
         //Menu Bar Setup
-        menuBarHome  = MenuBar(frame:CGRect(x: 0,y: 0,width: self.view.frame.width,height: 65))
-        menuBarHome.homeController=self
+        menuBar  = MenuBar(frame:CGRect(x: 0,y: 0,width: self.view.frame.width,height: 65))
+        menuBar.homeController=self
         
         setupCollectionView()
     }
@@ -51,11 +50,11 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         self.automaticallyAdjustsScrollViewInsets=false
         
         //Root View Setup
-        view.addSubview(menuBarHome)
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBarHome]))
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(65)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBarHome]))
-        menuBarHome.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 0.0)
-        menuBarHome.translatesAutoresizingMaskIntoConstraints=false
+        view.addSubview(menuBar)
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(65)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))
+        menuBar.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 0.0)
+        menuBar.translatesAutoresizingMaskIntoConstraints=false
     }
     
     func scrollToMenuIndex(menuIndex: Int){
@@ -78,6 +77,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         //progressView.isHidden = false
         collectionView?.reloadData();
     }
+    
     lazy var menuBar: MenuBar = {
         let mb = MenuBar()
         mb.homeController = self
@@ -97,7 +97,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        menuBarHome.horizontalBarLeftAnchorConstraint?.constant=scrollView.contentOffset.x / 4
+        menuBar.horizontalBarLeftAnchorConstraint?.constant=scrollView.contentOffset.x / 4
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -130,11 +130,10 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         //let indexPath = NSIndexPath(item: index), section: 0)
         //scrollToMenuIndex(menuIndex: Int(index))
         //menuBarHome.collectionView(UICollectionView, shouldSelectItemAt: indexPath)
-        //self.collectionView?.selectItem(at: indexPath as IndexPath, animated: true, scrollPosition: [])
         //let indexPath = NSIndexPath(item: menuIndex, section: 0)
         let indexPath = NSIndexPath(item: Int(index), section: 0)
-        menuBarHome.collectionView(collectionView!, didSelectItemAt: indexPath as IndexPath)
-        
+        //Buggy line
+        self.collectionView?.selectItem(at: indexPath as IndexPath, animated: true, scrollPosition: [])
     }
 }
 class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate,WKUIDelegate, UITabBarControllerDelegate{
