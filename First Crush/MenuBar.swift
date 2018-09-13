@@ -23,7 +23,8 @@ class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICol
         collectionView.backgroundColor=UIColor.black
         collectionView.dataSource=self
         collectionView.delegate=self
-        collectionView.allowsMultipleSelection=false
+        collectionView.allowsSelection=true
+        collectionView.contentMode = .scaleToFill
         addSubview(collectionView)
         setupHorizontalBar()
         
@@ -76,10 +77,10 @@ class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICol
         return cell
     }
     
-
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: frame.width/4, height: frame.height)
+        
+            return CGSize(width: frame.width/4, height: frame.height)
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -89,6 +90,7 @@ class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICol
     func collectionView(_ collectionView: UICollectionView, transitionLayoutForOldLayout fromLayout: UICollectionViewLayout, newLayout toLayout: UICollectionViewLayout) -> UICollectionViewTransitionLayout {
         print("Inside Menu Bar Layout Transition")
         collectionView.collectionViewLayout.invalidateLayout()
+        collectionView.invalidateIntrinsicContentSize()
         collectionView.layoutIfNeeded()
         collectionView.setNeedsDisplay()
         

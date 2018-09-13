@@ -36,6 +36,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         
         //Menu Bar Setup
         menuBar  = MenuBar(frame:CGRect(x: 0,y: 0,width: self.view.frame.width,height: 65))
+        menuBar.contentMode = .scaleToFill
         menuBar.homeController=self
         
         setupCollectionView()
@@ -47,7 +48,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         collectionView?.contentInset = UIEdgeInsetsMake(0,0,0,0)
         collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(65,0,0,0)
         collectionView?.isPagingEnabled=true
-        self.automaticallyAdjustsScrollViewInsets=false
+        self.automaticallyAdjustsScrollViewInsets=true
         
         //Root View Setup
         view.addSubview(menuBar)
@@ -59,7 +60,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
     
     func scrollToMenuIndex(menuIndex: Int){
         let indexPath = NSIndexPath(item: menuIndex, section: 0)
-        collectionView?.scrollToItem(at: indexPath as IndexPath, at: [], animated: true)
+        collectionView?.scrollToItem(at: (indexPath as IndexPath), at: [], animated: true)
         
     }
     
@@ -107,6 +108,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         collectionViewLayout.invalidateLayout()
         collectionView?.setNeedsLayout()
+        menuBar.setNeedsLayout()
         
     }
     
@@ -115,12 +117,10 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         view.layoutIfNeeded()
         if UIDevice.current.orientation.isLandscape {
             UIApplication.shared.isStatusBarHidden = true // Landscape
-            menuBar.invalidateIntrinsicContentSize()
-            menuBar.layoutIfNeeded()
+            
         } else {
             UIApplication.shared.isStatusBarHidden = false //Portrait
-            menuBar.invalidateIntrinsicContentSize()
-            menuBar.layoutIfNeeded()
+            menuBar.homeController?.loadViewIfNeeded()
         }
         collectionView?.collectionViewLayout.invalidateLayout()
         collectionView?.setNeedsLayout()
@@ -133,11 +133,12 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         print(index)
         //let indexPath = NSIndexPath(item: index), section: 0)
         //scrollToMenuIndex(menuIndex: Int(index))
-        //menuBarHome.collectionView(UICollectionView, shouldSelectItemAt: indexPath)
+        
         //let indexPath = NSIndexPath(item: menuIndex, section: 0)
         let indexPath = NSIndexPath(item: Int(index), section: 0)
         //Buggy line
-        self.collectionView?.selectItem(at: indexPath as IndexPath, animated: true, scrollPosition: [])
+        self.collectionView?.selectItem(at: indexPath as IndexPath, animated: true, scrollPosition: [])        
+        
     }
 }
 class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate,WKUIDelegate, UITabBarControllerDelegate{
@@ -156,6 +157,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
     var view:UIView = {
         var rootView = UIView()
         rootView.translatesAutoresizingMaskIntoConstraints=true
+        rootView.contentMode = .scaleToFill
         return rootView
     }()
     
@@ -163,6 +165,11 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         
         var web=WKWebView()
         web.translatesAutoresizingMaskIntoConstraints=true
+        if #available(iOS 11.0, *) {
+            web.scrollView.contentInsetAdjustmentBehavior = .automatic
+        } else {
+            // Fallback on earlier versions
+        }
         return web
     }()
     
@@ -191,13 +198,12 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         self.webView.backgroundColor = UIColor.black
         self.webView.scrollView.backgroundColor = UIColor.clear
         webView.navigationDelegate = self
-        
         webView.allowsLinkPreview=false
         webView.allowsBackForwardNavigationGestures=false
         webView.scrollView.isScrollEnabled = true
         webView.scrollView.alwaysBounceVertical = true
         webView.translatesAutoresizingMaskIntoConstraints=false
-        webView.scrollView.contentInset=UIEdgeInsets(top: 65,left: 0,bottom: 0,right: 0)
+        webView.scrollView.contentInset=UIEdgeInsets(top: 52,left: 0,bottom: 0,right: 0)
         webView.contentMode = .scaleToFill
         
         //Add WebView
@@ -216,7 +222,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         webView.addSubview(loadSpinner)
         
         // Create Progress View
-        progressView = UIProgressView(frame:CGRect(x: 0,y: 66,width: self.view.frame.width,height: self.view.frame.height))
+        progressView = UIProgressView(frame:CGRect(x: 0,y: 55,width: self.view.frame.width,height: self.view.frame.height))
         progressView.backgroundColor=UIColor.black
         progressView.tintColor = #colorLiteral(red: 0.6576176882, green: 0.7789518833, blue: 0.2271372974, alpha: 1)
         progressView.setProgress(0.0, animated: true)
