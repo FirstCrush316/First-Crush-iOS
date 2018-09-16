@@ -134,17 +134,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 //Reference https://stackoverflow.com/questions/36684165/how-do-i-keep-my-video-background-to-continuously-play-using-swift
                 finished=true
             }
+            
+            //Ideal Solution from Apple
+            if let item = self.player?.currentItem {
+                print("Checking for Video")
+                print(self.player?.currentItem!.status)
+                if item.tracks.first!.assetTrack.hasMediaCharacteristic(AVMediaCharacteristic.visual) {
+                    item.tracks.first!.isEnabled = false
+                    print("Video Disabled")
+                }
+            }
+            
         })
         
-        /* Ideal Solution from Apple
-         if let item = self.player?.currentItem {
-             print("Checking for Video")
-            if item.tracks.first!.assetTrack.hasMediaCharacteristic(AVMediaCharacteristic.visual) {
-                item.tracks.first!.isEnabled = false
-                 print("Video Disabled")
-            }
-        }*/
-        
+        self.player?.play()
         //Background Handling
        // let count = 30
         let appState=UIApplication.shared.applicationState
