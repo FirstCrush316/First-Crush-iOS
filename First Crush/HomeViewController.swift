@@ -48,6 +48,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         collectionView?.contentInset = UIEdgeInsetsMake(0,0,0,0)
         collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(65,0,0,0)
         collectionView?.isPagingEnabled=true
+        collectionView?.isPrefetchingEnabled=true
         self.automaticallyAdjustsScrollViewInsets=true
         
         //Root View Setup
@@ -56,6 +57,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         //view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(65)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))
         menuBar.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 0.0)
         menuBar.translatesAutoresizingMaskIntoConstraints=true
+         UINavigationBar.appearance().isHidden = true
     }
     
     func scrollToMenuIndex(menuIndex: Int){
@@ -65,13 +67,15 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
     }
     
     @IBAction func backButton(_ sender: Any) {
-       /* if webView.canGoBack {
-            webView.goBack()
+       /* webView = getWebView();
+        if (webView.canGoback = true)
+        {
+            self.collectionView?.cell.webView.canGoBack
             UINavigationBar.appearance().isHidden = true
         }
-        else {*/
+        else {
             UINavigationBar.appearance().isHidden = false
-        //}
+        }*/
     }
   
     @IBAction func refreshAction(_ sender: Any) {
@@ -289,6 +293,11 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         }
     }
     }
+    
+    /*@objc public func getWebView()
+    {
+        return webView
+    }*/
   
     @objc func refreshWebView(sender: UIRefreshControl) {
         // On Scroll to Refresh, Reload Current Page

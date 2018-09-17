@@ -70,7 +70,7 @@ class ProfileViewController: UIViewController, WKUIDelegate, UIScrollViewDelegat
         webView.addSubview(progressView)
         webView.scrollView.isScrollEnabled = true
         webView.scrollView.alwaysBounceVertical = true
-        let url = NSURL(string: "http://www.firstcrush.co/your-profile/")
+        let url = NSURL(string: "http://www.firstcrush.co/wp-login.php?")
         let request = URLRequest(url: url! as URL)
         
         if Reachability.isConnectedToNetwork() == true {
@@ -319,7 +319,7 @@ class ProfileViewController: UIViewController, WKUIDelegate, UIScrollViewDelegat
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         let tabBarIndex = tabBarController.selectedIndex
         if tabBarIndex == 2 {
-            let url = NSURL(string: "http://www.firstcrush.co/your-profile/")
+            let url = NSURL(string: "http://www.firstcrush.co/wp-login.php?")
             let request = URLRequest(url: url! as URL)
             webView.load(request)
             self.navigationController?.setNavigationBarHidden(true, animated: true)

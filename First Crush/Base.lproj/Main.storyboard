@@ -373,7 +373,7 @@
         <!--Navigation Controller-->
         <scene sceneID="OOm-pJ-ZSe">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="c03-xx-S4F" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="c03-xx-S4F" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" systemItem="featured" id="5bL-0P-tt9"/>
                     <toolbarItems/>
