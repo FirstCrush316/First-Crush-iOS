@@ -25,6 +25,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
     let tabNames = ["Featured","News","Trailers","Travel"]
     let URL = ["http://www.firstcrush.co","http://www.firstcrush.co/news/","http://www.firstcrush.co/trailers/","http://www.firstcrush.co/travel/"]
     weak var navigationTitle: UINavigationItem!
+    
     var homeController:HomeViewController?
     
     override func viewDidLoad() {
@@ -57,7 +58,6 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         //view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(65)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))
         menuBar.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 0.0)
         menuBar.translatesAutoresizingMaskIntoConstraints=true
-         UINavigationBar.appearance().isHidden = true
     }
     
     func scrollToMenuIndex(menuIndex: Int){
@@ -67,8 +67,8 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
     }
     
     @IBAction func backButton(_ sender: Any) {
-       /* webView = getWebView();
-        if (webView.canGoback = true)
+        /*let indexPath = collectionView?.
+        if (cell.webView.canGoback = true)
         {
             self.collectionView?.cell.webView.canGoBack
             UINavigationBar.appearance().isHidden = true
@@ -79,7 +79,6 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
     }
   
     @IBAction func refreshAction(_ sender: Any) {
-        //progressView.isHidden = false
         collectionView?.reloadData();
     }
     
@@ -141,7 +140,18 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         //let indexPath = NSIndexPath(item: menuIndex, section: 0)
         let indexPath = NSIndexPath(item: Int(index), section: 0)
         //Buggy line
-        self.collectionView?.selectItem(at: indexPath as IndexPath, animated: true, scrollPosition: [])        
+        collectionView?.selectItem(at: indexPath as IndexPath, animated: true, scrollPosition: [])
+        
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        let tabBarIndex = tabBarController.selectedIndex
+        if tabBarIndex == 4 {
+            //self.window?.rootViewController?.present(HomeViewController, animated: true, completion: nil)
+            //navigationController?.setNavigationBarHidden(true, animated: true)
+            //let tabBarController: TabBarController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController(withIdentifier: "TabBarController") as! TabBarController
+            collectionView?.reloadData()
+        }
         
     }
 }
@@ -154,6 +164,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
     var progressView: UIProgressView!
     var loadSpinner: UIActivityIndicatorView!
     weak var navigationTitle: UINavigationItem!
+     var homeController:HomeViewController?
     
     let webConfiguration = WKWebViewConfiguration()
     @objc var lastOffsetY :CGFloat = 0
@@ -319,7 +330,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         //Display Title
         if (keyPath == "title") {
             //print(webView.title)
-            //self.navigationTitle.title = webView.title
+            homeController?.navigationTitle.title = webView.title
         }
     }
     
@@ -406,17 +417,6 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
      }
      }
      }*/
-    
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        let tabBarIndex = tabBarController.selectedIndex
-        if tabBarIndex == 4 {
-            //self.window?.rootViewController?.present(HomeViewController, animated: true, completion: nil)
-            //navigationController?.setNavigationBarHidden(true, animated: true)
-            //let tabBarController: TabBarController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController(withIdentifier: "TabBarController") as! TabBarController
-            webView.reloadFromOrigin()
-            lastOffsetY = 0
-        }
-        
-    }
+
 
 }

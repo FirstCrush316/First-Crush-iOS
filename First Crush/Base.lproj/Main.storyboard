@@ -134,7 +134,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ls8-KW-4Zu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1630" y="1573"/>
+            <point key="canvasLocation" x="647" y="1546"/>
         </scene>
         <!--Notifications-->
         <scene sceneID="UI7-3u-YLd">
@@ -198,14 +198,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9VB-ZQ-8Gt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1178" y="933"/>
+            <point key="canvasLocation" x="-1013" y="296"/>
         </scene>
         <!--Featured-->
         <scene sceneID="BO5-YR-uuP">
             <objects>
                 <collectionViewController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="currentContext" id="X0L-L6-HIs" customClass="HomeViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" bounces="NO" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" pagingEnabled="YES" contentInsetAdjustmentBehavior="always" bouncesZoom="NO" dataMode="prototypes" id="aUu-cf-hDt">
-                        <rect key="frame" x="0.0" y="0.0" width="736" height="365"/>
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="321"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.13321876652854284" green="0.14292993011956326" blue="0.15651812217772021" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="51j-sW-QFn"/>
@@ -251,7 +251,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Tf-X5-c4M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="644.92753623188412" y="160.59782608695653"/>
+            <point key="canvasLocation" x="-263" y="297"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="cIa-rc-nWS">
@@ -276,7 +276,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qEn-Vd-14V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1662.3188405797102" y="122.28260869565219"/>
+            <point key="canvasLocation" x="1449" y="348"/>
         </scene>
         <!--Home-->
         <scene sceneID="mpZ-TR-Rjh">
@@ -368,16 +368,16 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gqy-BT-dNk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="818" y="1573"/>
+            <point key="canvasLocation" x="648" y="668"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="OOm-pJ-ZSe">
             <objects>
-                <navigationController navigationBarHidden="YES" id="c03-xx-S4F" sceneMemberID="viewController">
-                    <extendedEdge key="edgesForExtendedLayout"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnSwipe="YES" id="c03-xx-S4F" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="featured" id="5bL-0P-tt9"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="gQ0-x5-jzC">
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.051975388601398942" green="0.051975388601398942" blue="0.051975388601398942" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
@@ -410,7 +410,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="af4-Iq-EbV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1178.2608695652175" y="160.59782608695653"/>
+            <point key="canvasLocation" x="-1088" y="-574"/>
         </scene>
     </scenes>
     <resources>

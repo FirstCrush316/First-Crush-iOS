@@ -87,10 +87,10 @@ class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICol
         return 0
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, transitionLayoutForOldLayout fromLayout: UICollectionViewLayout, newLayout toLayout: UICollectionViewLayout) -> UICollectionViewTransitionLayout {
         print("Inside Menu Bar Layout Transition")
         collectionView.collectionViewLayout.invalidateLayout()
-        collectionView.invalidateIntrinsicContentSize()
         collectionView.layoutIfNeeded()
         collectionView.setNeedsDisplay()
         
