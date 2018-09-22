@@ -31,8 +31,14 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
     override func viewDidLoad() {
         super.viewDidLoad()
         if let flowLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
+            //flowLayout.sectionInset = UIEdgeInsets (top: 20, left: 0, bottom: 0, right: 0)
             flowLayout.scrollDirection = .horizontal
             flowLayout.minimumLineSpacing=0
+            collectionView = UICollectionView(frame:self.view.frame, collectionViewLayout: flowLayout)
+            collectionView?.dataSource=self
+            collectionView?.delegate=self
+            collectionView?.register(VideoCell.self, forCellWithReuseIdentifier: videoCellId)
+            self.view.addSubview(collectionView!)
         }
         
         //Menu Bar Setup
@@ -66,15 +72,17 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         
     }
     
-    @IBAction func backButton(_ sender: Any) {
-        /*let indexPath = collectionView?.
+    @IBAction func backButton(_ sender: UICollectionView) {
+        /*var point:CGPoint = sender.convert(.zero, to: collectionView)
+        var indexPath=collectionView!.indexPathForItem(at: point)
+        let cell=collectionView?.cellForItem(at: indexPath!)
         if (cell.webView.canGoback = true)
         {
-            self.collectionView?.cell.webView.canGoBack
-            UINavigationBar.appearance().isHidden = true
+            cell.webView.goBack()
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
         }
         else {
-            UINavigationBar.appearance().isHidden = false
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
         }*/
     }
   
@@ -117,7 +125,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        view.layoutIfNeeded()
+        
         if UIDevice.current.orientation.isLandscape {
             UIApplication.shared.isStatusBarHidden = true // Landscape
             
@@ -126,6 +134,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
             menuBar.homeController?.loadViewIfNeeded()
         }
         collectionView?.collectionViewLayout.invalidateLayout()
+        view.setNeedsLayout()
         collectionView?.setNeedsLayout()
     }
     
@@ -282,11 +291,13 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         if webView.canGoBack
         {
             lastOffsetY = scrollView.contentOffset.y
-            UINavigationBar.appearance().isHidden = false
+            homeController?.navigationController?.navigationBar.isHidden=false
+            homeController?.menuBar.isHidden=true
             
         }
         else {
-            UINavigationBar.appearance().isHidden = true
+            homeController?.navigationController?.navigationBar.isHidden=true
+            homeController?.menuBar.isHidden=false
             self.webView.frame = self.view.bounds
         }
     }
