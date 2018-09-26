@@ -138,7 +138,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             //Ideal Solution from Apple
             if let item = self.player?.currentItem {
                 print("Checking for Video")
-                print(self.player?.currentItem!.status)
+                print(self.player?.currentItem!.status as Any)
                 if item.tracks.first!.assetTrack.hasMediaCharacteristic(AVMediaCharacteristic.visual) {
                     item.tracks.first!.isEnabled = false
                     print("Video Disabled")
@@ -211,6 +211,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("Background Task Complete")
         
         self.backgroundTask = UIBackgroundTaskInvalid;
+        UIApplication.shared.endBackgroundTask(UIBackgroundTaskInvalid)
     }
 
     
