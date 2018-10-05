@@ -42,7 +42,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         }
         
         //Menu Bar Setup
-        menuBar  = MenuBar(frame:CGRect(x: 0,y: 0,width: self.view.frame.width,height: 65))
+        menuBar  = MenuBar(frame:CGRect(x: 0,y: 0,width: self.view.frame.width,height: 55))
         menuBar.contentMode = .scaleToFill
         menuBar.homeController=self
         
@@ -53,9 +53,9 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         collectionView?.backgroundColor=UIColor.darkGray
         collectionView?.register(VideoCell.self, forCellWithReuseIdentifier: "videoCellId")
         collectionView?.contentInset = UIEdgeInsetsMake(0,0,0,0)
-        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(65,0,0,0)
+        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(55,0,0,0)
         collectionView?.isPagingEnabled=true
-        collectionView?.isPrefetchingEnabled=true
+        //collectionView?.isPrefetchingEnabled=true
         self.automaticallyAdjustsScrollViewInsets=true
         
         //Root View Setup
@@ -118,8 +118,8 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
     
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         collectionViewLayout.invalidateLayout()
-        collectionView?.setNeedsLayout()
-        menuBar.setNeedsLayout()
+        //collectionView?.setNeedsLayout()
+        //menuBar.setNeedsLayout()
         
     }
     
@@ -246,7 +246,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         webView.addSubview(loadSpinner)
         
         // Create Progress View
-        progressView = UIProgressView(frame:CGRect(x: 0,y: 55,width: self.view.frame.width,height: self.view.frame.height))
+        progressView = UIProgressView(frame:CGRect(x: 0,y: 57,width: self.view.frame.width,height: self.view.frame.height))
         progressView.backgroundColor=UIColor.black
         progressView.tintColor = #colorLiteral(red: 0.6576176882, green: 0.7789518833, blue: 0.2271372974, alpha: 1)
         progressView.setProgress(0.0, animated: true)

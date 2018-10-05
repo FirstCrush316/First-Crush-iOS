@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="O3H-hv-Mio">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="O3H-hv-Mio">
     <device id="retina5_5" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,11 +15,11 @@
             <objects>
                 <viewController storyboardIdentifier="HomeController" automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="ViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="736" height="365"/>
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="321"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="qvy-T2-RCO">
-                                <rect key="frame" x="349.66666666666669" y="164" width="37" height="37"/>
+                                <rect key="frame" x="349.66666666666669" y="142" width="37" height="37"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -134,7 +134,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ls8-KW-4Zu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="647" y="1546"/>
+            <point key="canvasLocation" x="506" y="1396"/>
         </scene>
         <!--Notifications-->
         <scene sceneID="UI7-3u-YLd">
@@ -232,6 +232,7 @@
                         </connections>
                     </collectionView>
                     <extendedEdge key="edgesForExtendedLayout"/>
+                    <tabBarItem key="tabBarItem" systemItem="featured" id="qbF-lp-R4W"/>
                     <navigationItem key="navigationItem" title="Featured" id="WgW-bj-xhf">
                         <barButtonItem key="backBarButtonItem" title="&lt;" id="yvS-ff-6Lk"/>
                         <barButtonItem key="leftBarButtonItem" title="&lt;" id="S7u-5l-zZC">
@@ -267,9 +268,10 @@
                         <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
+                        <segue destination="X0L-L6-HIs" kind="relationship" relationship="viewControllers" id="CGI-HV-jiP"/>
                         <segue destination="Ilg-bP-bAe" kind="relationship" relationship="viewControllers" id="V4B-jO-qIl"/>
-                        <segue destination="Dh1-jM-Xct" kind="relationship" relationship="viewControllers" id="Kf2-7Y-89J"/>
                         <segue destination="13s-e8-QF9" kind="relationship" relationship="viewControllers" id="ze3-fz-ZPP"/>
+                        <segue destination="Dh1-jM-Xct" kind="relationship" relationship="viewControllers" id="Kf2-7Y-89J"/>
                         <segue destination="yrx-0q-xkB" kind="relationship" relationship="viewControllers" id="LHu-xw-mMc"/>
                     </connections>
                 </tabBarController>
@@ -277,13 +279,14 @@
             </objects>
             <point key="canvasLocation" x="1449" y="348"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Home-->
         <scene sceneID="mpZ-TR-Rjh">
             <objects>
-                <navigationController navigationBarHidden="YES" hidesBarsOnSwipe="YES" id="Ilg-bP-bAe" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" selectedImage="home new.png" systemItem="featured" id="FMx-3u-kob"/>
+                <navigationController hidesBarsOnSwipe="YES" id="Ilg-bP-bAe" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" image="home new.png" selectedImage="home new.png" id="FMx-3u-kob"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="zMA-7Y-omL">
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.077902363990000001" green="0.077902363990000001" blue="0.077902363990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
@@ -367,12 +370,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gqy-BT-dNk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="648" y="668"/>
+            <point key="canvasLocation" x="1449" y="1397"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="OOm-pJ-ZSe">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnSwipe="YES" id="c03-xx-S4F" sceneMemberID="viewController">
+                <navigationController hidesBarsOnSwipe="YES" id="c03-xx-S4F" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="featured" id="5bL-0P-tt9"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="gQ0-x5-jzC">
@@ -418,5 +421,8 @@
         <image name="home new.png" width="30" height="30"/>
         <image name="user_male.png" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="pFo-uN-Ml4"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>
