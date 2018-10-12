@@ -21,7 +21,7 @@ class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICol
         let collectionView = UICollectionView(frame:CGRect(x: 0,y: 0,width: self.frame.width,height: 55), collectionViewLayout: layout)
         collectionView.register(MenuCell.self, forCellWithReuseIdentifier: cellId)
         
-         collectionView.collectionViewLayout.invalidateLayout()
+        
     
         //backgroundColor = UIColor.black
         collectionView.backgroundColor=UIColor.black
@@ -37,6 +37,7 @@ class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICol
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         //Select First Cell by default
+        collectionView.collectionViewLayout.invalidateLayout()
         let selectedIndexPath = IndexPath(item: 0, section: 0)
         collectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: [])
     }
@@ -73,10 +74,9 @@ class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICol
         return 4
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell=collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! MenuCell
-        collectionView.collectionViewLayout.invalidateLayout()
-        cell.setNeedsDisplay()
         cell.updateConstraints()
         cell.backgroundColor=UIColor.black
         cell.contentMode = .scaleToFill
@@ -90,13 +90,13 @@ class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            collectionView.collectionViewLayout.invalidateLayout()
             return CGSize(width: frame.width/4, height: frame.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, transitionLayoutForOldLayout fromLayout: UICollectionViewLayout, newLayout toLayout: UICollectionViewLayout) -> UICollectionViewTransitionLayout {
         print("Inside Menu Bar Layout Transition")

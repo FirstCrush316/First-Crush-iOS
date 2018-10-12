@@ -181,7 +181,7 @@
         <!--DetailViewController-->
         <scene sceneID="8nD-6p-M5i">
             <objects>
-                <viewController title="DetailViewController" automaticallyAdjustsScrollViewInsets="NO" id="8tY-t9-Cew" customClass="DetailViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="DetailViewController" id="8tY-t9-Cew" customClass="DetailViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" id="Owq-Bd-2QC">
                         <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -203,9 +203,9 @@
         <!--Featured-->
         <scene sceneID="BO5-YR-uuP">
             <objects>
-                <collectionViewController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="currentContext" id="X0L-L6-HIs" customClass="HomeViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController modalPresentationStyle="currentContext" id="X0L-L6-HIs" customClass="HomeViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" bounces="NO" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" pagingEnabled="YES" contentInsetAdjustmentBehavior="always" bouncesZoom="NO" dataMode="prototypes" id="aUu-cf-hDt">
-                        <rect key="frame" x="0.0" y="0.0" width="736" height="370"/>
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="365"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.13321876652854284" green="0.14292993011956326" blue="0.15651812217772021" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="51j-sW-QFn"/>
@@ -247,7 +247,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="EYs-DE-yVu" kind="show" identifier="detailView" id="i4H-B8-K0x"/>
+                        <segue destination="8tY-t9-Cew" kind="show" id="IrZ-aY-agL"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Tf-X5-c4M" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -270,8 +270,8 @@
                     <connections>
                         <segue destination="X0L-L6-HIs" kind="relationship" relationship="viewControllers" id="CGI-HV-jiP"/>
                         <segue destination="Ilg-bP-bAe" kind="relationship" relationship="viewControllers" id="V4B-jO-qIl"/>
-                        <segue destination="13s-e8-QF9" kind="relationship" relationship="viewControllers" id="ze3-fz-ZPP"/>
                         <segue destination="Dh1-jM-Xct" kind="relationship" relationship="viewControllers" id="Kf2-7Y-89J"/>
+                        <segue destination="13s-e8-QF9" kind="relationship" relationship="viewControllers" id="ze3-fz-ZPP"/>
                         <segue destination="yrx-0q-xkB" kind="relationship" relationship="viewControllers" id="LHu-xw-mMc"/>
                     </connections>
                 </tabBarController>
@@ -396,24 +396,6 @@
             </objects>
             <point key="canvasLocation" x="-262" y="-575"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Uqg-gV-gbe">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EYs-DE-yVu" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AF2-Md-267">
-                        <rect key="frame" x="0.0" y="0.0" width="736" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="8tY-t9-Cew" kind="relationship" relationship="rootViewController" id="u9p-q1-70k"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="af4-Iq-EbV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1088" y="-574"/>
-        </scene>
     </scenes>
     <resources>
         <image name="bell.png" width="30" height="30"/>
@@ -422,7 +404,7 @@
         <image name="user_male.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pFo-uN-Ml4"/>
+        <segue reference="CGI-HV-jiP"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

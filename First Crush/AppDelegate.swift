@@ -40,10 +40,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             statusBar.backgroundColor = UIColor.black
         }
         
-        remoCommandCenter.previousTrackCommand.isEnabled = true
-        remoCommandCenter.nextTrackCommand.isEnabled = true
-        remoCommandCenter.togglePlayPauseCommand.isEnabled = true
-        
         //One Signal Code
         let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false, kOSSettingsKeyInAppLaunchURL: true]
         // Replace 'YOUR_APP_ID' with your OneSignal App ID.
@@ -123,7 +119,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        var finished = false
+        /*var finished = false
        print("Background Task Started")
         backgroundTask = application.beginBackgroundTask(withName:"Radio", expirationHandler: {() -> Void in
             // Time is up.
@@ -211,7 +207,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("Background Task Complete")
         
         self.backgroundTask = UIBackgroundTaskInvalid;
-        UIApplication.shared.endBackgroundTask(UIBackgroundTaskInvalid)
+        UIApplication.shared.endBackgroundTask(UIBackgroundTaskInvalid)*/
     }
 
     
@@ -220,13 +216,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
         //it’s important to stop background task when we do not need it anymore
         //Reference https://stackoverflow.com/questions/36684165/how-do-i-keep-my-video-background-to-continuously-play-using-swift
-        if let item = self.player?.currentItem {
+        /*if let item = self.player?.currentItem {
             if item.tracks.first!.assetTrack.hasMediaCharacteristic(AVMediaCharacteristic.visual) {
                 item.tracks.first!.isEnabled = true
                 print("Video Enabled")
             }
         }
-        self.becomeFirstResponder()
+        self.becomeFirstResponder()*/
         
     }
 

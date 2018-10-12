@@ -50,7 +50,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
     }
     
     func setupCollectionView(){
-        collectionView?.backgroundColor=UIColor.darkGray
+        collectionView?.backgroundColor=UIColor.red
         collectionView?.register(VideoCell.self, forCellWithReuseIdentifier: "videoCellId")
         collectionView?.contentInset = UIEdgeInsetsMake(0,0,0,0)
         collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(55,0,0,0)
@@ -128,14 +128,17 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         
         if UIDevice.current.orientation.isLandscape {
             UIApplication.shared.isStatusBarHidden = true // Landscape
+            //self.view.inputViewController?.preferredStatusBarStyle = .true
+            menuBar.homeController?.loadViewIfNeeded()
             
         } else {
             UIApplication.shared.isStatusBarHidden = false //Portrait
+            ///self.view.inputViewController?.prefersStatusBarHidden = false//
             menuBar.homeController?.loadViewIfNeeded()
         }
         collectionView?.collectionViewLayout.invalidateLayout()
-        view.setNeedsLayout()
-        collectionView?.setNeedsLayout()
+        self.view.invalidateIntrinsicContentSize()
+        self.view.setNeedsDisplay()
     }
     
     override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
@@ -147,9 +150,11 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         //scrollToMenuIndex(menuIndex: Int(index))
         
         //let indexPath = NSIndexPath(item: menuIndex, section: 0)
-        let indexPath = NSIndexPath(item: Int(index), section: 0)
+        //let indexPath = NSIndexPath(item: Int(index), section: 0)
         //Buggy line
-        collectionView?.selectItem(at: indexPath as IndexPath, animated: true, scrollPosition: [])
+        //collectionView?.selectItem(at: indexPath as IndexPath, animated: true, scrollPosition: [])
+        let selectedIndexPath = IndexPath(item: Int(index), section: 0)
+        self.collectionView?.selectItem(at: selectedIndexPath, animated: false, scrollPosition: [])
         
     }
     
@@ -227,7 +232,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         webView.scrollView.isScrollEnabled = true
         webView.scrollView.alwaysBounceVertical = true
         webView.translatesAutoresizingMaskIntoConstraints=false
-        webView.scrollView.contentInset=UIEdgeInsets(top: 52,left: 0,bottom: 0,right: 0)
+        webView.scrollView.contentInset=UIEdgeInsets(top: 45,left: 0,bottom: 0,right: 0)
         webView.contentMode = .scaleToFill
         
         //Add WebView
@@ -246,7 +251,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         webView.addSubview(loadSpinner)
         
         // Create Progress View
-        progressView = UIProgressView(frame:CGRect(x: 0,y: 57,width: self.view.frame.width,height: self.view.frame.height))
+        progressView = UIProgressView(frame:CGRect(x: 0,y: 56,width: self.view.frame.width,height: self.view.frame.height))
         progressView.backgroundColor=UIColor.black
         progressView.tintColor = #colorLiteral(red: 0.6576176882, green: 0.7789518833, blue: 0.2271372974, alpha: 1)
         progressView.setProgress(0.0, animated: true)
@@ -369,14 +374,14 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
             }
             else
             {
-                /*if let vc = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController")  as? DetailViewController {
+                if let vc = self.inputViewController?.storyboard?.instantiateViewController(withIdentifier: "DetailViewController")  as? DetailViewController {
                  vc.detailURL = navigationAction.request.url! as NSURL
                  vc.webConfiguration = webConfiguration
                  //wv = vc.webView as? WKWebView
                  
-                 self.navigationController?.pushViewController(vc, animated: true)
-                 //self.performSegue(withIdentifier: "detailView", sender: webView.url!)
-                 }*/
+                 self.inputViewController?.navigationController?.pushViewController(vc, animated: true)
+                 self.inputViewController?.performSegue(withIdentifier: "detailView", sender: webView.url!)
+                 }
                 
             }
         default:
@@ -399,23 +404,9 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
             loadSpinner.stopAnimating()
         }
     }
-    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-     {
-     if let detailViewController = segue.destination as? DetailViewController{
-     if let detailURL = sender as? NSURL{
-     detailViewController.detailURL = detailURL
-     }
-     }
-     }*/
+
     
-    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        if (segue.identifier == "detailView") {
-            let navigationController = segue.destination as! UINavigationController
-            let detailViewController = navigationController.topViewController as! DetailViewController
-            detailViewController.detailURL=sender as! NSURL
-        }
-    }
-    /*func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    func performSegue(segue: UIStoryboardSegue, sender: AnyObject?)
      {
      if let detailViewController = segue.destination as? DetailViewController{
      if let detailURL = sender as? NSURL{
@@ -427,7 +418,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
      detailViewController.webView.load(request)
      }
      }
-     }*/
+     }
 
 
 }
