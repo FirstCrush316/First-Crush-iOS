@@ -17,22 +17,17 @@ class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICol
     {  
         super.init(frame: frame)
         let layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
-        
-        let collectionView = UICollectionView(frame:CGRect(x: 0,y: 0,width: self.frame.width,height: 55), collectionViewLayout: layout)
+        let collectionView = UICollectionView(frame:CGRect(x: 0,y: 0,width: self.frame.width,height: 45), collectionViewLayout: layout)
         collectionView.register(MenuCell.self, forCellWithReuseIdentifier: cellId)
-        
-        
-    
         //backgroundColor = UIColor.black
         collectionView.backgroundColor=UIColor.black
         collectionView.dataSource=self
         collectionView.delegate=self
         collectionView.allowsSelection=true
         collectionView.contentMode = .scaleToFill
-        
+        collectionView.translatesAutoresizingMaskIntoConstraints=false
         addSubview(collectionView)
         setupHorizontalBar()
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -103,7 +98,6 @@ class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICol
         collectionView.collectionViewLayout.invalidateLayout()
         collectionView.layoutIfNeeded()
         collectionView.setNeedsDisplay()
-        
         return toLayout as! UICollectionViewTransitionLayout
     }
     
@@ -141,9 +135,9 @@ class MenuCell:UICollectionViewCell {
         //addSubview(textView!)
         backgroundColor = UIColor.black;
         addSubview(wordLabel)
+        //wordLabel.translatesAutoresizingMaskIntoConstraints=true
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":wordLabel]))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":wordLabel]))
-       
         
     }
     

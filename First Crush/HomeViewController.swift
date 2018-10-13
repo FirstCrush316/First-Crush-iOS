@@ -42,7 +42,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         }
         
         //Menu Bar Setup
-        menuBar  = MenuBar(frame:CGRect(x: 0,y: 0,width: self.view.frame.width,height: 55))
+        menuBar  = MenuBar(frame:CGRect(x: 0,y: 0,width: self.view.frame.width,height: 42))
         menuBar.contentMode = .scaleToFill
         menuBar.homeController=self
         
@@ -53,17 +53,19 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         collectionView?.backgroundColor=UIColor.darkGray
         collectionView?.register(VideoCell.self, forCellWithReuseIdentifier: "videoCellId")
         collectionView?.contentInset = UIEdgeInsetsMake(0,0,0,0)
-        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(55,0,0,0)
+        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(45,0,0,0)
         collectionView?.isPagingEnabled=true
         //collectionView?.isPrefetchingEnabled=true
-        self.automaticallyAdjustsScrollViewInsets=true
+        //self.automaticallyAdjustsScrollViewInsets=true
+        //self.view.translatesAutoresizingMaskIntoConstraints=false
         
         //Root View Setup
         view.addSubview(menuBar)
-        //view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))
-        //view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(65)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(45)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))
         menuBar.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 0.0)
-        menuBar.translatesAutoresizingMaskIntoConstraints=true
+        //view.translatesAutoresizingMaskIntoConstraints=false
+        menuBar.translatesAutoresizingMaskIntoConstraints=false
     }
     
     func scrollToMenuIndex(menuIndex: Int){
@@ -145,11 +147,12 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         if (segue.identifier == "detailView") {
             let navigationController = segue.destination as! UINavigationController
             let detailViewController = navigationController.topViewController as! DetailViewController
-            detailViewController.detailURL=sender as! NSURL
+            detailViewController.detailURL=sender as? NSURL
         }
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print ("Inside Did Select Item")
         performSegue(withIdentifier: "detailView", sender: indexPath)
     }
     
@@ -245,7 +248,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         webView.scrollView.isScrollEnabled = true
         webView.scrollView.alwaysBounceVertical = true
         webView.translatesAutoresizingMaskIntoConstraints=false
-        webView.scrollView.contentInset=UIEdgeInsets(top: 45,left: 0,bottom: 0,right: 0)
+        webView.scrollView.contentInset=UIEdgeInsets(top: 48,left: 0,bottom: 0,right: 0)
         webView.contentMode = .scaleToFill
         
         //Add WebView
@@ -264,7 +267,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         webView.addSubview(loadSpinner)
         
         // Create Progress View
-        progressView = UIProgressView(frame:CGRect(x: 0,y: 56,width: self.view.frame.width,height: self.view.frame.height))
+        progressView = UIProgressView(frame:CGRect(x: 0,y: 47,width: self.view.frame.width,height: self.view.frame.height))
         progressView.backgroundColor=UIColor.black
         progressView.tintColor = #colorLiteral(red: 0.6576176882, green: 0.7789518833, blue: 0.2271372974, alpha: 1)
         progressView.setProgress(0.0, animated: true)
@@ -392,12 +395,14 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
                     vc.detailURL = navigationAction.request.url! as NSURL
                     vc.webConfiguration = webConfiguration
                     //let wv = vc.webView as? WKWebView
-                    
-                    self.inputViewController?.navigationController?.pushViewController(vc, animated: true)
+                let viewController = self.inputViewController?.storyboard?.instantiateViewController(withIdentifier: "DetailViewController")
+                self.inputViewController?.navigationController?.pushViewController(viewController!, animated: true)
+                self.inputViewController?.performSegue(withIdentifier: "detailView", sender: vc.detailURL)
+                    /*self.inputViewController?.navigationController?.pushViewController(vc, animated: true)
                     self.inputViewController?.performSegue(withIdentifier: "detailView", sender: navigationAction.request.url!)
                 print (navigationAction.request.url!)
                 //self.inputViewController?.performSegue(withIdentifier: "detailView", sender: navigationAction.request.url!)
-                    //self.inputViewController?.navigationController?.pushViewController(vc, animated: true)
+                    //self.inputViewController?.navigationController?.pushViewController(vc, animated: true)*/
                 
             }
         default:
@@ -406,17 +411,17 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         decisionHandler(.allow)
     }
     
-    /*func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        print("Inside Prepare for Segue)
-        print(segue.identifier)
+    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        print("Inside Prepare for Segue")
+        print(segue.identifier!)
         if (segue.identifier == "detailView") {
             let navigationController = segue.destination as! UINavigationController
             let detailViewController = navigationController.topViewController as! DetailViewController
             detailViewController.detailURL=sender as? NSURL
         }
-    }*/
+    }
     
-    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    /*func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
      {print("Inside Prepare for Segue")
      if let detailViewController = segue.destination as? DetailViewController{
      if let detailURL = sender as? NSURL{
@@ -428,7 +433,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
      detailViewController.webView.load(request)
      }
      }
-     }
+     }*/
     
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         print(error.localizedDescription)
