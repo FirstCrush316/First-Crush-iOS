@@ -50,7 +50,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
     }
     
     func setupCollectionView(){
-        collectionView?.backgroundColor=UIColor.red
+        collectionView?.backgroundColor=UIColor.darkGray
         collectionView?.register(VideoCell.self, forCellWithReuseIdentifier: "videoCellId")
         collectionView?.contentInset = UIEdgeInsetsMake(0,0,0,0)
         collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(55,0,0,0)
@@ -140,6 +140,19 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         self.view.invalidateIntrinsicContentSize()
         self.view.setNeedsDisplay()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "detailView") {
+            let navigationController = segue.destination as! UINavigationController
+            let detailViewController = navigationController.topViewController as! DetailViewController
+            detailViewController.detailURL=sender as! NSURL
+        }
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "detailView", sender: indexPath)
+    }
+    
     
     override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         print(targetContentOffset.pointee.x);
@@ -374,14 +387,17 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
             }
             else
             {
-                if let vc = self.inputViewController?.storyboard?.instantiateViewController(withIdentifier: "DetailViewController")  as? DetailViewController {
-                 vc.detailURL = navigationAction.request.url! as NSURL
-                 vc.webConfiguration = webConfiguration
-                 //wv = vc.webView as? WKWebView
-                 
-                 self.inputViewController?.navigationController?.pushViewController(vc, animated: true)
-                 self.inputViewController?.performSegue(withIdentifier: "detailView", sender: webView.url!)
-                 }
+                print("Inside Segue Web View")
+                let vc = DetailViewController()
+                    vc.detailURL = navigationAction.request.url! as NSURL
+                    vc.webConfiguration = webConfiguration
+                    //let wv = vc.webView as? WKWebView
+                    
+                    self.inputViewController?.navigationController?.pushViewController(vc, animated: true)
+                    self.inputViewController?.performSegue(withIdentifier: "detailView", sender: navigationAction.request.url!)
+                print (navigationAction.request.url!)
+                //self.inputViewController?.performSegue(withIdentifier: "detailView", sender: navigationAction.request.url!)
+                    //self.inputViewController?.navigationController?.pushViewController(vc, animated: true)
                 
             }
         default:
@@ -389,6 +405,30 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         }
         decisionHandler(.allow)
     }
+    
+    /*func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        print("Inside Prepare for Segue)
+        print(segue.identifier)
+        if (segue.identifier == "detailView") {
+            let navigationController = segue.destination as! UINavigationController
+            let detailViewController = navigationController.topViewController as! DetailViewController
+            detailViewController.detailURL=sender as? NSURL
+        }
+    }*/
+    
+    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+     {print("Inside Prepare for Segue")
+     if let detailViewController = segue.destination as? DetailViewController{
+     if let detailURL = sender as? NSURL{
+     //detailViewController.detailURL = easyURLStart
+     detailViewController.setdetailURL(detailURL)
+     detailViewController.loadView()
+     detailViewController.viewDidLoad()
+     let request = URLRequest(url: detailURL as URL)
+     detailViewController.webView.load(request)
+     }
+     }
+     }
     
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         print(error.localizedDescription)
@@ -404,21 +444,4 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
             loadSpinner.stopAnimating()
         }
     }
-
-    
-    func performSegue(segue: UIStoryboardSegue, sender: AnyObject?)
-     {
-     if let detailViewController = segue.destination as? DetailViewController{
-     if let detailURL = sender as? NSURL{
-     //detailViewController.detailURL = easyURLStart
-     detailViewController.setdetailURL(detailURL)
-     detailViewController.loadView()
-     detailViewController.viewDidLoad()
-     let request = URLRequest(url: detailURL as URL)
-     detailViewController.webView.load(request)
-     }
-     }
-     }
-
-
 }
