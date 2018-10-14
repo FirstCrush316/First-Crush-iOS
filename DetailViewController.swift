@@ -210,9 +210,9 @@ class DetailViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         if UIDevice.current.orientation.isLandscape {
-            UIApplication.shared.isStatusBarHidden = true // Landscape
+            //UIApplication.shared.isStatusBarHidden = true // Landscape
         } else {
-            UIApplication.shared.isStatusBarHidden = false //Portrait
+            //UIApplication.shared.isStatusBarHidden = false //Portrait
         }
     }
     

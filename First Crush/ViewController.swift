@@ -329,7 +329,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         if (segue.identifier == "detailView") {
             let navigationController = segue.destination as! UINavigationController
             let detailViewController = navigationController.topViewController as! DetailViewController
-            detailViewController.detailURL=sender as! NSURL
+            detailViewController.detailURL=sender as? NSURL
         }
     }
     /*func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
@@ -348,9 +348,9 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         if UIDevice.current.orientation.isLandscape {
-            UIApplication.shared.isStatusBarHidden = true // Landscape
+            //UIApplication.shared.isStatusBarHidden = true // Landscape
         } else {
-            UIApplication.shared.isStatusBarHidden = false //Portrait
+            //UIApplication.shared.isStatusBarHidden = false //Portrait
         }
     }
    

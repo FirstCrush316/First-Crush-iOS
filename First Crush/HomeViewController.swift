@@ -129,12 +129,12 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         super.viewWillTransition(to: size, with: coordinator)
         
         if UIDevice.current.orientation.isLandscape {
-            UIApplication.shared.isStatusBarHidden = true // Landscape
+            //UIApplication.shared.isStatusBarHidden = true // Landscape
             //self.view.inputViewController?.preferredStatusBarStyle = .true
             menuBar.homeController?.loadViewIfNeeded()
             
         } else {
-            UIApplication.shared.isStatusBarHidden = false //Portrait
+            //UIApplication.shared.isStatusBarHidden = false //Portrait
             ///self.view.inputViewController?.prefersStatusBarHidden = false//
             menuBar.homeController?.loadViewIfNeeded()
         }

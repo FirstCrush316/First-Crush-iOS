@@ -25,8 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         application.statusBarStyle = .lightContent
-        UIApplication.shared.isStatusBarHidden = false
-        application.isStatusBarHidden=false
+        //UIApplication.shared.isStatusBarHidden = false
+       // application.isStatusBarHidden=false
         UINavigationBar.appearance().clipsToBounds = true
         
         //Get Rid of Black Bar under Nav Bar
