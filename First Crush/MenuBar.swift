@@ -17,7 +17,7 @@ class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICol
     {  
         super.init(frame: frame)
         let layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
-        let collectionView = UICollectionView(frame:CGRect(x: 0,y: 0,width: self.frame.width,height: 45), collectionViewLayout: layout)
+        let collectionView = UICollectionView(frame:CGRect(x: 0,y: 0,width: self.frame.width,height: 42), collectionViewLayout: layout)
         collectionView.register(MenuCell.self, forCellWithReuseIdentifier: cellId)
         //backgroundColor = UIColor.black
         collectionView.backgroundColor=UIColor.black
@@ -78,7 +78,7 @@ class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICol
         cell.translatesAutoresizingMaskIntoConstraints=true
         cell.wordLabel.text="\(tabNames[indexPath.item])"
         cell.wordLabel.textAlignment = .center
-        cell.wordLabel.font = UIFont (name: "Caption",size: 20)
+        //cell.wordLabel.font = UIFont (name: "Caption",size: 20)
         cell.wordLabel.textColor = UIColor.darkGray
         cell.wordLabel.heightAnchor.constraint(equalTo: cell.heightAnchor,multiplier:1/2).isActive = true
         return cell

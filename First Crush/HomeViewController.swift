@@ -50,19 +50,21 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
     }
     
     func setupCollectionView(){
+        
         collectionView?.backgroundColor=UIColor.darkGray
         collectionView?.register(VideoCell.self, forCellWithReuseIdentifier: "videoCellId")
         collectionView?.contentInset = UIEdgeInsetsMake(0,0,0,0)
-        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(45,0,0,0)
+        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(42,0,0,0)
         collectionView?.isPagingEnabled=true
         //collectionView?.isPrefetchingEnabled=true
         //self.automaticallyAdjustsScrollViewInsets=true
         //self.view.translatesAutoresizingMaskIntoConstraints=false
         
         //Root View Setup
+        //view.addSubview(navBar)
         view.addSubview(menuBar)
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(45)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(42)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))
         menuBar.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 0.0)
         //view.translatesAutoresizingMaskIntoConstraints=false
         menuBar.translatesAutoresizingMaskIntoConstraints=false
@@ -72,24 +74,6 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         let indexPath = NSIndexPath(item: menuIndex, section: 0)
         collectionView?.scrollToItem(at: (indexPath as IndexPath), at: [], animated: true)
         
-    }
-    
-    @IBAction func backButton(_ sender: UICollectionView) {
-        /*var point:CGPoint = sender.convert(.zero, to: collectionView)
-        var indexPath=collectionView!.indexPathForItem(at: point)
-        let cell=collectionView?.cellForItem(at: indexPath!)
-        if (cell.webView.canGoback = true)
-        {
-            cell.webView.goBack()
-            self.navigationController?.setNavigationBarHidden(false, animated: true)
-        }
-        else {
-            self.navigationController?.setNavigationBarHidden(true, animated: true)
-        }*/
-    }
-  
-    @IBAction func refreshAction(_ sender: Any) {
-        collectionView?.reloadData();
     }
     
     lazy var menuBar: MenuBar = {
@@ -124,6 +108,12 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         //menuBar.setNeedsLayout()
         
     }
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("Inside Segue Collection View")
+        let newVC = UIViewController()
+        newVC.view.backgroundColor=UIColor.red
+        self.navigationController?.pushViewController(newVC, animated: true)
+    }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
@@ -151,10 +141,10 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         }
     }
     
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    /*override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print ("Inside Did Select Item")
         performSegue(withIdentifier: "detailView", sender: indexPath)
-    }
+    }*/
     
     
     override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
@@ -195,6 +185,8 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
     var loadSpinner: UIActivityIndicatorView!
     weak var navigationTitle: UINavigationItem!
      var homeController:HomeViewController?
+    var navBar: UINavigationBar!
+    var navItem = UINavigationItem(title: "First Crush")
     
     let webConfiguration = WKWebViewConfiguration()
     @objc var lastOffsetY :CGFloat = 0
@@ -210,11 +202,6 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         
         var web=WKWebView()
         web.translatesAutoresizingMaskIntoConstraints=true
-        if #available(iOS 11.0, *) {
-            web.scrollView.contentInsetAdjustmentBehavior = .automatic
-        } else {
-            // Fallback on earlier versions
-        }
         return web
     }()
     
@@ -231,10 +218,30 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         
       //Setup Content View
         addSubview(view)
-        view.backgroundColor=UIColor.green
+        view.backgroundColor=UIColor.darkGray
         view.translatesAutoresizingMaskIntoConstraints=false
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":view]))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":view]))
+        
+        //Setup Nav Bar
+        navBar = UINavigationBar(frame: CGRect(x:0, y:42, width: frame.width, height:40))
+        navBar.backgroundColor = UIColor.black
+        
+        navBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
+        //let navFont = UIFont(name:"Caption", size: 10)
+        //navBar.titleTextAttributes = [NSAttributedStringKey.font: navFont!]
+         //navItem = UINavigationItem(title: "First Crush")
+        let refreshItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: Selector(("refreshAction")))
+        let backItem = UIBarButtonItem(barButtonSystemItem: .rewind, target: self, action: Selector(("backAction")))
+        
+        refreshItem.tintColor=UIColor.white
+        backItem.tintColor=UIColor.white
+        
+        navItem.leftBarButtonItem = backItem
+        navItem.rightBarButtonItem = refreshItem
+        navBar.setItems([navItem], animated: true)
+        navBar.isHidden=true
+        navBar.translatesAutoresizingMaskIntoConstraints=true
         
         //WebView Setup
         webView = WKWebView(frame:CGRect(x: 0,y: 0,width: frame.width,height: frame.height), configuration: webConfiguration)
@@ -248,10 +255,12 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         webView.scrollView.isScrollEnabled = true
         webView.scrollView.alwaysBounceVertical = true
         webView.translatesAutoresizingMaskIntoConstraints=false
-        webView.scrollView.contentInset=UIEdgeInsets(top: 48,left: 0,bottom: 0,right: 0)
+        webView.scrollView.contentInset=UIEdgeInsets(top: 40,left: 0,bottom: 0,right: 0)
         webView.contentMode = .scaleToFill
         
         //Add WebView
+        webView.addSubview(navBar)
+        //view.addSubview(navBar)
         view.addSubview(webView)
         
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":webView]))
@@ -312,14 +321,14 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         if webView.canGoBack
         {
             lastOffsetY = scrollView.contentOffset.y
-            homeController?.navigationController?.navigationBar.isHidden=false
+            navBar.isHidden=false
             homeController?.menuBar.isHidden=true
             
         }
         else {
-            homeController?.navigationController?.navigationBar.isHidden=true
+            navBar.isHidden=true
             homeController?.menuBar.isHidden=false
-            self.webView.frame = self.view.bounds
+            //self.webView.frame = self.view.bounds
         }
     }
     
@@ -328,11 +337,11 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         if webView.canGoBack {
             if(scrollView.contentOffset.y > self.lastOffsetY)
             {
-                UINavigationBar.appearance().isHidden = false
+                navBar.isHidden = true
         }
         else {
-            UINavigationBar.appearance().isHidden = true
-            self.webView.frame = self.view.bounds
+            navBar.isHidden = false
+            //self.webView.frame = self.view.bounds
         }
     }
     }
@@ -361,8 +370,10 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         }
         //Display Title
         if (keyPath == "title") {
-            //print(webView.title)
-            homeController?.navigationTitle.title = webView.title
+            print(webView.title!)
+            navItem.title = webView.title!
+            //navItem = UINavigationItem(title: webView.title!)
+            //navBar.topItem?.title="Testing"
         }
     }
     
@@ -391,13 +402,19 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
             else
             {
                 print("Inside Segue Web View")
-                let vc = DetailViewController()
+                
+                let newVC = UIViewController()
+                newVC.view.backgroundColor=UIColor.red
+                homeController?.navigationController?.pushViewController(newVC, animated: true)
+                //self.inputViewController?.navigationController?.pushViewController(newVC, animated: true)
+                /*let vc = DetailViewController()
                     vc.detailURL = navigationAction.request.url! as NSURL
                     vc.webConfiguration = webConfiguration
                     //let wv = vc.webView as? WKWebView
+                
                 let viewController = self.inputViewController?.storyboard?.instantiateViewController(withIdentifier: "DetailViewController")
                 self.inputViewController?.navigationController?.pushViewController(viewController!, animated: true)
-                self.inputViewController?.performSegue(withIdentifier: "detailView", sender: vc.detailURL)
+                self.inputViewController?.performSegue(withIdentifier: "detailView", sender: vc.detailURL)*/
                     /*self.inputViewController?.navigationController?.pushViewController(vc, animated: true)
                     self.inputViewController?.performSegue(withIdentifier: "detailView", sender: navigationAction.request.url!)
                 print (navigationAction.request.url!)
@@ -411,6 +428,23 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         decisionHandler(.allow)
     }
     
+    @objc func backAction(_ sender: Any) {
+        print("Back Button Selected")
+        if webView.canGoBack {
+            webView.goBack()
+            navBar.isHidden=false
+            
+        }
+        else {
+            navBar.isHidden=true
+        }
+    }
+    
+    @objc func refreshAction(_ sender: Any) {
+        print("Refresh selected")
+        progressView.isHidden = false
+        webView.reload()
+    }
     func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         print("Inside Prepare for Segue")
         print(segue.identifier!)
