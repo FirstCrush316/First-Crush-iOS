@@ -42,7 +42,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         }
         
         //Menu Bar Setup
-        menuBar  = MenuBar(frame:CGRect(x: 0,y: 0,width: self.view.frame.width,height: 42))
+        menuBar  = MenuBar(frame:CGRect(x: 0,y: 0,width: self.view.frame.width,height: 45))
         menuBar.contentMode = .scaleToFill
         menuBar.homeController=self
         
@@ -54,7 +54,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         collectionView?.backgroundColor=UIColor.darkGray
         collectionView?.register(VideoCell.self, forCellWithReuseIdentifier: "videoCellId")
         collectionView?.contentInset = UIEdgeInsetsMake(0,0,0,0)
-        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(42,0,0,0)
+        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(45,0,0,0)
         collectionView?.isPagingEnabled=true
         //collectionView?.isPrefetchingEnabled=true
         //self.automaticallyAdjustsScrollViewInsets=true
@@ -64,7 +64,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         //view.addSubview(navBar)
         view.addSubview(menuBar)
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(42)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(45)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))
         menuBar.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 0.0)
         //view.translatesAutoresizingMaskIntoConstraints=false
         menuBar.translatesAutoresizingMaskIntoConstraints=false
@@ -224,15 +224,15 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":view]))
         
         //Setup Nav Bar
-        navBar = UINavigationBar(frame: CGRect(x:0, y:42, width: frame.width, height:40))
+        navBar = UINavigationBar(frame: CGRect(x:0, y:45, width: frame.width, height:40))
         navBar.backgroundColor = UIColor.black
-        
-        navBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
-        //let navFont = UIFont(name:"Caption", size: 10)
-        //navBar.titleTextAttributes = [NSAttributedStringKey.font: navFont!]
-         //navItem = UINavigationItem(title: "First Crush")
-        let refreshItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: Selector(("refreshAction")))
-        let backItem = UIBarButtonItem(barButtonSystemItem: .rewind, target: self, action: Selector(("backAction")))
+        //print(UIFont.familyNames)
+        let navFont = UIFont.preferredFont(forTextStyle: .caption1) //UIFont(name:"Baskerville", size: 15)
+        navBar.titleTextAttributes = [NSAttributedStringKey.font: navFont, NSAttributedStringKey.foregroundColor : UIColor.white]
+        navItem = UINavigationItem(title: "First Crush")
+        let refreshItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refreshAction))
+        let backItem = UIBarButtonItem(title: "<", style: .plain, target: self, action: #selector(backAction))
+        navBar.translatesAutoresizingMaskIntoConstraints=false
         
         refreshItem.tintColor=UIColor.white
         backItem.tintColor=UIColor.white
@@ -255,7 +255,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         webView.scrollView.isScrollEnabled = true
         webView.scrollView.alwaysBounceVertical = true
         webView.translatesAutoresizingMaskIntoConstraints=false
-        webView.scrollView.contentInset=UIEdgeInsets(top: 40,left: 0,bottom: 0,right: 0)
+        webView.scrollView.contentInset=UIEdgeInsets(top: 45,left: 0,bottom: 0,right: 0)
         webView.contentMode = .scaleToFill
         
         //Add WebView

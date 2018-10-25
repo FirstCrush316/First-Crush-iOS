@@ -17,7 +17,7 @@ class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICol
     {  
         super.init(frame: frame)
         let layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
-        let collectionView = UICollectionView(frame:CGRect(x: 0,y: 0,width: self.frame.width,height: 42), collectionViewLayout: layout)
+        let collectionView = UICollectionView(frame:CGRect(x: 0,y: 0,width: self.frame.width,height: 45), collectionViewLayout: layout)
         collectionView.register(MenuCell.self, forCellWithReuseIdentifier: cellId)
         //backgroundColor = UIColor.black
         collectionView.backgroundColor=UIColor.black
@@ -25,7 +25,7 @@ class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICol
         collectionView.delegate=self
         collectionView.allowsSelection=true
         collectionView.contentMode = .scaleToFill
-        collectionView.translatesAutoresizingMaskIntoConstraints=false
+        //collectionView.translatesAutoresizingMaskIntoConstraints=true
         addSubview(collectionView)
         setupHorizontalBar()
     }
@@ -72,13 +72,14 @@ class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICol
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell=collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! MenuCell
-        cell.updateConstraints()
+        //cell.updateConstraints()
         cell.backgroundColor=UIColor.black
-        cell.contentMode = .scaleToFill
-        cell.translatesAutoresizingMaskIntoConstraints=true
+        //cell.contentMode = .scaleToFill
+        //cell.translatesAutoresizingMaskIntoConstraints=false
         cell.wordLabel.text="\(tabNames[indexPath.item])"
         cell.wordLabel.textAlignment = .center
-        //cell.wordLabel.font = UIFont (name: "Caption",size: 20)
+       
+        cell.wordLabel.font = UIFont.preferredFont(forTextStyle: .body)
         cell.wordLabel.textColor = UIColor.darkGray
         cell.wordLabel.heightAnchor.constraint(equalTo: cell.heightAnchor,multiplier:1/2).isActive = true
         return cell
