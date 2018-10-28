@@ -104,6 +104,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
     
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         collectionViewLayout.invalidateLayout()
+        collectionView?.collectionViewLayout.invalidateLayout()
         //collectionView?.setNeedsLayout()
         //menuBar.setNeedsLayout()
         
