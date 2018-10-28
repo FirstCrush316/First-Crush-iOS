@@ -166,7 +166,8 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         let tabBarIndex = tabBarController.selectedIndex
-        if tabBarIndex == 4 {
+        print ("Tab Index", tabBarIndex)
+        if tabBarIndex == 0 {
             //self.window?.rootViewController?.present(HomeViewController, animated: true, completion: nil)
             //navigationController?.setNavigationBarHidden(true, animated: true)
             //let tabBarController: TabBarController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController(withIdentifier: "TabBarController") as! TabBarController
@@ -241,7 +242,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         navItem.rightBarButtonItem = refreshItem
         navBar.setItems([navItem], animated: true)
         navBar.isHidden=true
-        navBar.translatesAutoresizingMaskIntoConstraints=true
+        //navBar.translatesAutoresizingMaskIntoConstraints=true
         
         //WebView Setup
         webView = WKWebView(frame:CGRect(x: 0,y: 0,width: frame.width,height: frame.height), configuration: webConfiguration)
@@ -272,7 +273,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         loadSpinner.activityIndicatorViewStyle=UIActivityIndicatorViewStyle.whiteLarge
         loadSpinner.color=#colorLiteral(red: 0.6576176882, green: 0.7789518833, blue: 0.2271372974, alpha: 1)
         loadSpinner.center = self.view.center
-        loadSpinner.translatesAutoresizingMaskIntoConstraints=true
+        //loadSpinner.translatesAutoresizingMaskIntoConstraints=true
         webView.addSubview(loadSpinner)
         
         // Create Progress View
@@ -280,7 +281,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         progressView.backgroundColor=UIColor.black
         progressView.tintColor = #colorLiteral(red: 0.6576176882, green: 0.7789518833, blue: 0.2271372974, alpha: 1)
         progressView.setProgress(0.0, animated: true)
-        progressView.translatesAutoresizingMaskIntoConstraints=true
+        //progressView.translatesAutoresizingMaskIntoConstraints=false
         //progressView.sizeToFit()
         webView.addSubview(progressView)
         
@@ -328,7 +329,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         else {
             navBar.isHidden=true
             homeController?.menuBar.isHidden=false
-            //self.webView.frame = self.view.bounds
+            self.webView.frame = self.view.bounds
         }
     }
     
@@ -341,7 +342,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         }
         else {
             navBar.isHidden = false
-            //self.webView.frame = self.view.bounds
+            self.webView.frame = self.view.bounds
         }
     }
     }
@@ -372,8 +373,6 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         if (keyPath == "title") {
             print(webView.title!)
             navItem.title = webView.title!
-            //navItem = UINavigationItem(title: webView.title!)
-            //navBar.topItem?.title="Testing"
         }
     }
     
@@ -432,7 +431,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         print("Back Button Selected")
         if webView.canGoBack {
             webView.goBack()
-            navBar.isHidden=false
+            navBar.isHidden=true
             
         }
         else {

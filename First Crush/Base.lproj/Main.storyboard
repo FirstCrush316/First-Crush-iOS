@@ -15,11 +15,11 @@
             <objects>
                 <viewController storyboardIdentifier="HomeController" automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="ViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="qvy-T2-RCO">
-                                <rect key="frame" x="188.66666666666666" y="293" width="37" height="37"/>
+                                <rect key="frame" x="188.66666666666666" y="317.66666666666669" width="37" height="37"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -50,18 +50,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3433" y="393"/>
+            <point key="canvasLocation" x="4806" y="-282"/>
         </scene>
         <!--First Crush Radio-->
         <scene sceneID="JcD-io-gyI">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="psL-4k-8u1" customClass="RadioViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" id="bV0-hA-8Mh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="2L9-9G-1xl">
-                                <rect key="frame" x="188.66666666666666" y="325" width="37" height="37"/>
+                                <rect key="frame" x="188.66666666666666" y="293" width="37" height="37"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -92,7 +92,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ULs-We-XdP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3433" y="1199"/>
+            <point key="canvasLocation" x="2264" y="166"/>
         </scene>
         <!--Profile-->
         <scene sceneID="G9R-H7-Cm1">
@@ -102,15 +102,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="lNk-4P-f6S">
-                                <rect key="frame" x="188.66666666666666" y="325" width="37" height="37"/>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="lNk-4P-f6S">
+                                <rect key="frame" x="189" y="325" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="lNk-4P-f6S" firstAttribute="centerY" secondItem="Udx-Se-c8Z" secondAttribute="centerY" id="Va5-mu-b3P"/>
-                            <constraint firstItem="lNk-4P-f6S" firstAttribute="centerX" secondItem="Udx-Se-c8Z" secondAttribute="centerX" id="gwa-De-gAf"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="cgp-nD-GF8"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="D4s-9r-pI8">
@@ -134,18 +131,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ls8-KW-4Zu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="506" y="1396"/>
+            <point key="canvasLocation" x="661" y="866"/>
         </scene>
         <!--Notifications-->
         <scene sceneID="UI7-3u-YLd">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" modalTransitionStyle="partialCurl" id="hzr-NA-Ne1" customClass="NotificationViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" id="0OW-wk-IsF">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="ind-wC-y6m">
-                                <rect key="frame" x="188.66666666666666" y="293" width="37" height="37"/>
+                                <rect key="frame" x="188.66666666666666" y="325" width="37" height="37"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -176,7 +173,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YbK-cT-cjh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2334" y="-574"/>
+            <point key="canvasLocation" x="3171.0144927536235" y="-574.72826086956525"/>
         </scene>
         <!--DetailViewController-->
         <scene sceneID="8nD-6p-M5i">
@@ -198,7 +195,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9VB-ZQ-8Gt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-909" y="348"/>
+            <point key="canvasLocation" x="-904" y="166"/>
         </scene>
         <!--Featured-->
         <scene sceneID="BO5-YR-uuP">
@@ -216,7 +213,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" reuseIdentifier="videoCellId" id="FC3-1C-Yny">
+                            <collectionViewCell clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" reuseIdentifier="videoCellId" id="FC3-1C-Yny">
                                 <rect key="frame" x="0.0" y="2" width="414" height="663"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -252,7 +249,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Tf-X5-c4M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="318.84057971014494" y="346.46739130434787"/>
+            <point key="canvasLocation" x="-38" y="167"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="cIa-rc-nWS">
@@ -269,15 +266,15 @@
                     </tabBar>
                     <connections>
                         <segue destination="X0L-L6-HIs" kind="relationship" relationship="viewControllers" id="NBs-0B-cOq"/>
-                        <segue destination="Ilg-bP-bAe" kind="relationship" relationship="viewControllers" id="V4B-jO-qIl"/>
+                        <segue destination="0cX-Mq-CHc" kind="relationship" relationship="viewControllers" id="HLf-AE-aLG"/>
                         <segue destination="Dh1-jM-Xct" kind="relationship" relationship="viewControllers" id="Kf2-7Y-89J"/>
                         <segue destination="13s-e8-QF9" kind="relationship" relationship="viewControllers" id="ze3-fz-ZPP"/>
-                        <segue destination="yrx-0q-xkB" kind="relationship" relationship="viewControllers" id="LHu-xw-mMc"/>
+                        <segue destination="26H-FH-jqD" kind="relationship" relationship="viewControllers" id="kSh-Yu-liq"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qEn-Vd-14V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1449" y="394"/>
+            <point key="canvasLocation" x="541" y="-538"/>
         </scene>
         <!--Home-->
         <scene sceneID="mpZ-TR-Rjh">
@@ -301,39 +298,16 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hik-iB-VuZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2289" y="393"/>
-        </scene>
-        <!--Notifications-->
-        <scene sceneID="9te-e5-guQ">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnSwipe="YES" id="yrx-0q-xkB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Notifications" image="bell.png" selectedImage="bell.png" id="1xt-9O-f81"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="B1D-g3-fvX">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="hzr-NA-Ne1" kind="relationship" relationship="rootViewController" id="cqi-a9-2Gg"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DMV-lF-VLz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1449.375" y="-573.5915492957746"/>
+            <point key="canvasLocation" x="3986.9565217391309" y="-282.06521739130437"/>
         </scene>
         <!--Radio-->
         <scene sceneID="WzC-Ra-jLI">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" hidesBarsOnSwipe="YES" id="Dh1-jM-Xct" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnSwipe="YES" id="Dh1-jM-Xct" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Radio" image="button-play.png" selectedImage="button-play.png" id="voS-H0-XrD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="jy3-ix-GG8">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
@@ -348,7 +322,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vb5-JB-aa0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2288" y="1199"/>
+            <point key="canvasLocation" x="1449" y="166"/>
         </scene>
         <!--Profile-->
         <scene sceneID="JqS-tW-LNJ">
@@ -371,7 +345,112 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gqy-BT-dNk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1449" y="1397"/>
+            <point key="canvasLocation" x="661" y="166"/>
+        </scene>
+        <!--Notifications-->
+        <scene sceneID="UCF-IR-KCP">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" modalTransitionStyle="partialCurl" id="dz0-dc-le2" customClass="NotificationViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" id="fDQ-K6-UF5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="swj-4g-rwu">
+                                <rect key="frame" x="188.66666666666666" y="349.66666666666669" width="37" height="37"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="swj-4g-rwu" firstAttribute="centerX" secondItem="fDQ-K6-UF5" secondAttribute="centerX" id="C6Y-LQ-m3l"/>
+                            <constraint firstItem="swj-4g-rwu" firstAttribute="centerY" secondItem="fDQ-K6-UF5" secondAttribute="centerY" id="quI-Cp-C9W"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8VW-Md-VYV"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Notifications" id="2a4-Qu-Gex">
+                        <barButtonItem key="backBarButtonItem" title="&lt; Back" id="zPJ-VS-1Xa"/>
+                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="URe-ng-oIV">
+                            <connections>
+                                <action selector="backAction:" destination="dz0-dc-le2" id="s6i-RV-fIL"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="Dov-IH-R4w">
+                            <connections>
+                                <action selector="refreshAction:" destination="dz0-dc-le2" id="Wtp-J8-KYf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="contentView" destination="fDQ-K6-UF5" id="bCj-I6-xqB"/>
+                        <outlet property="loadSpinner" destination="swj-4g-rwu" id="HpN-1i-RIZ"/>
+                        <outlet property="navigationTitle" destination="2a4-Qu-Gex" id="vC7-Qw-auc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lLR-S8-XkK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3171.0144927536235" y="-574.72826086956525"/>
+        </scene>
+        <!--Search View Controller-->
+        <scene sceneID="QXX-Jx-V5B">
+            <objects>
+                <viewController id="Snr-1u-0RO" customClass="SearchViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Hlz-Dq-n8C">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.1332187665" green="0.14292993009999999" blue="0.1565181222" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="WRd-Yl-Ixf"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Zkw-QG-eD3"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="emc-UD-MgB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2353.6231884057975" y="-1397.2826086956522"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="2qx-6A-bZY">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="0cX-Mq-CHc" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="search" id="nae-AV-kWz"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iZS-M5-UzV">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Snr-1u-0RO" kind="relationship" relationship="rootViewController" id="53c-RB-99R"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LF6-8e-8f1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1446.376811594203" y="-1397.2826086956522"/>
+        </scene>
+        <!--Notifications-->
+        <scene sceneID="iUg-TY-xoi">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="26H-FH-jqD" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Notifications" image="bell.png" selectedImage="bell.png" id="BkH-Oa-qzy"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="b4x-1D-nLQ">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hzr-NA-Ne1" kind="relationship" relationship="rootViewController" id="T2N-zv-OhM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ME8-p9-36T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2263.768115942029" y="-574.72826086956525"/>
         </scene>
     </scenes>
     <resources>
