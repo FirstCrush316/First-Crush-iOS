@@ -221,14 +221,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 item.tracks.first!.isEnabled = true
                 print("Video Enabled")
             }
-        }
-        self.becomeFirstResponder()*/
+        }*/
+        self.becomeFirstResponder();
         
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        self.becomeFirstResponder()
+        self.becomeFirstResponder();
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

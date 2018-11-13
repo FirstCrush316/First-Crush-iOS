@@ -234,7 +234,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         navItem = UINavigationItem(title: "First Crush")
         let refreshItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refreshAction))
         let backItem = UIBarButtonItem(title: "<", style: .plain, target: self, action: #selector(backAction))
-        navBar.translatesAutoresizingMaskIntoConstraints=false
+        //navBar.translatesAutoresizingMaskIntoConstraints=false
         
         refreshItem.tintColor=UIColor.white
         backItem.tintColor=UIColor.white
@@ -372,7 +372,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         }
         //Display Title
         if (keyPath == "title") {
-            print(webView.title!)
+            //print(webView.title!)
             navItem.title = webView.title!
         }
     }
@@ -429,7 +429,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
     }
     
     @objc func backAction(_ sender: Any) {
-        print("Back Button Selected")
+        //print("Back Button Selected")
         if webView.canGoBack {
             webView.goBack()
             navBar.isHidden=true
