@@ -129,6 +129,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
             ///self.view.inputViewController?.prefersStatusBarHidden = false//
             menuBar.homeController?.loadViewIfNeeded()
         }
+        menuBar.invalidateMenuBarLayout()
         collectionView?.collectionViewLayout.invalidateLayout()
         self.view.invalidateIntrinsicContentSize()
         self.view.setNeedsDisplay()

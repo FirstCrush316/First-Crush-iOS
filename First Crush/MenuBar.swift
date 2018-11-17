@@ -12,6 +12,7 @@ class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICol
     let cellId="cellId"
     let tabNames = ["Featured","News","Trailers","Travel"]
     var homeController:HomeViewController?
+    var parentView:UICollectionView?
     
     override init(frame: CGRect)
     {  
@@ -94,12 +95,13 @@ class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICol
         return 0
     }
     
-    func collectionView(_ collectionView: UICollectionView, transitionLayoutForOldLayout fromLayout: UICollectionViewLayout, newLayout toLayout: UICollectionViewLayout) -> UICollectionViewTransitionLayout {
-        print("Inside Menu Bar Layout Transition")
-        collectionView.collectionViewLayout.invalidateLayout()
-        collectionView.layoutIfNeeded()
-        collectionView.setNeedsDisplay()
-        return toLayout as! UICollectionViewTransitionLayout
+    func invalidateMenuBarLayout()
+    {
+        print("Inside Invalidate Menu Bar Layout")
+        parentView?.collectionViewLayout.invalidateLayout()
+        parentView?.invalidateIntrinsicContentSize()
+        parentView?.layoutIfNeeded()
+        parentView?.setNeedsDisplay()
     }
     
     required init?(coder aDecoder: NSCoder) {
