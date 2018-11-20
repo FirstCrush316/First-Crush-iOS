@@ -29,15 +29,15 @@ class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICol
     override init(frame: CGRect)
     {  
         super.init(frame: frame)
-        let layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
-        let collectionView = UICollectionView(frame:CGRect(x: 0,y: 0,width: self.frame.width,height: 45), collectionViewLayout: layout)
+        //let layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
+        //collectionView = UICollectionView(frame:CGRect(x: 0,y: 0,width: self.frame.width,height: 45), collectionViewLayout: layout)
         collectionView.register(MenuCell.self, forCellWithReuseIdentifier: cellId)
         //backgroundColor = UIColor.black
         collectionView.backgroundColor=UIColor.black
-        collectionView.dataSource=self
-        collectionView.delegate=self
-        collectionView.allowsSelection=true
-        collectionView.contentMode = .scaleToFill
+        //collectionView.dataSource=self
+        //collectionView.delegate=self
+        //collectionView.allowsSelection=true
+        //collectionView.contentMode = .scaleToFill
         //collectionView.translatesAutoresizingMaskIntoConstraints=true
         addSubview(collectionView)
         setupHorizontalBar()
