@@ -14,6 +14,18 @@ class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICol
     var homeController:HomeViewController?
     var parentView:UICollectionView?
     
+    lazy var collectionView:UICollectionView = {
+        let layout = UICollectionViewFlowLayout.init()
+        let cv = UICollectionView(frame: CGRect(x: 0,y: 0,width: self.frame.width,height: 45), collectionViewLayout: layout)
+        cv.dataSource=self
+        cv.delegate=self
+        cv.backgroundColor=UIColor.black
+        cv.allowsSelection=true
+        cv.contentMode = .scaleToFill
+        cv.translatesAutoresizingMaskIntoConstraints=false
+        return cv
+    }()
+    
     override init(frame: CGRect)
     {  
         super.init(frame: frame)

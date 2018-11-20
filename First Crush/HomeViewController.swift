@@ -178,7 +178,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         //Buggy line
         //collectionView?.selectItem(at: indexPath as IndexPath, animated: true, scrollPosition: [])
         let selectedIndexPath = IndexPath(item: Int(index), section: 0)
-        self.collectionView?.selectItem(at: selectedIndexPath, animated: false, scrollPosition: [])
+        menuBar.collectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: [])
         
     }
     
