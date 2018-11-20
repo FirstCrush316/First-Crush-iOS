@@ -63,11 +63,11 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         //Root View Setup
         //view.addSubview(navBar)
         view.addSubview(menuBar)
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(45)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))
-        menuBar.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 0.0)
+        //view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))
+        //view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(45)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))
+        //menuBar.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 0.0)
         //view.translatesAutoresizingMaskIntoConstraints=false
-        menuBar.translatesAutoresizingMaskIntoConstraints=false
+        menuBar.translatesAutoresizingMaskIntoConstraints=true
     }
     
     func scrollToMenuIndex(menuIndex: Int){
@@ -103,8 +103,24 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
     }
     
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-        collectionViewLayout.invalidateLayout()
-        collectionView?.collectionViewLayout.invalidateLayout()
+        print("Inside Will Transition")
+        let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout
+        print ("Layout Size",layout?.itemSize.width, layout?.itemSize.height)
+        menuBar.invalidateMenuBarLayout()
+        if UIDevice.current.orientation.isLandscape {
+            //menuBar.invalidateMenuBarLayout()
+            print("Landscape")
+            layout?.itemSize = CGSize(width: view.frame.height,height: view.frame.width)
+            layout?.invalidateLayout()
+        }else {
+            print("Portrait")
+            let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout
+            layout?.itemSize = CGSize(width: view.frame.width,height: view.frame.height)
+            layout?.invalidateLayout()
+            }
+        print ("Layout Size",layout?.itemSize.width, layout?.itemSize.height)
+        /*collectionViewLayout.invalidateLayout()
+        collectionView?.collectionViewLayout.invalidateLayout()*/
         //collectionView?.setNeedsLayout()
         //menuBar.setNeedsLayout()
         
@@ -122,12 +138,12 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         if UIDevice.current.orientation.isLandscape {
             //UIApplication.shared.isStatusBarHidden = true // Landscape
             //self.view.inputViewController?.preferredStatusBarStyle = .true
-            menuBar.homeController?.loadViewIfNeeded()
+            //menuBar.homeController?.loadViewIfNeeded()
             
         } else {
             //UIApplication.shared.isStatusBarHidden = false //Portrait
             ///self.view.inputViewController?.prefersStatusBarHidden = false//
-            menuBar.homeController?.loadViewIfNeeded()
+            //menuBar.homeController?.loadViewIfNeeded()
         }
         menuBar.invalidateMenuBarLayout()
         collectionView?.collectionViewLayout.invalidateLayout()

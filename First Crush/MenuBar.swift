@@ -82,13 +82,13 @@ class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICol
        
         cell.wordLabel.font = UIFont.preferredFont(forTextStyle: .body)
         cell.wordLabel.textColor = UIColor.darkGray
-        cell.wordLabel.heightAnchor.constraint(equalTo: cell.heightAnchor,multiplier:1/2).isActive = true
+        //cell.wordLabel.heightAnchor.constraint(equalTo: cell.heightAnchor,multiplier:1/2).isActive = true
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
             collectionView.collectionViewLayout.invalidateLayout()
-            return CGSize(width: frame.width/4, height: frame.height)
+            return CGSize(width: frame.width/4, height: frame.height-20)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
