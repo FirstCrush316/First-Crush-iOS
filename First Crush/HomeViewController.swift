@@ -89,7 +89,6 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         let cell=collectionView.dequeueReusableCell(withReuseIdentifier: videoCellId, for: indexPath) as! VideoCell
         let url = NSURL(string: "\(URL[indexPath.item])")
         let request = URLRequest(url: url! as URL)
-        cell.backgroundColor=UIColor.blue
         cell.webView.load(request)
         return cell
     }
@@ -104,25 +103,31 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
     
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         print("Inside Will Transition")
-        let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout
-        print ("Layout Size",layout?.itemSize.width, layout?.itemSize.height)
-        menuBar.invalidateMenuBarLayout()
+        collectionView?.collectionViewLayout.invalidateLayout()
+        
+        let indexPath = collectionView?.indexPathsForVisibleItems.first
+        DispatchQueue.main.async {
+            self.collectionView?.scrollToItem(at: indexPath!, at: .centeredHorizontally, animated: true)
+            self.collectionView?.setNeedsLayout()
+        }
+        
+        /*let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout
+        layout?.invalidateLayout()
+        print ("Layout Size Before",layout?.itemSize.width, layout?.itemSize.height)
+        menuBar.collectionView.collectionViewLayout.invalidateLayout()
         if UIDevice.current.orientation.isLandscape {
             //menuBar.invalidateMenuBarLayout()
             print("Landscape")
-            layout?.itemSize = CGSize(width: view.frame.height,height: view.frame.width)
-            layout?.invalidateLayout()
+            
+        
+            layout?.itemSize = CGSize(width: (layout?.itemSize.height)!,height: (layout?.itemSize.width)!)
+            
         }else {
             print("Portrait")
-            let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout
-            layout?.itemSize = CGSize(width: view.frame.width,height: view.frame.height)
-            layout?.invalidateLayout()
+            layout?.itemSize = CGSize(width: (layout?.itemSize.width)!,height: (layout?.itemSize.height)!)
             }
-        print ("Layout Size",layout?.itemSize.width, layout?.itemSize.height)
-        /*collectionViewLayout.invalidateLayout()
-        collectionView?.collectionViewLayout.invalidateLayout()*/
-        //collectionView?.setNeedsLayout()
-        //menuBar.setNeedsLayout()
+        print ("Layout Size After",layout?.itemSize.width, layout?.itemSize.height)
+        collectionView?.setNeedsLayout()*/
         
     }
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -145,10 +150,9 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
             ///self.view.inputViewController?.prefersStatusBarHidden = false//
             //menuBar.homeController?.loadViewIfNeeded()
         }
-        menuBar.invalidateMenuBarLayout()
         collectionView?.collectionViewLayout.invalidateLayout()
-        self.view.invalidateIntrinsicContentSize()
-        self.view.setNeedsDisplay()
+        //self.view.invalidateIntrinsicContentSize()
+        //self.view.setNeedsDisplay()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -341,7 +345,6 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         {
             lastOffsetY = scrollView.contentOffset.y
             navBar.isHidden=false
-            homeController?.menuBar.isHidden=true
             
         }
         else {

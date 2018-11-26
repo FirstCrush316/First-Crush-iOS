@@ -107,15 +107,6 @@ class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICol
         return 0
     }
     
-    func invalidateMenuBarLayout()
-    {
-        print("Inside Invalidate Menu Bar Layout")
-        parentView?.collectionViewLayout.invalidateLayout()
-        parentView?.invalidateIntrinsicContentSize()
-        parentView?.layoutIfNeeded()
-        parentView?.setNeedsDisplay()
-    }
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
