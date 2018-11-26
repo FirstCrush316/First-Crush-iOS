@@ -34,7 +34,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
             //flowLayout.sectionInset = UIEdgeInsets (top: 20, left: 0, bottom: 0, right: 0)
             flowLayout.scrollDirection = .horizontal
             flowLayout.minimumLineSpacing=0
-            collectionView = UICollectionView(frame:self.view.frame, collectionViewLayout: flowLayout)
+            collectionView = UICollectionView(frame:self.view.bounds, collectionViewLayout: flowLayout)
             collectionView?.dataSource=self
             collectionView?.delegate=self
             collectionView?.register(VideoCell.self, forCellWithReuseIdentifier: videoCellId)
@@ -42,7 +42,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         }
         
         //Menu Bar Setup
-        menuBar  = MenuBar(frame:CGRect(x: 0,y: 0,width: self.view.frame.width,height: 45))
+        menuBar  = MenuBar(frame:CGRect(x: 0,y: 0,width: self.view.bounds.width,height: 45))
         menuBar.contentMode = .scaleToFill
         menuBar.homeController=self
         
@@ -98,46 +98,25 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width,height: view.frame.height)
+        return CGSize(width: view.bounds.width,height: view.bounds.height)
     }
     
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         print("Inside Will Transition")
         collectionView?.collectionViewLayout.invalidateLayout()
+        menuBar.collectionView.collectionViewLayout.invalidateLayout()
+        
         
         let indexPath = collectionView?.indexPathsForVisibleItems.first
         DispatchQueue.main.async {
             self.collectionView?.scrollToItem(at: indexPath!, at: .centeredHorizontally, animated: true)
             self.collectionView?.setNeedsLayout()
+            //self.menuBar.collectionView.reloadData()
+            self.menuBar.collectionView.setNeedsLayout()
         }
-        
-        /*let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout
-        layout?.invalidateLayout()
-        print ("Layout Size Before",layout?.itemSize.width, layout?.itemSize.height)
-        menuBar.collectionView.collectionViewLayout.invalidateLayout()
-        if UIDevice.current.orientation.isLandscape {
-            //menuBar.invalidateMenuBarLayout()
-            print("Landscape")
-            
-        
-            layout?.itemSize = CGSize(width: (layout?.itemSize.height)!,height: (layout?.itemSize.width)!)
-            
-        }else {
-            print("Portrait")
-            layout?.itemSize = CGSize(width: (layout?.itemSize.width)!,height: (layout?.itemSize.height)!)
-            }
-        print ("Layout Size After",layout?.itemSize.width, layout?.itemSize.height)
-        collectionView?.setNeedsLayout()*/
-        
-    }
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Inside Segue Collection View")
-        let newVC = UIViewController()
-        newVC.view.backgroundColor=UIColor.red
-        self.navigationController?.pushViewController(newVC, animated: true)
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    /*override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         
         if UIDevice.current.orientation.isLandscape {
@@ -153,7 +132,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         collectionView?.collectionViewLayout.invalidateLayout()
         //self.view.invalidateIntrinsicContentSize()
         //self.view.setNeedsDisplay()
-    }
+    }*/
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "detailView") {
@@ -170,17 +149,10 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
     
     
     override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        print(targetContentOffset.pointee.x);
-        print(view.frame.width)
+        //print(targetContentOffset.pointee.x);
+        //print(view.frame.width)
         let index = round((targetContentOffset.pointee.x)/view.frame.width)
-        print(index)
-        //let indexPath = NSIndexPath(item: index), section: 0)
-        //scrollToMenuIndex(menuIndex: Int(index))
-        
-        //let indexPath = NSIndexPath(item: menuIndex, section: 0)
-        //let indexPath = NSIndexPath(item: Int(index), section: 0)
-        //Buggy line
-        //collectionView?.selectItem(at: indexPath as IndexPath, animated: true, scrollPosition: [])
+        //print(index)
         let selectedIndexPath = IndexPath(item: Int(index), section: 0)
         menuBar.collectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: [])
         
@@ -267,7 +239,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         //navBar.translatesAutoresizingMaskIntoConstraints=true
         
         //WebView Setup
-        webView = WKWebView(frame:CGRect(x: 0,y: 0,width: frame.width,height: frame.height), configuration: webConfiguration)
+        webView = WKWebView(frame:CGRect(x: 0,y: 0,width: bounds.width,height: bounds.height), configuration: webConfiguration)
         
         self.webView.isOpaque = false
         self.webView.backgroundColor = UIColor.black
@@ -291,7 +263,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         view=webView
        
         //Create Load Spinner
-        loadSpinner = UIActivityIndicatorView(frame:CGRect(x: self.view.frame.height/2 , y: self.view.frame.width/2 ,width: 37,height: 37))
+        loadSpinner = UIActivityIndicatorView(frame:CGRect(x: self.view.frame.height/2 , y: self.view.bounds.width/2 ,width: 37,height: 37))
         loadSpinner.activityIndicatorViewStyle=UIActivityIndicatorViewStyle.whiteLarge
         loadSpinner.color=#colorLiteral(red: 0.6576176882, green: 0.7789518833, blue: 0.2271372974, alpha: 1)
         loadSpinner.center = self.view.center
@@ -299,7 +271,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         webView.addSubview(loadSpinner)
         
         // Create Progress View
-        progressView = UIProgressView(frame:CGRect(x: 0,y: 47,width: self.view.frame.width,height: self.view.frame.height))
+        progressView = UIProgressView(frame:CGRect(x: 0,y: 47,width: self.view.frame.width,height: self.view.bounds.height))
         progressView.backgroundColor=UIColor.black
         progressView.tintColor = #colorLiteral(red: 0.6576176882, green: 0.7789518833, blue: 0.2271372974, alpha: 1)
         progressView.setProgress(0.0, animated: true)
@@ -360,9 +332,11 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
             if(scrollView.contentOffset.y > self.lastOffsetY)
             {
                 navBar.isHidden = true
+                homeController?.menuBar.isHidden=true
         }
         else {
             navBar.isHidden = false
+            homeController?.menuBar.isHidden=true
             self.webView.frame = self.view.bounds
         }
     }
@@ -426,6 +400,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
                 let newVC = UIViewController()
                 newVC.view.backgroundColor=UIColor.red
                 homeController?.navigationController?.pushViewController(newVC, animated: true)
+                homeController?.menuBar.isHidden=true
                 //self.inputViewController?.navigationController?.pushViewController(newVC, animated: true)
                 /*let vc = DetailViewController()
                     vc.detailURL = navigationAction.request.url! as NSURL

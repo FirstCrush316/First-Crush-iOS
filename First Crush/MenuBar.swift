@@ -100,7 +100,7 @@ class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICol
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
             collectionView.collectionViewLayout.invalidateLayout()
-            return CGSize(width: frame.width/4, height: frame.height-20)
+            return CGSize(width: bounds.width/4, height: bounds.height-20)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
