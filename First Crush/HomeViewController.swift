@@ -34,7 +34,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
             //flowLayout.sectionInset = UIEdgeInsets (top: 20, left: 0, bottom: 0, right: 0)
             flowLayout.scrollDirection = .horizontal
             flowLayout.minimumLineSpacing=0
-            collectionView = UICollectionView(frame:self.view.bounds, collectionViewLayout: flowLayout)
+            collectionView = UICollectionView(frame:self.view.frame, collectionViewLayout: flowLayout)
             collectionView?.dataSource=self
             collectionView?.delegate=self
             collectionView?.register(VideoCell.self, forCellWithReuseIdentifier: videoCellId)
@@ -42,11 +42,10 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         }
         
         //Menu Bar Setup
-        menuBar  = MenuBar(frame:CGRect(x: 0,y: 0,width: self.view.bounds.width,height: 45))
+        menuBar  = MenuBar(frame:CGRect(x: 0,y: 0,width: self.view.frame.width,height: 45))
         print("Initial Menu Bar",view.bounds.width,view.frame.width,view.bounds.height,view.frame.height)
-        menuBar.contentMode = .scaleToFill
+        //menuBar.contentMode = .scaleToFill
         menuBar.homeController=self
-        
         setupCollectionView()
     }
     
@@ -104,21 +103,25 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
     
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         print("Inside Will Transition")
+        print("Post Switch Menu Bar",view.bounds.width,view.frame.width,view.bounds.height,view.frame.height)
         let flowLayout = collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
         flowLayout.invalidateLayout()
-        collectionView?.collectionViewLayout.invalidateLayout()
-        menuBar.collectionView.collectionViewLayout.invalidateLayout()
+        let menuBarLayout = menuBar.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        menuBarLayout.invalidateLayout()
+       
         
         let indexPath = collectionView?.indexPathsForVisibleItems.first
         DispatchQueue.main.async {
             self.collectionView?.scrollToItem(at: indexPath!, at: .centeredHorizontally, animated: true)
             self.collectionView?.setNeedsLayout()
-            //self.menuBar.collectionView.reloadData()
             self.menuBar.collectionView.setNeedsLayout()
+            //self.collectionView?.reloadData()
+            //self.menuBar.collectionView.setNeedsLayout()
+            //self.menuBar.collectionView.setNeedsUpdateConstraints()
         }
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    /*override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         var boundsSize : CGSize
         if UIDevice.current.orientation.isLandscape {
             print("Landscape")
@@ -137,7 +140,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         
         flowLayout.invalidateLayout()
         menuBar.collectionView.layoutIfNeeded()
-    }
+    }*/
     
     /*override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
