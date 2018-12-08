@@ -21,7 +21,7 @@ class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICol
         cv.delegate=self
         cv.backgroundColor=UIColor.black
         cv.allowsSelection=true
-        cv.contentMode = .scaleToFill
+        cv.contentMode = .scaleAspectFit
         cv.translatesAutoresizingMaskIntoConstraints=false
         return cv
     }()
@@ -45,7 +45,7 @@ class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICol
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         //Select First Cell by default
-        collectionView.collectionViewLayout.invalidateLayout()
+        //collectionView.collectionViewLayout.invalidateLayout()
         let selectedIndexPath = IndexPath(item: 0, section: 0)
         collectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: [])
     }

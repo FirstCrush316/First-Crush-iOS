@@ -38,7 +38,13 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
             collectionView?.dataSource=self
             collectionView?.delegate=self
             collectionView?.register(VideoCell.self, forCellWithReuseIdentifier: videoCellId)
-            self.view.addSubview(collectionView!)
+            view.addSubview(collectionView!)
+            collectionView?.translatesAutoresizingMaskIntoConstraints=false
+            collectionView?.topAnchor.constraint(equalTo: view.topAnchor, constant: 0.0).isActive=true
+            collectionView?.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 0.0).isActive=true
+            collectionView?.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant:0.0).isActive=true
+            collectionView?.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant:0.0).isActive=true
+            collectionView?.bottomAnchor.constraint(equalTo: view.bottomAnchor,constant:0.0).isActive=true
         }
         
         //Menu Bar Setup
@@ -63,11 +69,22 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         //Root View Setup
         //view.addSubview(navBar)
         view.addSubview(menuBar)
+        menuBar.translatesAutoresizingMaskIntoConstraints=false
+        collectionView?.translatesAutoresizingMaskIntoConstraints=false
         //view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))
         //view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(45)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))
-        //menuBar.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 0.0)
-        //view.translatesAutoresizingMaskIntoConstraints=false
-        menuBar.translatesAutoresizingMaskIntoConstraints=true
+        menuBar.topAnchor.constraint(equalTo: view.topAnchor, constant: 0.0).isActive=true
+        menuBar.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 0.0).isActive=true
+        menuBar.leftAnchor.constraint(equalTo: view.leftAnchor,constant:0.0).isActive=true
+        menuBar.rightAnchor.constraint(equalTo: view.rightAnchor,constant:0.0).isActive=true
+        menuBar.heightAnchor.constraint(equalToConstant: 45).isActive=true
+        
+        //view.topAnchor.constraint(equalTo: topLayoutGuide.topAnchor, constant:0.0).isActive = true
+        //view.leftAnchor.constraint(equalTo: bottomLayoutGuide..leftAnchor,constant:0.0).isActive=true
+        //view.widthAnchor.constraint(equalTo: self.view.frame.width,constant:0.0).isActive=true
+        //view.bottomAnchor.constraint(equalTo: bottomLayoutGuide.bottomAnchor,constant:0.0).isActive=true
+        
+        
     }
     
     func scrollToMenuIndex(menuIndex: Int){
