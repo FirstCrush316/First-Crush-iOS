@@ -75,15 +75,9 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         //view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(45)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))
         menuBar.topAnchor.constraint(equalTo: view.topAnchor, constant: 0.0).isActive=true
         menuBar.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 0.0).isActive=true
-        menuBar.leftAnchor.constraint(equalTo: view.leftAnchor,constant:0.0).isActive=true
-        menuBar.rightAnchor.constraint(equalTo: view.rightAnchor,constant:0.0).isActive=true
+        menuBar.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant:0.0).isActive=true
+        menuBar.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant:0.0).isActive=true
         menuBar.heightAnchor.constraint(equalToConstant: 45).isActive=true
-        
-        //view.topAnchor.constraint(equalTo: topLayoutGuide.topAnchor, constant:0.0).isActive = true
-        //view.leftAnchor.constraint(equalTo: bottomLayoutGuide..leftAnchor,constant:0.0).isActive=true
-        //view.widthAnchor.constraint(equalTo: self.view.frame.width,constant:0.0).isActive=true
-        //view.bottomAnchor.constraint(equalTo: bottomLayoutGuide.bottomAnchor,constant:0.0).isActive=true
-        
         
     }
     
@@ -131,59 +125,19 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         DispatchQueue.main.async {
             self.collectionView?.scrollToItem(at: indexPath!, at: .centeredHorizontally, animated: true)
             self.collectionView?.setNeedsLayout()
+            self.collectionView?.setNeedsUpdateConstraints()
             self.menuBar.collectionView.setNeedsLayout()
-            //self.collectionView?.reloadData()
-            //self.menuBar.collectionView.setNeedsLayout()
             //self.menuBar.collectionView.setNeedsUpdateConstraints()
         }
     }
     
-    /*override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        var boundsSize : CGSize
-        if UIDevice.current.orientation.isLandscape {
-            print("Landscape")
-        boundsSize = CGSize(width: view.bounds.height, height: 45)
-        }else{
-             print("Portrait")
-        boundsSize = CGSize(width: view.bounds.width, height: 45)
-        }
-        print("Bounds Size",boundsSize)
-        let flowLayout = menuBar.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        print("Menu Bar Size",flowLayout.itemSize)
-        if (flowLayout.itemSize != boundsSize) {
-            flowLayout.invalidateLayout()
-            flowLayout.itemSize = boundsSize
-        }
-        
-        flowLayout.invalidateLayout()
-        menuBar.collectionView.layoutIfNeeded()
-    }*/
-    
-    /*override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        
-        if UIDevice.current.orientation.isLandscape {
-            //UIApplication.shared.isStatusBarHidden = true // Landscape
-            //self.view.inputViewController?.preferredStatusBarStyle = .true
-            //menuBar.homeController?.loadViewIfNeeded()
-            
-        } else {
-            //UIApplication.shared.isStatusBarHidden = false //Portrait
-            ///self.view.inputViewController?.prefersStatusBarHidden = false//
-            //menuBar.homeController?.loadViewIfNeeded()
-        }
-        collectionView?.collectionViewLayout.invalidateLayout()
-        //self.view.invalidateIntrinsicContentSize()
-        //self.view.setNeedsDisplay()
-    }*/
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "detailView") {
             let navigationController = segue.destination as! UINavigationController
             let detailViewController = navigationController.topViewController as! DetailViewController
             detailViewController.detailURL=sender as? NSURL
         }
-    }
+    }*/
     
     /*override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print ("Inside Did Select Item")
@@ -231,15 +185,15 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
     
     var view:UIView = {
         var rootView = UIView()
-        rootView.translatesAutoresizingMaskIntoConstraints=true
-        rootView.contentMode = .scaleToFill
+        rootView.translatesAutoresizingMaskIntoConstraints=false
+        rootView.contentMode = .scaleAspectFit
         return rootView
     }()
     
     var webView: WKWebView = {
         
         var web=WKWebView()
-        web.translatesAutoresizingMaskIntoConstraints=true
+        web.translatesAutoresizingMaskIntoConstraints=false
         return web
     }()
     
@@ -270,7 +224,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         navItem = UINavigationItem(title: "First Crush")
         let refreshItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refreshAction))
         let backItem = UIBarButtonItem(title: "<", style: .plain, target: self, action: #selector(backAction))
-        //navBar.translatesAutoresizingMaskIntoConstraints=false
+        navBar.translatesAutoresizingMaskIntoConstraints=false
         
         refreshItem.tintColor=UIColor.white
         backItem.tintColor=UIColor.white
@@ -294,7 +248,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         webView.scrollView.alwaysBounceVertical = true
         webView.translatesAutoresizingMaskIntoConstraints=false
         webView.scrollView.contentInset=UIEdgeInsets(top: 20,left: 0,bottom: 0,right: 0)
-        webView.contentMode = .scaleToFill
+        webView.contentMode = .scaleAspectFit
         
         //Add WebView
         webView.addSubview(navBar)
@@ -310,7 +264,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         loadSpinner.activityIndicatorViewStyle=UIActivityIndicatorViewStyle.whiteLarge
         loadSpinner.color=#colorLiteral(red: 0.6576176882, green: 0.7789518833, blue: 0.2271372974, alpha: 1)
         loadSpinner.center = self.view.center
-        //loadSpinner.translatesAutoresizingMaskIntoConstraints=true
+        //loadSpinner.translatesAutoresizingMaskIntoConstraints=false
         webView.addSubview(loadSpinner)
         
         // Create Progress View
