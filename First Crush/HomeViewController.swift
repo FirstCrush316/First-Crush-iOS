@@ -41,7 +41,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
             view.addSubview(collectionView!)
             collectionView?.translatesAutoresizingMaskIntoConstraints=false
             collectionView?.topAnchor.constraint(equalTo: view.topAnchor, constant: 0.0).isActive=true
-            collectionView?.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 0.0).isActive=true
+            //collectionView?.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 0.0).isActive=true
             collectionView?.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant:0.0).isActive=true
             collectionView?.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant:0.0).isActive=true
             collectionView?.bottomAnchor.constraint(equalTo: view.bottomAnchor,constant:0.0).isActive=true
@@ -90,6 +90,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
     lazy var menuBar: MenuBar = {
         let mb = MenuBar()
         mb.homeController = self
+        mb.translatesAutoresizingMaskIntoConstraints=false
         return mb
     }()
     
@@ -224,7 +225,6 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         navItem = UINavigationItem(title: "First Crush")
         let refreshItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refreshAction))
         let backItem = UIBarButtonItem(title: "<", style: .plain, target: self, action: #selector(backAction))
-        navBar.translatesAutoresizingMaskIntoConstraints=false
         
         refreshItem.tintColor=UIColor.white
         backItem.tintColor=UIColor.white
