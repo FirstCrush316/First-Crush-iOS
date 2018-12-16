@@ -92,16 +92,12 @@ class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICol
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell=collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! MenuCell
-        //cell.updateConstraints()
         cell.backgroundColor=UIColor.black
-        //cell.contentMode = .scaleToFill
-        //cell.translatesAutoresizingMaskIntoConstraints=false
         cell.wordLabel.text="\(tabNames[indexPath.item])"
         cell.wordLabel.textAlignment = .center
        
         cell.wordLabel.font = UIFont.preferredFont(forTextStyle: .body)
         cell.wordLabel.textColor = UIColor.darkGray
-        //cell.wordLabel.heightAnchor.constraint(equalTo: cell.heightAnchor,multiplier:1/2).isActive = true
         return cell
     }
     
