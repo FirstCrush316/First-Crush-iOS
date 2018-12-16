@@ -118,8 +118,8 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         print("Post Switch Menu Bar",view.bounds.width,view.frame.width,view.bounds.height,view.frame.height)
         let flowLayout = collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
         flowLayout.invalidateLayout()
-        let menuBarLayout = menuBar.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        menuBarLayout.invalidateLayout()
+        //let menuBarLayout = menuBar.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        //menuBarLayout.invalidateLayout()
        
         
         let indexPath = collectionView?.indexPathsForVisibleItems.first
