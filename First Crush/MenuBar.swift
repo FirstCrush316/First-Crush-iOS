@@ -41,6 +41,13 @@ class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICol
         //collectionView.translatesAutoresizingMaskIntoConstraints=true
         addSubview(collectionView)
         setupHorizontalBar()
+        collectionView.translatesAutoresizingMaskIntoConstraints=false
+        collectionView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0.0).isActive=true
+        collectionView.widthAnchor.constraint(equalTo: self.widthAnchor, constant: 0.0).isActive=true
+        collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant:0.0).isActive=true
+        collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor,constant:0.0).isActive=true
+        collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor,constant:0.0).isActive=true
+        collectionView.heightAnchor.constraint(equalToConstant: 45.0).isActive = true
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {

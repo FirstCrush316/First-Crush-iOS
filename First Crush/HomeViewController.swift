@@ -41,7 +41,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
             view.addSubview(collectionView!)
             collectionView?.translatesAutoresizingMaskIntoConstraints=false
             collectionView?.topAnchor.constraint(equalTo: view.topAnchor, constant: 0.0).isActive=true
-            //collectionView?.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 0.0).isActive=true
+            collectionView?.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 0.0).isActive=true
             collectionView?.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant:0.0).isActive=true
             collectionView?.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant:0.0).isActive=true
             collectionView?.bottomAnchor.constraint(equalTo: view.bottomAnchor,constant:0.0).isActive=true
@@ -126,8 +126,8 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         DispatchQueue.main.async {
             self.collectionView?.scrollToItem(at: indexPath!, at: .centeredHorizontally, animated: true)
             self.collectionView?.setNeedsLayout()
-            self.collectionView?.setNeedsUpdateConstraints()
-            self.menuBar.collectionView.setNeedsLayout()
+            //self.collectionView?.setNeedsUpdateConstraints()
+            //self.menuBar.collectionView.setNeedsLayout()
             //self.menuBar.collectionView.setNeedsUpdateConstraints()
         }
     }
