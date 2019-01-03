@@ -277,21 +277,14 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         
         //Add NavBar
         webView.addSubview(navBar)
-        navBar?.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 0.0).isActive=true
-        navBar?.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant:0.0).isActive=true
-        navBar?.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant:0.0).isActive=true
-        navBar?.topAnchor.constraint(equalTo: view.topAnchor).isActive=true
-        navBar?.heightAnchor.constraint(equalToConstant: 45).isActive=true
        
         //Create Load Spinner
         loadSpinner = UIActivityIndicatorView(frame:CGRect(x: self.view.frame.height/2 , y: self.view.frame.width/2 ,width: 37,height: 37))
         loadSpinner.activityIndicatorViewStyle=UIActivityIndicatorViewStyle.whiteLarge
         loadSpinner.color=#colorLiteral(red: 0.6576176882, green: 0.7789518833, blue: 0.2271372974, alpha: 1)
         loadSpinner.center = self.view.center
-        //loadSpinner.translatesAutoresizingMaskIntoConstraints=false
+        loadSpinner.translatesAutoresizingMaskIntoConstraints=true
         webView.addSubview(loadSpinner)
-        loadSpinner?.centerXAnchor.constraint(equalTo: webView.centerXAnchor, constant: 0.0).isActive=true
-        loadSpinner?.centerYAnchor.constraint(equalTo: webView.centerYAnchor, constant: 0.0).isActive=true
         
         // Create Progress View
         progressView = UIProgressView(frame:CGRect(x: 0,y: 47,width: self.view.frame.width,height: self.view.frame.height))
@@ -301,9 +294,6 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         //progressView.translatesAutoresizingMaskIntoConstraints=false
         //progressView.sizeToFit()
         webView.addSubview(progressView)
-       progressView?.widthAnchor.constraint(equalTo: webView.widthAnchor, constant: 0.0).isActive=true
-       progressView?.leadingAnchor.constraint(equalTo: webView.leadingAnchor,constant:0.0).isActive=true
-       progressView?.trailingAnchor.constraint(equalTo: webView.trailingAnchor,constant:0.0).isActive=true
         
         
         // Implement Scroll to Refresh
