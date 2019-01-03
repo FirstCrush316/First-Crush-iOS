@@ -75,8 +75,10 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         menuBar.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant:0.0).isActive=true
         menuBar.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant:0.0).isActive=true
         menuBar.heightAnchor.constraint(equalToConstant: 45).isActive=true
+        //menuBar.isHidden=true
         
     }
+    
     
     func scrollToMenuIndex(menuIndex: Int){
         let indexPath = NSIndexPath(item: menuIndex, section: 0)
@@ -102,17 +104,21 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         return cell
     }
     
+    func getMenuBar() -> MenuBar
+    {
+        return menuBar
+        
+    }
+ 
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         menuBar.horizontalBarLeftAnchorConstraint?.constant=scrollView.contentOffset.x / 4
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.bounds.width,height: view.bounds.height)
+        return CGSize(width: view.frame.width,height: view.frame.height)
     }
     
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-        print("Inside Will Transition")
-        print("Post Switch Menu Bar",view.bounds.width,view.frame.width,view.bounds.height,view.frame.height)
         let flowLayout = collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
         flowLayout.invalidateLayout()
         
@@ -207,6 +213,28 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":view]))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":view]))
         
+        
+        
+        //WebView Setup
+        webView = WKWebView(frame:CGRect(x: 0,y: 0,width: frame.width,height: frame.height), configuration: webConfiguration)
+        
+        self.webView.isOpaque = false
+        self.webView.backgroundColor = UIColor.black
+        self.webView.scrollView.backgroundColor = UIColor.clear
+        webView.navigationDelegate = self
+        webView.allowsLinkPreview=false
+        webView.allowsBackForwardNavigationGestures=false
+        webView.scrollView.isScrollEnabled = true
+        webView.scrollView.alwaysBounceVertical = true
+        if #available(iOS 11.0, *) {
+            webView.scrollView.contentInsetAdjustmentBehavior = .automatic
+        } else {
+            // Fallback on earlier versions
+        }
+        webView.translatesAutoresizingMaskIntoConstraints=false
+        webView.scrollView.contentInset=UIEdgeInsets(top: 20,left: 0,bottom: 0,right: 0)
+        webView.contentMode = .scaleAspectFit
+        
         //Setup Nav Bar
         navBar = UINavigationBar(frame: CGRect(x:0, y:45, width: frame.width, height:40))
         navBar.backgroundColor = UIColor.black
@@ -224,49 +252,54 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         navItem.rightBarButtonItem = refreshItem
         navBar.setItems([navItem], animated: true)
         navBar.isHidden=true
-        //navBar.translatesAutoresizingMaskIntoConstraints=true
+        //navBar.translatesAutoresizingMaskIntoConstraints=false
         
-        //WebView Setup
-        webView = WKWebView(frame:CGRect(x: 0,y: 0,width: bounds.width,height: bounds.height), configuration: webConfiguration)
         
-        self.webView.isOpaque = false
-        self.webView.backgroundColor = UIColor.black
-        self.webView.scrollView.backgroundColor = UIColor.clear
-        webView.navigationDelegate = self
-        webView.allowsLinkPreview=false
-        webView.allowsBackForwardNavigationGestures=false
-        webView.scrollView.isScrollEnabled = true
-        webView.scrollView.alwaysBounceVertical = true
-        webView.translatesAutoresizingMaskIntoConstraints=false
-        webView.scrollView.contentInset=UIEdgeInsets(top: 20,left: 0,bottom: 0,right: 0)
-        webView.contentMode = .scaleAspectFit
         
-        //Add WebView
-        webView.addSubview(navBar)
+        
         //view.addSubview(navBar)
         view.addSubview(webView)
+        webView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0.0).isActive=true
+        webView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 0.0).isActive=true
+        webView.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant:0.0).isActive=true
+        webView.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant:0.0).isActive=true
+        webView.bottomAnchor.constraint(equalTo: view.bottomAnchor,constant:0.0).isActive=true
+        webView.centerXAnchor.constraint(equalTo:view.centerXAnchor).isActive=true
+        webView.centerYAnchor.constraint(equalTo:view.centerYAnchor).isActive=true
         
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":webView]))
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":webView]))
+        //view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":webView]))
+        //view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":webView]))
         view=webView
+        
+        //Add NavBar
+        webView.addSubview(navBar)
+        navBar?.widthAnchor.constraint(equalTo: webView.widthAnchor, constant: 0.0).isActive=true
+        navBar?.leadingAnchor.constraint(equalTo: webView.leadingAnchor,constant:0.0).isActive=true
+        navBar?.trailingAnchor.constraint(equalTo: webView.trailingAnchor,constant:0.0).isActive=true
+        navBar?.topAnchor.constraint(equalTo: webView.topAnchor).isActive=true
+        navBar?.heightAnchor.constraint(equalToConstant: 40).isActive=true
        
         //Create Load Spinner
-        loadSpinner = UIActivityIndicatorView(frame:CGRect(x: self.view.frame.height/2 , y: self.view.bounds.width/2 ,width: 37,height: 37))
+        loadSpinner = UIActivityIndicatorView(frame:CGRect(x: self.view.frame.height/2 , y: self.view.frame.width/2 ,width: 37,height: 37))
         loadSpinner.activityIndicatorViewStyle=UIActivityIndicatorViewStyle.whiteLarge
         loadSpinner.color=#colorLiteral(red: 0.6576176882, green: 0.7789518833, blue: 0.2271372974, alpha: 1)
         loadSpinner.center = self.view.center
         //loadSpinner.translatesAutoresizingMaskIntoConstraints=false
         webView.addSubview(loadSpinner)
+        loadSpinner?.centerXAnchor.constraint(equalTo: webView.centerXAnchor, constant: 0.0).isActive=true
+        loadSpinner?.centerYAnchor.constraint(equalTo: webView.centerYAnchor, constant: 0.0).isActive=true
         
         // Create Progress View
-        progressView = UIProgressView(frame:CGRect(x: 0,y: 47,width: self.view.frame.width,height: self.view.bounds.height))
+        progressView = UIProgressView(frame:CGRect(x: 0,y: 47,width: self.view.frame.width,height: self.view.frame.height))
         progressView.backgroundColor=UIColor.black
         progressView.tintColor = #colorLiteral(red: 0.6576176882, green: 0.7789518833, blue: 0.2271372974, alpha: 1)
         progressView.setProgress(0.0, animated: true)
         //progressView.translatesAutoresizingMaskIntoConstraints=false
         //progressView.sizeToFit()
         webView.addSubview(progressView)
-        
+       progressView?.widthAnchor.constraint(equalTo: webView.widthAnchor, constant: 0.0).isActive=true
+       progressView?.leadingAnchor.constraint(equalTo: webView.leadingAnchor,constant:0.0).isActive=true
+       progressView?.trailingAnchor.constraint(equalTo: webView.trailingAnchor,constant:0.0).isActive=true
         
         
         // Implement Scroll to Refresh
@@ -306,11 +339,11 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
             lastOffsetY = scrollView.contentOffset.y
             navBar.isHidden=false
             
+            
         }
         else {
             navBar.isHidden=true
-            homeController?.menuBar.isHidden=false
-            self.webView.frame = self.view.bounds
+            self.webView.frame = self.view.frame
         }
     }
     
@@ -320,12 +353,10 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
             if(scrollView.contentOffset.y > self.lastOffsetY)
             {
                 navBar.isHidden = true
-                homeController?.menuBar.isHidden=true
         }
         else {
             navBar.isHidden = false
-            homeController?.menuBar.isHidden=true
-            self.webView.frame = self.view.bounds
+            self.webView.frame = self.view.frame
         }
     }
     }

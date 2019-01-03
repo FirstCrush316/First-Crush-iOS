@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         application.statusBarStyle = .lightContent
         //UIApplication.shared.isStatusBarHidden = false
-       // application.isStatusBarHidden=false
+        application.isStatusBarHidden=false
         UINavigationBar.appearance().clipsToBounds = true
         
         //Get Rid of Black Bar under Nav Bar
@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // OneSignal.syncHashedEmail(userEmail)
         let notificationReceivedBlock: OSHandleNotificationReceivedBlock = { notification in
         
-        print("Received Notification: \(notification!.payload.notificationID)")
+            print("Received Notification: \(String(describing: notification!.payload.notificationID))")
     }
     
     let notificationOpenedBlock: OSHandleNotificationActionBlock = { result in
@@ -113,7 +113,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
           //self.resignFirstResponder()
         UIApplication.shared.endBackgroundTask(UIBackgroundTaskInvalid)
-        self.resignFirstResponder()
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
