@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="O3H-hv-Mio">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="O3H-hv-Mio">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,6 +13,10 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="HomeController" automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="ViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Gaq-cD-yiY"/>
+                        <viewControllerLayoutGuide type="bottom" id="H2m-5R-vNy"/>
+                    </layoutGuides>
                     <view key="view" clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,7 +30,6 @@
                             <constraint firstItem="qvy-T2-RCO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gwM-3v-SgP"/>
                             <constraint firstItem="qvy-T2-RCO" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="xPm-oB-cQB"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="tBy-PA-VXd"/>
                     </view>
                     <navigationItem key="navigationItem" title="Featured" id="7pj-vA-kLM">
                         <barButtonItem key="backBarButtonItem" title="&lt; Back" id="xqE-Aj-X7W"/>
@@ -56,6 +58,10 @@
         <scene sceneID="JcD-io-gyI">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="psL-4k-8u1" customClass="RadioViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y1z-eS-UAV"/>
+                        <viewControllerLayoutGuide type="bottom" id="D9E-1t-2Nc"/>
+                    </layoutGuides>
                     <view key="view" clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" id="bV0-hA-8Mh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -69,7 +75,6 @@
                             <constraint firstItem="2L9-9G-1xl" firstAttribute="centerY" secondItem="bV0-hA-8Mh" secondAttribute="centerY" id="Jhf-v0-eQA"/>
                             <constraint firstItem="2L9-9G-1xl" firstAttribute="centerX" secondItem="bV0-hA-8Mh" secondAttribute="centerX" id="P6T-PH-DLY"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6iw-WC-2r5"/>
                     </view>
                     <navigationItem key="navigationItem" title="First Crush Radio" id="ftG-wf-VAF">
                         <barButtonItem key="backBarButtonItem" title="&lt; Back" id="kcy-9m-B7A"/>
@@ -98,6 +103,10 @@
         <scene sceneID="G9R-H7-Cm1">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="MS0-sj-iT1" customClass="ProfileViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Gs4-pY-zD7"/>
+                        <viewControllerLayoutGuide type="bottom" id="xr5-7N-t7C"/>
+                    </layoutGuides>
                     <view key="view" userInteractionEnabled="NO" contentMode="scaleToFill" id="Udx-Se-c8Z">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -108,7 +117,6 @@
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="cgp-nD-GF8"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="D4s-9r-pI8">
                         <barButtonItem key="backBarButtonItem" title="&lt; Back" id="SUU-MM-HrD"/>
@@ -137,6 +145,10 @@
         <scene sceneID="UI7-3u-YLd">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" modalTransitionStyle="partialCurl" id="hzr-NA-Ne1" customClass="NotificationViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cxa-qo-iiE"/>
+                        <viewControllerLayoutGuide type="bottom" id="hWb-ez-0F4"/>
+                    </layoutGuides>
                     <view key="view" clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" id="0OW-wk-IsF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -150,7 +162,6 @@
                             <constraint firstItem="ind-wC-y6m" firstAttribute="centerX" secondItem="0OW-wk-IsF" secondAttribute="centerX" id="AxZ-Yj-sZW"/>
                             <constraint firstItem="ind-wC-y6m" firstAttribute="centerY" secondItem="0OW-wk-IsF" secondAttribute="centerY" id="fBe-5y-X4J"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="3ei-Qd-DIl"/>
                     </view>
                     <navigationItem key="navigationItem" title="Notifications" id="bEp-O9-tUK">
                         <barButtonItem key="backBarButtonItem" title="&lt; Back" id="2MG-H7-2u1"/>
@@ -179,12 +190,15 @@
         <scene sceneID="8nD-6p-M5i">
             <objects>
                 <viewController title="DetailViewController" id="8tY-t9-Cew" customClass="DetailViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KIM-DY-a4i"/>
+                        <viewControllerLayoutGuide type="bottom" id="F3Z-3h-bjd"/>
+                    </layoutGuides>
                     <view key="view" clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" id="Owq-Bd-2QC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <accessibility key="accessibilityConfiguration" identifier="DetailViewController"/>
-                        <viewLayoutGuide key="safeArea" id="UOh-ee-f5p"/>
                     </view>
                     <navigationItem key="navigationItem" title="Detail View" id="ekI-8Y-Twt">
                         <barButtonItem key="backBarButtonItem" title="Back" id="ixH-hs-DVS"/>
@@ -200,32 +214,18 @@
         <!--Featured-->
         <scene sceneID="BO5-YR-uuP">
             <objects>
-                <collectionViewController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="currentContext" id="X0L-L6-HIs" customClass="HomeViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController modalPresentationStyle="currentContext" id="X0L-L6-HIs" customClass="HomeViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" bounces="NO" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" scrollEnabled="NO" pagingEnabled="YES" contentInsetAdjustmentBehavior="always" bouncesZoom="NO" dataMode="prototypes" id="aUu-cf-hDt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.13321876652854284" green="0.14292993011956326" blue="0.15651812217772021" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="51j-sW-QFn"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OQd-61-Geq">
                             <size key="itemSize" width="410" height="657"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" reuseIdentifier="videoCellId" id="FC3-1C-Yny">
-                                <rect key="frame" x="0.0" y="5" width="410" height="657"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="410" height="657"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </view>
-                                <viewLayoutGuide key="safeArea" id="Whe-AL-c3z"/>
-                                <connections>
-                                    <segue destination="8tY-t9-Cew" kind="show" identifier="detailView" id="ZMQ-FZ-Lqa"/>
-                                </connections>
-                            </collectionViewCell>
-                        </cells>
+                        <cells/>
                         <connections>
                             <outlet property="dataSource" destination="X0L-L6-HIs" id="Afi-nK-l9S"/>
                             <outlet property="delegate" destination="X0L-L6-HIs" id="nLc-nu-kI5"/>
@@ -349,6 +349,10 @@
         <scene sceneID="UCF-IR-KCP">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" modalTransitionStyle="partialCurl" id="dz0-dc-le2" customClass="NotificationViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KVu-Qm-OIe"/>
+                        <viewControllerLayoutGuide type="bottom" id="S4U-Kb-bje"/>
+                    </layoutGuides>
                     <view key="view" clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" id="fDQ-K6-UF5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -362,7 +366,6 @@
                             <constraint firstItem="swj-4g-rwu" firstAttribute="centerX" secondItem="fDQ-K6-UF5" secondAttribute="centerX" id="C6Y-LQ-m3l"/>
                             <constraint firstItem="swj-4g-rwu" firstAttribute="centerY" secondItem="fDQ-K6-UF5" secondAttribute="centerY" id="quI-Cp-C9W"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="8VW-Md-VYV"/>
                     </view>
                     <navigationItem key="navigationItem" title="Notifications" id="2a4-Qu-Gex">
                         <barButtonItem key="backBarButtonItem" title="&lt; Back" id="zPJ-VS-1Xa"/>
@@ -391,11 +394,14 @@
         <scene sceneID="QXX-Jx-V5B">
             <objects>
                 <viewController id="Snr-1u-0RO" customClass="SearchViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pwV-2l-Ikn"/>
+                        <viewControllerLayoutGuide type="bottom" id="MtA-9X-RLK"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Hlz-Dq-n8C">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.1332187665" green="0.14292993009999999" blue="0.1565181222" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="WRd-Yl-Ixf"/>
                     </view>
                     <navigationItem key="navigationItem" id="Zkw-QG-eD3"/>
                 </viewController>

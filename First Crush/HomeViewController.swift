@@ -59,6 +59,11 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         collectionView?.contentInset = UIEdgeInsetsMake(0,0,0,0)
         collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(45,0,0,0)
         collectionView?.isPagingEnabled=true
+        if #available(iOS 11.0, *) {
+            collectionView?.contentInsetAdjustmentBehavior = .never
+        } else {
+            // Fallback on earlier versions
+        }
         //collectionView?.isPrefetchingEnabled=true
         //self.automaticallyAdjustsScrollViewInsets=true
         //self.view.translatesAutoresizingMaskIntoConstraints=false
@@ -201,7 +206,6 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
     
     func setupViews(){
         backgroundColor=UIColor.black
-        
         webConfiguration.allowsInlineMediaPlayback=true
         webConfiguration.allowsAirPlayForMediaPlayback=true
         webConfiguration.allowsPictureInPictureMediaPlayback=true
@@ -236,7 +240,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         webView.contentMode = .scaleAspectFit
         
         //Setup Nav Bar
-        navBar = UINavigationBar(frame: CGRect(x:0, y:45, width: frame.width, height:40))
+        navBar = UINavigationBar(frame: CGRect(x:0, y:45, width: frame.width, height:45))
         navBar.backgroundColor = UIColor.black
         //print(UIFont.familyNames)
         let navFont = UIFont.preferredFont(forTextStyle: .caption1) //UIFont(name:"Baskerville", size: 15)
@@ -252,7 +256,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         navItem.rightBarButtonItem = refreshItem
         navBar.setItems([navItem], animated: true)
         navBar.isHidden=true
-        //navBar.translatesAutoresizingMaskIntoConstraints=false
+        navBar.translatesAutoresizingMaskIntoConstraints=true
         
         
         
@@ -273,11 +277,11 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         
         //Add NavBar
         webView.addSubview(navBar)
-        navBar?.widthAnchor.constraint(equalTo: webView.widthAnchor, constant: 0.0).isActive=true
-        navBar?.leadingAnchor.constraint(equalTo: webView.leadingAnchor,constant:0.0).isActive=true
-        navBar?.trailingAnchor.constraint(equalTo: webView.trailingAnchor,constant:0.0).isActive=true
-        navBar?.topAnchor.constraint(equalTo: webView.topAnchor).isActive=true
-        navBar?.heightAnchor.constraint(equalToConstant: 40).isActive=true
+        navBar?.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 0.0).isActive=true
+        navBar?.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant:0.0).isActive=true
+        navBar?.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant:0.0).isActive=true
+        navBar?.topAnchor.constraint(equalTo: view.topAnchor).isActive=true
+        navBar?.heightAnchor.constraint(equalToConstant: 45).isActive=true
        
         //Create Load Spinner
         loadSpinner = UIActivityIndicatorView(frame:CGRect(x: self.view.frame.height/2 , y: self.view.frame.width/2 ,width: 37,height: 37))
