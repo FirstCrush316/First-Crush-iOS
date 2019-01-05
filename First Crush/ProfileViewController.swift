@@ -21,6 +21,9 @@ class ProfileViewController: UIViewController, WKUIDelegate, UIScrollViewDelegat
     @objc var myLabel: UILabel!
     @objc var lastOffsetY :CGFloat = 0
     @IBOutlet weak var navigationTitle: UINavigationItem!
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
     
     @objc var time : Float = 0.0
     @objc var timer: Timer?

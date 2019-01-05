@@ -28,6 +28,9 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
     
     var homeController:HomeViewController?
     
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         if let flowLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
@@ -103,10 +106,35 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell=collectionView.dequeueReusableCell(withReuseIdentifier: videoCellId, for: indexPath) as! VideoCell
+        cell.contentView.frame=cell.bounds
+        cell.contentView.autoresizingMask = [.flexibleWidth,.flexibleHeight]
         let url = NSURL(string: "\(URL[indexPath.item])")
         let request = URLRequest(url: url! as URL)
         cell.webView.load(request)
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let flowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        flowLayout.invalidateLayout()
+        
+        let indexPath = collectionView.indexPathsForVisibleItems.first
+        DispatchQueue.main.async {
+            self.collectionView?.scrollToItem(at: indexPath!, at: .centeredHorizontally, animated: true)
+            self.collectionView?.setNeedsLayout()
+        }
+        cell.prepareForReuse()
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        let flowLayout = collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
+        flowLayout.invalidateLayout()
+        
+        let indexPath = collectionView?.indexPathsForVisibleItems.first
+        DispatchQueue.main.async {
+            self.collectionView?.scrollToItem(at: indexPath!, at: .centeredHorizontally, animated: true)
+            self.collectionView?.setNeedsLayout()
+        }
     }
     
     func getMenuBar() -> MenuBar

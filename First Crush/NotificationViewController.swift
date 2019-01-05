@@ -24,7 +24,9 @@ class NotificationViewController: UIViewController, WKUIDelegate, UIScrollViewDe
     
     @objc var time : Float = 0.0
     @objc var timer: Timer?
-    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
     var myContext = 0
     
     override func loadView() {

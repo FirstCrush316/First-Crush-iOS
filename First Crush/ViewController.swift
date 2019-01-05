@@ -29,7 +29,9 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
     var myContext = 0
     var mPlayer:AVPlayer?
     var playerItem:AVPlayerItem?
-    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         

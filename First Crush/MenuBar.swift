@@ -92,6 +92,8 @@ class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICol
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell=collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! MenuCell
+        cell.contentView.frame=cell.bounds
+        cell.contentView.autoresizingMask = [.flexibleWidth,.flexibleHeight]
         cell.backgroundColor=UIColor.black
         cell.wordLabel.text="\(tabNames[indexPath.item])"
         cell.wordLabel.textAlignment = .center
@@ -99,6 +101,10 @@ class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICol
         cell.wordLabel.font = UIFont.preferredFont(forTextStyle: .body)
         cell.wordLabel.textColor = UIColor.darkGray
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        cell.prepareForReuse()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

@@ -23,7 +23,9 @@ class DetailViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate
     @objc var time : Float = 0.0
     @objc var timer: Timer?
     @objc var detailURL: NSURL!
-    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
     var myContext = 0
     
     func setdetailURL (_ NSURL: NSURL)
