@@ -56,13 +56,13 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         
         collectionView?.backgroundColor=UIColor.darkGray
         collectionView?.register(VideoCell.self, forCellWithReuseIdentifier: "videoCellId")
-        //collectionView?.contentInset = UIEdgeInsetsMake(0,0,0,0)
-        //collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(45,0,0,0)
+        collectionView?.contentInset = UIEdgeInsetsMake(0,0,0,0)
+        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(45,0,0,0)
         collectionView?.isPagingEnabled=true
         if #available(iOS 11.0, *) {
-            collectionView?.contentInsetAdjustmentBehavior = .automatic
+            collectionView?.contentInsetAdjustmentBehavior = .never
         } else {
-            // Fallback on earlier versions
+            
         }
         //collectionView?.isPrefetchingEnabled=true
         //self.automaticallyAdjustsScrollViewInsets=true
@@ -236,7 +236,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         if #available(iOS 11.0, *) {
             webView.scrollView.contentInsetAdjustmentBehavior = .automatic
         } else {
-            // Fallback on earlier versions
+            
         }
         webView.translatesAutoresizingMaskIntoConstraints=false
         //webView.scrollView.contentInset=UIEdgeInsets(top: 20,left: 0,bottom: 0,right: 0)
@@ -269,7 +269,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         if #available(iOS 11.0, *) {
             webView.scrollView.contentInsetAdjustmentBehavior = .automatic
         } else {
-            // Fallback on earlier versions
+            
         }
         
         
@@ -370,7 +370,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         }
         else {
             navBar.isHidden = false
-            self.webView.frame = self.view.bounds
+            self.webView.frame = self.view.frame
         }
     }
     }
