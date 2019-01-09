@@ -71,8 +71,6 @@ class RadioViewControllerNew:UICollectionViewController, UICollectionViewDelegat
         view.addSubview(radioMenuBar)
         radioMenuBar.translatesAutoresizingMaskIntoConstraints=false
         collectionView?.translatesAutoresizingMaskIntoConstraints=false
-        //view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))
-        //view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(45)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))
         radioMenuBar.topAnchor.constraint(equalTo: view.topAnchor, constant: 0.0).isActive=true
         radioMenuBar.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 0.0).isActive=true
         radioMenuBar.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant:0.0).isActive=true
@@ -83,7 +81,8 @@ class RadioViewControllerNew:UICollectionViewController, UICollectionViewDelegat
     }
     
     
-    func scrollToMenuIndex(menuIndex: Int){
+    func scrollToRadioMenuIndex(menuIndex: Int){
+        print(menuIndex)
         let indexPath = NSIndexPath(item: menuIndex, section: 0)
         collectionView?.scrollToItem(at: (indexPath as IndexPath), at: [], animated: true)
         
@@ -196,7 +195,7 @@ class RadioCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
     var progressView: UIProgressView!
     var loadSpinner: UIActivityIndicatorView!
     weak var navigationTitle: UINavigationItem!
-    var homeController:HomeViewController?
+    var radioController:RadioViewControllerNew?
     var navBar: UINavigationBar!
     var navItem = UINavigationItem(title: "First Crush")
     
@@ -449,8 +448,8 @@ class RadioCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
                 
                 let newVC = UIViewController()
                 newVC.view.backgroundColor=UIColor.red
-                homeController?.navigationController?.pushViewController(newVC, animated: true)
-                homeController?.menuBar.isHidden=true
+                radioController?.navigationController?.pushViewController(newVC, animated: true)
+                radioController?.radioMenuBar.isHidden=true
                 //self.inputViewController?.navigationController?.pushViewController(newVC, animated: true)
                 /*let vc = DetailViewController()
                  vc.detailURL = navigationAction.request.url! as NSURL

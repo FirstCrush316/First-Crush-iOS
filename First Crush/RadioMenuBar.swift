@@ -82,7 +82,7 @@ class RadioMenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,
          UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseOut, animations: {
          self.layoutIfNeeded()
          }, completion:nil)*/
-        radioController?.scrollToMenuIndex(menuIndex: indexPath.item)
+        radioController?.scrollToRadioMenuIndex(menuIndex: indexPath.item)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
