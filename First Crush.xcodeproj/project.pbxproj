@@ -29,6 +29,8 @@
 		2C726D751F88AAC60037928B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C726D731F88AAC60037928B /* Main.storyboard */; };
 		2C726D771F88AAC60037928B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C726D761F88AAC60037928B /* Assets.xcassets */; };
 		2C726D7A1F88AAC60037928B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C726D781F88AAC60037928B /* LaunchScreen.storyboard */; };
+		2C7CF12B21E52B7300DDD00D /* RadioViewControllerNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7CF12A21E52B7300DDD00D /* RadioViewControllerNew.swift */; };
+		2C7CF12D21E52B9300DDD00D /* RadioMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7CF12C21E52B9300DDD00D /* RadioMenuBar.swift */; };
 		2C8056851F8A5BEF00126BB4 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8056841F8A5BEF00126BB4 /* NotificationService.swift */; };
 		2C8056891F8A5BEF00126BB4 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2C8056821F8A5BEE00126BB4 /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -81,6 +83,8 @@
 		2C726D761F88AAC60037928B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C726D791F88AAC60037928B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2C726D7B1F88AAC60037928B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C7CF12A21E52B7300DDD00D /* RadioViewControllerNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioViewControllerNew.swift; sourceTree = "<group>"; };
+		2C7CF12C21E52B9300DDD00D /* RadioMenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioMenuBar.swift; sourceTree = "<group>"; };
 		2C8056821F8A5BEE00126BB4 /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C8056841F8A5BEF00126BB4 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		2C8056861F8A5BEF00126BB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -166,6 +170,8 @@
 				2C726D711F88AAC60037928B /* ViewController.swift */,
 				2C6DE0CD20657D3400EC713F /* MenuBar.swift */,
 				2C65085720A75F7000E25711 /* HomeViewController.swift */,
+				2C7CF12A21E52B7300DDD00D /* RadioViewControllerNew.swift */,
+				2C7CF12C21E52B9300DDD00D /* RadioMenuBar.swift */,
 			);
 			path = "First Crush";
 			sourceTree = "<group>";
@@ -403,6 +409,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C7CF12D21E52B9300DDD00D /* RadioMenuBar.swift in Sources */,
 				2C072D641FAB9AC400F4D9D7 /* ProfileViewController.swift in Sources */,
 				2C6623CF21862F44002E2C4F /* SearchViewController.swift in Sources */,
 				2C072D601FAB94DF00F4D9D7 /* NotificationViewController.swift in Sources */,
@@ -414,6 +421,7 @@
 				2C072D5E1FAB926F00F4D9D7 /* RadioViewController.swift in Sources */,
 				2C36FD861F9E5B4400C9E1A1 /* Reachability.swift in Sources */,
 				2C12F8511FCB514F0037611A /* DetailViewController.swift in Sources */,
+				2C7CF12B21E52B7300DDD00D /* RadioViewControllerNew.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
