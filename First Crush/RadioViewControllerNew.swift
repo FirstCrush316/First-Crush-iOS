@@ -133,7 +133,6 @@ class RadioViewControllerNew:UICollectionViewController, UICollectionViewDelegat
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print(scrollView.contentOffset.x / 4)
         radioMenuBar.horizontalBarLeftAnchorConstraint?.constant=scrollView.contentOffset.x / 4
     }
     
