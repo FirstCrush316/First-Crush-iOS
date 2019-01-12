@@ -63,11 +63,11 @@
                         <viewControllerLayoutGuide type="bottom" id="D9E-1t-2Nc"/>
                     </layoutGuides>
                     <view key="view" clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" id="bV0-hA-8Mh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="2L9-9G-1xl">
-                                <rect key="frame" x="188.66666666666666" y="349.66666666666669" width="37" height="37"/>
+                                <rect key="frame" x="188.66666666666666" y="325" width="37" height="37"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -76,6 +76,7 @@
                             <constraint firstItem="2L9-9G-1xl" firstAttribute="centerX" secondItem="bV0-hA-8Mh" secondAttribute="centerX" id="P6T-PH-DLY"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Radio" image="button-play.png" id="Im5-fB-pE1"/>
                     <navigationItem key="navigationItem" title="First Crush Radio" id="ftG-wf-VAF">
                         <barButtonItem key="backBarButtonItem" title="&lt; Back" id="kcy-9m-B7A"/>
                         <barButtonItem key="leftBarButtonItem" title="&lt;" id="Tar-OS-Z9V">
@@ -267,7 +268,7 @@
                     <connections>
                         <segue destination="X0L-L6-HIs" kind="relationship" relationship="viewControllers" id="NBs-0B-cOq"/>
                         <segue destination="0cX-Mq-CHc" kind="relationship" relationship="viewControllers" id="HLf-AE-aLG"/>
-                        <segue destination="deh-lZ-zrJ" kind="relationship" relationship="viewControllers" id="aq7-GJ-tf1"/>
+                        <segue destination="Dh1-jM-Xct" kind="relationship" relationship="viewControllers" id="WpV-IE-EBF"/>
                         <segue destination="13s-e8-QF9" kind="relationship" relationship="viewControllers" id="ze3-fz-ZPP"/>
                         <segue destination="26H-FH-jqD" kind="relationship" relationship="viewControllers" id="kSh-Yu-liq"/>
                     </connections>
@@ -460,7 +461,7 @@
             <objects>
                 <collectionViewController modalPresentationStyle="currentContext" id="deh-lZ-zrJ" customClass="RadioViewControllerNew" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" bounces="NO" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" scrollEnabled="NO" pagingEnabled="YES" contentInsetAdjustmentBehavior="always" bouncesZoom="NO" dataMode="prototypes" id="6pT-7d-88y">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.1332187665" green="0.14292993009999999" blue="0.1565181222" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cMq-uQ-0ut">

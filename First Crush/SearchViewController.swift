@@ -29,6 +29,7 @@ class SearchViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate
         
         var myContext = 0
         var mPlayer:AVPlayer?
+    
         override var preferredStatusBarStyle: UIStatusBarStyle{
         return .lightContent
         }
