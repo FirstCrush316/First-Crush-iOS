@@ -142,10 +142,6 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         return menuBar
         
     }
- 
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        menuBar.horizontalBarLeftAnchorConstraint?.constant=scrollView.contentOffset.x / 4
-    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width,height: view.frame.height)
@@ -186,17 +182,6 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         
     }
     
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        let tabBarIndex = tabBarController.selectedIndex
-        print ("Tab Index", tabBarIndex)
-        if tabBarIndex == 0 {
-            //self.window?.rootViewController?.present(HomeViewController, animated: true, completion: nil)
-            //navigationController?.setNavigationBarHidden(true, animated: true)
-            //let tabBarController: TabBarController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController(withIdentifier: "TabBarController") as! TabBarController
-            collectionView?.reloadData()
-        }
-        
-    }
 }
 class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate,WKUIDelegate, UITabBarControllerDelegate{
     override init(frame: CGRect) {
@@ -538,5 +523,19 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
             progressView.isHidden = true
             loadSpinner.stopAnimating()
         }
+        
+        func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController){
+            let tabBarIndex = tabBarController.selectedIndex
+            print ("Tab Index", tabBarIndex)
+            if tabBarIndex == 0 {
+                self.window?.rootViewController?.present(homeController!, animated: true, completion: nil)
+                //navigationController?.setNavigationBarHidden(true, animated: true)
+                //let tabBarController: TabBarController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController(withIdentifier: "TabBarController") as! TabBarController
+                //collectionView?.reloadData()
+            }
+        }
     }
+    
+    
+    
 }
