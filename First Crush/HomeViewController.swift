@@ -269,6 +269,11 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         webView.translatesAutoresizingMaskIntoConstraints=false
         //webView.scrollView.contentInset=UIEdgeInsets(top: 20,left: 0,bottom: 0,right: 0)
         webView.contentMode = .scaleAspectFit
+        if #available(iOS 11.0, *) {
+            webView.scrollView.contentInsetAdjustmentBehavior = .never
+        } else {
+            
+        }
         
         //Setup Nav Bar
         navBar = UINavigationBar(frame: CGRect(x:0, y:45, width: frame.width, height:45))
@@ -294,11 +299,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         
         //view.addSubview(navBar)
         view.addSubview(webView)
-        if #available(iOS 11.0, *) {
-            webView.scrollView.contentInsetAdjustmentBehavior = .automatic
-        } else {
-            
-        }
+        
         
         
         //view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":webView]))
@@ -377,11 +378,9 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         //let request = webView.url?.absoluteString
         if webView.canGoBack
-        {
-            lastOffsetY = scrollView.contentOffset.y
+        {   lastOffsetY = scrollView.contentOffset.y
             navBar.isHidden=false
-            
-            
+            webView.scrollView.contentInset = UIEdgeInsetsMake(45,0,0,0)
         }
         else {
             navBar.isHidden=true
@@ -489,6 +488,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         if webView.canGoBack {
             webView.goBack()
             navBar.isHidden=true
+            webView.scrollView.contentInset = UIEdgeInsetsMake(0,0,0,0)
             
         }
         else {
