@@ -375,9 +375,10 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        //let request = webView.url?.absoluteString
-        if webView.canGoBack
-        {   lastOffsetX = scrollView.contentOffset.x
+        let request = webView.url?.absoluteString
+        if (webView.canGoBack && request != "http://www.firstcrush.co/")
+        {
+            lastOffsetX = scrollView.contentOffset.x
             lastOffsetY = scrollView.contentOffset.y
             navBar.isHidden=false
             webView.scrollView.contentInset = UIEdgeInsetsMake(45,0,0,0)
@@ -389,8 +390,8 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
     }
     
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView){
-        //let request = webView.url?.absoluteString
-        if webView.canGoBack {
+        let request = webView.url?.absoluteString
+        if (webView.canGoBack && request != "http://www.firstcrush.co/"){
             if(scrollView.contentOffset.y > self.lastOffsetY && scrollView.contentOffset.x == self.lastOffsetX)
             {
                 navBar.isHidden = true
@@ -401,6 +402,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         }
     }
     }
+    
     
     /*@objc public func getWebView()
     {
