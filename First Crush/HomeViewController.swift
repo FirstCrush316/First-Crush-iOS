@@ -187,7 +187,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
     }
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         let tabBarIndex = tabBarController.selectedIndex
-        print ("Tab Index", tabBarIndex)
+       // print ("Tab Index", tabBarIndex)
         if tabBarIndex == 0 {
             //self.rootViewController?.present(homeController!, animated: true, completion: nil)
             //navigationController?.setNavigationBarHidden(true, animated: true)
