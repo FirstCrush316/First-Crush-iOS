@@ -47,6 +47,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
             collectionView?.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant:0.0).isActive=true
             collectionView?.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant:0.0).isActive=true
             collectionView?.bottomAnchor.constraint(equalTo: view.bottomAnchor,constant:0.0).isActive=true
+            self.tabBarController?.delegate = self
         }
         
         //Menu Bar Setup
@@ -171,6 +172,9 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         performSegue(withIdentifier: "detailView", sender: indexPath)
     }*/
     
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        menuBar.horizontalBarLeftAnchorConstraint?.constant=scrollView.contentOffset.x / 4
+    }
     
     override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         //print(targetContentOffset.pointee.x);
@@ -181,7 +185,16 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         menuBar.collectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: [])
         
     }
-    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        let tabBarIndex = tabBarController.selectedIndex
+        print ("Tab Index", tabBarIndex)
+        if tabBarIndex == 0 {
+            //self.rootViewController?.present(homeController!, animated: true, completion: nil)
+            //navigationController?.setNavigationBarHidden(true, animated: true)
+            //let tabBarController: TabBarController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController(withIdentifier: "TabBarController") as! TabBarController
+            collectionView?.reloadData()
+        
+    }
 }
 class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate,WKUIDelegate, UITabBarControllerDelegate{
     override init(frame: CGRect) {
@@ -198,6 +211,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
     
     let webConfiguration = WKWebViewConfiguration()
     @objc var lastOffsetY :CGFloat = 0
+    @objc var lastOffsetX :CGFloat = 0
     
     var view:UIView = {
         var rootView = UIView()
@@ -294,7 +308,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         webView.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant:0.0).isActive=true
         webView.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant:0.0).isActive=true
         webView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive=true
-                
+        
         view=webView
         
         //Add NavBar
@@ -350,8 +364,8 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
             self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
     }
         webView.scrollView.delegate = self
+        lastOffsetX = 0.0
         lastOffsetY = 0.0
-        
         UIApplication.shared.beginReceivingRemoteControlEvents()
         self.becomeFirstResponder()
     }
@@ -363,7 +377,8 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         //let request = webView.url?.absoluteString
         if webView.canGoBack
-        {   lastOffsetY = scrollView.contentOffset.y
+        {   lastOffsetX = scrollView.contentOffset.x
+            lastOffsetY = scrollView.contentOffset.y
             navBar.isHidden=false
             webView.scrollView.contentInset = UIEdgeInsetsMake(45,0,0,0)
         }
@@ -376,7 +391,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView){
         //let request = webView.url?.absoluteString
         if webView.canGoBack {
-            if(scrollView.contentOffset.y > self.lastOffsetY)
+            if(scrollView.contentOffset.y > self.lastOffsetY && scrollView.contentOffset.x == self.lastOffsetX)
             {
                 navBar.isHidden = true
         }
@@ -429,6 +444,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         progressView.isHidden = true
         loadSpinner.stopAnimating()
         loadSpinner.isHidden = true
+        
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping ((WKNavigationActionPolicy) -> Void)) {
@@ -524,18 +540,8 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
             loadSpinner.stopAnimating()
         }
         
-        func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController){
-            let tabBarIndex = tabBarController.selectedIndex
-            print ("Tab Index", tabBarIndex)
-            if tabBarIndex == 0 {
-                self.window?.rootViewController?.present(homeController!, animated: true, completion: nil)
-                //navigationController?.setNavigationBarHidden(true, animated: true)
-                //let tabBarController: TabBarController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController(withIdentifier: "TabBarController") as! TabBarController
-                //collectionView?.reloadData()
-            }
-        }
     }
     
-    
+    }
     
 }
