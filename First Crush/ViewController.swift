@@ -57,13 +57,13 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         webView.autoresizesSubviews=true
         webView.contentMode = .scaleToFill
         webView.frame = view.bounds
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":webView]))
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":webView]))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":webView]))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":webView]))
         webView.uiDelegate = self
         
         //Create Load Spinner
         loadSpinner = UIActivityIndicatorView(frame:CGRect(x: self.view.frame.height/2 , y: self.view.frame.width/2 ,width: 37,height: 37))
-        loadSpinner.activityIndicatorViewStyle=UIActivityIndicatorViewStyle.whiteLarge
+        loadSpinner.style=UIActivityIndicatorView.Style.whiteLarge
         loadSpinner.color=#colorLiteral(red: 0.6576176882, green: 0.7789518833, blue: 0.2271372974, alpha: 1)
         loadSpinner.center = self.view.center
         webView.addSubview(loadSpinner)
@@ -97,7 +97,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
             refreshControl.attributedTitle=NSAttributedString(string: title)
             refreshControl.tintColor=UIColor.white
             refreshControl.backgroundColor=UIColor.darkGray
-            refreshControl.addTarget(self, action: #selector(ViewController.refreshWebView), for: UIControlEvents.valueChanged)
+            refreshControl.addTarget(self, action: #selector(ViewController.refreshWebView), for: UIControl.Event.valueChanged)
             webView.scrollView.addSubview(refreshControl)
             webView.addObserver(self, forKeyPath: "title", options: .new, context: nil)
             webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
@@ -113,7 +113,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         lastOffsetY = 0.0
         view=webView
         
-        try! self.audioSession.setCategory(AVAudioSessionCategoryPlayback)
+        try! self.audioSession.setCategory(AVAudioSession.Category(rawValue: convertFromAVAudioSessionCategory(AVAudioSession.Category.playback)))
         try! self.audioSession.setActive(true)
         
         UIApplication.shared.beginReceivingRemoteControlEvents()
@@ -125,9 +125,9 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         NotificationCenter.default.addObserver(self, selector: #selector(self.remoteControlReceived(with:)), name: NSNotification.Name("nextSong"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.remoteControlReceived(with:)), name: NSNotification.Name("previousSong"), object: nil)
         //NotificationCenter.default.addObserver(self, selector: #selector(self.didBecomeActive(NSNotification:)), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.willEnterForeground(NSNotification:)), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.willEnterForeground(NSNotification:)), name: UIApplication.willEnterForegroundNotification, object: nil)
         
-         NotificationCenter.default.addObserver(self, selector: #selector(self.didEnterBackground(NSNotification:)), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+         NotificationCenter.default.addObserver(self, selector: #selector(self.didEnterBackground(NSNotification:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.didFinishPlaying(NSNotification:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
         
        playerItem = AVPlayer().currentItem
@@ -141,7 +141,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
     {
         print("Did Become Active")
         if let item = self.playerItem {
-            if item.tracks.first!.assetTrack.hasMediaCharacteristic(AVMediaCharacteristic.visual) {
+            if (item.tracks.first!.assetTrack?.hasMediaCharacteristic(AVMediaCharacteristic.visual))! {
                 item.tracks.first!.isEnabled = true
                 print("Video Enabled")
             }
@@ -153,7 +153,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
     {   print("Did Enter Background")
         if let item = self.playerItem {
             print("Checking for Video")
-            if item.tracks.first!.assetTrack.hasMediaCharacteristic(AVMediaCharacteristic.visual) {
+            if (item.tracks.first!.assetTrack?.hasMediaCharacteristic(AVMediaCharacteristic.visual))! {
                 item.tracks.first!.isEnabled = false
                 print("Video Disabled")
             }
@@ -298,7 +298,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
         case .linkActivated:
             if navigationAction.targetFrame == nil {
                 //self.webView.load(navigationAction.request)// It will load that link in same WKWebView
-                UIApplication.shared.open(navigationAction.request.url!,options: [:], completionHandler: nil)
+                UIApplication.shared.open(navigationAction.request.url!,options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
             }
             else
             {
@@ -422,3 +422,13 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
 }
 
 
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromAVAudioSessionCategory(_ input: AVAudioSession.Category) -> String {
+	return input.rawValue
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
+}

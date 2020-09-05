@@ -40,7 +40,7 @@ class ProfileViewController: UIViewController, WKUIDelegate, UIScrollViewDelegat
         webView.autoresizingMask = [.flexibleHeight]
         webView.navigationDelegate = self
         contentView.addSubview(webView)
-        contentView.sendSubview(toBack: webView)
+        contentView.sendSubviewToBack(webView)
         webView.translatesAutoresizingMaskIntoConstraints = true
         contentView.backgroundColor=UIColor.black
         self.webView.isOpaque = false
@@ -59,7 +59,7 @@ class ProfileViewController: UIViewController, WKUIDelegate, UIScrollViewDelegat
         super.viewDidLoad()
         //create Load Spinner
         loadSpinner = UIActivityIndicatorView(frame:CGRect(x: self.view.frame.height/2 , y: self.view.frame.width/2 ,width: 37,height: 37))
-        loadSpinner.activityIndicatorViewStyle=UIActivityIndicatorViewStyle.whiteLarge
+        loadSpinner.style=UIActivityIndicatorView.Style.whiteLarge
          loadSpinner.color=#colorLiteral(red: 0.6576176882, green: 0.7789518833, blue: 0.2271372974, alpha: 1)
         loadSpinner.center = self.view.center
         view.addSubview(loadSpinner)
@@ -85,7 +85,7 @@ class ProfileViewController: UIViewController, WKUIDelegate, UIScrollViewDelegat
             refreshControl.attributedTitle=NSAttributedString(string: title)
             refreshControl.tintColor=UIColor.white
             refreshControl.backgroundColor=UIColor.darkGray
-            refreshControl.addTarget(self, action: #selector(ViewController.refreshWebView), for: UIControlEvents.valueChanged)
+            refreshControl.addTarget(self, action: #selector(ViewController.refreshWebView), for: UIControl.Event.valueChanged)
             webView.scrollView.addSubview(refreshControl)
             webView.addObserver(self, forKeyPath: "title", options: .new, context: nil)
             webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
@@ -119,8 +119,8 @@ class ProfileViewController: UIViewController, WKUIDelegate, UIScrollViewDelegat
         }
     }
     @objc func constrainView() {
-        contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":webView]))
-        contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-20-[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":webView]))
+        contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":webView]))
+        contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-20-[v0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":webView]))
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView){
@@ -259,7 +259,7 @@ class ProfileViewController: UIViewController, WKUIDelegate, UIScrollViewDelegat
         case .linkActivated:
             if navigationAction.targetFrame == nil {
                 //self.webView.load(navigationAction.request)// It will load that link in same WKWebView
-                UIApplication.shared.open(navigationAction.request.url!,options: [:], completionHandler: nil)
+                UIApplication.shared.open(navigationAction.request.url!,options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
             }
             else
             {
@@ -334,3 +334,8 @@ class ProfileViewController: UIViewController, WKUIDelegate, UIScrollViewDelegat
     
 }
 
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
+}

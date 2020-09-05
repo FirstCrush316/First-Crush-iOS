@@ -16,13 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var timer: Timer?
-    var backgroundTask: UIBackgroundTaskIdentifier = 0;
+    var backgroundTask: UIBackgroundTaskIdentifier = UIBackgroundTaskIdentifier(rawValue: 0);
     var player:AVPlayer?;
     var playerLayer:AVPlayerLayer?
     var nowPlayingInfoCenter = MPNowPlayingInfoCenter.default()
     var remoCommandCenter = MPRemoteCommandCenter.shared()
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         UINavigationBar.appearance().clipsToBounds = true
         
@@ -31,11 +31,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().setBackgroundImage(UIImage(),for: .default)
         //UINavigationBar.appearance().barTintColor = UIColor.black;
         
-        //Status Bar Look and Feel
-        let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
+        //Status Bar Look and Feel - 
+        /*let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
         if statusBar.responds(to: #selector(setter: UIView.backgroundColor)){
             statusBar.backgroundColor = UIColor.black
-        }
+        }*/
         
         //One Signal Code
         let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false, kOSSettingsKeyInAppLaunchURL: true]
@@ -88,7 +88,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Background Play Handling
         do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category(rawValue: convertFromAVAudioSessionCategory(AVAudioSession.Category.playback)))
             print("AVAudioSession Category Playback OK")
             do {
                 try AVAudioSession.sharedInstance().setActive(true)
@@ -109,7 +109,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
           //self.resignFirstResponder()
-        UIApplication.shared.endBackgroundTask(UIBackgroundTaskInvalid)
+        UIApplication.shared.endBackgroundTask(UIBackgroundTaskIdentifier.invalid)
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -229,8 +229,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        UIApplication.shared.endBackgroundTask(UIBackgroundTaskInvalid)
+        UIApplication.shared.endBackgroundTask(UIBackgroundTaskIdentifier.invalid)
         self.resignFirstResponder()
     }
 }
 
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromAVAudioSessionCategory(_ input: AVAudioSession.Category) -> String {
+	return input.rawValue
+}
