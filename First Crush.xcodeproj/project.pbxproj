@@ -17,14 +17,20 @@
 		2C072D601FAB94DF00F4D9D7 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C072D5F1FAB94DF00F4D9D7 /* NotificationViewController.swift */; };
 		2C072D621FAB9A9500F4D9D7 /* user_male.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C072D611FAB9A9500F4D9D7 /* user_male.png */; };
 		2C072D641FAB9AC400F4D9D7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C072D631FAB9AC400F4D9D7 /* ProfileViewController.swift */; };
+		2C12F8511FCB514F0037611A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C12F8501FCB514F0037611A /* DetailViewController.swift */; };
 		2C13C2521FA4E7D80067D188 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C13C2511FA4E7D70067D188 /* Default.png */; };
 		2C36FD861F9E5B4400C9E1A1 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C36FD851F9E5B4400C9E1A1 /* Reachability.swift */; };
 		2C5AC7D21FAE59CF00ACF4E4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5AC7D11FAE59CF00ACF4E4 /* TabBarController.swift */; };
+		2C65085820A75F7000E25711 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C65085720A75F7000E25711 /* HomeViewController.swift */; };
+		2C6623CF21862F44002E2C4F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6623CE21862F44002E2C4F /* SearchViewController.swift */; };
+		2C6DE0CE20657D3500EC713F /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6DE0CD20657D3400EC713F /* MenuBar.swift */; };
 		2C726D701F88AAC60037928B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C726D6F1F88AAC60037928B /* AppDelegate.swift */; };
 		2C726D721F88AAC60037928B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C726D711F88AAC60037928B /* ViewController.swift */; };
 		2C726D751F88AAC60037928B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C726D731F88AAC60037928B /* Main.storyboard */; };
 		2C726D771F88AAC60037928B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C726D761F88AAC60037928B /* Assets.xcassets */; };
 		2C726D7A1F88AAC60037928B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C726D781F88AAC60037928B /* LaunchScreen.storyboard */; };
+		2C7CF12B21E52B7300DDD00D /* RadioViewControllerNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7CF12A21E52B7300DDD00D /* RadioViewControllerNew.swift */; };
+		2C7CF12D21E52B9300DDD00D /* RadioMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7CF12C21E52B9300DDD00D /* RadioMenuBar.swift */; };
 		2C8056851F8A5BEF00126BB4 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8056841F8A5BEF00126BB4 /* NotificationService.swift */; };
 		2C8056891F8A5BEF00126BB4 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2C8056821F8A5BEE00126BB4 /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -63,9 +69,13 @@
 		2C072D5F1FAB94DF00F4D9D7 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		2C072D611FAB9A9500F4D9D7 /* user_male.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = user_male.png; path = ../../../Downloads/iOS_11_glyph_icons/PNG/user_male.png; sourceTree = "<group>"; };
 		2C072D631FAB9AC400F4D9D7 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		2C12F8501FCB514F0037611A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = ../DetailViewController.swift; sourceTree = "<group>"; };
 		2C13C2511FA4E7D70067D188 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = "../../../Library/Mobile Documents/com~apple~CloudDocs/ApeToolsGeneratedAssets/iOS/Resources/splash/Default.png"; sourceTree = "<group>"; };
 		2C36FD851F9E5B4400C9E1A1 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		2C5AC7D11FAE59CF00ACF4E4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		2C65085720A75F7000E25711 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		2C6623CE21862F44002E2C4F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		2C6DE0CD20657D3400EC713F /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
 		2C726D6C1F88AAC60037928B /* First Crush.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "First Crush.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C726D6F1F88AAC60037928B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C726D711F88AAC60037928B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +83,8 @@
 		2C726D761F88AAC60037928B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C726D791F88AAC60037928B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2C726D7B1F88AAC60037928B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C7CF12A21E52B7300DDD00D /* RadioViewControllerNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioViewControllerNew.swift; sourceTree = "<group>"; };
+		2C7CF12C21E52B9300DDD00D /* RadioMenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioMenuBar.swift; sourceTree = "<group>"; };
 		2C8056821F8A5BEE00126BB4 /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C8056841F8A5BEF00126BB4 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		2C8056861F8A5BEF00126BB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -143,7 +155,6 @@
 				2C072D591FAB90F600F4D9D7 /* home new.png */,
 				2C80568E1F8A632D00126BB4 /* First Crush.entitlements */,
 				2C726D6F1F88AAC60037928B /* AppDelegate.swift */,
-				2C726D711F88AAC60037928B /* ViewController.swift */,
 				2C726D731F88AAC60037928B /* Main.storyboard */,
 				2C726D761F88AAC60037928B /* Assets.xcassets */,
 				2C726D781F88AAC60037928B /* LaunchScreen.storyboard */,
@@ -152,8 +163,15 @@
 				2C36FD851F9E5B4400C9E1A1 /* Reachability.swift */,
 				2C072D5D1FAB926F00F4D9D7 /* RadioViewController.swift */,
 				2C072D5F1FAB94DF00F4D9D7 /* NotificationViewController.swift */,
+				2C12F8501FCB514F0037611A /* DetailViewController.swift */,
 				2C072D631FAB9AC400F4D9D7 /* ProfileViewController.swift */,
 				2C5AC7D11FAE59CF00ACF4E4 /* TabBarController.swift */,
+				2C6623CE21862F44002E2C4F /* SearchViewController.swift */,
+				2C726D711F88AAC60037928B /* ViewController.swift */,
+				2C6DE0CD20657D3400EC713F /* MenuBar.swift */,
+				2C65085720A75F7000E25711 /* HomeViewController.swift */,
+				2C7CF12A21E52B7300DDD00D /* RadioViewControllerNew.swift */,
+				2C7CF12C21E52B9300DDD00D /* RadioMenuBar.swift */,
 			);
 			path = "First Crush";
 			sourceTree = "<group>";
@@ -229,7 +247,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Sumit Johri";
 				TargetAttributes = {
 					2C726D6B1F88AAC60037928B = {
@@ -391,13 +409,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C7CF12D21E52B9300DDD00D /* RadioMenuBar.swift in Sources */,
 				2C072D641FAB9AC400F4D9D7 /* ProfileViewController.swift in Sources */,
+				2C6623CF21862F44002E2C4F /* SearchViewController.swift in Sources */,
 				2C072D601FAB94DF00F4D9D7 /* NotificationViewController.swift in Sources */,
 				2C726D721F88AAC60037928B /* ViewController.swift in Sources */,
 				2C726D701F88AAC60037928B /* AppDelegate.swift in Sources */,
 				2C5AC7D21FAE59CF00ACF4E4 /* TabBarController.swift in Sources */,
+				2C65085820A75F7000E25711 /* HomeViewController.swift in Sources */,
+				2C6DE0CE20657D3500EC713F /* MenuBar.swift in Sources */,
 				2C072D5E1FAB926F00F4D9D7 /* RadioViewController.swift in Sources */,
 				2C36FD861F9E5B4400C9E1A1 /* Reachability.swift in Sources */,
+				2C12F8511FCB514F0037611A /* DetailViewController.swift in Sources */,
+				2C7CF12B21E52B7300DDD00D /* RadioViewControllerNew.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,6 +477,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -460,6 +485,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -510,6 +536,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -517,6 +544,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
