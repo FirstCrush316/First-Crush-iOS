@@ -376,7 +376,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         let request = webView.url?.absoluteString
-        if (webView.canGoBack && request != "http://www.firstcrush.co/")
+        if (webView.canGoBack && request != "https://www.firstcrush.co/")
         {
             lastOffsetX = scrollView.contentOffset.x
             lastOffsetY = scrollView.contentOffset.y
@@ -391,7 +391,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
     
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView){
         let request = webView.url?.absoluteString
-        if (webView.canGoBack && request != "http://www.firstcrush.co/"){
+        if (webView.canGoBack && request != "https://www.firstcrush.co/"){
             if(scrollView.contentOffset.y > self.lastOffsetY && scrollView.contentOffset.x == self.lastOffsetX)
             {
                 navBar.isHidden = true

@@ -72,7 +72,7 @@ class NotificationViewController: UIViewController, WKUIDelegate, UIScrollViewDe
         webView.addSubview(progressView)
         webView.scrollView.isScrollEnabled = true
         webView.scrollView.alwaysBounceVertical = true
-        let url = NSURL(string: "http://www.firstcrush.co/notifications/")
+        let url = NSURL(string: "https://www.firstcrush.co/notifications/")
         let request = URLRequest(url: url! as URL)
         
         if Reachability.isConnectedToNetwork() == true {

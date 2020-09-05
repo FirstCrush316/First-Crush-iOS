@@ -74,7 +74,7 @@ class RadioViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate,
         webView.addSubview(progressView)
         webView.scrollView.isScrollEnabled = true
         webView.scrollView.alwaysBounceVertical = true
-        let url = NSURL(string: "http://www.firstcrush.co/first-crush-101-radio/")
+        let url = NSURL(string: "https://www.firstcrush.co/first-crush-101-radio/")
         let request = URLRequest(url: url! as URL)
         
         if Reachability.isConnectedToNetwork() == true {
