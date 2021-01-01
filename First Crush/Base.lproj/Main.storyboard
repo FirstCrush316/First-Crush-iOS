@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="O3H-hv-Mio">
-    <device id="retina5_5" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="O3H-hv-Mio">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -151,11 +149,11 @@
                         <viewControllerLayoutGuide type="bottom" id="hWb-ez-0F4"/>
                     </layoutGuides>
                     <view key="view" clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" id="0OW-wk-IsF">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="ind-wC-y6m">
-                                <rect key="frame" x="188.66666666666666" y="325" width="37" height="37"/>
+                                <rect key="frame" x="188.66666666666666" y="303" width="37" height="37"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -216,7 +214,7 @@
         <scene sceneID="BO5-YR-uuP">
             <objects>
                 <collectionViewController modalPresentationStyle="currentContext" id="X0L-L6-HIs" customClass="HomeViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" bounces="NO" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" scrollEnabled="NO" pagingEnabled="YES" contentInsetAdjustmentBehavior="always" bouncesZoom="NO" dataMode="prototypes" id="aUu-cf-hDt">
+                    <collectionView key="view" clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" bounces="NO" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" pagingEnabled="YES" contentInsetAdjustmentBehavior="always" bouncesZoom="NO" dataMode="prototypes" id="aUu-cf-hDt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.13321876652854284" green="0.14292993011956326" blue="0.15651812217772021" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -391,10 +389,10 @@
             </objects>
             <point key="canvasLocation" x="3171.0144927536235" y="-574.72826086956525"/>
         </scene>
-        <!--Search View Controller-->
+        <!--Search-->
         <scene sceneID="QXX-Jx-V5B">
             <objects>
-                <viewController id="Snr-1u-0RO" customClass="SearchViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Snr-1u-0RO" customClass="SearchViewController" customModule="First_Crush" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pwV-2l-Ikn"/>
                         <viewControllerLayoutGuide type="bottom" id="MtA-9X-RLK"/>
@@ -404,7 +402,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.1332187665" green="0.14292993009999999" blue="0.1565181222" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Zkw-QG-eD3"/>
+                    <navigationItem key="navigationItem" title="Search" id="Zkw-QG-eD3">
+                        <barButtonItem key="backBarButtonItem" title="&lt; Back" id="bMS-cG-Qw2"/>
+                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="HLz-Gq-rIa">
+                            <connections>
+                                <action selector="backAction:" destination="Snr-1u-0RO" id="Q5q-Mi-Bg9"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="vrE-a8-zj5">
+                            <connections>
+                                <action selector="refreshAction:" destination="Snr-1u-0RO" id="5LB-lM-gMG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="emc-UD-MgB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -436,10 +446,11 @@
         <!--Notifications-->
         <scene sceneID="iUg-TY-xoi">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="26H-FH-jqD" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="26H-FH-jqD" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Notifications" image="bell.png" selectedImage="bell.png" id="BkH-Oa-qzy"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="b4x-1D-nLQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
@@ -484,11 +495,11 @@
             <point key="canvasLocation" x="-361" y="-538"/>
         </scene>
     </scenes>
+    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
         <image name="bell.png" width="30" height="30"/>
         <image name="button-play.png" width="30" height="30"/>
         <image name="home new.png" width="30" height="30"/>
         <image name="user_male.png" width="30" height="30"/>
     </resources>
-    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

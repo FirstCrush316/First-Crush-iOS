@@ -23,7 +23,7 @@ import MediaPlayer;
 class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlowLayout,WKUIDelegate, WKNavigationDelegate,UITabBarControllerDelegate{
     let videoCellId="videoCellId"
     let tabNames = ["Featured","News","Trailers","Travel"]
-    let URL = ["http://www.firstcrush.co","http://www.firstcrush.co/news/","http://www.firstcrush.co/trailers/","http://www.firstcrush.co/travel/"]
+    let URL = ["https://www.firstcrush.co","https://www.firstcrush.co/news/","https://www.firstcrush.co/trailers/","https://www.firstcrush.co/travel/"]
     weak var navigationTitle: UINavigationItem!
     
     var homeController:HomeViewController?
@@ -68,17 +68,18 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         } else {
             
         }
-        //collectionView?.isPrefetchingEnabled=true
+    collectionView?.isPrefetchingEnabled=true
         //self.automaticallyAdjustsScrollViewInsets=true
-        //self.view.translatesAutoresizingMaskIntoConstraints=false
+    //self.view.translatesAutoresizingMaskIntoConstraints=true
         
         //Root View Setup
         //view.addSubview(navBar)
-        view.addSubview(menuBar)
+       // view.translatesAutoresizingMaskIntoConstraints=true
+       view.addSubview(menuBar)
         menuBar.translatesAutoresizingMaskIntoConstraints=false
         collectionView?.translatesAutoresizingMaskIntoConstraints=false
-        //view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))
-        //view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(45)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":menuBar]))
+        //view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":menuBar]))
+        //view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(45)]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":menuBar]))
         menuBar.topAnchor.constraint(equalTo: view.topAnchor, constant: 0.0).isActive=true
         menuBar.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 0.0).isActive=true
         menuBar.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant:0.0).isActive=true
@@ -238,7 +239,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         webConfiguration.allowsPictureInPictureMediaPlayback=true
         
       //Setup Content View
-        addSubview(view)
+        self.contentView.addSubview(view)
         view.backgroundColor=UIColor.darkGray
         view.translatesAutoresizingMaskIntoConstraints=false
         view.topAnchor.constraint(equalTo: self.topAnchor, constant: 0.0).isActive=true

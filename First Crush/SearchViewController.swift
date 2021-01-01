@@ -155,21 +155,21 @@ class SearchViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate
             // Dispose of any resources that can be recreated.
         }
         
-        @IBAction func backAction(_ sender: Any) {
-            if webView.canGoBack {
-                webView.goBack()
-                self.navigationController?.setNavigationBarHidden(true, animated: true)
-            }
-            else {
-                self.navigationController?.setNavigationBarHidden(true, animated: true)
-            }
+    @IBAction func backAction(_ sender: Any) {
+        if webView.canGoBack {
+            webView.goBack()
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
         }
-        
-        @IBAction func refreshAction(_ sender: Any) {
-            progressView.isHidden = false
-            webView.reload()
+        else {
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
         }
-        
+    }
+    
+    @IBAction func refreshAction(_ sender: Any) {
+        progressView.isHidden = false
+        webView.reload()
+    }
+    
         //MARK:- WKNavigationDelegate
         
         func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
