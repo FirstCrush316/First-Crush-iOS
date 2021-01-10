@@ -269,11 +269,6 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         webView.translatesAutoresizingMaskIntoConstraints=false
         //webView.scrollView.contentInset=UIEdgeInsets(top: 20,left: 0,bottom: 0,right: 0)
         webView.contentMode = .scaleAspectFit
-        if #available(iOS 11.0, *) {
-            webView.scrollView.contentInsetAdjustmentBehavior = .never
-        } else {
-            
-        }
         
         //Setup Nav Bar
         navBar = UINavigationBar(frame: CGRect(x:0, y:45, width: frame.width, height:45))
