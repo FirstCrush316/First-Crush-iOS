@@ -47,7 +47,7 @@ class MenuBar:UIView , UICollectionViewDataSource,UICollectionViewDelegate,UICol
         collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant:0.0).isActive=true
         collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor,constant:0.0).isActive=true
         collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor,constant:0.0).isActive=true
-        collectionView.heightAnchor.constraint(equalToConstant: 45.0).isActive = true
+        collectionView.heightAnchor.constraint(equalToConstant: 35.0).isActive = true
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
