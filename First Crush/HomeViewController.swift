@@ -3,7 +3,7 @@
 //  First Crush
 //
 //  Created by Sumit Johri on 12/05/18.
-//  Copyright © 2018 Sumit Johri. All rights reserved.
+//  Copyright © Sumit Johri. All rights reserved.
 //
 
 import Foundation
@@ -12,7 +12,7 @@ import Foundation
 //  First Crush
 //
 //  Created by Sumit Johri on 23/03/18.
-//  Copyright © 2018 Sumit Johri. All rights reserved.
+//  Copyright © Sumit Johri. All rights reserved.
 //
 
 import UIKit
@@ -80,7 +80,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         collectionView?.translatesAutoresizingMaskIntoConstraints=false
         //view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":menuBar]))
         //view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(45)]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":menuBar]))
-        menuBar.topAnchor.constraint(equalTo: view.topAnchor, constant: 0.0).isActive=true
+        menuBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0.0).isActive=true
         menuBar.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 0.0).isActive=true
         menuBar.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant:0.0).isActive=true
         menuBar.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant:0.0).isActive=true
@@ -242,7 +242,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         self.contentView.addSubview(view)
         view.backgroundColor=UIColor.darkGray
         view.translatesAutoresizingMaskIntoConstraints=false
-        view.topAnchor.constraint(equalTo: self.topAnchor, constant: 0.0).isActive=true
+        view.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 0.0).isActive=true
         view.widthAnchor.constraint(equalTo: self.widthAnchor, constant: 0.0).isActive=true
         view.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant:0.0).isActive=true
         view.trailingAnchor.constraint(equalTo: self.trailingAnchor,constant:0.0).isActive=true
