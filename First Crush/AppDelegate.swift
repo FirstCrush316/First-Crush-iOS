@@ -37,54 +37,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             statusBar.backgroundColor = UIColor.black
         }*/
         
-        //One Signal Code
-        let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false, kOSSettingsKeyInAppLaunchURL: true]
-        // Replace 'YOUR_APP_ID' with your OneSignal App ID.
-        OneSignal.initWithLaunchOptions(launchOptions,
-                                        appId: "ea063994-c980-468b-8895-fcdd9dd93cf4",
-                                        handleNotificationAction: nil,
-                                        settings: onesignalInitSettings)
-        
-        OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification;
-        
-        // Recommend moving the below line to prompt for push after informing the user about
-        //   how your app will use them.
-        OneSignal.promptForPushNotifications(userResponse: { accepted in
+        //One Signal Initialization
+        // Remove this method to stop OneSignal Debugging
+          //OneSignal.setLogLevel(.LL_VERBOSE, visualLevel: .LL_NONE)
+
+          // OneSignal initialization
+          OneSignal.initWithLaunchOptions(launchOptions)
+          OneSignal.setAppId("ea063994-c980-468b-8895-fcdd9dd93cf4")
+
+          // promptForPushNotifications will show the native iOS notification permission prompt.
+          // We recommend removing the following code and instead using an In-App Message to prompt for notification permission (See step 8)
+          OneSignal.promptForPushNotifications(userResponse: { accepted in
             print("User accepted notifications: \(accepted)")
-        })
-        
-        // Sync hashed email if you have a login system or collect it.
-        //   Will be used to reach the user at the most optimal time of day.
-        // OneSignal.syncHashedEmail(userEmail)
-        let notificationReceivedBlock: OSHandleNotificationReceivedBlock = { notification in
-        
-            print("Received Notification: \(String(describing: notification!.payload.notificationID))")
-    }
-    
-    let notificationOpenedBlock: OSHandleNotificationActionBlock = { result in
-        // This block gets called when the user reacts to a notification received
-        let payload: OSNotificationPayload = result!.notification.payload
-        
-        var fullMessage = payload.body
-        print("Message = \(String(describing: fullMessage))")
-        
-        if payload.additionalData != nil {
-            if payload.title != nil {
-                let messageTitle = payload.title
-                print("Message Title = \(messageTitle!)")
-            }
-            
-            let additionalData = payload.additionalData
-            if additionalData?["actionSelected"] != nil {
-                fullMessage = fullMessage! + "\nPressed ButtonID: \(String(describing: additionalData!["actionSelected"]))"
-            }
-        }
-    }
-    
-   
-    OneSignal.initWithLaunchOptions(launchOptions,appId: "ea063994-c980-468b-8895-fcdd9dd93cf4",handleNotificationReceived: notificationReceivedBlock, handleNotificationAction: notificationOpenedBlock, settings: onesignalInitSettings)
-    
-    OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification
+          })
         
         //Background Play Handling
         do {
