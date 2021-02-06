@@ -51,7 +51,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         }
         
         //Menu Bar Setup
-        menuBar  = MenuBar(frame:CGRect(x: 0,y: 0,width: self.view.frame.width,height: 35))
+        menuBar  = MenuBar(frame:CGRect(x: 0,y: 0,width: self.view.frame.width,height: 32))
         menuBar.homeController=self
         setupCollectionView()
     }
@@ -84,7 +84,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         menuBar.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 0.0).isActive=true
         menuBar.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant:0.0).isActive=true
         menuBar.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant:0.0).isActive=true
-        menuBar.heightAnchor.constraint(equalToConstant: 35).isActive=true
+        menuBar.heightAnchor.constraint(equalToConstant: 32).isActive=true
         //menuBar.isHidden=true
         
     }
@@ -269,11 +269,6 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         webView.translatesAutoresizingMaskIntoConstraints=false
         //webView.scrollView.contentInset=UIEdgeInsets(top: 20,left: 0,bottom: 0,right: 0)
         webView.contentMode = .scaleAspectFit
-        if #available(iOS 11.0, *) {
-            webView.scrollView.contentInsetAdjustmentBehavior = .never
-        } else {
-            
-        }
         
         //Setup Nav Bar
         navBar = UINavigationBar(frame: CGRect(x:0, y:45, width: frame.width, height:45))
@@ -304,7 +299,7 @@ class VideoCell:UICollectionViewCell, UIScrollViewDelegate, WKNavigationDelegate
         
         //view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":webView]))
         //view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0":webView]))
-        webView.topAnchor.constraint(equalTo: view.topAnchor, constant: 35.0).isActive=true
+        webView.topAnchor.constraint(equalTo: view.topAnchor, constant: 32.0).isActive=true
         webView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 0.0).isActive=true
         webView.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant:0.0).isActive=true
         webView.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant:0.0).isActive=true
