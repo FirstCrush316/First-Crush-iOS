@@ -51,7 +51,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         }
         
         //Menu Bar Setup
-        menuBar  = MenuBar(frame:CGRect(x: 0,y: 0,width: self.view.frame.width,height: 32))
+        menuBar  = MenuBar(frame:CGRect(x: 0,y: 0,width: self.view.frame.width,height: 35))
         menuBar.homeController=self
         setupCollectionView()
     }
@@ -61,14 +61,14 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         collectionView?.backgroundColor=UIColor.darkGray
         collectionView?.register(VideoCell.self, forCellWithReuseIdentifier: "videoCellId")
         collectionView?.contentInset = UIEdgeInsets.init(top: 0,left: 0,bottom: 0,right: 0)
-        collectionView?.scrollIndicatorInsets = UIEdgeInsets.init(top: 45,left: 0,bottom: 0,right: 0)
+        collectionView?.scrollIndicatorInsets = UIEdgeInsets.init(top: 35,left: 0,bottom: 0,right: 0)
         collectionView?.isPagingEnabled=true
         if #available(iOS 11.0, *) {
             collectionView?.contentInsetAdjustmentBehavior = .never
         } else {
             
         }
-    collectionView?.isPrefetchingEnabled=true
+        collectionView?.isPrefetchingEnabled=true
         //self.automaticallyAdjustsScrollViewInsets=true
     //self.view.translatesAutoresizingMaskIntoConstraints=true
         
@@ -80,16 +80,18 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         collectionView?.translatesAutoresizingMaskIntoConstraints=false
         //view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":menuBar]))
         //view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(45)]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":menuBar]))
-        menuBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0.0).isActive=true
+        if self.view.frame.height > self.view.frame.width {
+            //print("Portrait")
+            menuBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0.0).isActive=true
+        }
+        else{
+           // print("Landscape")
+            menuBar.topAnchor.constraint(equalTo: view.topAnchor, constant: 0.0).isActive=true
+        }
         menuBar.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 0.0).isActive=true
         menuBar.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant:0.0).isActive=true
         menuBar.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant:0.0).isActive=true
-        menuBar.heightAnchor.constraint(equalToConstant: 32).isActive=true
-        if self.view.frame.height < self.view.frame.width {
-         self.menuBar.isHidden = true
-        } else {
-         self.menuBar.isHidden = false
-        }
+        menuBar.heightAnchor.constraint(equalToConstant: 35).isActive=true
         
     }
     
@@ -127,6 +129,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         let indexPath = collectionView.indexPathsForVisibleItems.first
         DispatchQueue.main.async {
             self.collectionView?.scrollToItem(at: indexPath!, at: .centeredHorizontally, animated: true)
+            self.view.setNeedsLayout()
             self.collectionView?.setNeedsLayout()
             self.menuBar.setNeedsLayout()
         }
@@ -136,20 +139,23 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         let flowLayout = collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
         flowLayout.invalidateLayout()
-        
+        let menuBarflowLayout = self.menuBar.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        flowLayout.invalidateLayout()
         let indexPath = collectionView?.indexPathsForVisibleItems.first
         DispatchQueue.main.async {
             self.collectionView?.scrollToItem(at: indexPath!, at: .centeredHorizontally, animated: true)
-            if size.height < size.width {
-             self.menuBar.isHidden = true
+            if size.height<size.width {
+             //self.menuBar.isHidden = true
                 self.collectionView?.scrollIndicatorInsets = UIEdgeInsets.init(top: 0,left: 0,bottom: 0,right: 0)
             } else {
              self.menuBar.isHidden = false
-                self.collectionView?.scrollIndicatorInsets = UIEdgeInsets.init(top: 45,left: 0,bottom: 0,right: 0)
+             self.collectionView?.scrollIndicatorInsets = UIEdgeInsets.init(top: 45,left: 0,bottom: 0,right: 0)
+                }
+            menuBarflowLayout.invalidateLayout()
+            flowLayout.invalidateLayout()
+            self.collectionView.setNeedsLayout()
+            self.view.setNeedsLayout()
             }
-            self.menuBar.setNeedsLayout()
-            self.collectionView?.setNeedsLayout()
-        }
     }
     
     func getMenuBar() -> MenuBar
@@ -171,6 +177,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
             self.collectionView?.scrollToItem(at: indexPath!, at: .centeredHorizontally, animated: true)
             self.collectionView?.setNeedsLayout()
             self.menuBar.setNeedsLayout()
+            self.view.setNeedsLayout()
         }
     }
     
