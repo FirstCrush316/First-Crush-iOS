@@ -51,5 +51,7 @@
 	<true/>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleBlackOpaque</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>First Crush uses your location to determine the best suited content</string>
 </dict>
 </plist>
