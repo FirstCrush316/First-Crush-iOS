@@ -85,7 +85,11 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         menuBar.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant:0.0).isActive=true
         menuBar.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant:0.0).isActive=true
         menuBar.heightAnchor.constraint(equalToConstant: 32).isActive=true
-        //menuBar.isHidden=true
+        if self.view.frame.height < self.view.frame.width {
+         self.menuBar.isHidden = true
+        } else {
+         self.menuBar.isHidden = false
+        }
         
     }
     
@@ -124,6 +128,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         DispatchQueue.main.async {
             self.collectionView?.scrollToItem(at: indexPath!, at: .centeredHorizontally, animated: true)
             self.collectionView?.setNeedsLayout()
+            self.menuBar.setNeedsLayout()
         }
         cell.prepareForReuse()
     }
@@ -135,6 +140,14 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         let indexPath = collectionView?.indexPathsForVisibleItems.first
         DispatchQueue.main.async {
             self.collectionView?.scrollToItem(at: indexPath!, at: .centeredHorizontally, animated: true)
+            if size.height < size.width {
+             self.menuBar.isHidden = true
+                self.collectionView?.scrollIndicatorInsets = UIEdgeInsets.init(top: 0,left: 0,bottom: 0,right: 0)
+            } else {
+             self.menuBar.isHidden = false
+                self.collectionView?.scrollIndicatorInsets = UIEdgeInsets.init(top: 45,left: 0,bottom: 0,right: 0)
+            }
+            self.menuBar.setNeedsLayout()
             self.collectionView?.setNeedsLayout()
         }
     }
@@ -157,6 +170,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         DispatchQueue.main.async {
             self.collectionView?.scrollToItem(at: indexPath!, at: .centeredHorizontally, animated: true)
             self.collectionView?.setNeedsLayout()
+            self.menuBar.setNeedsLayout()
         }
     }
     
@@ -186,6 +200,7 @@ class HomeViewController:UICollectionViewController, UICollectionViewDelegateFlo
         menuBar.collectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: [])
         
     }
+
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         let tabBarIndex = tabBarController.selectedIndex
        // print ("Tab Index", tabBarIndex)
