@@ -359,13 +359,13 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
     override func remoteControlReceived(with event: UIEvent?)
     {       print("Remote Event Received")
         switch (event?.subtype) {
-        case UIEventSubtype.remoteControlTogglePlayPause?:
+        case UIEvent.EventSubtype.remoteControlTogglePlayPause?:
             print("Received Headphone Play Pause")
             MPRemoteCommandCenter.shared().togglePlayPauseCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
                 return .success
             }
             break;
-        case UIEventSubtype.remoteControlPlay?:
+        case UIEvent.EventSubtype.remoteControlPlay?:
             print("Received Remote Play")
             self.mPlayer?.play()
             NotificationCenter.default.post(name: NSNotification.Name("playSong"), object: nil)
@@ -373,7 +373,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
                 return .success
             }
             break;
-        case UIEventSubtype.remoteControlPause?:
+        case UIEvent.EventSubtype.remoteControlPause?:
             print("Received Remote Pause")
             NotificationCenter.default.post(name: NSNotification.Name("pauseSong"), object: nil)
             self.mPlayer?.pause()
@@ -381,7 +381,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
                 return .success
             }
             break;
-        case UIEventSubtype.remoteControlNextTrack?:
+        case UIEvent.EventSubtype.remoteControlNextTrack?:
             //Handle It
             print("Received Next Event")
             NotificationCenter.default.post(name: NSNotification.Name("nextSong"), object: nil)
@@ -389,7 +389,7 @@ class ViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate, WKNa
                 return .success
             }
             break;
-        case UIEventSubtype.remoteControlPreviousTrack?:
+        case UIEvent.EventSubtype.remoteControlPreviousTrack?:
             //Handle It
             NotificationCenter.default.post(name: NSNotification.Name("previousSong"), object: nil)
             print("Received Previous Event")

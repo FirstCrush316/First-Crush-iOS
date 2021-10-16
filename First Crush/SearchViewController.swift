@@ -334,32 +334,32 @@ class SearchViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate
         override func remoteControlReceived(with event: UIEvent?)
         {       print("Remote Event Received")
             switch (event?.subtype) {
-            case UIEventSubtype.remoteControlTogglePlayPause?:
+            case UIEvent.EventSubtype.remoteControlTogglePlayPause?:
                 print("Received Headphone Play Pause")
                 MPRemoteCommandCenter.shared().togglePlayPauseCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
                     return .success
                 }
                 break;
-            case UIEventSubtype.remoteControlPlay?:
+            case UIEvent.EventSubtype.remoteControlPlay?:
                 print("Received Remote Play")
                 MPRemoteCommandCenter.shared().playCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
                     return .success
                 }
                 break;
-            case UIEventSubtype.remoteControlPause?:
+            case UIEvent.EventSubtype.remoteControlPause?:
                 print("Received Remote Pause")
                 MPRemoteCommandCenter.shared().pauseCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
                     return .success
                 }
                 break;
-            case UIEventSubtype.remoteControlNextTrack?:
+            case UIEvent.EventSubtype.remoteControlNextTrack?:
                 //Handle It
                 print("Received Next Event")
                 MPRemoteCommandCenter.shared().nextTrackCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
                     return .success
                 }
                 break;
-            case UIEventSubtype.remoteControlPreviousTrack?:
+            case UIEvent.EventSubtype.remoteControlPreviousTrack?:
                 //Handle It
                 print("Received Previous Event")
                 MPRemoteCommandCenter.shared().previousTrackCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
